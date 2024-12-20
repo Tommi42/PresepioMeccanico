@@ -1,5 +1,7 @@
 import streamlit as st
+from streamlit_lottie import st_lottie
 import base64
+import time
 from dotenv import load_dotenv
 from openai import OpenAI
 import os
@@ -38,6 +40,11 @@ def add_custom_css():
             position: fixed;
             bottom: 10px;
         }
+        .stCustomComponentV1{
+            background-color: #D9D9D9;
+            border-radius: 100px;
+        }
+
         </style>
         """,
         unsafe_allow_html=True
@@ -76,7 +83,7 @@ with c1:
         st.session_state.messages = [{"role": "system", "content": initial_prompt}]
         reload_page()
     st.title("Natalino")
-
+    st.image("./static/Natalino.png", width=130)
 with c2:
     if len(st.session_state.messages) != 1:
         # Display chat messages from history on app rerun
