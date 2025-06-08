@@ -1,10 +1,12 @@
 import streamlit as st
 import json
 import random
+import time
+
+# Crea un timer da 5 secondi
 
 def add_message(role, content):
     st.session_state.messages.append({"role": role, "content": content})
-
 
 def ai_resposne(messages, openai_client):
      stream_response = openai_client.chat.completions.create(

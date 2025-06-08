@@ -7,20 +7,21 @@ from openai import OpenAI
 import os
 
 from utils import add_message, ai_resposne, read_random_info, random_GNR
+from pip._vendor.requests import delete
 
 st.set_page_config(page_title="Natalino", layout="wide")
-
 load_dotenv(".env.dev")
+
+print("Nuovo Timer")
+timer = time.time()
 
 def reload_page():
     st.rerun()
-
 def get_base64(bin_file):
     with open(bin_file, 'rb') as f:
         data = f.read()
         print("File read as binary")
     return base64.b64encode(data).decode()
-
 def set_background(png_file):
     bin_str = get_base64(png_file)
     page_bg_img = '''
@@ -65,20 +66,22 @@ def set_chat_input_width(width):
         """,
         unsafe_allow_html=True
     )
+def delete_header():
+    st.markdown("""
+        <style>
+            .reportview-container {
+                margin-top: -2em;
+            }
+            .stAppHeader {display: none;}
+            .stMainBlockContainer{padding-top: 10px;}
+        </style>
+    """, unsafe_allow_html=True)
 
-# Aggiungi il CSS personalizzato
 add_custom_css()
-set_chat_input_width(800)
+set_chat_input_width(900)
 set_background('./static/background.jpg')
-st.markdown("""
-    <style>
-        .reportview-container {
-            margin-top: -2em;
-        }
-        .stAppHeader {display: none;}
-        .stMainBlockContainer{padding-top: 10px;}
-    </style>
-""", unsafe_allow_html=True)
+delete_header()
+
 
 ### Initial setup when loading chat ###
 # Initialize chat history
@@ -92,7 +95,7 @@ if "random_info" not in st.session_state:
     st.session_state.random_info = read_random_info()["list"]
 
 
-c1, c2 = st.columns([1,2])
+c1, c2 = st.columns([1,3])
 
 with c1:
     if st.button("Nuova chat"):
@@ -100,7 +103,7 @@ with c1:
         st.session_state.messages = [{"role": "system", "content": initial_prompt}]
         reload_page()
     st.title("Natalino")
-    st.image("./static/Natalino.png", width=130)
+    #st.image("./static/Natalino.png", width=130)
 
 with c2:
     messages = st.container(border=True, height=600)
