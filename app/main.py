@@ -103,7 +103,7 @@ with c1:
         st.session_state.messages = [{"role": "system", "content": initial_prompt}]
         reload_page()
     st.title("Natalino")
-    #st.image("./static/Natalino.png", width=130)
+    st.image("./static/Natalino.png", width=130)
 
 with c2:
     messages = st.container(border=True, height=600)
