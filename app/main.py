@@ -76,11 +76,55 @@ def delete_header():
             .stMainBlockContainer{padding-top: 10px;}
         </style>
     """, unsafe_allow_html=True)
+def set_chat_input_full_width():
+        st.markdown(
+            """
+            <style>
+            div[data-testid="stChatInput"] {
+                width: 100vw !important;
+                max-width: 100vw !important;
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+            }
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
+
+def set_chat_input_c2_width():
+    st.markdown(
+        """
+        <style>
+        div[data-testid="stChatInput"] {
+            width: 40vw !important;   /* Circa 2/5 della pagina */
+            max-width: 40vw !important;
+            margin-left: auto;
+            margin-right: 0;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+def set_title_yellow():
+    st.markdown(
+        """
+        <style>
+        h1 {
+            color: #FFD600 !important; /* Giallo acceso */
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+
 
 add_custom_css()
-set_chat_input_width(900)
-set_background('./static/background.jpg')
+set_background('./static/Sfondo05.png')
+set_chat_input_c2_width()
 delete_header()
+set_title_yellow()
 
 
 ### Initial setup when loading chat ###
@@ -95,47 +139,37 @@ if "random_info" not in st.session_state:
     st.session_state.random_info = read_random_info()["list"]
 
 
-c1, c2 = st.columns([1,3])
+c1, c2 = st.columns([3,2])
+
+user_input = c2.chat_input(placeholder="Scrivi qui")
+
 
 with c1:
-    if st.button("Nuova chat"):
-        initial_prompt = open("context_information.txt", "r").read()
-        st.session_state.messages = [{"role": "system", "content": initial_prompt}]
-        reload_page()
-    st.title("Natalino")
-    st.image("./static/Natalino.png", width=130)
+    v1, v2 = st.columns([1,2])
 
-with c2:
-    messages = st.container(border=True, height=600)
-    if len(st.session_state.messages) != 1:
-        # Display chat messages from history on app rerun
-        for message in st.session_state.messages:
-            if message["role"] != "system":
-                with messages.chat_message(message["role"]):
-                    st.markdown(message["content"])
+    with v1:
+        st.container(width="stretch", height=100, border=False)
+        st.title("Natalino")
+        st.image("./static/Natalino02.png", width=250)
 
-        if st.session_state.messages[-1]["role"] == "user":
-            with messages.chat_message("assistant"):
+    with v2:
+        st.container(width="stretch", height=100, border=False)
+        if user_input:
+            # Add user message to chat history
+            add_message("user", user_input)
+            # Display assistant response in chat message container
+            with st.chat_message("natalino", avatar="🎅"):
                 stream_response = ai_resposne(st.session_state.messages, st.session_state.openai_client)
                 response = st.write_stream(stream_response)
                 # Add assistant response to chat history
             add_message("assistant", response)
-    else:
-        messages.markdown("<p style='color: #D9D9D9; font-size: 30px;'>Ciao, sono Natalino!</p>", unsafe_allow_html=True)
-        messages.markdown("<p style='color: #D9D9D9; font-size: 30px;'>Chiedimi ciò che vuoi sul Presepio Meccanico!</p>", unsafe_allow_html=True)
+
+with c2:
+    st.title("Ciao sono Natalino!")
+    st.subheader("Sono qui per aiutarti a scoprire tutto su Presepio Meccanico!")
+    st.image("./static/Falegnami03.png", width=500)
 
 
-    if user_input := st.chat_input("Scrivi qui"):
-        # Add user message to chat history
-        add_message("user", user_input)
-        # Display user message in chat message container
-        with messages.chat_message("user"):
-            st.markdown(user_input)
 
-        # Display assistant response in chat message container
-        with messages.chat_message("assistant"):
-            stream_response = ai_resposne(st.session_state.messages, st.session_state.openai_client)
-            response = st.write_stream(stream_response)
-            # Add assistant response to chat history
-        add_message("assistant", response)
-        reload_page()
+    #st.markdown("<p style='color: #D9D9D9; font-size: 30px;'>Ciao, sono Natalino!</p>", unsafe_allow_html=True)
+    #st.markdown("<p style='color: #D9D9D9; font-size: 30px;'>Chiedimi ciò che vuoi sul Presepio Meccanico!</p>", unsafe_allow_html=True)
