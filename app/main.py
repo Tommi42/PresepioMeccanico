@@ -192,7 +192,23 @@ with c1:
 with c2:
     st.title("Ciao sono Natalino!")
     st.subheader("Sono qui per aiutarti a scoprire tutto su Presepio Meccanico!")
-    st.image("./app/static/Falegnami03.png", width=500)
+    st.markdown(
+        """
+            <style>
+            .bottom-img {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                text-align: center;
+            }
+            </style>
+            <div class="bottom-img">
+                <img src='./app/static/Falegnami03.png' width='500'/>
+            </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
     # st.markdown("<p style='color: #D9D9D9; font-size: 30px;'>Ciao, sono Natalino!</p>", unsafe_allow_html=True)
     # st.markdown("<p style='color: #D9D9D9; font-size: 30px;'>Chiedimi ciò che vuoi sul Presepio Meccanico!</p>", unsafe_allow_html=True)
