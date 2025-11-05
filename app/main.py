@@ -10,7 +10,8 @@ from utils import add_message, ai_resposne, read_random_info, random_GNR
 from pip._vendor.requests import delete
 
 st.set_page_config(page_title="Natalino", layout="wide")
-load_dotenv(".env")
+openai_api_key = os.getenv("OPENAI_API_KEY")
+
 
 print("Nuovo Timer")
 timer = time.time()
