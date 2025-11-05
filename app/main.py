@@ -153,7 +153,7 @@ set_title_yellow()
 ### Initial setup when loading chat ###
 # Initialize chat history
 if "messages" not in st.session_state:
-    initial_prompt = open("context_information.txt", "r").read()
+    initial_prompt = open("app/context_information.txt", "r").read()
     st.session_state.messages = [{"role": "system", "content": initial_prompt}]
 if "openai_client" not in st.session_state:
     st.session_state.openai_client = OpenAI()
