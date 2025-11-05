@@ -10,7 +10,7 @@ from utils import add_message, ai_resposne, read_random_info, random_GNR
 from pip._vendor.requests import delete
 
 st.set_page_config(page_title="Natalino", layout="wide")
-load_dotenv(".env.dev")
+load_dotenv(".env")
 
 print("Nuovo Timer")
 timer = time.time()
