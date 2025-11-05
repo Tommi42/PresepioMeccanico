@@ -149,6 +149,24 @@ set_background("./app/static/Sfondo05.png")
 set_chat_input_c2_width()
 delete_header()
 set_title_yellow()
+# Inietta JavaScript
+st.markdown(
+    """
+<script>
+document.addEventListener('click', function(e) {
+  const link = e.target.closest('a');
+  if (link) {
+    const sameOrigin = link.hostname === window.location.hostname;
+    if (!sameOrigin) {
+      e.preventDefault();
+      alert("Navigazione esterna non consentita!");
+    }
+  }
+});
+</script>
+""",
+    unsafe_allow_html=True,
+)
 
 
 ### Initial setup when loading chat ###
