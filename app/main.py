@@ -236,7 +236,6 @@ with c2:
         "<span class='custom-subheader'>Sono qui per aiutarti a scoprire tutto sul Presepio Meccanico!</span>",
         unsafe_allow_html=True,
     )
-    st.subheader("Sono qui per aiutarti a scoprire tutto sul Presepio Meccanico!")
     st.container(width="stretch", height=200, border=False)
     st.image("./app/static/Falegnami03.png", width=500)
 
