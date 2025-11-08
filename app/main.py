@@ -147,9 +147,9 @@ def set_title_yellow():
 st.markdown(
     """
     <style>
-    /* Forza il colore bianco nei messaggi della chat */
     .stChatMessageContent, .stMarkdown, .stMarkdown p, .stMarkdown span {
-        color: #fff !important;
+        font-size: 1.5em !important;  /* Puoi aumentare il valore, ad esempio 2em */
+        color: #fff !important;       /* Se vuoi anche il testo bianco */
     }
     </style>
     """,
@@ -218,7 +218,7 @@ with c1:
 
 with c2:
     st.title("Ciao sono Natalino!")
-    st.subheader("Sono qui per aiutarti a scoprire tutto su Presepio Meccanico!")
+    st.subheader("Sono qui per aiutarti a scoprire tutto sul Presepio Meccanico!")
     st.container(width="stretch", height=200, border=False)
     st.image("./app/static/Falegnami03.png", width=500)
 
