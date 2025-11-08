@@ -236,7 +236,7 @@ with c2:
         "<span class='custom-subheader'>Sono qui per aiutarti a scoprire tutto sul Presepio Meccanico!</span>",
         unsafe_allow_html=True,
     )
-    st.container(width="stretch", height=200, border=False)
+    st.container(width="stretch", height=100, border=False)
     st.image("./app/static/Falegnami03.png", width=500)
 
     # st.markdown("<p style='color: #D9D9D9; font-size: 30px;'>Ciao, sono Natalino!</p>", unsafe_allow_html=True)
