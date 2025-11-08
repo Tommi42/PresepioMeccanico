@@ -181,7 +181,7 @@ st.markdown(
     """
     <style>
     .custom-subheader {
-        color: #FFA500!important;
+        color: #ffa500!important;
         font-size: 2em;
         font-weight: 600;
         display: block;
