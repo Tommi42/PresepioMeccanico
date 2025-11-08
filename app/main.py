@@ -208,7 +208,7 @@ with c1:
             # Add user message to chat history
             add_message("user", user_input)
             # Display assistant response in chat message container
-            with st.chat_message("natalino", avatar=":)"):
+            with st.chat_message("natalino", avatar="🎅"):
                 stream_response = ai_resposne(
                     st.session_state.messages, st.session_state.openai_client
                 )
