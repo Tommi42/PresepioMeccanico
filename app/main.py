@@ -144,6 +144,19 @@ def set_title_yellow():
     )
 
 
+st.markdown(
+    """
+    <style>
+    /* Forza il colore bianco nei messaggi della chat */
+    .stChatMessageContent, .stMarkdown, .stMarkdown p, .stMarkdown span {
+        color: #fff !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+
 add_custom_css()
 set_background("./app/static/Sfondo05.png")
 set_chat_input_c2_width()
