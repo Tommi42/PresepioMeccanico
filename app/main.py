@@ -1,13 +1,13 @@
-import streamlit as st
-from streamlit_lottie import st_lottie
 import base64
+import os
 import time
+
+import streamlit as st
 from dotenv import load_dotenv
 from openai import OpenAI
-import os
-
-from utils import add_message, ai_resposne, read_random_info, random_GNR
 from pip._vendor.requests import delete
+from streamlit_lottie import st_lottie
+from utils import add_message, ai_resposne, random_GNR, read_random_info
 
 st.set_page_config(page_title="Natalino", layout="wide")
 openai_api_key = os.getenv("OPENAI_API_KEY")
@@ -156,11 +156,7 @@ st.markdown(
 document.addEventListener('click', function(e) {
   const link = e.target.closest('a');
   if (link) {
-    const sameOrigin = link.hostname === window.location.hostname;
-    if (!sameOrigin) {
-      e.preventDefault();
       alert("Navigazione esterna non consentita!");
-    }
   }
 });
 </script>
@@ -210,7 +206,7 @@ with c1:
 with c2:
     st.title("Ciao sono Natalino!")
     st.subheader("Sono qui per aiutarti a scoprire tutto su Presepio Meccanico!")
-    st.container(width="stretch", height=150, border=False)
+    st.container(width="stretch", height=200, border=False)
     st.image("./app/static/Falegnami03.png", width=500)
 
     # st.markdown("<p style='color: #D9D9D9; font-size: 30px;'>Ciao, sono Natalino!</p>", unsafe_allow_html=True)
