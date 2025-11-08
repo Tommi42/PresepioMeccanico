@@ -150,8 +150,6 @@ st.markdown(
     .stChatMessageContent, .stMarkdown, .stMarkdown p, .stMarkdown span {
         font-size: 1.5em !important;  /* Puoi aumentare il valore, ad esempio 2em */
         color: #fff !important;       /* Se vuoi anche il testo bianco */
-        border: 2px solid #000 !important;   /* Bordo nero di 2px */
-        border-radius: 12px;                 /* Angoli arrotondati, opzionale */
 
     }
     </style>
