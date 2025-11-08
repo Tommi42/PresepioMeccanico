@@ -156,17 +156,6 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-st.markdown(
-    """
-    <style>
-    h2 {
-        color: #fff !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
-
 
 add_custom_css()
 set_background("./app/static/Sfondo05.png")
