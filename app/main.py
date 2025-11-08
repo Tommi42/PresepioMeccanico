@@ -176,6 +176,16 @@ document.addEventListener('click', function(e) {
 """,
     unsafe_allow_html=True,
 )
+st.markdown(
+    """
+    <style>
+    h2 {
+        color: #fff !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 
 ### Initial setup when loading chat ###
