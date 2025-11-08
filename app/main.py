@@ -176,6 +176,20 @@ document.addEventListener('click', function(e) {
 """,
     unsafe_allow_html=True,
 )
+st.markdown(
+    """
+    <style>
+    .custom-subheader {
+        color: #fff !important;
+        font-size: 2em;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 0.5em;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 
 ### Initial setup when loading chat ###
@@ -218,6 +232,10 @@ with c1:
 
 with c2:
     st.title("Ciao sono Natalino!")
+    st.markdown(
+        "<span class='custom-subheader'>Sono qui per aiutarti a scoprire tutto sul Presepio Meccanico!</span>",
+        unsafe_allow_html=True,
+    )
     st.subheader("Sono qui per aiutarti a scoprire tutto sul Presepio Meccanico!")
     st.container(width="stretch", height=200, border=False)
     st.image("./app/static/Falegnami03.png", width=500)
