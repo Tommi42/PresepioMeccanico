@@ -1,0 +1,6 @@
+{
+  "name": "Natalino - Il Presepio Meccanico",
+  "description": "Schermata interattiva a fumetti in stile legno rétro per dialogare con Natalino nel Presepio Meccanico della SS. Annunziata di Torino.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

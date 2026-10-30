@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+    max-height: 100vh;
+    overflow: hidden;
+  }
+
+  body {
+    font-family: 'Fredoka', 'Outfit', system-ui, sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+    background-color: #26160e;
+    color: #fdf8f0;
+    margin: 0;
+    padding: 0;
+  }
+
+  input, textarea {
+    user-select: text;
+    -webkit-user-select: text;
+  }
+}
+
+.font-cartoon {
+  font-family: 'Fredoka', cursive, system-ui, sans-serif;
+}
+
+.font-vintage {
+  font-family: 'Cinzel', serif;
+}
+
+.font-body {
+  font-family: 'Outfit', system-ui, sans-serif;
+}
+
+/* Custom wooden grain and comic style enhancements */
+.wood-board {
+  background: 
+    linear-gradient(90deg, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.2) 100%),
+    repeating-linear-gradient(0deg, #422515 0px, #371d10 8px, #4a2b19 16px, #361b0d 24px);
+  box-shadow: inset 0 2px 4px rgba(255,255,255,0.1), inset 0 -3px 6px rgba(0,0,0,0.5), 0 8px 24px rgba(0,0,0,0.5);
+}
+
+.wood-panel {
+  background: 
+    linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(0,0,0,0.15) 100%),
+    #4a2a18;
+  border: 3px solid #2e170c;
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.15), 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.comic-shadow {
+  filter: drop-shadow(4px 6px 0px rgba(20, 10, 5, 0.45));
+}
+
+.comic-border {
+  border: 3.5px solid #2b1810;
+}
+
+/* Comic speech tail */
+.bubble-tail-left {
+  position: absolute;
+  bottom: 24px;
+  left: -20px;
+  width: 0;
+  height: 0;
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  border-right: 22px solid #fffdf7;
+}
+
+.bubble-tail-border-left {
+  position: absolute;
+  bottom: 22px;
+  left: -26px;
+  width: 0;
+  height: 0;
+  border-top: 16px solid transparent;
+  border-bottom: 16px solid transparent;
+  border-right: 26px solid #2b1810;
+}
