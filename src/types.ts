@@ -23,3 +23,8 @@ export interface NatalinoState {
   status: 'idle' | 'thinking' | 'talking' | 'error';
   lastAskedAt?: number;
 }
+
+export interface ChatMessage {
+  role: 'user' | 'assistant';
+  content: string;
+}

@@ -1,7 +1,108 @@
-import { AppConfig } from '../types';
+import { AppConfig, ChatMessage } from '../types';
 import { DEFAULT_CONFIG, DEFAULT_QUICK_QUESTIONS, OPENAI_API_KEY, OPENAI_MODEL } from '../data/defaultConfig';
 
 const STORAGE_KEY = 'natalino_presepio_config_v1';
+const CHAT_MEMORY_KEY = 'natalino_chat_memory_v1';
+const MAX_QUESTIONS_MEMORY = 10; // Mantiene un massimo di 10 domande
+const INACTIVITY_TIMEOUT_MS = 5 * 60 * 1000; // 5 minuti di inattività
+
+interface StoredMemory {
+  history: ChatMessage[];
+  lastActivity: number;
+}
+
+function loadMemory(): StoredMemory {
+  try {
+    const raw = sessionStorage.getItem(CHAT_MEMORY_KEY);
+    if (raw) {
+      const data: StoredMemory = JSON.parse(raw);
+      if (Date.now() - data.lastActivity <= INACTIVITY_TIMEOUT_MS) {
+        return data;
+      }
+    }
+  } catch (e) {
+    console.warn('Errore lettura memoria chat:', e);
+  }
+  return { history: [], lastActivity: 0 };
+}
+
+function saveMemory(data: StoredMemory): void {
+  try {
+    sessionStorage.setItem(CHAT_MEMORY_KEY, JSON.stringify(data));
+  } catch (e) {
+    console.warn('Errore salvataggio memoria chat:', e);
+  }
+}
+
+export function clearConversationMemory(): void {
+  try {
+    sessionStorage.removeItem(CHAT_MEMORY_KEY);
+  } catch (e) {
+    console.warn('Errore pulizia memoria chat:', e);
+  }
+}
+
+export function getConversationMemory(): ChatMessage[] {
+  const mem = loadMemory();
+  return mem.history;
+}
+
+export function addConversationTurn(question: string, answer: string): void {
+  const mem = loadMemory();
+  mem.history.push({ role: 'user', content: question });
+  mem.history.push({ role: 'assistant', content: answer });
+
+  // Mantieni al massimo 10 domande (10 user + 10 assistant = 20 messaggi)
+  const maxMessages = MAX_QUESTIONS_MEMORY * 2;
+  if (mem.history.length > maxMessages) {
+    mem.history = mem.history.slice(-maxMessages);
+  }
+
+  mem.lastActivity = Date.now();
+  saveMemory(mem);
+}
+
+export function touchConversationActivity(): void {
+  const mem = loadMemory();
+  if (mem.history.length > 0) {
+    mem.lastActivity = Date.now();
+    saveMemory(mem);
+  }
+}
+
+let cachedRuntimeApiKey = '';
+
+/**
+ * Recupera dinamicamente la chiave OpenAI a runtime (da /api/config o /config.json)
+ * senza bisogno di ricompilare i file statici con npm!
+ */
+export async function fetchRuntimeApiKey(): Promise<string> {
+  if (cachedRuntimeApiKey) return cachedRuntimeApiKey;
+
+  try {
+    const res = await fetch('/api/config?t=' + Date.now(), { cache: 'no-store' });
+    if (res.ok) {
+      const data = await res.json();
+      if (data?.openaiApiKey) {
+        cachedRuntimeApiKey = data.openaiApiKey.trim();
+        return cachedRuntimeApiKey;
+      }
+    }
+  } catch {}
+
+  try {
+    const res = await fetch('/config.json?t=' + Date.now(), { cache: 'no-store' });
+    if (res.ok) {
+      const data = await res.json();
+      if (data?.openaiApiKey) {
+        cachedRuntimeApiKey = data.openaiApiKey.trim();
+        return cachedRuntimeApiKey;
+      }
+    }
+  } catch {}
+
+  return OPENAI_API_KEY || '';
+}
 
 export function getStoredConfig(): AppConfig {
   try {
@@ -11,6 +112,7 @@ export function getStoredConfig(): AppConfig {
       return {
         ...DEFAULT_CONFIG,
         ...parsed,
+        systemPrompt: DEFAULT_CONFIG.systemPrompt,
         openaiApiKey: OPENAI_API_KEY || parsed.openaiApiKey || '',
         selectedModel: OPENAI_MODEL || parsed.selectedModel || 'gpt-4o-mini',
       };
@@ -77,20 +179,28 @@ export async function askNatalino(
   question: string,
   config: AppConfig
 ): Promise<{ text: string; isFromOpenAi: boolean; errorNote?: string }> {
-  // If OpenAI API key is provided, attempt connection
-  const apiKey = (config.openaiApiKey || '').trim();
+  // If OpenAI API key is provided, attempt connection (o recuperala a runtime)
+  let apiKey = (config.openaiApiKey || '').trim();
+  if (!apiKey) {
+    apiKey = await fetchRuntimeApiKey();
+  }
 
   if (!apiKey) {
     // Return friendly local answer immediately
+    const fallbackText = getLocalFallbackAnswer(question);
+    addConversationTurn(question, fallbackText);
     return {
-      text: getLocalFallbackAnswer(question),
+      text: fallbackText,
       isFromOpenAi: false,
     };
   }
 
   try {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 18000);
+    const timeoutId = setTimeout(() => controller.abort(), 35000);
+
+    // Recupera la cronologia attiva (ultime 10 domande max, entro 5 minuti di inattività)
+    const history = getConversationMemory();
 
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
@@ -105,6 +215,10 @@ export async function askNatalino(
             role: 'system',
             content: config.systemPrompt || DEFAULT_CONFIG.systemPrompt,
           },
+          ...history.map((m) => ({
+            role: m.role,
+            content: m.content,
+          })),
           {
             role: 'user',
             content: question,
@@ -123,8 +237,10 @@ export async function askNatalino(
       const errorMsg = errorData?.error?.message || `HTTP error ${response.status}`;
       console.warn('OpenAI error:', errorMsg);
 
+      const fallbackText = getLocalFallbackAnswer(question);
+      addConversationTurn(question, fallbackText);
       return {
-        text: getLocalFallbackAnswer(question),
+        text: fallbackText,
         isFromOpenAi: false,
         errorNote: `OpenAI: ${errorMsg}. Risposta fornita dalla memoria di riserva di Natalino.`,
       };
@@ -134,22 +250,27 @@ export async function askNatalino(
     const reply = data.choices?.[0]?.message?.content?.trim();
 
     if (reply) {
+      addConversationTurn(question, reply);
       return {
         text: reply,
         isFromOpenAi: true,
       };
     }
 
+    const fallbackText = getLocalFallbackAnswer(question);
+    addConversationTurn(question, fallbackText);
     return {
-      text: getLocalFallbackAnswer(question),
+      text: fallbackText,
       isFromOpenAi: false,
       errorNote: 'Risposta vuota da OpenAI, usato fallback locale.',
     };
   } catch (err: unknown) {
     const errMessage = err instanceof Error ? err.message : String(err);
     console.warn('Fetch error:', errMessage);
+    const fallbackText = getLocalFallbackAnswer(question);
+    addConversationTurn(question, fallbackText);
     return {
-      text: getLocalFallbackAnswer(question),
+      text: fallbackText,
       isFromOpenAi: false,
       errorNote: `Connessione non riuscita (${errMessage}). Risposta fornita dalla memoria interna di Natalino.`,
     };

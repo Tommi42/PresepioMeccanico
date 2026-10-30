@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AppConfig, NatalinoState, QuickQuestion } from './types';
-import { getStoredConfig, saveConfig, askNatalino } from './services/aiService';
+import { getStoredConfig, askNatalino, clearConversationMemory, fetchRuntimeApiKey } from './services/aiService';
 import { NatalinoAvatar } from './components/NatalinoAvatar';
 import { ComicSpeechBubble } from './components/ComicSpeechBubble';
 import { QuickQuestionsBar } from './components/QuickQuestionsBar';
@@ -10,7 +10,16 @@ const INITIAL_GREETING =
   'Ciao! Sono Natalino. Chiedimi pure qualsiasi curiosità sul nostro presepio!';
 
 export default function App() {
-  const [config] = useState<AppConfig>(getStoredConfig);
+  const [config, setConfig] = useState<AppConfig>(getStoredConfig);
+
+  // Carica la chiave API dinamica all'avvio (da api_key.txt, config.json o server.py)
+  useEffect(() => {
+    fetchRuntimeApiKey().then((key) => {
+      if (key) {
+        setConfig((prev) => ({ ...prev, openaiApiKey: key }));
+      }
+    });
+  }, []);
 
   const [state, setState] = useState<NatalinoState>({
     currentQuestion: '',
@@ -18,6 +27,24 @@ export default function App() {
     status: 'idle',
     lastAskedAt: undefined,
   });
+
+  // Dopo 5 minuti di inattività, cancella la memoria della conversazione e ripristina il saluto iniziale
+  useEffect(() => {
+    if (!state.lastAskedAt) return;
+
+    const timer = setTimeout(() => {
+      clearConversationMemory();
+      setState((prev) => ({
+        ...prev,
+        currentQuestion: '',
+        response: INITIAL_GREETING,
+        status: 'idle',
+        lastAskedAt: undefined,
+      }));
+    }, 5 * 60 * 1000);
+
+    return () => clearTimeout(timer);
+  }, [state.lastAskedAt]);
 
   const handleAsk = async (questionText: string) => {
     if (!questionText.trim()) return;

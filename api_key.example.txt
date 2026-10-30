@@ -1,0 +1,2 @@
+# Incolla qui la tua chiave OpenAI (es. sk-proj-...) e rinomina questo file in "api_key.txt"
+sk-proj-INSERISCI_QUI_LA_TUA_CHIAVE
