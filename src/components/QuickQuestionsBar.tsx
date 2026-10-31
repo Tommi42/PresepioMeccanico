@@ -19,7 +19,7 @@ export const QuickQuestionsBar: React.FC<QuickQuestionsBarProps> = ({
             key={item.id}
             onClick={() => onSelectQuestion(item)}
             disabled={disabled}
-            className="px-3 py-1.5 rounded-xl bg-[#3f2012]/80 hover:bg-[#572d1a] active:bg-[#2c150b] text-amber-100 hover:text-white border border-amber-700/60 shadow-sm text-xs sm:text-sm font-cartoon font-medium transition-all active:scale-95 disabled:opacity-40 disabled:pointer-events-none cursor-pointer whitespace-nowrap"
+            className="px-3 py-1.5 rounded-xl bg-[#4d1917]/80 hover:bg-[#64211e] active:bg-[#381110] text-amber-100 hover:text-white border border-amber-400/30 shadow-sm text-xs sm:text-sm font-cartoon font-medium transition-all active:scale-95 disabled:opacity-40 disabled:pointer-events-none cursor-pointer whitespace-nowrap"
           >
             {item.label}
           </button>

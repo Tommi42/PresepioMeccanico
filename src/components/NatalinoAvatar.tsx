@@ -49,7 +49,7 @@ export const NatalinoAvatar: React.FC<NatalinoAvatarProps> = ({
       <div className="relative w-32 sm:w-36 md:w-40 lg:w-44 h-auto">
         <svg
           viewBox="0 0 200 480"
-          className="w-full h-auto drop-shadow-[0_16px_28px_rgba(0,0,0,0.6)] overflow-visible"
+          className="w-full h-auto overflow-visible relative z-10 transition-transform duration-300"
           xmlns="http://www.w3.org/2000/svg"
         >
           {/* WHOLE BODY (Head, Torso, Arms, Legs, Feet) */}
@@ -149,9 +149,6 @@ export const NatalinoAvatar: React.FC<NatalinoAvatarProps> = ({
             />
           </g>
         </svg>
-
-        {/* Soft shadow at the bottom */}
-        <div className="w-24 sm:w-28 h-3.5 bg-black/45 rounded-full blur-[3px] mx-auto -mt-1.5" />
       </div>
     </div>
   );

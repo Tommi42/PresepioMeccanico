@@ -84,13 +84,22 @@ export default function App() {
   };
 
   return (
-    <div className="h-screen w-screen max-h-screen overflow-hidden flex flex-col justify-between bg-[#26150b] text-amber-50 select-none relative p-3 sm:p-5">
-      {/* Warm rustic wood backdrop */}
+    <div
+      className="h-screen w-screen max-h-screen overflow-hidden flex flex-col justify-between text-amber-50 select-none relative p-3 sm:p-5"
+      style={{
+        backgroundColor: '#9e3b37',
+        backgroundImage: `
+          radial-gradient(ellipse 95% 82% at 50% 25%, #be554f 0%, #a23f3b 46%, #7d2927 82%, #631f1d 100%)
+        `,
+      }}
+    >
+      {/* Soft warm nuances and ambient shading */}
       <div
-        className="fixed inset-0 pointer-events-none opacity-45 mix-blend-overlay"
+        className="fixed inset-0 pointer-events-none"
         style={{
-          backgroundImage: `
-            repeating-linear-gradient(0deg, #3d2113 0px, #2b160b 80px, #3d2113 160px)
+          background: `
+            radial-gradient(circle at 50% 20%, rgba(255, 220, 205, 0.16) 0%, transparent 62%),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, transparent 45%, rgba(30, 8, 8, 0.2) 100%)
           `,
         }}
       />

@@ -25,7 +25,7 @@ export const QuestionInputBar: React.FC<QuestionInputBarProps> = ({
     <div className="w-full space-y-2">
       {/* Pinned Current Question (Kept at bottom as requested, clean and minimal) */}
       {currentQuestion && (
-        <div className="px-4 py-2 rounded-xl bg-[#2e170c]/80 border border-amber-700/50 text-center animate-fade-in">
+        <div className="px-4 py-2 rounded-xl bg-[#4a1715]/80 border border-amber-400/30 text-center animate-fade-in">
           <p className="text-xs text-amber-300 font-cartoon font-medium uppercase tracking-wider mb-0.5">
             Domanda:
           </p>

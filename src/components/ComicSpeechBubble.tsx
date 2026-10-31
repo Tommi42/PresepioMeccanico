@@ -14,7 +14,7 @@ export const ComicSpeechBubble: React.FC<ComicSpeechBubbleProps> = ({
   return (
     <div className="relative w-full max-w-xl lg:max-w-2xl select-none">
       {/* Comic Speech Bubble Box */}
-      <div className="relative bg-[#fffef9] text-[#2b1810] rounded-[28px] p-6 sm:p-8 md:p-9 border-[3.5px] border-[#26150b] shadow-[0_14px_30px_rgba(0,0,0,0.45)]">
+      <div className="relative bg-[#fffef9] text-[#2b1810] rounded-[28px] p-6 sm:p-8 md:p-9 border-[3.5px] border-[#2b1614] shadow-[0_12px_28px_rgba(40,10,10,0.28)]">
         
         {/* Seamless Comic Tail pointing to Natalino's head (higher up, at top: 38px) */}
         {/* Desktop / Landscape left-pointing tail */}
@@ -25,7 +25,7 @@ export const ComicSpeechBubble: React.FC<ComicSpeechBubbleProps> = ({
             style={{
               borderTop: '15px solid transparent',
               borderBottom: '15px solid transparent',
-              borderRight: '23px solid #26150b',
+              borderRight: '23px solid #2b1614',
             }}
           />
           {/* Inner cream fill triangle seamlessly connecting to bubble interior */}
@@ -46,7 +46,7 @@ export const ComicSpeechBubble: React.FC<ComicSpeechBubbleProps> = ({
             style={{
               borderLeft: '15px solid transparent',
               borderRight: '15px solid transparent',
-              borderTop: '21px solid #26150b',
+              borderTop: '21px solid #2b1614',
             }}
           />
           <div
