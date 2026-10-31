@@ -46,7 +46,7 @@ export const NatalinoAvatar: React.FC<NatalinoAvatarProps> = ({
       className="relative flex flex-col items-center justify-end select-none shrink-0 cursor-pointer group"
     >
       {/* SVG Stylized Natalino matching the user's cartoon asset with smooth Hat & Bow animation */}
-      <div className="relative w-32 sm:w-36 md:w-40 lg:w-44 h-auto">
+      <div className="relative w-28 sm:w-32 md:w-36 lg:w-36 h-auto">
         <svg
           viewBox="0 0 200 480"
           className="w-full h-auto overflow-visible relative z-10 transition-transform duration-300"

@@ -1,0 +1,2242 @@
+var e=Object.create,t=Object.defineProperty,n=Object.getOwnPropertyDescriptor,r=Object.getOwnPropertyNames,i=Object.getPrototypeOf,a=Object.prototype.hasOwnProperty,o=(e,t)=>()=>(t||(e((t={exports:{}}).exports,t,t.exports),e=null),t.exports),s=(e,i,o,s)=>{if(i&&typeof i==`object`||typeof i==`function`)for(var c=r(i),l=0,u=c.length,d;l<u;l++)d=c[l],!a.call(e,d)&&d!==o&&t(e,d,{get:(e=>i[e]).bind(null,d),enumerable:!(s=n(i,d))||s.enumerable});return e},c=(n,r,o)=>(o=n==null?{}:e(i(n)),s(r||!n||!n.__esModule||!a.call(n,`default`)?t(o,`default`,{value:n,enumerable:!0}):o,n));(function(){let e=document.createElement(`link`).relList;if(e&&e.supports&&e.supports(`modulepreload`))return;for(let e of document.querySelectorAll(`link[rel="modulepreload"]`))n(e);new MutationObserver(e=>{for(let t of e)if(t.type===`childList`)for(let e of t.addedNodes)e.tagName===`LINK`&&e.rel===`modulepreload`&&n(e)}).observe(document,{childList:!0,subtree:!0});function t(e){let t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),t.credentials=e.crossOrigin===`use-credentials`?`include`:e.crossOrigin===`anonymous`?`omit`:`same-origin`,t}function n(e){if(e.ep)return;e.ep=!0;let n=t(e);fetch(e.href,n)}})();var l=o((e=>{function t(e,t){var n=e.length;e.push(t);a:for(;0<n;){var r=n-1>>>1,a=e[r];if(0<i(a,t))e[r]=t,e[n]=a,n=r;else break a}}function n(e){return e.length===0?null:e[0]}function r(e){if(e.length===0)return null;var t=e[0],n=e.pop();if(n!==t){e[0]=n;a:for(var r=0,a=e.length,o=a>>>1;r<o;){var s=2*(r+1)-1,c=e[s],l=s+1,u=e[l];if(0>i(c,n))l<a&&0>i(u,c)?(e[r]=u,e[l]=n,r=l):(e[r]=c,e[s]=n,r=s);else if(l<a&&0>i(u,n))e[r]=u,e[l]=n,r=l;else break a}}return t}function i(e,t){var n=e.sortIndex-t.sortIndex;return n===0?e.id-t.id:n}if(e.unstable_now=void 0,typeof performance==`object`&&typeof performance.now==`function`){var a=performance;e.unstable_now=function(){return a.now()}}else{var o=Date,s=o.now();e.unstable_now=function(){return o.now()-s}}var c=[],l=[],u=1,d=null,f=3,p=!1,m=!1,h=!1,g=!1,_=typeof setTimeout==`function`?setTimeout:null,v=typeof clearTimeout==`function`?clearTimeout:null,y=typeof setImmediate<`u`?setImmediate:null;function b(e){for(var i=n(l);i!==null;){if(i.callback===null)r(l);else if(i.startTime<=e)r(l),i.sortIndex=i.expirationTime,t(c,i);else break;i=n(l)}}function ee(e){if(h=!1,b(e),!m){if(n(c)!==null)m=!0,te||(te=!0,ae());else{var t=n(l);t!==null&&ce(ee,t.startTime-e)}}}var te=!1,ne=-1,re=5,x=-1;function ie(){return g?!0:!(e.unstable_now()-x<re)}function S(){if(g=!1,te){var t=e.unstable_now();x=t;var i=!0;try{a:{m=!1,h&&(h=!1,v(ne),ne=-1),p=!0;var a=f;try{b:{for(b(t),d=n(c);d!==null&&!(d.expirationTime>t&&ie());){var o=d.callback;if(typeof o==`function`){d.callback=null,f=d.priorityLevel;var s=o(d.expirationTime<=t);if(t=e.unstable_now(),typeof s==`function`){d.callback=s,b(t),i=!0;break b}d===n(c)&&r(c),b(t)}else r(c);d=n(c)}if(d!==null)i=!0;else{var u=n(l);u!==null&&ce(ee,u.startTime-t),i=!1}}break a}finally{d=null,f=a,p=!1}i=void 0}}finally{i?ae():te=!1}}}var ae;if(typeof y==`function`)ae=function(){y(S)};else if(typeof MessageChannel<`u`){var oe=new MessageChannel,se=oe.port2;oe.port1.onmessage=S,ae=function(){se.postMessage(null)}}else ae=function(){_(S,0)};function ce(t,n){ne=_(function(){t(e.unstable_now())},n)}e.unstable_IdlePriority=5,e.unstable_ImmediatePriority=1,e.unstable_LowPriority=4,e.unstable_NormalPriority=3,e.unstable_Profiling=null,e.unstable_UserBlockingPriority=2,e.unstable_cancelCallback=function(e){e.callback=null},e.unstable_forceFrameRate=function(e){0>e||125<e?console.error(`forceFrameRate takes a positive int between 0 and 125, forcing frame rates higher than 125 fps is not supported`):re=0<e?Math.floor(1e3/e):5},e.unstable_getCurrentPriorityLevel=function(){return f},e.unstable_next=function(e){switch(f){case 1:case 2:case 3:var t=3;break;default:t=f}var n=f;f=t;try{return e()}finally{f=n}},e.unstable_requestPaint=function(){g=!0},e.unstable_runWithPriority=function(e,t){switch(e){case 1:case 2:case 3:case 4:case 5:break;default:e=3}var n=f;f=e;try{return t()}finally{f=n}},e.unstable_scheduleCallback=function(r,i,a){var o=e.unstable_now();switch(typeof a==`object`&&a?(a=a.delay,a=typeof a==`number`&&0<a?o+a:o):a=o,r){case 1:var s=-1;break;case 2:s=250;break;case 5:s=1073741823;break;case 4:s=1e4;break;default:s=5e3}return s=a+s,r={id:u++,callback:i,priorityLevel:r,startTime:a,expirationTime:s,sortIndex:-1},a>o?(r.sortIndex=a,t(l,r),n(c)===null&&r===n(l)&&(h?(v(ne),ne=-1):h=!0,ce(ee,a-o))):(r.sortIndex=s,t(c,r),m||p||(m=!0,te||(te=!0,ae()))),r},e.unstable_shouldYield=ie,e.unstable_wrapCallback=function(e){var t=f;return function(){var n=f;f=t;try{return e.apply(this,arguments)}finally{f=n}}}})),u=o(((e,t)=>{t.exports=l()})),d=o((e=>{var t=Symbol.for(`react.transitional.element`),n=Symbol.for(`react.portal`),r=Symbol.for(`react.fragment`),i=Symbol.for(`react.strict_mode`),a=Symbol.for(`react.profiler`),o=Symbol.for(`react.consumer`),s=Symbol.for(`react.context`),c=Symbol.for(`react.forward_ref`),l=Symbol.for(`react.suspense`),u=Symbol.for(`react.memo`),d=Symbol.for(`react.lazy`),f=Symbol.for(`react.activity`),p=Symbol.for(`react.view_transition`),m=Symbol.iterator;function h(e){return typeof e!=`object`||!e?null:(e=m&&e[m]||e[`@@iterator`],typeof e==`function`?e:null)}var g={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}},_=Object.assign,v={};function y(e,t,n){this.props=e,this.context=t,this.refs=v,this.updater=n||g}y.prototype.isReactComponent={},y.prototype.setState=function(e,t){if(typeof e!=`object`&&typeof e!=`function`&&e!=null)throw Error(`takes an object of state variables to update or a function which returns an object of state variables.`);this.updater.enqueueSetState(this,e,t,`setState`)},y.prototype.forceUpdate=function(e){this.updater.enqueueForceUpdate(this,e,`forceUpdate`)};function b(){}b.prototype=y.prototype;function ee(e,t,n){this.props=e,this.context=t,this.refs=v,this.updater=n||g}var te=ee.prototype=new b;te.constructor=ee,_(te,y.prototype),te.isPureReactComponent=!0;var ne=Array.isArray;function re(){}var x={H:null,A:null,T:null,S:null},ie=Object.prototype.hasOwnProperty;function S(e,n,r){var i=r.ref;return{$$typeof:t,type:e,key:n,ref:i===void 0?null:i,props:r}}function ae(e,t){return S(e.type,t,e.props)}function oe(e){return typeof e==`object`&&!!e&&e.$$typeof===t}function se(e){var t={"=":`=0`,":":`=2`};return`$`+e.replace(/[=:]/g,function(e){return t[e]})}var ce=/\/+/g;function le(e,t){return typeof e==`object`&&e&&e.key!=null?se(``+e.key):t.toString(36)}function ue(e){switch(e.status){case`fulfilled`:return e.value;case`rejected`:throw e.reason;default:switch(typeof e.status==`string`?e.then(re,re):(e.status=`pending`,e.then(function(t){e.status===`pending`&&(e.status=`fulfilled`,e.value=t)},function(t){e.status===`pending`&&(e.status=`rejected`,e.reason=t)})),e.status){case`fulfilled`:return e.value;case`rejected`:throw e.reason}}throw e}function de(e,r,i,a,o){var s=typeof e;(s===`undefined`||s===`boolean`)&&(e=null);var c=!1;if(e===null)c=!0;else switch(s){case`bigint`:case`string`:case`number`:c=!0;break;case`object`:switch(e.$$typeof){case t:case n:c=!0;break;case d:return c=e._init,de(c(e._payload),r,i,a,o)}}if(c)return o=o(e),c=a===``?`.`+le(e,0):a,ne(o)?(i=``,c!=null&&(i=c.replace(ce,`$&/`)+`/`),de(o,r,i,``,function(e){return e})):o!=null&&(oe(o)&&(o=ae(o,i+(o.key==null||e&&e.key===o.key?``:(``+o.key).replace(ce,`$&/`)+`/`)+c)),r.push(o)),1;c=0;var l=a===``?`.`:a+`:`;if(ne(e))for(var u=0;u<e.length;u++)a=e[u],s=l+le(a,u),c+=de(a,r,i,s,o);else if(u=h(e),typeof u==`function`)for(e=u.call(e),u=0;!(a=e.next()).done;)a=a.value,s=l+le(a,u++),c+=de(a,r,i,s,o);else if(s===`object`){if(typeof e.then==`function`)return de(ue(e),r,i,a,o);throw r=String(e),Error(`Objects are not valid as a React child (found: `+(r===`[object Object]`?`object with keys {`+Object.keys(e).join(`, `)+`}`:r)+`). If you meant to render a collection of children, use an array instead.`)}return c}function C(e,t,n){if(e==null)return e;var r=[],i=0;return de(e,r,``,``,function(e){return t.call(n,e,i++)}),r}function fe(e){if(e._status===-1){var t=e._result,n=t();n.then(function(t){(e._status===0||e._status===-1)&&(e._status=1,e._result=t,n.status===void 0&&(n.status=`fulfilled`,n.value=t))},function(t){(e._status===0||e._status===-1)&&(e._status=2,e._result=t,n.status===void 0&&(n.status=`rejected`,n.reason=t))}),e._status===-1&&(e._status=0,e._result=n)}if(e._status===1)return e._result.default;throw e._result}var pe=typeof reportError==`function`?reportError:function(e){if(typeof window==`object`&&typeof window.ErrorEvent==`function`){var t=new window.ErrorEvent(`error`,{bubbles:!0,cancelable:!0,message:typeof e==`object`&&e&&typeof e.message==`string`?String(e.message):String(e),error:e});if(!window.dispatchEvent(t))return}else if(typeof process==`object`&&typeof process.emit==`function`){process.emit(`uncaughtException`,e);return}console.error(e)};function me(e){var t=x.T,n={};n.types=t===null?null:t.types,x.T=n;try{var r=e(),i=x.S;i!==null&&i(n,r),typeof r==`object`&&r&&typeof r.then==`function`&&r.then(re,pe)}catch(e){pe(e)}finally{t!==null&&n.types!==null&&(t.types=n.types),x.T=t}}function he(e){var t=x.T;if(t!==null){var n=t.types;n===null?t.types=[e]:n.indexOf(e)===-1&&n.push(e)}else me(he.bind(null,e))}var ge={map:C,forEach:function(e,t,n){C(e,function(){t.apply(this,arguments)},n)},count:function(e){var t=0;return C(e,function(){t++}),t},toArray:function(e){return C(e,function(e){return e})||[]},only:function(e){if(!oe(e))throw Error(`React.Children.only expected to receive a single React element child.`);return e}};e.Activity=f,e.Children=ge,e.Component=y,e.Fragment=r,e.Profiler=a,e.PureComponent=ee,e.StrictMode=i,e.Suspense=l,e.ViewTransition=p,e.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE=x,e.__COMPILER_RUNTIME={__proto__:null,c:function(e){return x.H.useMemoCache(e)}},e.addTransitionType=he,e.cache=function(e){return function(){return e.apply(null,arguments)}},e.cacheSignal=function(){return null},e.cloneElement=function(e,t,n){if(e==null)throw Error(`The argument must be a React element, but you passed `+e+`.`);var r=_({},e.props),i=e.key;if(t!=null)for(a in t.key!==void 0&&(i=``+t.key),t)!ie.call(t,a)||a===`key`||a===`__self`||a===`__source`||a===`ref`&&t.ref===void 0||(r[a]=t[a]);var a=arguments.length-2;if(a===1)r.children=n;else if(1<a){for(var o=Array(a),s=0;s<a;s++)o[s]=arguments[s+2];r.children=o}return S(e.type,i,r)},e.createContext=function(e){return e={$$typeof:s,_currentValue:e,_currentValue2:e,_threadCount:0,Provider:null,Consumer:null},e.Provider=e,e.Consumer={$$typeof:o,_context:e},e},e.createElement=function(e,t,n){var r,i={},a=null;if(t!=null)for(r in t.key!==void 0&&(a=``+t.key),t)ie.call(t,r)&&r!==`key`&&r!==`__self`&&r!==`__source`&&(i[r]=t[r]);var o=arguments.length-2;if(o===1)i.children=n;else if(1<o){for(var s=Array(o),c=0;c<o;c++)s[c]=arguments[c+2];i.children=s}if(e&&e.defaultProps)for(r in o=e.defaultProps,o)i[r]===void 0&&(i[r]=o[r]);return S(e,a,i)},e.createRef=function(){return{current:null}},e.forwardRef=function(e){return{$$typeof:c,render:e}},e.isValidElement=oe,e.lazy=function(e){return{$$typeof:d,_payload:{_status:-1,_result:e},_init:fe}},e.memo=function(e,t){return{$$typeof:u,type:e,compare:t===void 0?null:t}},e.startTransition=me,e.unstable_useCacheRefresh=function(){return x.H.useCacheRefresh()},e.use=function(e){return x.H.use(e)},e.useActionState=function(e,t,n){return x.H.useActionState(e,t,n)},e.useCallback=function(e,t){return x.H.useCallback(e,t)},e.useContext=function(e){return x.H.useContext(e)},e.useDebugValue=function(){},e.useDeferredValue=function(e,t){return x.H.useDeferredValue(e,t)},e.useEffect=function(e,t){return x.H.useEffect(e,t)},e.useEffectEvent=function(e){return x.H.useEffectEvent(e)},e.useId=function(){return x.H.useId()},e.useImperativeHandle=function(e,t,n){return x.H.useImperativeHandle(e,t,n)},e.useInsertionEffect=function(e,t){return x.H.useInsertionEffect(e,t)},e.useLayoutEffect=function(e,t){return x.H.useLayoutEffect(e,t)},e.useMemo=function(e,t){return x.H.useMemo(e,t)},e.useOptimistic=function(e,t){return x.H.useOptimistic(e,t)},e.useReducer=function(e,t,n){return x.H.useReducer(e,t,n)},e.useRef=function(e){return x.H.useRef(e)},e.useState=function(e){return x.H.useState(e)},e.useSyncExternalStore=function(e,t,n){return x.H.useSyncExternalStore(e,t,n)},e.useTransition=function(){return x.H.useTransition()},e.version=`19.3.1`})),f=o(((e,t)=>{t.exports=d()})),p=o((e=>{var t=f();function n(e){var t=`https://react.dev/errors/`+e;if(1<arguments.length){t+=`?args[]=`+encodeURIComponent(arguments[1]);for(var n=2;n<arguments.length;n++)t+=`&args[]=`+encodeURIComponent(arguments[n])}return`Minified React error #`+e+`; visit `+t+` for the full message or use the non-minified dev environment for full errors and additional helpful warnings.`}function r(){}var i={d:{f:r,r:function(){throw Error(n(522))},D:r,C:r,L:r,m:r,X:r,S:r,M:r},p:0,findDOMNode:null},a=Symbol.for(`react.portal`),o=Symbol.for(`react.recoverable`),s=Symbol.for(`react.optimistic_key`);function c(e,t,n){var r=3<arguments.length&&arguments[3]!==void 0?arguments[3]:null;return{$$typeof:a,key:r==null?null:r===s?s:``+r,children:e,containerInfo:t,implementation:n}}var l=t.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;function u(e,t){if(e===`font`)return``;if(typeof t==`string`)return t===`use-credentials`?t:``}e.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE=i,e.browser=function(e){return{$$typeof:o,_reason:e}},e.createPortal=function(e,t){var r=2<arguments.length&&arguments[2]!==void 0?arguments[2]:null;if(!t||t.nodeType!==1&&t.nodeType!==9&&t.nodeType!==11)throw Error(n(299));return c(e,t,null,r)},e.flushSync=function(e){var t=l.T,n=i.p;try{if(l.T=null,i.p=2,e)return e()}finally{l.T=t,i.p=n,i.d.f()}},e.preconnect=function(e,t){typeof e==`string`&&(t?(t=t.crossOrigin,t=typeof t==`string`?t===`use-credentials`?t:``:void 0):t=null,i.d.C(e,t))},e.prefetchDNS=function(e){typeof e==`string`&&i.d.D(e)},e.preinit=function(e,t){if(typeof e==`string`&&t&&typeof t.as==`string`){var n=t.as,r=u(n,t.crossOrigin),a=typeof t.integrity==`string`?t.integrity:void 0,o=typeof t.fetchPriority==`string`?t.fetchPriority:void 0;n===`style`?i.d.S(e,typeof t.precedence==`string`?t.precedence:void 0,{crossOrigin:r,integrity:a,fetchPriority:o}):n===`script`&&i.d.X(e,{crossOrigin:r,integrity:a,fetchPriority:o,nonce:typeof t.nonce==`string`?t.nonce:void 0})}},e.preinitModule=function(e,t){if(typeof e==`string`){if(typeof t==`object`&&t){if(t.as==null||t.as===`script`){var n=u(t.as,t.crossOrigin);i.d.M(e,{crossOrigin:n,integrity:typeof t.integrity==`string`?t.integrity:void 0,nonce:typeof t.nonce==`string`?t.nonce:void 0,fetchPriority:typeof t.fetchPriority==`string`?t.fetchPriority:void 0})}}else t??i.d.M(e)}},e.preload=function(e,t){if(typeof e==`string`&&typeof t==`object`&&t&&typeof t.as==`string`){var n=t.as,r=u(n,t.crossOrigin);i.d.L(e,n,{crossOrigin:r,integrity:typeof t.integrity==`string`?t.integrity:void 0,nonce:typeof t.nonce==`string`?t.nonce:void 0,type:typeof t.type==`string`?t.type:void 0,fetchPriority:typeof t.fetchPriority==`string`?t.fetchPriority:void 0,referrerPolicy:typeof t.referrerPolicy==`string`?t.referrerPolicy:void 0,imageSrcSet:typeof t.imageSrcSet==`string`?t.imageSrcSet:void 0,imageSizes:typeof t.imageSizes==`string`?t.imageSizes:void 0,media:typeof t.media==`string`?t.media:void 0})}},e.preloadModule=function(e,t){if(typeof e==`string`){if(t){var n=u(t.as,t.crossOrigin);i.d.m(e,{as:typeof t.as==`string`&&t.as!==`script`?t.as:void 0,crossOrigin:n,integrity:typeof t.integrity==`string`?t.integrity:void 0,nonce:typeof t.nonce==`string`?t.nonce:void 0,fetchPriority:typeof t.fetchPriority==`string`?t.fetchPriority:void 0})}else i.d.m(e)}},e.requestFormReset=function(e){i.d.r(e)},e.unstable_batchedUpdates=function(e,t){return e(t)},e.useFormState=function(e,t,n){return l.H.useFormState(e,t,n)},e.useFormStatus=function(){return l.H.useHostTransitionStatus()},e.version=`19.3.1`})),m=o(((e,t)=>{function n(){if(typeof __REACT_DEVTOOLS_GLOBAL_HOOK__<`u`&&typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE==`function`)try{__REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(n)}catch(e){console.error(e)}}n(),t.exports=p()})),h=o((e=>{var t=u(),n=f(),r=m();function i(e){var t=`https://react.dev/errors/`+e;if(1<arguments.length){t+=`?args[]=`+encodeURIComponent(arguments[1]);for(var n=2;n<arguments.length;n++)t+=`&args[]=`+encodeURIComponent(arguments[n])}return`Minified React error #`+e+`; visit `+t+` for the full message or use the non-minified dev environment for full errors and additional helpful warnings.`}function a(e){return!(!e||e.nodeType!==1&&e.nodeType!==9&&e.nodeType!==11)}function o(e){for(var t=e,n=t;n&&!n.alternate;)t=n,t.flags&4098&&(e=t.return),n=t.return;for(;t.return;)t=t.return;return t.tag===3?e:null}function s(e){if(e.tag===13){var t=e.memoizedState;if(t===null&&(e=e.alternate,e!==null&&(t=e.memoizedState)),t!==null)return t.dehydrated}return null}function c(e){if(e.tag===31){var t=e.memoizedState;if(t===null&&(e=e.alternate,e!==null&&(t=e.memoizedState)),t!==null)return t.dehydrated}return null}function l(e){if(o(e)!==e)throw Error(i(188))}function d(e){var t=e.alternate;if(!t){if(t=o(e),t===null)throw Error(i(188));return t===e?e:null}for(var n=e,r=t;;){var a=n.return;if(a===null)break;var s=a.alternate;if(s===null){if(r=a.return,r!==null){n=r;continue}break}if(a.child===s.child){for(s=a.child;s;){if(s===n)return l(a),e;if(s===r)return l(a),t;s=s.sibling}throw Error(i(188))}if(n.return!==r.return)n=a,r=s;else{for(var c=!1,u=a.child;u;){if(u===n){c=!0,n=a,r=s;break}if(u===r){c=!0,r=a,n=s;break}u=u.sibling}if(!c){for(u=s.child;u;){if(u===n){c=!0,n=s,r=a;break}if(u===r){c=!0,r=s,n=a;break}u=u.sibling}if(!c)throw Error(i(189))}}if(n.alternate!==r)throw Error(i(190))}if(n.tag!==3)throw Error(i(188));return n.stateNode.current===n?e:t}function p(e){var t=e.tag;if(t===5||t===26||t===27||t===6)return e;for(e=e.child;e!==null;){if(t=p(e),t!==null)return t;e=e.sibling}return null}function h(e,t,n,r,i,a){for(;e!==null;){if((e.tag===5||e.tag===27||e.tag===6)&&n(e,r,i,a)||(e.tag!==22||e.memoizedState===null)&&(t||e.tag!==5&&e.tag!==27)&&h(e.child,t,n,r,i,a))return!0;e=e.sibling}return!1}function g(e){for(e=e.return;e!==null;){if(e.tag===3||e.tag===5||e.tag===27)return e;e=e.return}return null}function _(e){var t=!1;for(e=e.return;e!==null&&(e.tag===4&&(t=!0),e.tag!==3&&e.tag!==5&&e.tag!==27);)e=e.return;return t}function v(e){var t=[null,null],n=g(e);return n===null||y(t,e,n.child,{foundSelf:!1}),t}function y(e,t,n,r){for(;n!==null;){if(n===t)r.foundSelf=!0;else if(n.tag===5||n.tag===27||n.tag===6){if(r.foundSelf)return e[1]=n,!0;e[0]=n}else if((n.tag!==22||n.memoizedState===null)&&y(e,t,n.child,r))return!0;n=n.sibling}return!1}function b(e){switch(e.tag){case 5:case 27:case 6:return e.stateNode;case 3:return e.stateNode.containerInfo;default:throw Error(i(559))}}var ee=null,te=null;function ne(e,t,n){return e===n||e===t&&(ee=e,!0)}function re(e,t,n){return e===n?(te=e,!1):e===t&&(te!==null&&(ee=e),!0)}function x(e){if(e===null)return null;do e=e===null?null:e.return;while(e&&e.tag!==5&&e.tag!==27&&e.tag!==3);return e||null}function ie(e,t,n){for(var r=0,i=e;i;i=n(i))r++;i=0;for(var a=t;a;a=n(a))i++;for(;0<r-i;)e=n(e),r--;for(;0<i-r;)t=n(t),i--;for(;r--;){if(e===t||t!==null&&e===t.alternate)return e;e=n(e),t=n(t)}return null}var S=Object.assign,ae=Symbol.for(`react.element`),oe=Symbol.for(`react.transitional.element`),se=Symbol.for(`react.portal`),ce=Symbol.for(`react.fragment`),le=Symbol.for(`react.strict_mode`),ue=Symbol.for(`react.profiler`),de=Symbol.for(`react.consumer`),C=Symbol.for(`react.context`),fe=Symbol.for(`react.forward_ref`),pe=Symbol.for(`react.suspense`),me=Symbol.for(`react.suspense_list`),he=Symbol.for(`react.memo`),ge=Symbol.for(`react.lazy`),_e=Symbol.for(`react.activity`),ve=Symbol.for(`react.legacy_hidden`),ye=Symbol.for(`react.memo_cache_sentinel`),be=Symbol.for(`react.view_transition`),xe=Symbol.for(`react.recoverable`),Se=Symbol.iterator;function Ce(e){return typeof e!=`object`||!e?null:(e=Se&&e[Se]||e[`@@iterator`],typeof e==`function`?e:null)}var we=Symbol.for(`react.client.reference`);function Te(e){if(e==null)return null;if(typeof e==`function`)return e.$$typeof===we?null:e.displayName||e.name||null;if(typeof e==`string`)return e;switch(e){case ce:return`Fragment`;case ue:return`Profiler`;case le:return`StrictMode`;case pe:return`Suspense`;case me:return`SuspenseList`;case _e:return`Activity`;case be:return`ViewTransition`}if(typeof e==`object`)switch(e.$$typeof){case se:return`Portal`;case C:return e.displayName||`Context`;case de:return(e._context.displayName||`Context`)+`.Consumer`;case fe:var t=e.render;return e=e.displayName,e||=(e=t.displayName||t.name||``,e===``?`ForwardRef`:`ForwardRef(`+e+`)`),e;case he:return t=e.displayName||null,t===null?Te(e.type)||`Memo`:t;case ge:t=e._payload,e=e._init;try{return Te(e(t))}catch{}}return null}var Ee=Array.isArray,w=n.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE,T=r.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE,De={pending:!1,data:null,method:null,action:null},Oe=[],ke=-1;function Ae(e){return{current:e}}function je(e){0>ke||(e.current=Oe[ke],Oe[ke]=null,ke--)}function E(e,t){ke++,Oe[ke]=e.current,e.current=t}var Me=Ae(null),Ne=Ae(null),Pe=Ae(null),Fe=Ae(null);function Ie(e,t){switch(E(Pe,t),E(Ne,e),E(Me,null),t.nodeType){case 9:case 11:e=(e=t.documentElement)&&(e=e.namespaceURI)?up(e):0;break;default:if(e=t.tagName,t=t.namespaceURI)t=up(t),e=dp(t,e);else switch(e){case`svg`:e=1;break;case`math`:e=2;break;default:e=0}}je(Me),E(Me,e)}function Le(){je(Me),je(Ne),je(Pe)}function Re(e){var t=e.memoizedState;t!==null&&(sh._currentValue=t.memoizedState,E(Fe,e)),t=Me.current;var n=dp(t,e.type);t!==n&&(E(Ne,e),E(Me,n))}function ze(e){Ne.current===e&&(je(Me),je(Ne)),Fe.current===e&&(je(Fe),sh._currentValue=De)}var Be,Ve;function He(e){if(Be===void 0)try{throw Error()}catch(e){var t=e.stack.trim().match(/\n( *(at )?)/);Be=t&&t[1]||``,Ve=-1<e.stack.indexOf(`
+    at`)?` (<anonymous>)`:-1<e.stack.indexOf(`@`)?`@unknown:0:0`:``}return`
+`+Be+e+Ve}var Ue=!1;function We(e,t){if(!e||Ue)return``;Ue=!0;var n=Error.prepareStackTrace;Error.prepareStackTrace=void 0;try{var r={DetermineComponentFrameRoot:function(){try{if(t){var n=function(){throw Error()};if(Object.defineProperty(n.prototype,"props",{set:function(){throw Error()}}),typeof Reflect==`object`&&Reflect.construct){try{Reflect.construct(n,[])}catch(e){var r=e}Reflect.construct(e,[],n)}else{try{n.call()}catch(e){r=e}n=!1;try{var i=Object.getOwnPropertyDescriptor(e.prototype,`props`);Object.defineProperty(e.prototype,"props",{configurable:!0,set:function(){throw Error()}}),n=!0,new e}finally{n&&(i===void 0?delete e.prototype.props:Object.defineProperty(e.prototype,"props",i))}}}else{try{throw Error()}catch(e){r=e}(n=e())&&typeof n.catch==`function`&&n.catch(function(){})}}catch(e){if(e&&r&&typeof e.stack==`string`)return[e.stack,r.stack]}return[null,null]}};r.DetermineComponentFrameRoot.displayName=`DetermineComponentFrameRoot`;var i=Object.getOwnPropertyDescriptor(r.DetermineComponentFrameRoot,`name`);i&&i.configurable&&Object.defineProperty(r.DetermineComponentFrameRoot,"name",{value:`DetermineComponentFrameRoot`});var a=r.DetermineComponentFrameRoot(),o=a[0],s=a[1];if(o&&s){var c=o.split(`
+`),l=s.split(`
+`);for(i=r=0;r<c.length&&!c[r].includes(`DetermineComponentFrameRoot`);)r++;for(;i<l.length&&!l[i].includes(`DetermineComponentFrameRoot`);)i++;if(r===c.length||i===l.length)for(r=c.length-1,i=l.length-1;1<=r&&0<=i&&c[r]!==l[i];)i--;for(;1<=r&&0<=i;r--,i--)if(c[r]!==l[i]){if(r!==1||i!==1)do if(r--,i--,0>i||c[r]!==l[i]){var u=`
+`+c[r].replace(` at new `,` at `);return e.displayName&&u.includes(`<anonymous>`)&&(u=u.replace(`<anonymous>`,e.displayName)),u}while(1<=r&&0<=i);break}}}finally{Ue=!1,Error.prepareStackTrace=n}return(n=e?e.displayName||e.name:``)?He(n):``}function Ge(e,t){switch(e.tag){case 26:case 27:case 5:return He(e.type);case 16:return He(`Lazy`);case 13:return e.child!==t&&t!==null?He(`Suspense Fallback`):He(`Suspense`);case 19:return He(`SuspenseList`);case 0:case 15:return We(e.type,!1);case 11:return We(e.type.render,!1);case 1:return We(e.type,!0);case 31:return He(`Activity`);case 30:return He(`ViewTransition`);default:return``}}function Ke(e){try{var t=``,n=null;do t+=Ge(e,n),n=e,e=e.return;while(e);return t}catch(e){return`
+Error generating stack: `+e.message+`
+`+e.stack}}var qe=Object.prototype.hasOwnProperty,Je=t.unstable_scheduleCallback,Ye=t.unstable_cancelCallback,Xe=t.unstable_shouldYield,Ze=t.unstable_requestPaint,Qe=t.unstable_now,$e=t.unstable_getCurrentPriorityLevel,et=t.unstable_ImmediatePriority,tt=t.unstable_UserBlockingPriority,nt=t.unstable_NormalPriority,rt=t.unstable_LowPriority,it=t.unstable_IdlePriority,at=t.log,ot=t.unstable_setDisableYieldValue,st=null,ct=null;function lt(e){if(typeof at==`function`&&ot(e),ct&&typeof ct.setStrictMode==`function`)try{ct.setStrictMode(st,e)}catch{}}var ut=Math.clz32?Math.clz32:pt,dt=Math.log,ft=Math.LN2;function pt(e){return e>>>=0,e===0?32:31-(dt(e)/ft|0)|0}var mt=256,ht=262144,gt=4194304;function _t(e){var t=e&42;if(t!==0)return t;switch(e&-e){case 1:return 1;case 2:return 2;case 4:return 4;case 8:return 8;case 16:return 16;case 32:return 32;case 64:return 64;case 128:return 128;case 256:case 512:case 1024:case 2048:case 4096:case 8192:case 16384:case 32768:case 65536:case 131072:return e&-e;case 262144:case 524288:case 1048576:case 2097152:return e&3932160;case 4194304:case 8388608:case 16777216:case 33554432:return e&62914560;case 67108864:return 67108864;case 134217728:return 134217728;case 268435456:return 268435456;case 536870912:return 536870912;case 1073741824:return 0;default:return e}}function vt(e,t,n){var r=e.pendingLanes;if(r===0)return 0;var i=0,a=e.suspendedLanes,o=e.pingedLanes;e=e.warmLanes;var s=r&134217727;return s===0?(s=r&~a,s===0?o===0?n||(n=r&~e,n!==0&&(i=_t(n))):i=_t(o):i=_t(s)):(r=s&~a,r===0?(o&=s,o===0?n||(n=s&~e,n!==0&&(i=_t(n))):i=_t(o)):i=_t(r)),i===0?0:t!==0&&t!==i&&(t&a)===0&&(a=i&-i,n=t&-t,a>=n||a===32&&n&4194048)?t:i}function yt(e,t){return(e.pendingLanes&~(e.suspendedLanes&~e.pingedLanes)&t)===0}function bt(e,t){t&8&&(t|=t&32);var n=e.entangledLanes;if(n!==0)for(e=e.entanglements,n&=t;0<n;){var r=31-ut(n),i=1<<r;t|=e[r],n&=~i}return t}function xt(e,t){switch(e){case 1:case 2:case 4:case 8:case 64:return t+250;case 16:case 32:case 128:case 256:case 512:case 1024:case 2048:case 4096:case 8192:case 16384:case 32768:case 65536:case 131072:case 262144:case 524288:case 1048576:case 2097152:return t+5e3;case 4194304:case 8388608:case 16777216:case 33554432:return-1;case 67108864:case 134217728:case 268435456:case 536870912:case 1073741824:return-1;default:return-1}}function St(){var e=gt;return gt<<=1,!(gt&62914560)&&(gt=4194304),e}function Ct(e){for(var t=[],n=0;31>n;n++)t.push(e);return t}function wt(e,t){e.pendingLanes|=t,t!==268435456&&(e.suspendedLanes=0,e.pingedLanes=0,e.warmLanes=0)}function Tt(e,t,n,r,i,a){var o=e.pendingLanes;e.pendingLanes=n,e.suspendedLanes=0,e.pingedLanes=0,e.warmLanes=0,e.expiredLanes&=n,e.entangledLanes&=n,e.errorRecoveryDisabledLanes&=n,e.shellSuspendCounter=0;var s=e.entanglements,c=e.expirationTimes,l=e.hiddenUpdates;for(n=o&~n;0<n;){var u=31-ut(n),d=1<<u;s[u]=0,c[u]=-1;var f=l[u];if(f!==null)for(l[u]=null,u=0;u<f.length;u++){var p=f[u];p!==null&&(p.lane&=-536870913)}n&=~d}r!==0&&Et(e,r,0),a!==0&&i===0&&e.tag!==0&&(e.suspendedLanes|=a&~(o&~t))}function Et(e,t,n){e.pendingLanes|=t,e.suspendedLanes&=~t;var r=31-ut(t);e.entangledLanes|=t,e.entanglements[r]=e.entanglements[r]|1073741824|n&261930}function Dt(e,t){var n=e.entangledLanes|=t;for(e=e.entanglements;n;){var r=31-ut(n),i=1<<r;i&t|e[r]&t&&(e[r]|=t),n&=~i}}function Ot(e,t){var n=t&-t;return n=n&42?1:kt(n),(n&(e.suspendedLanes|t))===0?n:0}function kt(e){switch(e){case 2:e=1;break;case 8:e=4;break;case 32:e=16;break;case 256:case 512:case 1024:case 2048:case 4096:case 8192:case 16384:case 32768:case 65536:case 131072:case 262144:case 524288:case 1048576:case 2097152:case 4194304:case 8388608:case 16777216:case 33554432:e=128;break;case 268435456:e=134217728;break;default:e=0}return e}function At(e){return e&=-e,2<e?8<e?e&134217727?32:268435456:8:2}function jt(){var e=T.p;return e===0?(e=window.event,e===void 0?32:Ch(e.type)):e}function Mt(e,t){var n=T.p;try{return T.p=e,t()}finally{T.p=n}}var Nt=Math.random().toString(36).slice(2),Pt=`__reactFiber$`+Nt,Ft=`__reactProps$`+Nt,It=`__reactContainer$`+Nt,Lt=`__reactEvents$`+Nt,Rt=`__reactListeners$`+Nt,zt=`__reactHandles$`+Nt,Bt=`__reactResources$`+Nt,Vt=`__reactMarker$`+Nt,Ht=`__reactLoad$`+Nt;function Ut(e){delete e[Pt],delete e[Ft],delete e[Rt],delete e[zt]}function Wt(e){var t;if(t=e[Pt])return t;for(var n=e.parentNode;n;){if(t=n[It]||n[Pt]){if(n=t.alternate,t.child!==null||n!==null&&n.child!==null)for(e=fm(e);e!==null;){if(n=e[Pt])return n;e=fm(e)}return t}e=n,n=e.parentNode}return null}function Gt(e){if(e=e[Pt]||e[It]){var t=e.tag;if(t===5||t===6||t===13||t===31||t===26||t===27||t===3)return e}return null}function Kt(e){var t=e.tag;if(t===5||t===26||t===27||t===6)return e.stateNode;throw Error(i(33))}function qt(e){var t=e[Bt];return t||=e[Bt]={hoistableStyles:new Map,hoistableScripts:new Map},t}function D(e){e[Vt]=!0}function Jt(e){e[Ht]=void 0}var Yt=new Set,Xt={};function Zt(e,t){Qt(e,t),Qt(e+`Capture`,t)}function Qt(e,t){for(Xt[e]=t,e=0;e<t.length;e++)Yt.add(t[e])}var $t=RegExp(`^[:A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][:A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$`),en={},tn={};function nn(e){return qe.call(tn,e)?!0:qe.call(en,e)?!1:$t.test(e)?tn[e]=!0:(en[e]=!0,!1)}var O=!1;function rn(){var e=O;return O=!1,e}function an(e,t,n){if(nn(t)){if(n===null)e.removeAttribute(t);else{switch(typeof n){case`undefined`:case`function`:case`symbol`:e.removeAttribute(t);return;case`boolean`:var r=t.toLowerCase().slice(0,5);if(r!==`data-`&&r!==`aria-`){e.removeAttribute(t);return}}e.setAttribute(t,n)}}}function on(e,t,n){if(n===null)e.removeAttribute(t);else{switch(typeof n){case`undefined`:case`function`:case`symbol`:case`boolean`:e.removeAttribute(t);return}e.setAttribute(t,n)}}function sn(e,t,n,r){if(r===null)e.removeAttribute(n);else{switch(typeof r){case`undefined`:case`function`:case`symbol`:case`boolean`:e.removeAttribute(n);return}e.setAttributeNS(t,n,r)}}function cn(e){switch(typeof e){case`bigint`:case`boolean`:case`number`:case`string`:case`undefined`:return e;case`object`:return e;default:return``}}function ln(e){var t=e.type;return(e=e.nodeName)&&e.toLowerCase()===`input`&&(t===`checkbox`||t===`radio`)}function un(e,t,n){var r=Object.getOwnPropertyDescriptor(e.constructor.prototype,t);if(!e.hasOwnProperty(t)&&r!==void 0&&typeof r.get==`function`&&typeof r.set==`function`){var i=r.get,a=r.set;return Object.defineProperty(e,t,{configurable:!0,get:function(){return i.call(this)},set:function(e){n=``+e,a.call(this,e)}}),Object.defineProperty(e,t,{enumerable:r.enumerable}),{getValue:function(){return n},setValue:function(e){n=``+e},stopTracking:function(){e._valueTracker=null,delete e[t]}}}}function dn(e){if(!e._valueTracker){var t=ln(e)?`checked`:`value`;e._valueTracker=un(e,t,``+e[t])}}function fn(e){if(!e)return!1;var t=e._valueTracker;if(!t)return!0;var n=t.getValue(),r=``;return e&&(r=ln(e)?e.checked?`true`:`false`:e.value),e=r,e!==n&&(t.setValue(e),!0)}var pn=/[\n"\\]/g;function mn(e){return e.replace(pn,function(e){return`\\`+e.charCodeAt(0).toString(16)+` `})}function hn(e,t,n,r,i,a,o,s){e.name=``,o!=null&&typeof o!=`function`&&typeof o!=`symbol`&&typeof o!=`boolean`?e.type=o:e.removeAttribute(`type`),t==null?o!==`submit`&&o!==`reset`||e.removeAttribute(`value`):o===`number`?(t===0&&e.value===``||e.value!=t)&&(e.value=``+cn(t)):e.value!==``+cn(t)&&(e.value=``+cn(t)),t==null?n==null?r!=null&&e.removeAttribute(`value`):_n(e,cn(n)):o===`number`&&e.value==t?_n(e,cn(e.value)):_n(e,cn(t)),i==null&&a!=null&&(e.defaultChecked=!!a),i!=null&&(e.checked=i&&typeof i!=`function`&&typeof i!=`symbol`),s!=null&&typeof s!=`function`&&typeof s!=`symbol`&&typeof s!=`boolean`?e.name=``+cn(s):e.removeAttribute(`name`)}function gn(e,t,n,r,i,a,o,s){if(a!=null&&typeof a!=`function`&&typeof a!=`symbol`&&typeof a!=`boolean`&&(e.type=a),t!=null||n!=null){if(!(a!==`submit`&&a!==`reset`||t!=null)){dn(e);return}n=n==null?``:``+cn(n),t=t==null?n:``+cn(t),s||t===e.value||(e.value=t),e.defaultValue=t}r??=i,r=typeof r!=`function`&&typeof r!=`symbol`&&!!r,e.checked=s?e.checked:!!r,e.defaultChecked=!!r,o!=null&&typeof o!=`function`&&typeof o!=`symbol`&&typeof o!=`boolean`&&(e.name=o),dn(e)}function _n(e,t){e.defaultValue!==``+t&&(e.defaultValue=``+t)}function vn(e,t,n,r){if(e=e.options,t){t={};for(var i=0;i<n.length;i++)t[`$`+n[i]]=!0;for(n=0;n<e.length;n++)i=t.hasOwnProperty(`$`+e[n].value),e[n].selected!==i&&(e[n].selected=i),i&&r&&(e[n].defaultSelected=!0)}else{for(n=``+cn(n),t=null,i=0;i<e.length;i++){if(e[i].value===n){e[i].selected=!0,r&&(e[i].defaultSelected=!0);return}t!==null||e[i].disabled||(t=e[i])}t!==null&&(t.selected=!0)}}function yn(e,t,n){t!=null&&(t=``+cn(t),t!==e.value&&(e.value=t),n==null)?e.defaultValue!==t&&(e.defaultValue=t):e.defaultValue=n==null?``:``+cn(n)}function bn(e,t,n,r){if(t==null){if(r!=null){if(n!=null)throw Error(i(92));if(Ee(r)){if(1<r.length)throw Error(i(93));r=r[0]}n=r}n??=``,t=n}n=cn(t),e.defaultValue=n,r=e.textContent,r===n&&r!==``&&r!==null&&(e.value=r),dn(e)}function xn(e,t){if(t){var n=e.firstChild;if(n&&n===e.lastChild&&n.nodeType===3){n.nodeValue=t;return}}e.textContent=t}var Sn=new Set(`animationIterationCount aspectRatio borderImageOutset borderImageSlice borderImageWidth boxFlex boxFlexGroup boxOrdinalGroup columnCount columns flex flexGrow flexPositive flexShrink flexNegative flexOrder gridArea gridRow gridRowEnd gridRowSpan gridRowStart gridColumn gridColumnEnd gridColumnSpan gridColumnStart fontWeight lineClamp lineHeight opacity order orphans scale tabSize widows zIndex zoom fillOpacity floodOpacity stopOpacity strokeDasharray strokeDashoffset strokeMiterlimit strokeOpacity strokeWidth MozAnimationIterationCount MozBoxFlex MozBoxFlexGroup MozLineClamp msAnimationIterationCount msFlex msZoom msFlexGrow msFlexNegative msFlexOrder msFlexPositive msFlexShrink msGridColumn msGridColumnSpan msGridRow msGridRowSpan WebkitAnimationIterationCount WebkitBoxFlex WebKitBoxFlexGroup WebkitBoxOrdinalGroup WebkitColumnCount WebkitColumns WebkitFlex WebkitFlexGrow WebkitFlexPositive WebkitFlexShrink WebkitLineClamp`.split(` `));function Cn(e,t,n){var r=t.indexOf(`--`)===0;n==null||typeof n==`boolean`||n===``?r?e.setProperty(t,``):t===`float`?e.cssFloat=``:e[t]=``:r?e.setProperty(t,n):typeof n!=`number`||n===0||Sn.has(t)?t===`float`?e.cssFloat=n:e[t]=(``+n).trim():e[t]=n+`px`}function wn(e,t,n){if(t!=null&&typeof t!=`object`)throw Error(i(62));if(e=e.style,n!=null){for(var r in n)!n.hasOwnProperty(r)||t!=null&&t.hasOwnProperty(r)||(r.indexOf(`--`)===0?e.setProperty(r,``):r===`float`?e.cssFloat=``:e[r]=``,O=!0);for(var a in t)r=t[a],t.hasOwnProperty(a)&&n[a]!==r&&(Cn(e,a,r),O=!0)}else for(var o in t)t.hasOwnProperty(o)&&Cn(e,o,t[o])}function Tn(e){if(e.indexOf(`-`)===-1)return!1;switch(e){case`annotation-xml`:case`color-profile`:case`font-face`:case`font-face-src`:case`font-face-uri`:case`font-face-format`:case`font-face-name`:case`missing-glyph`:return!1;default:return!0}}var En=new Map([[`acceptCharset`,`accept-charset`],[`htmlFor`,`for`],[`httpEquiv`,`http-equiv`],[`crossOrigin`,`crossorigin`],[`accentHeight`,`accent-height`],[`alignmentBaseline`,`alignment-baseline`],[`arabicForm`,`arabic-form`],[`baselineShift`,`baseline-shift`],[`capHeight`,`cap-height`],[`clipPath`,`clip-path`],[`clipRule`,`clip-rule`],[`colorInterpolation`,`color-interpolation`],[`colorInterpolationFilters`,`color-interpolation-filters`],[`colorProfile`,`color-profile`],[`colorRendering`,`color-rendering`],[`dominantBaseline`,`dominant-baseline`],[`enableBackground`,`enable-background`],[`fillOpacity`,`fill-opacity`],[`fillRule`,`fill-rule`],[`floodColor`,`flood-color`],[`floodOpacity`,`flood-opacity`],[`fontFamily`,`font-family`],[`fontSize`,`font-size`],[`fontSizeAdjust`,`font-size-adjust`],[`fontStretch`,`font-stretch`],[`fontStyle`,`font-style`],[`fontVariant`,`font-variant`],[`fontWeight`,`font-weight`],[`glyphName`,`glyph-name`],[`glyphOrientationHorizontal`,`glyph-orientation-horizontal`],[`glyphOrientationVertical`,`glyph-orientation-vertical`],[`horizAdvX`,`horiz-adv-x`],[`horizOriginX`,`horiz-origin-x`],[`imageRendering`,`image-rendering`],[`letterSpacing`,`letter-spacing`],[`lightingColor`,`lighting-color`],[`markerEnd`,`marker-end`],[`markerMid`,`marker-mid`],[`markerStart`,`marker-start`],[`maskType`,`mask-type`],[`overlinePosition`,`overline-position`],[`overlineThickness`,`overline-thickness`],[`paintOrder`,`paint-order`],[`panose-1`,`panose-1`],[`pointerEvents`,`pointer-events`],[`renderingIntent`,`rendering-intent`],[`shapeRendering`,`shape-rendering`],[`stopColor`,`stop-color`],[`stopOpacity`,`stop-opacity`],[`strikethroughPosition`,`strikethrough-position`],[`strikethroughThickness`,`strikethrough-thickness`],[`strokeDasharray`,`stroke-dasharray`],[`strokeDashoffset`,`stroke-dashoffset`],[`strokeLinecap`,`stroke-linecap`],[`strokeLinejoin`,`stroke-linejoin`],[`strokeMiterlimit`,`stroke-miterlimit`],[`strokeOpacity`,`stroke-opacity`],[`strokeWidth`,`stroke-width`],[`textAnchor`,`text-anchor`],[`textDecoration`,`text-decoration`],[`textRendering`,`text-rendering`],[`transformOrigin`,`transform-origin`],[`underlinePosition`,`underline-position`],[`underlineThickness`,`underline-thickness`],[`unicodeBidi`,`unicode-bidi`],[`unicodeRange`,`unicode-range`],[`unitsPerEm`,`units-per-em`],[`vAlphabetic`,`v-alphabetic`],[`vHanging`,`v-hanging`],[`vIdeographic`,`v-ideographic`],[`vMathematical`,`v-mathematical`],[`vectorEffect`,`vector-effect`],[`vertAdvY`,`vert-adv-y`],[`vertOriginX`,`vert-origin-x`],[`vertOriginY`,`vert-origin-y`],[`wordSpacing`,`word-spacing`],[`writingMode`,`writing-mode`],[`xmlnsXlink`,`xmlns:xlink`],[`xHeight`,`x-height`]]),Dn=/^[\u0000-\u001F ]*j[\r\n\t]*a[\r\n\t]*v[\r\n\t]*a[\r\n\t]*s[\r\n\t]*c[\r\n\t]*r[\r\n\t]*i[\r\n\t]*p[\r\n\t]*t[\r\n\t]*:/i;function On(e){return Dn.test(``+e)?`javascript:throw new Error('React has blocked a javascript: URL as a security precaution.')`:e}function kn(){}var An=null;function jn(e){return e=e.target||e.srcElement||window,e.correspondingUseElement&&(e=e.correspondingUseElement),e.nodeType===3?e.parentNode:e}var Mn=null,Nn=null;function Pn(e){var t=Gt(e);if(t&&(e=t.stateNode)){var n=e[Ft]||null;a:switch(e=t.stateNode,t.type){case`input`:if(hn(e,n.value,n.defaultValue,n.defaultValue,n.checked,n.defaultChecked,n.type,n.name),t=n.name,n.type===`radio`&&t!=null){for(n=e;n.parentNode;)n=n.parentNode;for(n=n.querySelectorAll(`input[name="`+mn(``+t)+`"][type="radio"]`),t=0;t<n.length;t++){var r=n[t];if(r!==e&&r.form===e.form){var a=r[Ft]||null;if(!a)throw Error(i(90));hn(r,a.value,a.defaultValue,a.defaultValue,a.checked,a.defaultChecked,a.type,a.name)}}for(t=0;t<n.length;t++)r=n[t],r.form===e.form&&fn(r)}break a;case`textarea`:yn(e,n.value,n.defaultValue);break a;case`select`:t=n.value,t!=null&&vn(e,!!n.multiple,t,!1)}}}var Fn=!1;function In(e,t,n){if(Fn)return e(t,n);Fn=!0;try{return e(t)}finally{if(Fn=!1,(Mn!==null||Nn!==null)&&(zd(),Mn&&(t=Mn,e=Nn,Nn=Mn=null,Pn(t),e)))for(t=0;t<e.length;t++)Pn(e[t])}}function Ln(e,t){var n=e.stateNode;if(n===null)return null;var r=n[Ft]||null;if(r===null)return null;n=r[t];a:switch(t){case`onClick`:case`onClickCapture`:case`onDoubleClick`:case`onDoubleClickCapture`:case`onMouseDown`:case`onMouseDownCapture`:case`onMouseMove`:case`onMouseMoveCapture`:case`onMouseUp`:case`onMouseUpCapture`:case`onMouseEnter`:(r=!r.disabled)||(e=e.type,r=e!==`button`&&e!==`input`&&e!==`select`&&e!==`textarea`),e=!r;break a;default:e=!1}if(e)return null;if(n&&typeof n!=`function`)throw Error(i(231,t,typeof n));return n}var Rn=typeof window<`u`&&window.document!==void 0&&window.document.createElement!==void 0,zn=!1;if(Rn)try{var Bn={};Object.defineProperty(Bn,"passive",{get:function(){zn=!0}}),window.addEventListener(`test`,Bn,Bn),window.removeEventListener(`test`,Bn,Bn)}catch{zn=!1}var Vn=null,Hn=null,Un=null;function Wn(){if(Un)return Un;var e,t=Hn,n=t.length,r,i=`value`in Vn?Vn.value:Vn.textContent,a=i.length;for(e=0;e<n&&t[e]===i[e];e++);var o=n-e;for(r=1;r<=o&&t[n-r]===i[a-r];r++);return Un=i.slice(e,1<r?1-r:void 0)}function Gn(e){var t=e.keyCode;return`charCode`in e?(e=e.charCode,e===0&&t===13&&(e=13)):e=t,e===10&&(e=13),32<=e||e===13?e:0}function Kn(){return!0}function qn(){return!1}function Jn(e){function t(t,n,r,i,a){for(var o in this._reactName=t,this._targetInst=r,this.type=n,this.nativeEvent=i,this.target=a,this.currentTarget=null,e)e.hasOwnProperty(o)&&(t=e[o],this[o]=t?t(i):i[o]);return this.isDefaultPrevented=(i.defaultPrevented==null?!1===i.returnValue:i.defaultPrevented)?Kn:qn,this.isPropagationStopped=qn,this}return S(t.prototype,{preventDefault:function(){this.defaultPrevented=!0;var e=this.nativeEvent;e&&(e.preventDefault?e.preventDefault():typeof e.returnValue!=`unknown`&&(e.returnValue=!1),this.isDefaultPrevented=Kn)},stopPropagation:function(){var e=this.nativeEvent;e&&(e.stopPropagation?e.stopPropagation():typeof e.cancelBubble!=`unknown`&&(e.cancelBubble=!0),this.isPropagationStopped=Kn)},persist:function(){},isPersistent:Kn}),t}var Yn={eventPhase:0,bubbles:0,cancelable:0,timeStamp:function(e){return e.timeStamp||Date.now()},defaultPrevented:0,isTrusted:0},Xn=Jn(Yn),Zn=S({},Yn,{view:0,detail:0}),Qn=Jn(Zn),$n,er,tr,nr=S({},Zn,{screenX:0,screenY:0,clientX:0,clientY:0,pageX:0,pageY:0,ctrlKey:0,shiftKey:0,altKey:0,metaKey:0,getModifierState:pr,button:0,buttons:0,relatedTarget:function(e){return e.relatedTarget===void 0?e.fromElement===e.srcElement?e.toElement:e.fromElement:e.relatedTarget},movementX:function(e){return`movementX`in e?e.movementX:(e!==tr&&(tr&&e.type===`mousemove`?($n=e.screenX-tr.screenX,er=e.screenY-tr.screenY):er=$n=0,tr=e),$n)},movementY:function(e){return`movementY`in e?e.movementY:er}}),rr=Jn(nr),ir=Jn(S({},nr,{dataTransfer:0})),ar=Jn(S({},Zn,{relatedTarget:0})),or=Jn(S({},Yn,{animationName:0,elapsedTime:0,pseudoElement:0})),sr=Jn(S({},Yn,{clipboardData:function(e){return`clipboardData`in e?e.clipboardData:window.clipboardData}})),cr=Jn(S({},Yn,{data:0})),lr={Esc:`Escape`,Spacebar:` `,Left:`ArrowLeft`,Up:`ArrowUp`,Right:`ArrowRight`,Down:`ArrowDown`,Del:`Delete`,Win:`OS`,Menu:`ContextMenu`,Apps:`ContextMenu`,Scroll:`ScrollLock`,MozPrintableKey:`Unidentified`},ur={8:`Backspace`,9:`Tab`,12:`Clear`,13:`Enter`,16:`Shift`,17:`Control`,18:`Alt`,19:`Pause`,20:`CapsLock`,27:`Escape`,32:` `,33:`PageUp`,34:`PageDown`,35:`End`,36:`Home`,37:`ArrowLeft`,38:`ArrowUp`,39:`ArrowRight`,40:`ArrowDown`,45:`Insert`,46:`Delete`,112:`F1`,113:`F2`,114:`F3`,115:`F4`,116:`F5`,117:`F6`,118:`F7`,119:`F8`,120:`F9`,121:`F10`,122:`F11`,123:`F12`,144:`NumLock`,145:`ScrollLock`,224:`Meta`},dr={Alt:`altKey`,Control:`ctrlKey`,Meta:`metaKey`,Shift:`shiftKey`};function fr(e){var t=this.nativeEvent;return t.getModifierState?t.getModifierState(e):(e=dr[e])?!!t[e]:!1}function pr(){return fr}var mr=Jn(S({},Zn,{key:function(e){if(e.key){var t=lr[e.key]||e.key;if(t!==`Unidentified`)return t}return e.type===`keypress`?(e=Gn(e),e===13?`Enter`:String.fromCharCode(e)):e.type===`keydown`||e.type===`keyup`?ur[e.keyCode]||`Unidentified`:``},code:0,location:0,ctrlKey:0,shiftKey:0,altKey:0,metaKey:0,repeat:0,locale:0,getModifierState:pr,charCode:function(e){return e.type===`keypress`?Gn(e):0},keyCode:function(e){return e.type===`keydown`||e.type===`keyup`?e.keyCode:0},which:function(e){return e.type===`keypress`?Gn(e):e.type===`keydown`||e.type===`keyup`?e.keyCode:0}})),hr=Jn(S({},nr,{pointerId:0,width:0,height:0,pressure:0,tangentialPressure:0,tiltX:0,tiltY:0,twist:0,pointerType:0,isPrimary:0})),gr=Jn(S({},Yn,{submitter:0})),_r=Jn(S({},Zn,{touches:0,targetTouches:0,changedTouches:0,altKey:0,metaKey:0,ctrlKey:0,shiftKey:0,getModifierState:pr})),vr=Jn(S({},Yn,{propertyName:0,elapsedTime:0,pseudoElement:0})),yr=Jn(S({},nr,{deltaX:function(e){return`deltaX`in e?e.deltaX:`wheelDeltaX`in e?-e.wheelDeltaX:0},deltaY:function(e){return`deltaY`in e?e.deltaY:`wheelDeltaY`in e?-e.wheelDeltaY:`wheelDelta`in e?-e.wheelDelta:0},deltaZ:0,deltaMode:0})),br=Jn(S({},Yn,{newState:0,oldState:0,source:0})),xr=[9,13,27,32],Sr=Rn&&`CompositionEvent`in window,Cr=null;Rn&&`documentMode`in document&&(Cr=document.documentMode);var wr=Rn&&`TextEvent`in window&&!Cr,Tr=Rn&&(!Sr||Cr&&8<Cr&&11>=Cr),Er=` `,Dr=!1;function Or(e,t){switch(e){case`keyup`:return xr.indexOf(t.keyCode)!==-1;case`keydown`:return t.keyCode!==229;case`keypress`:case`mousedown`:case`focusout`:return!0;default:return!1}}function kr(e){return e=e.detail,typeof e==`object`&&`data`in e?e.data:null}var Ar=!1;function jr(e,t){switch(e){case`compositionend`:return kr(t);case`keypress`:return t.which===32?(Dr=!0,Er):null;case`textInput`:return e=t.data,e===Er&&Dr?null:e;default:return null}}function Mr(e,t){if(Ar)return e===`compositionend`||!Sr&&Or(e,t)?(e=Wn(),Un=Hn=Vn=null,Ar=!1,e):null;switch(e){case`paste`:return null;case`keypress`:if(!(t.ctrlKey||t.altKey||t.metaKey)||t.ctrlKey&&t.altKey){if(t.char&&1<t.char.length)return t.char;if(t.which)return String.fromCharCode(t.which)}return null;case`compositionend`:return Tr&&t.locale!==`ko`?null:t.data;default:return null}}var Nr={color:!0,date:!0,datetime:!0,"datetime-local":!0,email:!0,month:!0,number:!0,password:!0,range:!0,search:!0,tel:!0,text:!0,time:!0,url:!0,week:!0};function Pr(e){var t=e&&e.nodeName&&e.nodeName.toLowerCase();return t===`input`?!!Nr[e.type]:t===`textarea`}function Fr(e,t,n,r){Mn?Nn?Nn.push(r):Nn=[r]:Mn=r,t=Jf(t,`onChange`),0<t.length&&(n=new Xn(`onChange`,`change`,null,n,r),e.push({event:n,listeners:t}))}var Ir=null,Lr=null;function Rr(e){Vf(e,0)}function zr(e){if(fn(Kt(e)))return e}function Br(e,t){if(e===`change`)return t}var Vr=!1;if(Rn){var Hr;if(Rn){var Ur=`oninput`in document;if(!Ur){var Wr=document.createElement(`div`);Wr.setAttribute(`oninput`,`return;`),Ur=typeof Wr.oninput==`function`}Hr=Ur}else Hr=!1;Vr=Hr&&(!document.documentMode||9<document.documentMode)}function Gr(){Ir&&(Ir.detachEvent(`onpropertychange`,Kr),Lr=Ir=null)}function Kr(e){if(e.propertyName===`value`&&zr(Lr)){var t=[];Fr(t,Lr,e,jn(e)),In(Rr,t)}}function qr(e,t,n){e===`focusin`?(Gr(),Ir=t,Lr=n,Ir.attachEvent(`onpropertychange`,Kr)):e===`focusout`&&Gr()}function Jr(e){if(e===`selectionchange`||e===`keyup`||e===`keydown`)return zr(Lr)}function Yr(e,t){if(e===`click`)return zr(t)}function Xr(e,t){if(e===`input`||e===`change`)return zr(t)}function Zr(e,t){return e===t&&(e!==0||1/e==1/t)||e!==e&&t!==t}var Qr=typeof Object.is==`function`?Object.is:Zr;function $r(e,t){if(Qr(e,t))return!0;if(typeof e!=`object`||!e||typeof t!=`object`||!t)return!1;var n=Object.keys(e),r=Object.keys(t);if(n.length!==r.length)return!1;for(r=0;r<n.length;r++){var i=n[r];if(!qe.call(t,i)||!Qr(e[i],t[i]))return!1}return!0}function ei(e){if(e||=typeof document<`u`?document:void 0,e===void 0)return null;try{return e.activeElement||e.body}catch{return e.body}}function ti(e){for(;e&&e.firstChild;)e=e.firstChild;return e}function ni(e,t){var n=ti(e);e=0;for(var r;n;){if(n.nodeType===3){if(r=e+n.textContent.length,e<=t&&r>=t)return{node:n,offset:t-e};e=r}a:{for(;n;){if(n.nextSibling){n=n.nextSibling;break a}n=n.parentNode}n=void 0}n=ti(n)}}function ri(e,t){return e&&t?e===t?!0:e&&e.nodeType===3?!1:t&&t.nodeType===3?ri(e,t.parentNode):`contains`in e?e.contains(t):e.compareDocumentPosition?!!(e.compareDocumentPosition(t)&16):!1:!1}function ii(e){e=e!=null&&e.ownerDocument!=null&&e.ownerDocument.defaultView!=null?e.ownerDocument.defaultView:window;for(var t=ei(e.document);t instanceof e.HTMLIFrameElement;){try{var n=typeof t.contentWindow.location.href==`string`}catch{n=!1}if(n)e=t.contentWindow;else break;t=ei(e.document)}return t}function ai(e){var t=e&&e.nodeName&&e.nodeName.toLowerCase();return t&&(t===`input`&&(e.type===`text`||e.type===`search`||e.type===`tel`||e.type===`url`||e.type===`password`)||t===`textarea`||e.contentEditable===`true`)}var oi=Rn&&`documentMode`in document&&11>=document.documentMode,si=null,ci=null,li=null,ui=!1;function di(e,t,n){var r=n.window===n?n.document:n.nodeType===9?n:n.ownerDocument;ui||si==null||si!==ei(r)||(r=si,`selectionStart`in r&&ai(r)?r={start:r.selectionStart,end:r.selectionEnd}:(r=(r.ownerDocument&&r.ownerDocument.defaultView||window).getSelection(),r={anchorNode:r.anchorNode,anchorOffset:r.anchorOffset,focusNode:r.focusNode,focusOffset:r.focusOffset}),li&&$r(li,r)||(li=r,r=Jf(ci,`onSelect`),0<r.length&&(t=new Xn(`onSelect`,`select`,null,t,n),e.push({event:t,listeners:r}),t.target=si)))}function fi(e,t){var n={};return n[e.toLowerCase()]=t.toLowerCase(),n[`Webkit`+e]=`webkit`+t,n[`Moz`+e]=`moz`+t,n}var pi={animationend:fi(`Animation`,`AnimationEnd`),animationiteration:fi(`Animation`,`AnimationIteration`),animationstart:fi(`Animation`,`AnimationStart`),transitionrun:fi(`Transition`,`TransitionRun`),transitionstart:fi(`Transition`,`TransitionStart`),transitioncancel:fi(`Transition`,`TransitionCancel`),transitionend:fi(`Transition`,`TransitionEnd`)},mi={},hi={};Rn&&(hi=document.createElement(`div`).style,`AnimationEvent`in window||(delete pi.animationend.animation,delete pi.animationiteration.animation,delete pi.animationstart.animation),`TransitionEvent`in window||delete pi.transitionend.transition);function gi(e){if(mi[e])return mi[e];if(!pi[e])return e;var t=pi[e],n;for(n in t)if(t.hasOwnProperty(n)&&n in hi)return mi[e]=t[n];return e}var _i=gi(`animationend`),vi=gi(`animationiteration`),yi=gi(`animationstart`),bi=gi(`transitionrun`),xi=gi(`transitionstart`),Si=gi(`transitioncancel`),Ci=gi(`transitionend`),wi=new Map,Ti=`abort auxClick beforeToggle cancel canPlay canPlayThrough click close contextMenu copy cut drag dragEnd dragEnter dragExit dragLeave dragOver dragStart drop durationChange emptied encrypted ended error fullscreenChange fullscreenError gotPointerCapture input invalid keyDown keyPress keyUp load loadedData loadedMetadata loadStart lostPointerCapture mouseDown mouseMove mouseOut mouseOver mouseUp paste pause play playing pointerCancel pointerDown pointerMove pointerOut pointerOver pointerUp progress rateChange reset resize seeked seeking stalled submit suspend timeUpdate touchCancel touchEnd touchStart volumeChange scroll toggle touchMove waiting wheel`.split(` `);Ti.push(`scrollEnd`);function Ei(e,t){wi.set(e,t),Zt(t,[e])}var Di=0;function Oi(e,t){if(e.name!=null&&e.name!==`auto`)return e.name;if(t.autoName!==null)return t.autoName;e=bd.identifierPrefix;var n=Di++;return e=`_`+e+`t_`+n.toString(32)+`_`,t.autoName=e}function ki(e){if(e==null||typeof e==`string`)return e;var t=null,n=Od;if(n!==null)for(var r=0;r<n.length;r++){var i=e[n[r]];if(i!=null){if(i===`none`)return`none`;t=t==null?i:t+(` `+i)}}return t??e.default}function Ai(e,t){return e=ki(e),t=ki(t),t==null?e===`auto`?null:e:t===`auto`?null:t}var ji=typeof reportError==`function`?reportError:function(e){if(typeof window==`object`&&typeof window.ErrorEvent==`function`){var t=new window.ErrorEvent(`error`,{bubbles:!0,cancelable:!0,message:typeof e==`object`&&e&&typeof e.message==`string`?String(e.message):String(e),error:e});if(!window.dispatchEvent(t))return}else if(typeof process==`object`&&typeof process.emit==`function`){process.emit(`uncaughtException`,e);return}console.error(e)},Mi=[],Ni=0,Pi=0;function Fi(){for(var e=Ni,t=Pi=Ni=0;t<e;){var n=Mi[t];Mi[t++]=null;var r=Mi[t];Mi[t++]=null;var i=Mi[t];Mi[t++]=null;var a=Mi[t];if(Mi[t++]=null,r!==null&&i!==null){var o=r.pending;o===null?i.next=i:(i.next=o.next,o.next=i),r.pending=i}a!==0&&zi(n,i,a)}}function Ii(e,t,n,r){Mi[Ni++]=e,Mi[Ni++]=t,Mi[Ni++]=n,Mi[Ni++]=r,Pi|=r,e.lanes|=r,e=e.alternate,e!==null&&(e.lanes|=r)}function Li(e,t,n,r){return Ii(e,t,n,r),Bi(e)}function Ri(e,t){return Ii(e,null,null,t),Bi(e)}function zi(e,t,n){e.lanes|=n;var r=e.alternate;r!==null&&(r.lanes|=n);for(var i=!1,a=e.return;a!==null;)a.childLanes|=n,r=a.alternate,r!==null&&(r.childLanes|=n),a.tag===22&&(e=a.stateNode,e===null||e._visibility&1||(i=!0)),e=a,a=a.return;return e.tag===3?(a=e.stateNode,i&&t!==null&&(i=31-ut(n),e=a.hiddenUpdates,r=e[i],r===null?e[i]=[t]:r.push(t),t.lane=n|536870912),a):null}function Bi(e){if(50<kd)throw kd=0,Ad=null,Error(i(185));for(var t=e.return;t!==null;)e=t,t=e.return;return e.tag===3?e.stateNode:null}var Vi={};function Hi(e,t,n,r){this.tag=e,this.key=n,this.sibling=this.child=this.return=this.stateNode=this.type=this.elementType=null,this.index=0,this.refCleanup=this.ref=null,this.pendingProps=t,this.dependencies=this.memoizedState=this.updateQueue=this.memoizedProps=null,this.mode=r,this.subtreeFlags=this.flags=0,this.deletions=null,this.childLanes=this.lanes=0,this.alternate=null}function Ui(e,t,n,r){return new Hi(e,t,n,r)}function Wi(e){return e=e.prototype,!(!e||!e.isReactComponent)}function Gi(e,t){var n=e.alternate;return n===null?(n=Ui(e.tag,t,e.key,e.mode),n.elementType=e.elementType,n.type=e.type,n.stateNode=e.stateNode,n.alternate=e,e.alternate=n):(n.pendingProps=t,n.type=e.type,n.flags=0,n.subtreeFlags=0,n.deletions=null),n.flags=e.flags&1206910976,n.childLanes=e.childLanes,n.lanes=e.lanes,n.child=e.child,n.memoizedProps=e.memoizedProps,n.memoizedState=e.memoizedState,n.updateQueue=e.updateQueue,t=e.dependencies,n.dependencies=t===null?null:{lanes:t.lanes,firstContext:t.firstContext},n.sibling=e.sibling,n.index=e.index,n.ref=e.ref,n.refCleanup=e.refCleanup,n}function Ki(e,t){e.flags&=1206910978;var n=e.alternate;return n===null?(e.childLanes=0,e.lanes=t,e.child=null,e.subtreeFlags=0,e.memoizedProps=null,e.memoizedState=null,e.updateQueue=null,e.dependencies=null,e.stateNode=null):(e.childLanes=n.childLanes,e.lanes=n.lanes,e.child=n.child,e.subtreeFlags=0,e.deletions=null,e.memoizedProps=n.memoizedProps,e.memoizedState=n.memoizedState,e.updateQueue=n.updateQueue,e.type=n.type,t=n.dependencies,e.dependencies=t===null?null:{lanes:t.lanes,firstContext:t.firstContext}),e}function qi(e,t,n,r,a,o){var s=0;if(r=e,typeof r==`function`)Wi(r)&&(s=1);else if(typeof r==`string`)s=qm(e,n,Me.current)?26:e===`html`||e===`head`||e===`body`?27:5;else a:switch(r){case _e:return e=Ui(31,n,t,a),e.elementType=_e,e.lanes=o,e;case ce:return Ji(n.children,a,o,t);case le:s=8,a|=24;break;case ue:return e=Ui(12,n,t,a|2),e.elementType=ue,e.lanes=o,e;case pe:return e=Ui(13,n,t,a),e.elementType=pe,e.lanes=o,e;case me:return e=Ui(19,n,t,a),e.elementType=me,e.lanes=o,e;case ve:case be:return e=a|32,e=Ui(30,n,t,e),e.elementType=be,e.lanes=o,e.stateNode={autoName:null,paired:null,clones:null,ref:null},e;default:if(typeof r==`object`&&r)switch(r.$$typeof){case C:s=10;break a;case de:s=9;break a;case fe:s=11;break a;case he:s=14;break a;case ge:s=16,r=null;break a}s=29,n=Error(i(130,e===null?`null`:typeof e,``)),r=null}return t=Ui(s,n,t,a),t.elementType=e,t.type=r,t.lanes=o,t}function Ji(e,t,n,r){return e=Ui(7,e,r,t),e.lanes=n,e}function Yi(e,t,n){return e=Ui(6,e,null,t),e.lanes=n,e}function Xi(e){var t=Ui(18,null,null,0);return t.stateNode=e,t}function Zi(e,t,n){return t=Ui(4,e.children===null?[]:e.children,e.key,t),t.lanes=n,t.stateNode={containerInfo:e.containerInfo,pendingChildren:null,implementation:e.implementation},t}var Qi=new WeakMap;function $i(e,t){if(typeof e==`object`&&e){var n=Qi.get(e);return n===void 0?(t={value:e,source:t,stack:Ke(t)},Qi.set(e,t),t):n}return{value:e,source:t,stack:Ke(t)}}var ea=[],ta=0,na=null,ra=0,ia=[],aa=0,oa=null,sa=1,ca=``;function la(e,t){ea[ta++]=ra,ea[ta++]=na,na=e,ra=t}function ua(e,t,n){ia[aa++]=sa,ia[aa++]=ca,ia[aa++]=oa,oa=e;var r=sa;e=ca;var i=32-ut(r)-1;r&=~(1<<i),n+=1;var a=32-ut(t)+i;if(30<a){var o=i-i%5;a=(r&(1<<o)-1).toString(32),r>>=o,i-=o,sa=1<<32-ut(t)+i|n<<i|r,ca=a+e}else sa=1<<a|n<<i|r,ca=e}function da(e){e.return!==null&&(la(e,1),ua(e,1,0))}function fa(e){for(;e===na;)na=ea[--ta],ea[ta]=null,ra=ea[--ta],ea[ta]=null;for(;e===oa;)oa=ia[--aa],ia[aa]=null,ca=ia[--aa],ia[aa]=null,sa=ia[--aa],ia[aa]=null}function pa(e,t){ia[aa++]=sa,ia[aa++]=ca,ia[aa++]=oa,sa=t.id,ca=t.overflow,oa=e}var ma=null,k=null,A=!1,ha=null,ga=!1,_a=Error(i(519));function va(e){throw wa($i(Error(i(418,1<arguments.length&&arguments[1]!==void 0&&arguments[1]?`text`:`HTML`,``)),e)),_a}function ya(e){var t=e.stateNode,n=e.type,r=e.memoizedProps;switch(t[Pt]=e,t[Ft]=r,n){case`dialog`:Q(`cancel`,t),Q(`close`,t);break;case`iframe`:case`object`:case`embed`:Q(`load`,t);break;case`video`:case`audio`:for(n=0;n<zf.length;n++)Q(zf[n],t);break;case`source`:Q(`error`,t);break;case`img`:case`image`:case`link`:Q(`error`,t),Q(`load`,t);break;case`details`:Q(`toggle`,t);break;case`input`:Q(`invalid`,t),gn(t,r.value,r.defaultValue,r.checked,r.defaultChecked,r.type,r.name,!0);break;case`select`:Q(`invalid`,t);break;case`textarea`:Q(`invalid`,t),bn(t,r.value,r.defaultValue,r.children)}n=r.children,typeof n!=`string`&&typeof n!=`number`&&typeof n!=`bigint`||t.textContent===``+n||!0===r.suppressHydrationWarning||ep(t.textContent,n)?(r.popover!=null&&(Q(`beforetoggle`,t),Q(`toggle`,t)),r.onScroll!=null&&Q(`scroll`,t),r.onScrollEnd!=null&&Q(`scrollend`,t),r.onClick!=null&&(t.onclick=kn),t=!0):t=!1,t||va(e,!0)}function ba(e){for(ma=e.return;ma;)switch(ma.tag){case 5:case 31:case 13:ga=!1;return;case 27:case 3:ga=!0;return;default:ma=ma.return}}function xa(e){if(e!==ma)return!1;if(!A)return ba(e),A=!0,!1;var t=e.tag,n;if((n=t!==3&&t!==27)&&((n=t===5)&&(n=e.type,n=n===`form`||n===`button`||pp(e.type,e.memoizedProps)),n=!n),n&&k&&va(e),ba(e),t===13){if(e=e.memoizedState,e=e===null?null:e.dehydrated,!e)throw Error(i(317));k=dm(e)}else if(t===31){if(e=e.memoizedState,e=e===null?null:e.dehydrated,!e)throw Error(i(317));k=dm(e)}else t===27?(t=k,Sp(e.type)?(e=um,um=null,k=e):k=t):k=ma?lm(e.stateNode.nextSibling):null;return!0}function Sa(){k=ma=null,A=!1}function Ca(){var e=ha;return e!==null&&(pd===null?pd=e:pd.push.apply(pd,e),ha=null),e}function wa(e){ha===null?ha=[e]:ha.push(e)}var Ta=Ae(null),Ea=null,Da=null;function Oa(e,t,n){E(Ta,t._currentValue),t._currentValue=n}function ka(e){e._currentValue=Ta.current,je(Ta)}function Aa(e,t,n){for(;e!==null;){var r=e.alternate;if((e.childLanes&t)===t?r!==null&&(r.childLanes&t)!==t&&(r.childLanes|=t):(e.childLanes|=t,r!==null&&(r.childLanes|=t)),e===n)break;e=e.return}}function ja(e,t,n,r){var a=e.child;for(a!==null&&(a.return=e);a!==null;){var o=a.dependencies;if(o!==null){var s=a.child;o=o.firstContext;a:for(;o!==null;){var c=o;o=a;for(var l=0;l<t.length;l++)if(c.context===t[l]){o.lanes|=n,c=o.alternate,c!==null&&(c.lanes|=n),Aa(o.return,n,e),r||(s=null);break a}o=c.next}}else if(a.tag===18){if(s=a.return,s===null)throw Error(i(341));s.lanes|=n,o=s.alternate,o!==null&&(o.lanes|=n),Aa(s,n,e),s=null}else a.tag===13&&a.memoizedState!==null&&a.memoizedState.dehydrated===null?(a.lanes|=n,s=a.alternate,s!==null&&(s.lanes|=n),Aa(a.return,n,e),s=a.child,s=s===null?null:s.sibling):s=a.child;if(s!==null)s.return=a;else for(s=a;s!==null;){if(s===e){s=null;break}if(a=s.sibling,a!==null){a.return=s.return,s=a;break}s=s.return}a=s}}function Ma(e,t,n,r){e=null;for(var a=t,o=!1;a!==null;){if(!o){if(a.flags&524288)o=!0;else if(a.flags&262144)break}if(a.tag===10){var s=a.alternate;if(s===null)throw Error(i(387));if(s=s.memoizedProps,s!==null){var c=a.type;Qr(a.pendingProps.value,s.value)||(e===null?e=[c]:e.push(c))}}else if(a===Fe.current){if(s=a.alternate,s===null)throw Error(i(387));s.memoizedState.memoizedState!==a.memoizedState.memoizedState&&(e===null?e=[sh]:e.push(sh))}a=a.return}return e!==null&&ja(t,e,n,r),t.flags|=262144,e!==null}function Na(e){for(e=e.firstContext;e!==null;){if(!Qr(e.context._currentValue,e.memoizedValue))return!0;e=e.next}return!1}function Pa(e){Ea=e,Da=null,e=e.dependencies,e!==null&&(e.firstContext=null)}function Fa(e){return La(Ea,e)}function Ia(e,t){return Ea===null&&Pa(e),La(e,t)}function La(e,t){var n=t._currentValue;if(t={context:t,memoizedValue:n,next:null},Da===null){if(e===null)throw Error(i(308));Da=t,e.dependencies={lanes:0,firstContext:t},e.flags|=524288}else Da=Da.next=t;return n}var Ra=typeof AbortController<`u`?AbortController:function(){var e=[],t=this.signal={aborted:!1,addEventListener:function(t,n){e.push(n)}};this.abort=function(){t.aborted=!0,e.forEach(function(e){return e()})}},za=t.unstable_scheduleCallback,Ba=t.unstable_NormalPriority,j={$$typeof:C,Consumer:null,Provider:null,_currentValue:null,_currentValue2:null,_threadCount:0};function Va(){return{controller:new Ra,data:new Map,refCount:0}}function Ha(e){e.refCount--,e.refCount===0&&za(Ba,function(){e.controller.abort()})}function Ua(e,t){if(e.pendingLanes&4194048){var n=e.transitionTypes;for(n===null&&(n=e.transitionTypes=[]),e=0;e<t.length;e++){var r=t[e];n.indexOf(r)===-1&&n.push(r)}}}var Wa=null;function Ga(e){var t=e.transitionTypes;return e.transitionTypes=null,t}var Ka=null,qa=0,Ja=0,Ya=null;function Xa(e,t){if(Ka===null){var n=Ka=[];qa=0,Ja=Pf(),Ya={status:`pending`,value:void 0,then:function(e){n.push(e)}}}return qa++,t.then(Za,Za),t}function Za(){if(--qa===0&&(Wa=null,Ka!==null)){Ya!==null&&(Ya.status=`fulfilled`);var e=Ka;Ka=null,Ja=0,Ya=null;for(var t=0;t<e.length;t++)(0,e[t])()}}function Qa(e,t){var n=[],r={status:`pending`,value:null,reason:null,then:function(e){n.push(e)}};return e.then(function(){r.status=`fulfilled`,r.value=t;for(var e=0;e<n.length;e++)(0,n[e])(t)},function(e){for(r.status=`rejected`,r.reason=e,e=0;e<n.length;e++)(0,n[e])(void 0)}),r}var $a=w.S;w.S=function(e,t){if(gd=Qe(),typeof t==`object`&&t&&typeof t.then==`function`&&Xa(e,t),Wa!==null)for(var n=bf;n!==null;)Ua(n,Wa),n=n.next;if(n=e.types,n!==null){for(var r=bf;r!==null;)Ua(r,n),r=r.next;if(Ja!==0){r=Wa,r===null&&(r=Wa=[]);for(var i=0;i<n.length;i++){var a=n[i];r.indexOf(a)===-1&&r.push(a)}}}$a!==null&&$a(e,t)};var eo=Ae(null);function to(){var e=eo.current;return e===null?G.pooledCache:e}function no(e,t){t===null?E(eo,eo.current):E(eo,t.pool)}function ro(){var e=to();return e===null?null:{parent:j._currentValue,pool:e}}var io=Error(i(460)),ao=Error(i(474)),oo=Error(i(542)),so={then:function(){}};function co(e){return e=e.status,e===`fulfilled`||e===`rejected`}function lo(e,t,n){switch(n=e[n],n===void 0?e.push(t):n!==t&&(t.then(kn,kn),t=n),t.status){case`fulfilled`:return t.value;case`rejected`:throw e=t.reason,mo(e),e===void 0&&!(`reason`in t)?Error(i(600)):e;default:if(typeof t.status==`string`)t.then(kn,kn);else{if(e=G,e!==null&&100<e.shellSuspendCounter)throw Error(i(482));e=t,e.status=`pending`,e.then(function(e){if(t.status===`pending`){var n=t;n.status=`fulfilled`,n.value=e}},function(e){if(t.status===`pending`){var n=t;n.status=`rejected`,n.reason=e}})}switch(t.status){case`fulfilled`:return t.value;case`rejected`:throw e=t.reason,mo(e),e}throw fo=t,io}}function uo(e){try{var t=e._init;return t(e._payload)}catch(e){throw typeof e==`object`&&e&&typeof e.then==`function`?(fo=e,io):e}}var fo=null;function po(){if(fo===null)throw Error(i(459));var e=fo;return fo=null,e}function mo(e){if(e===io||e===oo)throw Error(i(483))}var ho=null,go=0;function _o(e){var t=go;return go+=1,ho===null&&(ho=[]),lo(ho,e,t)}function vo(e,t){t=t.props.ref,e.ref=t===void 0?null:t}function yo(e,t){throw t.$$typeof===ae?Error(i(525)):(e=Object.prototype.toString.call(t),Error(i(31,e===`[object Object]`?`object with keys {`+Object.keys(t).join(`, `)+`}`:e)))}function bo(e){function t(t,n){if(e){var r=t.deletions;r===null?(t.deletions=[n],t.flags|=16):r.push(n)}}function n(n,r){if(!e)return null;for(;r!==null;)t(n,r),r=r.sibling;return null}function r(e){for(var t=new Map;e!==null;)e.key===null?t.set(e.index,e):t.set(e.key,e),e=e.sibling;return t}function a(e,t){return e=Gi(e,t),e.index=0,e.sibling=null,e}function o(t,n,r){return t.index=r,e?(r=t.alternate,r===null?(t.flags|=134217730,n):(r=r.index,r<n?(t.flags|=2,n):r)):(t.flags|=1048576,n)}function s(t){return e&&t.alternate===null&&(t.flags|=134217730),t}function c(e,t,n,r){return t===null||t.tag!==6?(t=Yi(n,e.mode,r),t.return=e,t):(t=a(t,n),t.return=e,t)}function l(e,t,n,r){var i=n.type;return i===ce?(e=d(e,t,n.props.children,r,n.key),vo(e,n),e):t!==null&&(t.elementType===i||typeof i==`object`&&i&&i.$$typeof===ge&&uo(i)===t.type)?(t=a(t,n.props),vo(t,n),t.return=e,t):(t=qi(n.type,n.key,n.props,null,e.mode,r),vo(t,n),t.return=e,t)}function u(e,t,n,r){return t===null||t.tag!==4||t.stateNode.containerInfo!==n.containerInfo||t.stateNode.implementation!==n.implementation?(t=Zi(n,e.mode,r),t.return=e,t):(t=a(t,n.children||[]),t.return=e,t)}function d(e,t,n,r,i){return t===null||t.tag!==7?(t=Ji(n,e.mode,r,i),t.return=e,t):(t=a(t,n),t.return=e,t)}function f(e,t,n){if(typeof t==`string`&&t!==``||typeof t==`number`||typeof t==`bigint`)return t=Yi(``+t,e.mode,n),t.return=e,t;if(typeof t==`object`&&t){switch(t.$$typeof){case oe:return n=qi(t.type,t.key,t.props,null,e.mode,n),vo(n,t),n.return=e,n;case se:return t=Zi(t,e.mode,n),t.return=e,t;case ge:return t=uo(t),f(e,t,n)}if(Ee(t)||Ce(t))return t=Ji(t,e.mode,n,null),t.return=e,t;if(typeof t.then==`function`)return f(e,_o(t),n);if(t.$$typeof===C)return f(e,Ia(e,t),n);yo(e,t)}return null}function p(e,t,n,r){var i=t===null?null:t.key;if(typeof n==`string`&&n!==``||typeof n==`number`||typeof n==`bigint`)return i===null?c(e,t,``+n,r):null;if(typeof n==`object`&&n){switch(n.$$typeof){case oe:return n.key===i?l(e,t,n,r):null;case se:return n.key===i?u(e,t,n,r):null;case ge:return n=uo(n),p(e,t,n,r)}if(Ee(n)||Ce(n))return i===null?d(e,t,n,r,null):null;if(typeof n.then==`function`)return p(e,t,_o(n),r);if(n.$$typeof===C)return p(e,t,Ia(e,n),r);yo(e,n)}return null}function m(e,t,n,r,i){if(typeof r==`string`&&r!==``||typeof r==`number`||typeof r==`bigint`)return e=e.get(n)||null,c(t,e,``+r,i);if(typeof r==`object`&&r){switch(r.$$typeof){case oe:return e=e.get(r.key===null?n:r.key)||null,l(t,e,r,i);case se:return e=e.get(r.key===null?n:r.key)||null,u(t,e,r,i);case ge:return r=uo(r),m(e,t,n,r,i)}if(Ee(r)||Ce(r))return e=e.get(n)||null,d(t,e,r,i,null);if(typeof r.then==`function`)return m(e,t,n,_o(r),i);if(r.$$typeof===C)return m(e,t,n,Ia(t,r),i);yo(t,r)}return null}function h(i,a,s,c){for(var l=null,u=null,d=a,h=a=0,g=null;d!==null&&h<s.length;h++){d.index>h?(g=d,d=null):g=d.sibling;var _=p(i,d,s[h],c);if(_===null){d===null&&(d=g);break}e&&d&&_.alternate===null&&t(i,d),a=o(_,a,h),u===null?l=_:u.sibling=_,u=_,d=g}if(h===s.length)return n(i,d),A&&la(i,h),l;if(d===null){for(;h<s.length;h++)d=f(i,s[h],c),d!==null&&(a=o(d,a,h),u===null?l=d:u.sibling=d,u=d);return A&&la(i,h),l}for(d=r(d);h<s.length;h++)g=m(d,i,h,s[h],c),g!==null&&(e&&(_=g.alternate,_!==null&&d.delete(_.key===null?h:_.key)),a=o(g,a,h),u===null?l=g:u.sibling=g,u=g);return e&&d.forEach(function(e){return t(i,e)}),A&&la(i,h),l}function g(a,s,c,l){if(c==null)throw Error(i(151));for(var u=null,d=null,h=s,g=s=0,_=null,v=c.next();h!==null&&!v.done;g++,v=c.next()){h.index>g?(_=h,h=null):_=h.sibling;var y=p(a,h,v.value,l);if(y===null){h===null&&(h=_);break}e&&h&&y.alternate===null&&t(a,h),s=o(y,s,g),d===null?u=y:d.sibling=y,d=y,h=_}if(v.done)return n(a,h),A&&la(a,g),u;if(h===null){for(;!v.done;g++,v=c.next())v=f(a,v.value,l),v!==null&&(s=o(v,s,g),d===null?u=v:d.sibling=v,d=v);return A&&la(a,g),u}for(h=r(h);!v.done;g++,v=c.next())v=m(h,a,g,v.value,l),v!==null&&(e&&(_=v.alternate,_!==null&&h.delete(_.key===null?g:_.key)),s=o(v,s,g),d===null?u=v:d.sibling=v,d=v);return e&&h.forEach(function(e){return t(a,e)}),A&&la(a,g),u}function _(e,r,o,c){if(typeof o==`object`&&o&&o.type===ce&&o.key===null&&o.props.ref===void 0&&(o=o.props.children),typeof o==`object`&&o){switch(o.$$typeof){case oe:a:{for(var l=o.key;r!==null;){if(r.key===l){if(l=o.type,l===ce){if(r.tag===7){n(e,r.sibling),c=a(r,o.props.children),vo(c,o),c.return=e,e=c;break a}}else if(r.elementType===l||typeof l==`object`&&l&&l.$$typeof===ge&&uo(l)===r.type){n(e,r.sibling),c=a(r,o.props),vo(c,o),c.return=e,e=c;break a}n(e,r);break}t(e,r),r=r.sibling}o.type===ce?(c=Ji(o.props.children,e.mode,c,o.key),vo(c,o),c.return=e,e=c):(c=qi(o.type,o.key,o.props,null,e.mode,c),vo(c,o),c.return=e,e=c)}return s(e);case se:a:{for(l=o.key;r!==null;){if(r.key===l){if(r.tag===4&&r.stateNode.containerInfo===o.containerInfo&&r.stateNode.implementation===o.implementation){n(e,r.sibling),c=a(r,o.children||[]),c.return=e,e=c;break a}n(e,r);break}t(e,r),r=r.sibling}c=Zi(o,e.mode,c),c.return=e,e=c}return s(e);case ge:return o=uo(o),_(e,r,o,c)}if(Ee(o))return h(e,r,o,c);if(Ce(o)){if(l=Ce(o),typeof l!=`function`)throw Error(i(150));return o=l.call(o),g(e,r,o,c)}if(typeof o.then==`function`)return _(e,r,_o(o),c);if(o.$$typeof===C)return _(e,r,Ia(e,o),c);yo(e,o)}return typeof o==`string`&&o!==``||typeof o==`number`||typeof o==`bigint`?(o=``+o,r!==null&&r.tag===6?(n(e,r.sibling),c=a(r,o),c.return=e,e=c):(n(e,r),c=Yi(o,e.mode,c),c.return=e,e=c),s(e)):n(e,r)}return function(e,t,n,r){try{go=0;var i=_(e,t,n,r);return ho=null,i}catch(t){if(t===io||t===oo)throw t;var a=Ui(29,t,null,e.mode);return a.lanes=r,a.return=e,a}}}var xo=bo(!0),So=bo(!1),Co=!1;function wo(e){e.updateQueue={baseState:e.memoizedState,firstBaseUpdate:null,lastBaseUpdate:null,shared:{pending:null,lanes:0,hiddenCallbacks:null},callbacks:null}}function To(e,t){e=e.updateQueue,t.updateQueue===e&&(t.updateQueue={baseState:e.baseState,firstBaseUpdate:e.firstBaseUpdate,lastBaseUpdate:e.lastBaseUpdate,shared:e.shared,callbacks:null})}function Eo(e){return{lane:e,tag:0,payload:null,callback:null,next:null}}function Do(e,t,n){var r=e.updateQueue;if(r===null)return null;if(r=r.shared,W&2){var i=r.pending;return i===null?t.next=t:(t.next=i.next,i.next=t),r.pending=t,t=Bi(e),zi(e,null,n),t}return Ii(e,r,t,n),Bi(e)}function Oo(e,t,n){if(t=t.updateQueue,t!==null&&(t=t.shared,n&4194048)){var r=t.lanes;r&=e.pendingLanes,n|=r,t.lanes=n,Dt(e,n)}}function ko(e,t){var n=e.updateQueue,r=e.alternate;if(r!==null&&(r=r.updateQueue,n===r)){var i=null,a=null;if(n=n.firstBaseUpdate,n!==null){do{var o={lane:n.lane,tag:n.tag,payload:n.payload,callback:null,next:null};a===null?i=a=o:a=a.next=o,n=n.next}while(n!==null);a===null?i=a=t:a=a.next=t}else i=a=t;n={baseState:r.baseState,firstBaseUpdate:i,lastBaseUpdate:a,shared:r.shared,callbacks:r.callbacks},e.updateQueue=n}else e=n.lastBaseUpdate,e===null?n.firstBaseUpdate=t:e.next=t,n.lastBaseUpdate=t}var Ao=!1;function jo(){if(Ao){var e=Ya;if(e!==null)throw e}}function Mo(e,t,n,r){Ao=!1;var i=e.updateQueue;Co=!1;var a=i.firstBaseUpdate,o=i.lastBaseUpdate,s=i.shared.pending;if(s!==null){i.shared.pending=null;var c=s,l=c.next;c.next=null,o===null?a=l:o.next=l,o=c;var u=e.alternate;u!==null&&(u=u.updateQueue,s=u.lastBaseUpdate,s!==o&&(s===null?u.firstBaseUpdate=l:s.next=l,u.lastBaseUpdate=c))}if(a!==null){var d=i.baseState;o=0,u=l=c=null,s=a;do{var f=s.lane&-536870913,p=f!==s.lane;if(p?(q&f)===f:(r&f)===f){f!==0&&f===Ja&&(Ao=!0),u!==null&&(u=u.next={lane:0,tag:s.tag,payload:s.payload,callback:null,next:null});a:{var m=e,h=s;f=t;var g=n;switch(h.tag){case 1:if(m=h.payload,typeof m==`function`){d=m.call(g,d,f);break a}d=m;break a;case 3:m.flags=m.flags&-65537|128;case 0:if(m=h.payload,f=typeof m==`function`?m.call(g,d,f):m,f==null)break a;d=S({},d,f);break a;case 2:Co=!0}}f=s.callback,f!==null&&(e.flags|=64,p&&(e.flags|=8192),p=i.callbacks,p===null?i.callbacks=[f]:p.push(f))}else p={lane:f,tag:s.tag,payload:s.payload,callback:s.callback,next:null},u===null?(l=u=p,c=d):u=u.next=p,o|=f;if(s=s.next,s===null){if(s=i.shared.pending,s===null)break;p=s,s=p.next,p.next=null,i.lastBaseUpdate=p,i.shared.pending=null}}while(1);u===null&&(c=d),i.baseState=c,i.firstBaseUpdate=l,i.lastBaseUpdate=u,a===null&&(i.shared.lanes=0),sd|=o,e.lanes=o,e.memoizedState=d}}function No(e,t){if(typeof e!=`function`)throw Error(i(191,e));e.call(t)}function Po(e,t){var n=e.callbacks;if(n!==null)for(e.callbacks=null,e=0;e<n.length;e++)No(n[e],t)}var Fo=Ae(null),Io=Ae(0);function Lo(e,t){e=od,E(Io,e),E(Fo,t),od=e|t.baseLanes}function Ro(){E(Io,od),E(Fo,Fo.current)}function zo(){od=Io.current,je(Fo),je(Io)}var Bo=Ae(null),Vo=null;function Ho(e){var t=e.alternate;E(qo,qo.current&1),E(Bo,e),Vo===null&&(t===null||Fo.current!==null||t.memoizedState!==null)&&(Vo=e)}function Uo(e){E(qo,qo.current),E(Bo,e),Vo===null&&(Vo=e)}function Wo(e){e.tag===22?(E(qo,qo.current),E(Bo,e),Vo===null&&(Vo=e)):Go()}function Go(){E(qo,qo.current),E(Bo,Bo.current)}function Ko(e){je(Bo),Vo===e&&(Vo=null),je(qo)}var qo=Ae(0);function Jo(e,t){E(Bo,Bo.current),E(qo,t)}function Yo(e){je(qo),je(Bo),Vo===e&&(Vo=null)}function Xo(e){for(var t=e;t!==null;){if(t.tag===13){var n=t.memoizedState;if(n!==null&&(n=n.dehydrated,n===null||om(n)||sm(n)))return t}else if(t.tag===19&&t.memoizedProps.revealOrder!==`independent`){if(t.flags&128)return t}else if(t.child!==null){t.child.return=t,t=t.child;continue}if(t===e)break;for(;t.sibling===null;){if(t.return===null||t.return===e)return null;t=t.return}t.sibling.return=t.return,t=t.sibling}return null}var Zo=0,M=null,N=null,P=null,Qo=!1,$o=!1,es=!1,ts=0,ns=0,rs=null,is=0;function F(){throw Error(i(321))}function as(e,t){if(t===null)return!1;for(var n=0;n<t.length&&n<e.length;n++)if(!Qr(e[n],t[n]))return!1;return!0}function os(e,t,n,r,i,a){return Zo=a,M=t,t.memoizedState=null,t.updateQueue=null,t.lanes=0,w.H=e===null||e.memoizedState===null?Sc:Cc,es=!1,a=n(r,i),es=!1,$o&&(a=cs(t,n,r,i)),ss(e),a}function ss(e){w.H=xc;var t=N!==null&&N.next!==null;if(Zo=0,P=N=M=null,Qo=!1,ns=0,rs=null,t)throw Error(i(300));e===null||L||(e=e.dependencies,e!==null&&Na(e)&&(L=!0))}function cs(e,t,n,r){M=e;var a=0;do{if($o&&(rs=null),ns=0,$o=!1,25<=a)throw Error(i(301));if(a+=1,P=N=null,e.updateQueue!=null){var o=e.updateQueue;o.lastEffect=null,o.events=null,o.stores=null,o.memoCache!=null&&(o.memoCache.index=0)}w.H=wc,o=t(n,r)}while($o);return o}function ls(){var e=w.H,t=e.useState()[0];return t=typeof t.then==`function`?hs(t):t,e=e.useState()[0],(N===null?null:N.memoizedState)!==e&&(M.flags|=1024),t}function us(){var e=ts!==0;return ts=0,e}function ds(e,t,n){t.updateQueue=e.updateQueue,t.flags&=-2053,e.lanes&=~n}function fs(e){if(Qo){for(e=e.memoizedState;e!==null;){var t=e.queue;t!==null&&(t.pending=null),e=e.next}Qo=!1}Zo=0,P=N=M=null,$o=!1,ns=ts=0,rs=null}function ps(){var e={memoizedState:null,baseState:null,baseQueue:null,queue:null,next:null};return P===null?M.memoizedState=P=e:P=P.next=e,P}function I(){if(N===null){var e=M.alternate;e=e===null?null:e.memoizedState}else e=N.next;var t=P===null?M.memoizedState:P.next;if(t!==null)P=t,N=e;else{if(e===null)throw M.alternate===null?Error(i(467)):Error(i(310));N=e,e={memoizedState:N.memoizedState,baseState:N.baseState,baseQueue:N.baseQueue,queue:N.queue,next:null},P===null?M.memoizedState=P=e:P=P.next=e}return P}function ms(){return{lastEffect:null,events:null,stores:null,memoCache:null}}function hs(e){var t=ns;return ns+=1,rs===null&&(rs=[]),e=lo(rs,e,t),t=M,(P===null?t.memoizedState:P.next)===null&&(t=t.alternate,w.H=t===null||t.memoizedState===null?Sc:Cc),e}function gs(e){if(typeof e==`object`&&e){if(typeof e.then==`function`)return hs(e);if(e.$$typeof===xe)return;if(e.$$typeof===C)return Fa(e)}throw Error(i(438,String(e)))}function _s(e){var t=null,n=M.updateQueue;if(n!==null&&(t=n.memoCache),t==null){var r=M.alternate;r!==null&&(r=r.updateQueue,r!==null&&(r=r.memoCache,r!=null&&(t={data:r.data.map(function(e){return e.slice()}),index:0})))}if(t??={data:[],index:0},n===null&&(n=ms(),M.updateQueue=n),n.memoCache=t,n=t.data[t.index],n===void 0)for(n=t.data[t.index]=Array(e),r=0;r<e;r++)n[r]=ye;return t.index++,n}function vs(e,t){return typeof t==`function`?t(e):t}function ys(e){return bs(I(),N,e)}function bs(e,t,n){var r=e.queue;if(r===null)throw Error(i(311));r.lastRenderedReducer=n;var a=e.baseQueue,o=r.pending;if(o!==null){if(a!==null){var s=a.next;a.next=o.next,o.next=s}t.baseQueue=a=o,r.pending=null}if(o=e.baseState,a===null)e.memoizedState=o;else{t=a.next;var c=s=null,l=null,u=t,d=!1;do{var f=u.lane&-536870913;if(f===u.lane?(Zo&f)===f:(q&f)===f){var p=u.revertLane;if(p===0)l!==null&&(l=l.next={lane:0,revertLane:0,gesture:null,action:u.action,hasEagerState:u.hasEagerState,eagerState:u.eagerState,next:null}),f===Ja&&(d=!0);else if((Zo&p)===p){u=u.next,p===Ja&&(d=!0);continue}else f={lane:0,revertLane:u.revertLane,gesture:null,action:u.action,hasEagerState:u.hasEagerState,eagerState:u.eagerState,next:null},l===null?(c=l=f,s=o):l=l.next=f,M.lanes|=p,sd|=p;f=u.action,es&&n(o,f),o=u.hasEagerState?u.eagerState:n(o,f)}else p={lane:f,revertLane:u.revertLane,gesture:u.gesture,action:u.action,hasEagerState:u.hasEagerState,eagerState:u.eagerState,next:null},l===null?(c=l=p,s=o):l=l.next=p,M.lanes|=f,sd|=f;u=u.next}while(u!==null&&u!==t);if(l===null?s=o:l.next=c,!Qr(o,e.memoizedState)&&(L=!0,d&&(n=Ya,n!==null)))throw n;e.memoizedState=o,e.baseState=s,e.baseQueue=l,r.lastRenderedState=o}return a===null&&(r.lanes=0),[e.memoizedState,r.dispatch]}function xs(e){var t=I(),n=t.queue;if(n===null)throw Error(i(311));n.lastRenderedReducer=e;var r=n.dispatch,a=n.pending,o=t.memoizedState;if(a!==null){n.pending=null;var s=a=a.next;do o=e(o,s.action),s=s.next;while(s!==a);Qr(o,t.memoizedState)||(L=!0),t.memoizedState=o,t.baseQueue===null&&(t.baseState=o),n.lastRenderedState=o}return[o,r]}function Ss(e,t,n){var r=M,a=I(),o=A;if(o){if(n===void 0)throw Error(i(407));n=n()}else n=t();var s=!Qr((N||a).memoizedState,n);if(s&&(a.memoizedState=n,L=!0),a=a.queue,qs(Ts.bind(null,r,a,e),[e]),e=a.getSnapshot!==t||s||P!==null&&!!(P.memoizedState.tag&1),Hs(e?9:8,{destroy:void 0},ws.bind(null,r,a,n,t),null),e){if(r.flags|=2048,G===null)throw Error(i(349));o||Zo&127||Cs(r,t,n)}return n}function Cs(e,t,n){e.flags|=16384,e={getSnapshot:t,value:n},t=M.updateQueue,t===null?(t=ms(),M.updateQueue=t,t.stores=[e]):(n=t.stores,n===null?t.stores=[e]:n.push(e))}function ws(e,t,n,r){t.value=n,t.getSnapshot=r,Es(t)&&Ds(e)}function Ts(e,t,n){return n(function(){Es(t)&&Ds(e)})}function Es(e){var t=e.getSnapshot;e=e.value;try{var n=t();return!Qr(e,n)}catch{return!0}}function Ds(e){var t=Ri(e,2);t!==null&&Pd(t,e,2)}function Os(e){var t=ps();if(typeof e==`function`){var n=e;if(e=n(),es){lt(!0);try{n()}finally{lt(!1)}}}return t.memoizedState=t.baseState=e,t.queue={pending:null,lanes:0,dispatch:null,lastRenderedReducer:vs,lastRenderedState:e},t}function ks(e,t,n,r){return e.baseState=n,bs(e,N,typeof r==`function`?r:vs)}function As(e,t,n,r,a){if(vc(e))throw Error(i(485));if(e=t.action,e!==null){var o={payload:a,action:e,next:null,isTransition:!0,status:`pending`,value:null,reason:null,listeners:[],then:function(e){o.listeners.push(e)}};w.T===null?o.isTransition=!1:n(!0),r(o),n=t.pending,n===null?(o.next=t.pending=o,js(t,o)):(o.next=n.next,t.pending=n.next=o)}}function js(e,t){var n=t.action,r=t.payload,i=e.state;if(t.isTransition){var a=w.T,o={};o.types=a===null?null:a.types,w.T=o;try{var s=n(i,r),c=w.S;c!==null&&c(o,s),Ms(e,t,s)}catch(n){Ps(e,t,n)}finally{a!==null&&o.types!==null&&(a.types=o.types),w.T=a}}else try{a=n(i,r),Ms(e,t,a)}catch(n){Ps(e,t,n)}}function Ms(e,t,n){typeof n==`object`&&n&&typeof n.then==`function`?n.then(function(n){Ns(e,t,n)},function(n){return Ps(e,t,n)}):Ns(e,t,n)}function Ns(e,t,n){t.status=`fulfilled`,t.value=n,Fs(t),e.state=n,t=e.pending,t!==null&&(n=t.next,n===t?e.pending=null:(n=n.next,t.next=n,js(e,n)))}function Ps(e,t,n){var r=e.pending;if(e.pending=null,r!==null){r=r.next;do t.status=`rejected`,t.reason=n,Fs(t),t=t.next;while(t!==r)}e.action=null}function Fs(e){e=e.listeners;for(var t=0;t<e.length;t++)(0,e[t])()}function Is(e,t){return t}function Ls(e,t){if(A){var n=G.formState;if(n!==null){a:{var r=M;if(A){if(k){b:{for(var i=k,a=ga;i.nodeType!==8;)if(!a||(i=lm(i.nextSibling),i===null)){i=null;break b}a=i.data,i=a===`F!`||a===`F`?i:null}if(i){k=lm(i.nextSibling),r=i.data===`F!`;break a}}va(r)}r=!1}r&&(t=n[0])}}return n=ps(),n.memoizedState=n.baseState=t,r={pending:null,lanes:0,dispatch:null,lastRenderedReducer:Is,lastRenderedState:t},n.queue=r,n=hc.bind(null,M,r),r.dispatch=n,r=Os(!1),a=_c.bind(null,M,!1,r.queue),r=ps(),i={state:t,dispatch:null,action:e,pending:null},r.queue=i,n=As.bind(null,M,i,a,n),i.dispatch=n,r.memoizedState=e,[t,n,!1]}function Rs(e){return zs(I(),N,e)}function zs(e,t,n){if(t=bs(e,t,Is)[0],e=ys(vs)[0],typeof t==`object`&&t&&typeof t.then==`function`)try{var r=hs(t)}catch(e){throw e===io?oo:e}else r=t;t=I();var i=t.queue,a=i.dispatch;return n!==t.memoizedState&&(M.flags|=2048,Hs(9,{destroy:void 0},Bs.bind(null,i,n),null)),[r,a,e]}function Bs(e,t){e.action=t}function Vs(e){var t=I(),n=N;if(n!==null)return zs(t,n,e);I(),t=t.memoizedState,n=I();var r=n.queue.dispatch;return n.memoizedState=e,[t,r,!1]}function Hs(e,t,n,r){return e={tag:e,create:n,deps:r,inst:t,next:null},t=M.updateQueue,t===null&&(t=ms(),M.updateQueue=t),n=t.lastEffect,n===null?t.lastEffect=e.next=e:(r=n.next,n.next=e,e.next=r,t.lastEffect=e),e}function Us(){return I().memoizedState}function Ws(e,t,n,r){var i=ps();M.flags|=e,i.memoizedState=Hs(1|t,{destroy:void 0},n,r===void 0?null:r)}function Gs(e,t,n,r){var i=I();r=r===void 0?null:r;var a=i.memoizedState.inst;N!==null&&r!==null&&as(r,N.memoizedState.deps)?i.memoizedState=Hs(t,a,n,r):(M.flags|=e,i.memoizedState=Hs(1|t,a,n,r))}function Ks(e,t){Ws(8390656,8,e,t)}function qs(e,t){Gs(2048,8,e,t)}function Js(e){M.flags|=4;var t=M.updateQueue;if(t===null)t=ms(),M.updateQueue=t,t.events=[e];else{var n=t.events;n===null?t.events=[e]:n.push(e)}}function Ys(e){var t=I().memoizedState;return Js({ref:t,nextImpl:e}),function(){if(W&2)throw Error(i(440));return t.impl.apply(void 0,arguments)}}function Xs(e,t){return Gs(4,2,e,t)}function Zs(e,t){return Gs(4,4,e,t)}function Qs(e,t){if(typeof t==`function`){e=e();var n=t(e);return function(){typeof n==`function`?n():t(null)}}if(t!=null)return e=e(),t.current=e,function(){t.current=null}}function $s(e,t,n){n=n==null?null:n.concat([e]),Gs(4,4,Qs.bind(null,t,e),n)}function ec(){}function tc(e,t){var n=I();t=t===void 0?null:t;var r=n.memoizedState;return t!==null&&as(t,r[1])?r[0]:(n.memoizedState=[e,t],e)}function nc(e,t){var n=I();t=t===void 0?null:t;var r=n.memoizedState;if(t!==null&&as(t,r[1]))return r[0];if(r=e(),es){lt(!0);try{e()}finally{lt(!1)}}return n.memoizedState=[r,t],r}function rc(e,t,n){return n===void 0||Zo&1073741824&&!(q&261930)?e.memoizedState=t:(e.memoizedState=n,e=Md(),M.lanes|=e,sd|=e,n)}function ic(e,t,n,r){return Qr(n,t)?n:Fo.current===null?!(Zo&106)||Zo&1073741824&&!(q&261930)?(L=!0,e.memoizedState=n):(e=Md(),M.lanes|=e,sd|=e,t):(e=rc(e,n,r),Qr(e,t)||(L=!0),e)}function ac(e,t,n,r,i){var a=T.p;T.p=a!==0&&8>a?a:8;var o=w.T,s={};s.types=o===null?null:o.types,w.T=s,_c(e,!1,t,n);try{var c=i(),l=w.S;l!==null&&l(s,c),typeof c==`object`&&c&&typeof c.then==`function`?gc(e,t,Qa(c,r),jd(e)):gc(e,t,r,jd(e))}catch(n){gc(e,t,{then:function(){},status:`rejected`,reason:n},jd())}finally{T.p=a,o!==null&&s.types!==null&&(o.types=s.types),w.T=o}}function oc(){}function sc(e,t,n,r){if(e.tag!==5)throw Error(i(476));var a=cc(e).queue;ac(e,a,t,De,n===null?oc:function(){return lc(e),n(r)})}function cc(e){var t=e.memoizedState;if(t!==null)return t;t={memoizedState:De,baseState:De,baseQueue:null,queue:{pending:null,lanes:0,dispatch:null,lastRenderedReducer:vs,lastRenderedState:De},next:null};var n={};return t.next={memoizedState:n,baseState:n,baseQueue:null,queue:{pending:null,lanes:0,dispatch:null,lastRenderedReducer:vs,lastRenderedState:n},next:null},e.memoizedState=t,e=e.alternate,e!==null&&(e.memoizedState=t),t}function lc(e){var t=cc(e);t.next===null&&(t=e.alternate.memoizedState),gc(e,t.next.queue,{},jd())}function uc(){return Fa(sh)}function dc(){return I().memoizedState}function fc(){return I().memoizedState}function pc(e){for(var t=e.return;t!==null;){switch(t.tag){case 24:case 3:var n=jd();e=Eo(n);var r=Do(t,e,n);r!==null&&(Pd(r,t,n),Oo(r,t,n)),t={cache:Va()},e.payload=t;return}t=t.return}}function mc(e,t,n){var r=jd();n={lane:r,revertLane:0,gesture:null,action:n,hasEagerState:!1,eagerState:null,next:null},vc(e)?yc(t,n):(n=Li(e,t,n,r),n!==null&&(Pd(n,e,r),bc(n,t,r)))}function hc(e,t,n){gc(e,t,n,jd())}function gc(e,t,n,r){var i={lane:r,revertLane:0,gesture:null,action:n,hasEagerState:!1,eagerState:null,next:null};if(vc(e))yc(t,i);else{var a=e.alternate;if(e.lanes===0&&(a===null||a.lanes===0)&&(a=t.lastRenderedReducer,a!==null))try{var o=t.lastRenderedState,s=a(o,n);if(i.hasEagerState=!0,i.eagerState=s,Qr(s,o))return Ii(e,t,i,0),G===null&&Fi(),!1}catch{}if(n=Li(e,t,i,r),n!==null)return Pd(n,e,r),bc(n,t,r),!0}return!1}function _c(e,t,n,r){if(r={lane:2,revertLane:Pf(),gesture:null,action:r,hasEagerState:!1,eagerState:null,next:null},vc(e)){if(t)throw Error(i(479))}else t=Li(e,n,r,2),t!==null&&Pd(t,e,2)}function vc(e){var t=e.alternate;return e===M||t!==null&&t===M}function yc(e,t){$o=Qo=!0;var n=e.pending;n===null?t.next=t:(t.next=n.next,n.next=t),e.pending=t}function bc(e,t,n){if(n&4194048){var r=t.lanes;r&=e.pendingLanes,n|=r,t.lanes=n,Dt(e,n)}}var xc={readContext:Fa,use:gs,useCallback:F,useContext:F,useEffect:F,useImperativeHandle:F,useLayoutEffect:F,useInsertionEffect:F,useMemo:F,useReducer:F,useRef:F,useState:F,useDebugValue:F,useDeferredValue:F,useTransition:F,useSyncExternalStore:F,useId:F,useHostTransitionStatus:F,useFormState:F,useActionState:F,useOptimistic:F,useMemoCache:F,useCacheRefresh:F,useEffectEvent:F},Sc={readContext:Fa,use:gs,useCallback:function(e,t){return ps().memoizedState=[e,t===void 0?null:t],e},useContext:Fa,useEffect:Ks,useImperativeHandle:function(e,t,n){n=n==null?null:n.concat([e]),Ws(4194308,4,Qs.bind(null,t,e),n)},useLayoutEffect:function(e,t){return Ws(4194308,4,e,t)},useInsertionEffect:function(e,t){Ws(4,2,e,t)},useMemo:function(e,t){var n=ps();t=t===void 0?null:t;var r=e();if(es){lt(!0);try{e()}finally{lt(!1)}}return n.memoizedState=[r,t],r},useReducer:function(e,t,n){var r=ps();if(n!==void 0){var i=n(t);if(es){lt(!0);try{n(t)}finally{lt(!1)}}}else i=t;return r.memoizedState=r.baseState=i,e={pending:null,lanes:0,dispatch:null,lastRenderedReducer:e,lastRenderedState:i},r.queue=e,e=e.dispatch=mc.bind(null,M,e),[r.memoizedState,e]},useRef:function(e){var t=ps();return e={current:e},t.memoizedState=e},useState:function(e){e=Os(e);var t=e.queue,n=hc.bind(null,M,t);return t.dispatch=n,[e.memoizedState,n]},useDebugValue:ec,useDeferredValue:function(e,t){return rc(ps(),e,t)},useTransition:function(){var e=Os(!1);return e=ac.bind(null,M,e.queue,!0,!1),ps().memoizedState=e,[!1,e]},useSyncExternalStore:function(e,t,n){var r=M,a=ps();if(A){if(n===void 0)throw Error(i(407));n=n()}else{if(n=t(),G===null)throw Error(i(349));q&127||Cs(r,t,n)}a.memoizedState=n;var o={value:n,getSnapshot:t};return a.queue=o,Ks(Ts.bind(null,r,o,e),[e]),r.flags|=2048,Hs(9,{destroy:void 0},ws.bind(null,r,o,n,t),null),n},useId:function(){var e=ps(),t=G.identifierPrefix;if(A){var n=ca,r=sa;n=(r&~(1<<32-ut(r)-1)).toString(32)+n,t=`_`+t+`R_`+n,n=ts++,0<n&&(t+=`H`+n.toString(32)),t+=`_`}else n=is++,t=`_`+t+`r_`+n.toString(32)+`_`;return e.memoizedState=t},useHostTransitionStatus:uc,useFormState:Ls,useActionState:Ls,useOptimistic:function(e){var t=ps();t.memoizedState=t.baseState=e;var n={pending:null,lanes:0,dispatch:null,lastRenderedReducer:null,lastRenderedState:null};return t.queue=n,t=_c.bind(null,M,!0,n),n.dispatch=t,[e,t]},useMemoCache:_s,useCacheRefresh:function(){return ps().memoizedState=pc.bind(null,M)},useEffectEvent:function(e){var t=ps(),n={impl:e};return t.memoizedState=n,function(){if(W&2)throw Error(i(440));return n.impl.apply(void 0,arguments)}}},Cc={readContext:Fa,use:gs,useCallback:tc,useContext:Fa,useEffect:qs,useImperativeHandle:$s,useInsertionEffect:Xs,useLayoutEffect:Zs,useMemo:nc,useReducer:ys,useRef:Us,useState:function(){return ys(vs)},useDebugValue:ec,useDeferredValue:function(e,t){return ic(I(),N.memoizedState,e,t)},useTransition:function(){var e=ys(vs)[0],t=I().memoizedState;return[typeof e==`boolean`?e:hs(e),t]},useSyncExternalStore:Ss,useId:dc,useHostTransitionStatus:uc,useFormState:Rs,useActionState:Rs,useOptimistic:function(e,t){return ks(I(),N,e,t)},useMemoCache:_s,useCacheRefresh:fc,useEffectEvent:Ys},wc={readContext:Fa,use:gs,useCallback:tc,useContext:Fa,useEffect:qs,useImperativeHandle:$s,useInsertionEffect:Xs,useLayoutEffect:Zs,useMemo:nc,useReducer:xs,useRef:Us,useState:function(){return xs(vs)},useDebugValue:ec,useDeferredValue:function(e,t){var n=I();return N===null?rc(n,e,t):ic(n,N.memoizedState,e,t)},useTransition:function(){var e=xs(vs)[0],t=I().memoizedState;return[typeof e==`boolean`?e:hs(e),t]},useSyncExternalStore:Ss,useId:dc,useHostTransitionStatus:uc,useFormState:Vs,useActionState:Vs,useOptimistic:function(e,t){var n=I();return N===null?(n.baseState=e,[e,n.queue.dispatch]):ks(n,N,e,t)},useMemoCache:_s,useCacheRefresh:fc,useEffectEvent:Ys};function Tc(e,t,n,r){t=e.memoizedState,n=n(r,t),n=n==null?t:S({},t,n),e.memoizedState=n,e.lanes===0&&(e.updateQueue.baseState=n)}var Ec={enqueueSetState:function(e,t,n){e=e._reactInternals;var r=jd(),i=Eo(r);i.payload=t,n!=null&&(i.callback=n),t=Do(e,i,r),t!==null&&(Pd(t,e,r),Oo(t,e,r))},enqueueReplaceState:function(e,t,n){e=e._reactInternals;var r=jd(),i=Eo(r);i.tag=1,i.payload=t,n!=null&&(i.callback=n),t=Do(e,i,r),t!==null&&(Pd(t,e,r),Oo(t,e,r))},enqueueForceUpdate:function(e,t){e=e._reactInternals;var n=jd(),r=Eo(n);r.tag=2,t!=null&&(r.callback=t),t=Do(e,r,n),t!==null&&(Pd(t,e,n),Oo(t,e,n))}};function Dc(e,t,n,r,i,a,o){return e=e.stateNode,typeof e.shouldComponentUpdate==`function`?e.shouldComponentUpdate(r,a,o):t.prototype&&t.prototype.isPureReactComponent?!$r(n,r)||!$r(i,a):!0}function Oc(e,t,n,r){e=t.state,typeof t.componentWillReceiveProps==`function`&&t.componentWillReceiveProps(n,r),typeof t.UNSAFE_componentWillReceiveProps==`function`&&t.UNSAFE_componentWillReceiveProps(n,r),t.state!==e&&Ec.enqueueReplaceState(t,t.state,null)}function kc(e,t){var n=t;if(`ref`in t)for(var r in n={},t)r!==`ref`&&(n[r]=t[r]);if(e=e.defaultProps)for(var i in n===t&&(n=S({},n)),e)n[i]===void 0&&(n[i]=e[i]);return n}function Ac(e){ji(e)}function jc(e){console.error(e)}function Mc(e){ji(e)}function Nc(e,t){try{var n=e.onUncaughtError;n(t.value,{componentStack:t.stack})}catch(e){setTimeout(function(){throw e})}}function Pc(e,t,n){try{var r=e.onCaughtError;r(n.value,{componentStack:n.stack,errorBoundary:t.tag===1?t.stateNode:null})}catch(e){setTimeout(function(){throw e})}}function Fc(e,t,n){return n=Eo(n),n.tag=3,n.payload={element:null},n.callback=function(){Nc(e,t)},n}function Ic(e){return e=Eo(e),e.tag=3,e}function Lc(e,t,n,r){var i=n.type.getDerivedStateFromError;if(typeof i==`function`){var a=r.value;e.payload=function(){return i(a)},e.callback=function(){Pc(t,n,r)}}var o=n.stateNode;o!==null&&typeof o.componentDidCatch==`function`&&(e.callback=function(){Pc(t,n,r),typeof i!=`function`&&(yd===null?yd=new Set([this]):yd.add(this));var e=r.stack;this.componentDidCatch(r.value,{componentStack:e===null?``:e})})}function Rc(e,t,n,r,a){if(n.flags|=32768,typeof r==`object`&&r&&typeof r.then==`function`){if(t=n.alternate,t!==null&&Ma(t,n,a,!0),n=Bo.current,n!==null){switch(n.tag){case 31:case 13:case 19:return Vo===null?Kd():n.alternate===null&&Y===0&&(Y=3),n.flags&=-257,n.flags|=65536,n.lanes=a,r===so?n.flags|=16384:(t=n.updateQueue,t===null?n.updateQueue=new Set([r]):t.add(r),mf(e,r,a)),!1;case 22:return n.flags|=65536,r===so?n.flags|=16384:(t=n.updateQueue,t===null?(t={transitions:null,markerInstances:null,retryQueue:new Set([r])},n.updateQueue=t):(n=t.retryQueue,n===null?t.retryQueue=new Set([r]):n.add(r)),mf(e,r,a)),!1}throw Error(i(435,n.tag))}return mf(e,r,a),Kd(),!1}if(A)return t=Bo.current,t===null?(r!==_a&&(t=Error(i(423),{cause:r}),wa($i(t,n))),e=e.current.alternate,e.flags|=65536,a&=-a,e.lanes|=a,r=$i(r,n),a=Fc(e.stateNode,r,a),ko(e,a),Y!==4&&(Y=2)):(!(t.flags&65536)&&(t.flags|=256),t.flags|=65536,t.lanes=a,r!==_a&&(e=Error(i(422),{cause:r}),wa($i(e,n)))),!1;var o=Error(i(520),{cause:r});if(o=$i(o,n),fd===null?fd=[o]:fd.push(o),Y!==4&&(Y=2),t===null)return!0;r=$i(r,n),n=t;do{switch(n.tag){case 3:return n.flags|=65536,e=a&-a,n.lanes|=e,e=Fc(n.stateNode,r,e),ko(n,e),!1;case 1:if(t=n.type,o=n.stateNode,!(n.flags&128)&&(typeof t.getDerivedStateFromError==`function`||o!==null&&typeof o.componentDidCatch==`function`&&(yd===null||!yd.has(o))))return n.flags|=65536,a&=-a,n.lanes|=a,a=Ic(a),Lc(a,e,n,r),ko(n,a),!1;break;case 22:if(n.memoizedState!==null)return n.flags|=65536,!1}n=n.return}while(n!==null);return!1}var zc=Error(i(461)),L=!1;function R(e,t,n,r){t.child=e===null?So(t,null,n,r):xo(t,e.child,n,r)}function Bc(e,t,n,r,i){n=n.render;var a=t.ref;if(`ref`in r){var o={};for(var s in r)s!==`ref`&&(o[s]=r[s])}else o=r;return Pa(t),r=os(e,t,n,o,a,i),s=us(),e!==null&&!L?(ds(e,t,i),ml(e,t,i)):(A&&s&&da(t),t.flags|=1,R(e,t,r,i),t.child)}function Vc(e,t,n,r,i){if(e===null){var a=n.type;return typeof a==`function`&&!Wi(a)&&a.defaultProps===void 0&&n.compare===null?(t.tag=15,t.type=a,Hc(e,t,a,r,i)):(e=qi(n.type,null,r,t,t.mode,i),e.ref=t.ref,e.return=t,t.child=e)}if(a=e.child,!hl(e,i)){var o=a.memoizedProps;if(n=n.compare,n=n===null?$r:n,n(o,r)&&e.ref===t.ref)return ml(e,t,i)}return t.flags|=1,e=Gi(a,r),e.ref=t.ref,e.return=t,t.child=e}function Hc(e,t,n,r,i){if(e!==null){var a=e.memoizedProps;if($r(a,r)&&e.ref===t.ref){if(L=!1,t.pendingProps=r=a,hl(e,i))e.flags&131072&&(L=!0);else return t.lanes=e.lanes,ml(e,t,i)}}return Xc(e,t,n,r,i)}function Uc(e,t,n,r){var i=r.children,a=e===null?null:e.memoizedState;if(e===null&&t.stateNode===null&&(t.stateNode={_visibility:1,_pendingMarkers:null,_retryCache:null,_transitions:null}),r.mode===`hidden`){if(t.flags&128){if(a=a===null?n:a.baseLanes|n,e!==null){for(r=t.child=e.child,i=0;r!==null;)i=i|r.lanes|r.childLanes,r=r.sibling;r=i&~a}else r=0,t.child=null;return Gc(e,t,a,n,r)}if(n&536870912)t.memoizedState={baseLanes:0,cachePool:null},e!==null&&no(t,a===null?null:a.cachePool),a===null?Ro():Lo(t,a),Wo(t);else return r=t.lanes=536870912,Gc(e,t,a===null?n:a.baseLanes|n,n,r)}else a===null?(e!==null&&no(t,null),Ro(),Go()):(no(t,a.cachePool),Lo(t,a),Go(),t.memoizedState=null);return R(e,t,i,n),t.child}function Wc(e,t){return e!==null&&e.tag===22||t.stateNode!==null||(t.stateNode={_visibility:1,_pendingMarkers:null,_retryCache:null,_transitions:null}),t.sibling}function Gc(e,t,n,r,i){var a=to();return a=a===null?null:{parent:j._currentValue,pool:a},t.memoizedState={baseLanes:n,cachePool:a},e!==null&&no(t,null),Ro(),Wo(t),e!==null&&Ma(e,t,r,!0),t.childLanes=i,null}function Kc(e,t){return t=al({mode:t.mode,children:t.children},e.mode),t.ref=e.ref,e.child=t,t.return=e,t}function qc(e,t,n){return xo(t,e.child,null,n),e=Kc(t,t.pendingProps),e.flags|=2,Ko(t),t.memoizedState=null,e}function Jc(e,t,n){var r=t.pendingProps,a=!!(t.flags&128);if(t.flags&=-129,e===null){if(A){if(r.mode===`hidden`)return e=Kc(t,r),t.lanes=536870912,e.memoizedState={baseLanes:0,cachePool:null},Wc(null,e);if(Uo(t),(e=k)?(e=am(e,ga),e=e!==null&&e.data===`&`?e:null,e!==null&&(t.memoizedState={dehydrated:e,treeContext:oa===null?null:{id:sa,overflow:ca},retryLane:536870912,hydrationErrors:null},n=Xi(e),n.return=t,t.child=n,ma=t,k=null)):e=null,e===null)throw va(t);return t.lanes=536870912,null}return Kc(t,r)}var o=e.memoizedState;if(o!==null){var s=o.dehydrated;if(Uo(t),a){if(t.flags&256)t.flags&=-257,t=qc(e,t,n);else if(t.memoizedState!==null)t.child=e.child,t.flags|=128,t=null;else throw Error(i(558))}else if(L||Ma(e,t,n,!1),a=(n&e.childLanes)!==0,L||a){if(Fo.current===null){if(r=G,r!==null&&(s=Ot(r,n),s!==0&&s!==o.retryLane))throw o.retryLane=s,Ri(e,s),Pd(r,e,s),zc;Kd()}t=qc(e,t,n)}else e=o.treeContext,k=lm(s.nextSibling),ma=t,A=!0,ha=null,ga=!1,e!==null&&pa(t,e),t=Kc(t,r),t.flags|=134221824;return t}return e=Gi(e.child,{mode:r.mode,children:r.children}),e.ref=t.ref,t.child=e,e.return=t,e}function Yc(e,t){var n=t.ref;if(n===null)e!==null&&e.ref!==null&&(t.flags|=4194816);else{if(typeof n!=`function`&&typeof n!=`object`)throw Error(i(284));(e===null||e.ref!==n)&&(t.flags|=4194816)}}function Xc(e,t,n,r,i){return Pa(t),n=os(e,t,n,r,void 0,i),r=us(),e!==null&&!L?(ds(e,t,i),ml(e,t,i)):(A&&r&&da(t),t.flags|=1,R(e,t,n,i),t.child)}function Zc(e,t,n,r,i,a){return Pa(t),t.updateQueue=null,n=cs(t,r,n,i),ss(e),r=us(),e!==null&&!L?(ds(e,t,a),ml(e,t,a)):(A&&r&&da(t),t.flags|=1,R(e,t,n,a),t.child)}function Qc(e,t,n,r,i){if(Pa(t),t.stateNode===null){var a=Vi,o=n.contextType;typeof o==`object`&&o&&(a=Fa(o)),a=new n(r,a),t.memoizedState=a.state!==null&&a.state!==void 0?a.state:null,a.updater=Ec,t.stateNode=a,a._reactInternals=t,a=t.stateNode,a.props=r,a.state=t.memoizedState,a.refs={},wo(t),o=n.contextType,a.context=typeof o==`object`&&o?Fa(o):Vi,a.state=t.memoizedState,o=n.getDerivedStateFromProps,typeof o==`function`&&(Tc(t,n,o,r),a.state=t.memoizedState),typeof n.getDerivedStateFromProps==`function`||typeof a.getSnapshotBeforeUpdate==`function`||typeof a.UNSAFE_componentWillMount!=`function`&&typeof a.componentWillMount!=`function`||(o=a.state,typeof a.componentWillMount==`function`&&a.componentWillMount(),typeof a.UNSAFE_componentWillMount==`function`&&a.UNSAFE_componentWillMount(),o!==a.state&&Ec.enqueueReplaceState(a,a.state,null),Mo(t,r,a,i),jo(),a.state=t.memoizedState),typeof a.componentDidMount==`function`&&(t.flags|=4194308),r=!0}else if(e===null){a=t.stateNode;var s=t.memoizedProps,c=kc(n,s);a.props=c;var l=a.context,u=n.contextType;o=Vi,typeof u==`object`&&u&&(o=Fa(u));var d=n.getDerivedStateFromProps;u=typeof d==`function`||typeof a.getSnapshotBeforeUpdate==`function`,s=t.pendingProps!==s,u||typeof a.UNSAFE_componentWillReceiveProps!=`function`&&typeof a.componentWillReceiveProps!=`function`||(s||l!==o)&&Oc(t,a,r,o),Co=!1;var f=t.memoizedState;a.state=f,Mo(t,r,a,i),jo(),l=t.memoizedState,s||f!==l||Co?(typeof d==`function`&&(Tc(t,n,d,r),l=t.memoizedState),(c=Co||Dc(t,n,c,r,f,l,o))?(u||typeof a.UNSAFE_componentWillMount!=`function`&&typeof a.componentWillMount!=`function`||(typeof a.componentWillMount==`function`&&a.componentWillMount(),typeof a.UNSAFE_componentWillMount==`function`&&a.UNSAFE_componentWillMount()),typeof a.componentDidMount==`function`&&(t.flags|=4194308)):(typeof a.componentDidMount==`function`&&(t.flags|=4194308),t.memoizedProps=r,t.memoizedState=l),a.props=r,a.state=l,a.context=o,r=c):(typeof a.componentDidMount==`function`&&(t.flags|=4194308),r=!1)}else{a=t.stateNode,To(e,t),o=t.memoizedProps,u=kc(n,o),a.props=u,d=t.pendingProps,f=a.context,l=n.contextType,c=Vi,typeof l==`object`&&l&&(c=Fa(l)),s=n.getDerivedStateFromProps,(l=typeof s==`function`||typeof a.getSnapshotBeforeUpdate==`function`)||typeof a.UNSAFE_componentWillReceiveProps!=`function`&&typeof a.componentWillReceiveProps!=`function`||(o!==d||f!==c)&&Oc(t,a,r,c),Co=!1,f=t.memoizedState,a.state=f,Mo(t,r,a,i),jo();var p=t.memoizedState;o!==d||f!==p||Co||e!==null&&e.dependencies!==null&&Na(e.dependencies)?(typeof s==`function`&&(Tc(t,n,s,r),p=t.memoizedState),(u=Co||Dc(t,n,u,r,f,p,c)||e!==null&&e.dependencies!==null&&Na(e.dependencies))?(l||typeof a.UNSAFE_componentWillUpdate!=`function`&&typeof a.componentWillUpdate!=`function`||(typeof a.componentWillUpdate==`function`&&a.componentWillUpdate(r,p,c),typeof a.UNSAFE_componentWillUpdate==`function`&&a.UNSAFE_componentWillUpdate(r,p,c)),typeof a.componentDidUpdate==`function`&&(t.flags|=4),typeof a.getSnapshotBeforeUpdate==`function`&&(t.flags|=1024)):(typeof a.componentDidUpdate!=`function`||o===e.memoizedProps&&f===e.memoizedState||(t.flags|=4),typeof a.getSnapshotBeforeUpdate!=`function`||o===e.memoizedProps&&f===e.memoizedState||(t.flags|=1024),t.memoizedProps=r,t.memoizedState=p),a.props=r,a.state=p,a.context=c,r=u):(typeof a.componentDidUpdate!=`function`||o===e.memoizedProps&&f===e.memoizedState||(t.flags|=4),typeof a.getSnapshotBeforeUpdate!=`function`||o===e.memoizedProps&&f===e.memoizedState||(t.flags|=1024),r=!1)}return a=r,Yc(e,t),r=!!(t.flags&128),a||r?(a=t.stateNode,n=r&&typeof n.getDerivedStateFromError!=`function`?null:a.render(),t.flags|=1,e!==null&&r?(t.child=xo(t,e.child,null,i),t.child=xo(t,null,n,i)):R(e,t,n,i),t.memoizedState=a.state,e=t.child):e=ml(e,t,i),e}function $c(e,t,n,r){return Sa(),t.flags|=256,R(e,t,n,r),t.child}var el={dehydrated:null,treeContext:null,retryLane:0,hydrationErrors:null};function tl(e){return{baseLanes:e,cachePool:ro()}}function nl(e,t,n){return e=e===null?0:e.childLanes&~n,t&&(e|=ud),e}function rl(e,t,n){var r=t.pendingProps,i=!1,a=!!(t.flags&128),o;if((o=a)||(o=e!==null&&e.memoizedState===null?!1:!!(qo.current&2)),o&&(i=!0,t.flags&=-129),o=!!(t.flags&32),t.flags&=-33,e===null){if(A){if(i?Ho(t):Go(),(e=k)?(e=am(e,ga),e=e!==null&&e.data!==`&`?e:null,e!==null&&(t.memoizedState={dehydrated:e,treeContext:oa===null?null:{id:sa,overflow:ca},retryLane:536870912,hydrationErrors:null},n=Xi(e),n.return=t,t.child=n,ma=t,k=null)):e=null,e===null)throw va(t);return t.lanes=sm(e)?32:536870912,null}return a=r.children,r=r.fallback,i?(Go(),i=t.mode,a=al({mode:`hidden`,children:a},i),r=Ji(r,i,n,null),a.return=t,r.return=t,a.sibling=r,t.child=a,r=t.child,r.memoizedState=tl(n),r.childLanes=nl(e,o,n),t.memoizedState=el,Wc(null,r)):(Ho(t),il(t,a))}var s=e.memoizedState;if(s!==null){var c=s.dehydrated;if(c!==null)return sl(e,t,a,o,r,c,s,n)}return i?(Go(),i=r.fallback,a=t.mode,s=e.child,c=s.sibling,r=Gi(s,{mode:`hidden`,children:r.children}),r.subtreeFlags=s.subtreeFlags&1206910976,c===null?(i=Ji(i,a,n,null),i.flags|=2):i=Gi(c,i),i.return=t,r.return=t,r.sibling=i,t.child=r,Wc(null,r),r=t.child,i=e.child.memoizedState,i===null?i=tl(n):(a=i.cachePool,a===null?a=ro():(s=j._currentValue,a=a.parent===s?a:{parent:s,pool:s}),i={baseLanes:i.baseLanes|n,cachePool:a}),r.memoizedState=i,r.childLanes=nl(e,o,n),t.memoizedState=el,Wc(e.child,r)):(Ho(t),n=e.child,e=n.sibling,n=Gi(n,{mode:`visible`,children:r.children}),n.return=t,n.sibling=null,e!==null&&(o=t.deletions,o===null?(t.deletions=[e],t.flags|=16):o.push(e)),t.child=n,t.memoizedState=null,n)}function il(e,t){return t=al({mode:`visible`,children:t},e.mode),t.return=e,e.child=t}function al(e,t){return e=Ui(22,e,null,t),e.lanes=0,e}function ol(e,t,n){return xo(t,e.child,null,n),e=il(t,t.pendingProps.children),e.flags|=2,t.memoizedState=null,e}function sl(e,t,n,r,a,o,s,c){if(n)return t.flags&256?(Ho(t),t.flags&=-257,ol(e,t,c)):t.memoizedState===null?(Go(),o=a.fallback,s=t.mode,a=al({mode:`visible`,children:a.children},s),o=Ji(o,s,c,null),o.flags|=2,a.return=t,o.return=t,a.sibling=o,t.child=a,xo(t,e.child,null,c),a=t.child,a.memoizedState=tl(c),a.childLanes=nl(e,r,c),t.memoizedState=el,Wc(null,a)):(Go(),t.child=e.child,t.flags|=128,null);if(Ho(t),sm(o)){if(r=o.nextSibling&&o.nextSibling.dataset,r)var l=r.dgst;return r=l,r!==``&&(a=Error(i(419)),a.stack=``,a.digest=r,wa({value:a,source:null,stack:null})),ol(e,t,c)}if(L||Ma(e,t,c,!1),r=(c&e.childLanes)!==0,L||r){if(Fo.current!==null)return ol(e,t,c);if(r=G,r!==null&&(a=Ot(r,c),a!==0&&a!==s.retryLane))throw s.retryLane=a,Ri(e,a),Pd(r,e,a),zc;return om(o)||Kd(),ol(e,t,c)}return om(o)?(t.flags|=192,t.child=e.child,null):(e=s.treeContext,k=lm(o.nextSibling),ma=t,A=!0,ha=null,ga=!1,e!==null&&pa(t,e),t=il(t,a.children),t.flags|=134221824,t)}function cl(e,t,n){e.lanes|=t;var r=e.alternate;r!==null&&(r.lanes|=t),Aa(e.return,t,n)}function ll(e){for(var t=null;e!==null;){var n=e.alternate;n!==null&&Xo(n)===null&&(t=e),e=e.sibling}return t}function ul(e,t,n,r,i,a){var o=e.memoizedState;o===null?e.memoizedState={isBackwards:t,rendering:null,renderingStartTime:0,last:r,tail:n,tailMode:i,treeForkCount:a}:(o.isBackwards=t,o.rendering=null,o.renderingStartTime=0,o.last=r,o.tail=n,o.tailMode=i,o.treeForkCount=a)}function dl(e){var t=e.child;for(e.child=null;t!==null;){var n=t.sibling;t.sibling=e.child,e.child=t,t=n}}function fl(e,t,n){var r=t.pendingProps,i=r.revealOrder,a=r.tail;r=r.children;var o=qo.current;if(t.flags&128)return Jo(t,o),null;var s=!!(o&2);if(s?(o=o&1|2,t.flags|=128):o&=1,Jo(t,o),i===`backwards`&&e!==null?(dl(e),R(e,t,r,n),dl(e)):R(e,t,r,n),r=A?ra:0,!s&&e!==null&&e.flags&128)a:for(e=t.child;e!==null;){if(e.tag===13)e.memoizedState!==null&&cl(e,n,t);else if(e.tag===19)cl(e,n,t);else if(e.child!==null){e.child.return=e,e=e.child;continue}if(e===t)break a;for(;e.sibling===null;){if(e.return===null||e.return===t)break a;e=e.return}e.sibling.return=e.return,e=e.sibling}switch(i){case`backwards`:n=ll(t.child),n===null?(i=t.child,t.child=null):(i=n.sibling,n.sibling=null,dl(t)),ul(t,!0,i,null,a,r);break;case`unstable_legacy-backwards`:for(n=null,i=t.child,t.child=null;i!==null;){if(e=i.alternate,e!==null&&Xo(e)===null){t.child=i;break}e=i.sibling,i.sibling=n,n=i,i=e}ul(t,!0,n,null,a,r);break;case`together`:ul(t,!1,null,null,void 0,r);break;case`independent`:t.memoizedState=null;break;default:n=ll(t.child),n===null?(i=t.child,t.child=null):(i=n.sibling,n.sibling=null),ul(t,!1,i,n,a,r)}return t.child}function pl(e,t,n){var r=t.pendingProps;return Oa(t,t.type,r.value),R(e,t,r.children,n),t.child}function ml(e,t,n){if(e!==null&&(t.dependencies=e.dependencies),sd|=t.lanes,(n&t.childLanes)===0){if(e!==null){if(Ma(e,t,n,!1),(n&t.childLanes)===0)return null}else return null}if(e!==null&&t.child!==e.child)throw Error(i(153));if(t.child!==null){for(e=t.child,n=Gi(e,e.pendingProps),t.child=n,n.return=t;e.sibling!==null;)e=e.sibling,n=n.sibling=Gi(e,e.pendingProps),n.return=t;n.sibling=null}return t.child}function hl(e,t){return(e.lanes&t)!==0||(e=e.dependencies,!!(e!==null&&Na(e)))}function gl(e,t,n){switch(t.tag){case 3:Ie(t,t.stateNode.containerInfo),Oa(t,j,e.memoizedState.cache),Sa();break;case 27:case 5:Re(t);break;case 4:Ie(t,t.stateNode.containerInfo);break;case 10:Oa(t,t.type,t.memoizedProps.value);break;case 31:if(t.memoizedState!==null)return t.flags|=128,Uo(t),null;break;case 13:var r=t.memoizedState;if(r!==null){if(r.dehydrated!==null)return Ho(t),t.flags|=128,null;r=Ma(e,t,n,!1);var i=t.child.childLanes;return r||(n&i)!==0?rl(e,t,n):(Ho(t),e=ml(e,t,n),e===null?null:e.sibling)}Ho(t);break;case 19:if(t.flags&128)return fl(e,t,n);if(i=!!(e.flags&128),r=(n&t.childLanes)!==0,r||=(Ma(e,t,n,!1),(n&t.childLanes)!==0),i){if(r)return fl(e,t,n);t.flags|=128}if(i=t.memoizedState,i!==null&&(i.rendering=null,i.tail=null,i.lastEffect=null),Jo(t,qo.current),r)break;return null;case 22:return t.lanes=0,Uc(e,t,n,t.pendingProps);case 24:Oa(t,j,e.memoizedState.cache)}return ml(e,t,n)}function _l(e,t,n){if(e!==null){if(e.memoizedProps!==t.pendingProps)L=!0;else{if(!hl(e,n)&&!(t.flags&128))return L=!1,gl(e,t,n);L=!!(e.flags&131072)}}else L=!1,A&&t.flags&1048576&&ua(t,ra,t.index);switch(t.lanes=0,t.tag){case 16:a:{var r=t.pendingProps;if(e=uo(t.elementType),t.type=e,typeof e==`function`)Wi(e)?(r=kc(e,r),t.tag=1,t=Qc(null,t,e,r,n)):(t.tag=0,t=Xc(null,t,e,r,n));else{if(e!=null){var a=e.$$typeof;if(a===fe){t.tag=11,t=Bc(null,t,e,r,n);break a}if(a===he){t.tag=14,t=Vc(null,t,e,r,n);break a}if(a===C){t.tag=10,t.type=e,t=pl(null,t,n);break a}}throw t=Te(e)||e,Error(i(306,t,``))}}return t;case 0:return Xc(e,t,t.type,t.pendingProps,n);case 1:return r=t.type,a=kc(r,t.pendingProps),Qc(e,t,r,a,n);case 3:a:{if(Ie(t,t.stateNode.containerInfo),e===null)throw Error(i(387));r=t.pendingProps;var o=t.memoizedState;a=o.element,To(e,t),Mo(t,r,null,n);var s=t.memoizedState;if(r=s.cache,Oa(t,j,r),r!==o.cache&&ja(t,[j],n,!0),jo(),r=s.element,o.isDehydrated){if(o={element:r,isDehydrated:!1,cache:s.cache},t.updateQueue.baseState=o,t.memoizedState=o,t.flags&256){t=$c(e,t,r,n);break a}if(r!==a){a=$i(Error(i(424)),t),wa(a),t=$c(e,t,r,n);break a}switch(e=t.stateNode.containerInfo,e.nodeType){case 9:e=e.body;break;default:e=e.nodeName===`HTML`?e.ownerDocument.body:e}for(k=lm(e.firstChild),ma=t,A=!0,ha=null,ga=!0,n=So(t,null,r,n),t.child=n;n;)n.flags=n.flags&-3|134221824,n=n.sibling}else{if(Sa(),r===a){t=ml(e,t,n);break a}R(e,t,r,n)}t=t.child}return t;case 26:return Yc(e,t),e===null?(n=Nm(t.type,null,t.pendingProps,null))?t.memoizedState=n:A||(t.stateNode=fp(t.type,t.pendingProps,Pe.current,t)):t.memoizedState=Nm(t.type,e.memoizedProps,t.pendingProps,e.memoizedState),null;case 27:return Re(t),e===null&&A&&(r=t.stateNode=hm(t.type,t.pendingProps,Pe.current),ma=t,ga=!0,a=k,Sp(t.type)?(um=a,k=lm(r.firstChild)):k=a),R(e,t,t.pendingProps.children,n),Yc(e,t),e===null&&(t.flags|=4194304),t.child;case 5:return e===null&&A&&((a=r=k)&&(r=rm(r,t.type,t.pendingProps,ga),r===null?a=!1:(t.stateNode=r,ma=t,k=lm(r.firstChild),ga=!1,a=!0)),a||va(t)),Re(t),a=t.type,o=t.pendingProps,s=e===null?null:e.memoizedProps,r=o.children,pp(a,o)?r=null:s!==null&&pp(a,s)&&(t.flags|=32),t.memoizedState!==null&&(a=os(e,t,ls,null,null,n),sh._currentValue=a),Yc(e,t),R(e,t,r,n),t.child;case 6:return e===null&&A&&((e=n=k)&&(n=im(n,t.pendingProps,ga),n===null?e=!1:(t.stateNode=n,ma=t,k=null,e=!0)),e||va(t)),null;case 13:return rl(e,t,n);case 4:return Ie(t,t.stateNode.containerInfo),r=t.pendingProps,e===null?t.child=xo(t,null,r,n):R(e,t,r,n),t.child;case 11:return Bc(e,t,t.type,t.pendingProps,n);case 7:return r=t.pendingProps,Yc(e,t),R(e,t,r,n),t.child;case 8:return R(e,t,t.pendingProps.children,n),t.child;case 12:return R(e,t,t.pendingProps.children,n),t.child;case 10:return pl(e,t,n);case 9:return a=t.type._context,r=t.pendingProps.children,Pa(t),a=Fa(a),r=r(a),t.flags|=1,R(e,t,r,n),t.child;case 14:return Vc(e,t,t.type,t.pendingProps,n);case 15:return Hc(e,t,t.type,t.pendingProps,n);case 19:return fl(e,t,n);case 31:return Jc(e,t,n);case 22:return Uc(e,t,n,t.pendingProps);case 24:return Pa(t),r=Fa(j),e===null?(a=to(),a===null&&(a=G,o=Va(),a.pooledCache=o,o.refCount++,o!==null&&(a.pooledCacheLanes|=n),a=o),t.memoizedState={parent:r,cache:a},wo(t),Oa(t,j,a)):((e.lanes&n)!==0&&(To(e,t),Mo(t,null,null,n),jo()),a=e.memoizedState,o=t.memoizedState,a.parent===r?(r=o.cache,Oa(t,j,r),r!==a.cache&&ja(t,[j],n,!0)):(a={parent:r,cache:r},t.memoizedState=a,t.lanes===0&&(t.memoizedState=t.updateQueue.baseState=a),Oa(t,j,r))),R(e,t,t.pendingProps.children,n),t.child;case 30:return t.stateNode===null&&(t.stateNode={autoName:null,paired:null,clones:null,ref:null}),r=t.pendingProps,r.name!=null&&r.name!==`auto`?t.flags|=e===null?18882560:18874368:A&&da(t),e!==null&&e.memoizedProps.name!==r.name?t.flags|=4194816:Yc(e,t),R(e,t,r.children,n),t.child;case 29:throw t.pendingProps}throw Error(i(156,t.tag))}function vl(e){e.flags|=4}function yl(e,t,n,r,i){var a;if((a=!!(e.mode&32))&&(a=n===null?Jm(t,r):Jm(t,r)&&(r.src!==n.src||r.srcSet!==n.srcSet)),a){if(e.flags|=16777216,(i&335544128)===i){if(e.stateNode.complete)e.flags|=8192;else if(Ud())e.flags|=8192;else throw fo=so,ao}}else e.flags&=-16777217}function bl(e,t){if(t.type!==`stylesheet`||t.state.loading&4)e.flags&=-16777217;else if(e.flags|=16777216,!Ym(t)){if(Ud())e.flags|=8192;else throw fo=so,ao}}function xl(e,t){t!==null&&(e.flags|=4),e.flags&16384&&(t=e.tag===22?536870912:St(),e.lanes|=t,dd|=t)}function Sl(e,t){if(!A)switch(e.tailMode){case`visible`:break;case`collapsed`:for(var n=e.tail,r=null;n!==null;)n.alternate!==null&&(r=n),n=n.sibling;r===null?t||e.tail===null?e.tail=null:e.tail.sibling=null:r.sibling=null;break;default:for(t=e.tail,n=null;t!==null;)t.alternate!==null&&(n=t),t=t.sibling;n===null?e.tail=null:n.sibling=null}}function z(e){var t=e.alternate!==null&&e.alternate.child===e.child,n=0,r=0;if(t)for(var i=e.child;i!==null;)n|=i.lanes|i.childLanes,r|=i.subtreeFlags&1206910976,r|=i.flags&1206910976,i.return=e,i=i.sibling;else for(i=e.child;i!==null;)n|=i.lanes|i.childLanes,r|=i.subtreeFlags,r|=i.flags,i.return=e,i=i.sibling;return e.subtreeFlags|=r,e.childLanes=n,t}function Cl(e,t,n){var r=t.pendingProps;switch(fa(t),t.tag){case 16:case 15:case 0:case 11:case 7:case 8:case 12:case 9:case 14:return z(t),null;case 1:return z(t),null;case 3:return n=t.stateNode,r=null,e!==null&&(r=e.memoizedState.cache),t.memoizedState.cache!==r&&(t.flags|=2048),ka(j),Le(),n.pendingContext&&(n.context=n.pendingContext,n.pendingContext=null),(e===null||e.child===null)&&(xa(t)?vl(t):e===null||e.memoizedState.isDehydrated&&!(t.flags&256)||(t.flags|=1024,Ca())),z(t),null;case 26:var a=t.type,o=t.memoizedState;return e===null?(vl(t),o===null?(z(t),yl(t,a,null,r,n)):(z(t),bl(t,o))):o?o===e.memoizedState?(z(t),t.flags&=-16777217):(vl(t),z(t),bl(t,o)):(e=e.memoizedProps,e!==r&&vl(t),z(t),yl(t,a,e,r,n)),null;case 27:if(ze(t),n=Pe.current,a=t.type,e!==null&&t.stateNode!=null)e.memoizedProps!==r&&vl(t);else{if(!r){if(t.stateNode===null)throw Error(i(166));return z(t),t.subtreeFlags&=-33554433,null}e=Me.current,xa(t)?ya(t,e):(e=hm(a,r,n),t.stateNode=e,vl(t))}return z(t),t.subtreeFlags&=-33554433,null;case 5:if(ze(t),a=t.type,e!==null&&t.stateNode!=null)e.memoizedProps!==r&&vl(t);else{if(!r){if(t.stateNode===null)throw Error(i(166));return z(t),t.subtreeFlags&=-33554433,null}if(o=Me.current,xa(t))ya(t,o);else{var s=lp(Pe.current);switch(o){case 1:o=s.createElementNS(`http://www.w3.org/2000/svg`,a);break;case 2:o=s.createElementNS(`http://www.w3.org/1998/Math/MathML`,a);break;default:switch(a){case`svg`:o=s.createElementNS(`http://www.w3.org/2000/svg`,a);break;case`math`:o=s.createElementNS(`http://www.w3.org/1998/Math/MathML`,a);break;case`script`:o=s.createElement(`div`),o.innerHTML=`<script><\/script>`,o=o.removeChild(o.firstChild);break;case`select`:o=typeof r.is==`string`?s.createElement(`select`,{is:r.is}):s.createElement(`select`),r.multiple?o.multiple=!0:r.size&&(o.size=r.size);break;default:o=typeof r.is==`string`?s.createElement(a,{is:r.is}):s.createElement(a)}}o[Pt]=t,o[Ft]=r;a:for(s=t.child;s!==null;){if(s.tag===5||s.tag===6)o.appendChild(s.stateNode);else if(s.tag!==4&&s.tag!==27&&s.child!==null){s.child.return=s,s=s.child;continue}if(s===t)break a;for(;s.sibling===null;){if(s.return===null||s.return===t)break a;s=s.return}s.sibling.return=s.return,s=s.sibling}t.stateNode=o;a:switch(np(o,a,r),a){case`button`:case`input`:case`select`:case`textarea`:r=!!r.autoFocus;break a;case`img`:r=!0;break a;default:r=!1}r&&vl(t)}}return z(t),t.subtreeFlags&=-33554433,yl(t,t.type,e===null?null:e.memoizedProps,t.pendingProps,n),null;case 6:if(e&&t.stateNode!=null)e.memoizedProps!==r&&vl(t);else{if(typeof r!=`string`&&t.stateNode===null)throw Error(i(166));if(e=Pe.current,xa(t)){if(e=t.stateNode,n=t.memoizedProps,r=null,a=ma,a!==null)switch(a.tag){case 27:case 5:r=a.memoizedProps}e[Pt]=t,e=!!(e.nodeValue===n||r!==null&&!0===r.suppressHydrationWarning||ep(e.nodeValue,n)),e||va(t,!0)}else e=lp(e).createTextNode(r),e[Pt]=t,t.stateNode=e}return z(t),null;case 31:if(n=t.memoizedState,e===null||e.memoizedState!==null){if(r=xa(t),n!==null){if(e===null){if(!r)throw Error(i(318));if(e=t.memoizedState,e=e===null?null:e.dehydrated,!e)throw Error(i(557));e[Pt]=t}else Sa(),!(t.flags&128)&&(t.memoizedState=null),t.flags|=4;z(t),e=!1}else n=Ca(),e!==null&&e.memoizedState!==null&&(e.memoizedState.hydrationErrors=n),e=!0;if(!e)return t.flags&256?(Ko(t),t):(Ko(t),null);if(t.flags&128)throw Error(i(558))}return z(t),null;case 13:if(r=t.memoizedState,e===null||e.memoizedState!==null&&e.memoizedState.dehydrated!==null){if(a=xa(t),r!==null&&r.dehydrated!==null){if(e===null){if(!a)throw Error(i(318));if(a=t.memoizedState,a=a===null?null:a.dehydrated,!a)throw Error(i(317));a[Pt]=t}else Sa(),!(t.flags&128)&&(t.memoizedState=null),t.flags|=4;z(t),a=!1}else a=Ca(),e!==null&&e.memoizedState!==null&&(e.memoizedState.hydrationErrors=a),a=!0;if(!a)return t.flags&256?(Ko(t),t):(Ko(t),null)}return Ko(t),t.flags&128?(t.lanes=n,t):(n=r!==null,e=e!==null&&e.memoizedState!==null,n&&(r=t.child,a=null,r.alternate!==null&&r.alternate.memoizedState!==null&&r.alternate.memoizedState.cachePool!==null&&(a=r.alternate.memoizedState.cachePool.pool),o=null,r.memoizedState!==null&&r.memoizedState.cachePool!==null&&(o=r.memoizedState.cachePool.pool),o!==a&&(r.flags|=2048)),n!==e&&n&&(t.child.flags|=8192),xl(t,t.updateQueue),z(t),null);case 4:return Le(),e===null&&Wf(t.stateNode.containerInfo),t.flags|=67108864,z(t),null;case 10:return ka(t.type),z(t),null;case 19:if(Yo(t),r=t.memoizedState,r===null)return z(t),null;if(a=!!(t.flags&128),o=r.rendering,o===null){if(a)Sl(r,!1);else{if(Y!==0||e!==null&&e.flags&128)for(e=t.child;e!==null;){if(o=Xo(e),o!==null){for(t.flags|=128,Sl(r,!1),e=o.updateQueue,t.updateQueue=e,xl(t,e),t.subtreeFlags=0,e=n,n=t.child;n!==null;)Ki(n,e),n=n.sibling;return Jo(t,qo.current&1|2),A&&la(t,r.treeForkCount),t.child}e=e.sibling}r.tail!==null&&Qe()>_d&&(t.flags|=128,a=!0,Sl(r,!1),t.lanes=4194304)}}else{if(!a){if(e=Xo(o),e!==null){if(t.flags|=128,a=!0,e=e.updateQueue,t.updateQueue=e,xl(t,e),Sl(r,!0),r.tail===null&&r.tailMode!==`collapsed`&&r.tailMode!==`visible`&&!o.alternate&&!A)return z(t),null}else 2*Qe()-r.renderingStartTime>_d&&n!==536870912&&(t.flags|=128,a=!0,Sl(r,!1),t.lanes=4194304)}r.isBackwards?(o.sibling=t.child,t.child=o):(e=r.last,e===null?t.child=o:e.sibling=o,r.last=o)}if(r.tail!==null){e=r.tail;a:{for(n=e;n!==null;){if(n.alternate!==null){n=!1;break a}n=n.sibling}n=!0}return r.rendering=e,r.tail=e.sibling,r.renderingStartTime=Qe(),e.sibling=null,o=qo.current,o=a?o&1|2:o&1,r.tailMode===`visible`||r.tailMode===`collapsed`||!n||A?Jo(t,o):(n=o,E(Bo,t),E(qo,n),Vo===null&&(Vo=t)),A&&la(t,r.treeForkCount),e}return z(t),null;case 22:case 23:return Ko(t),zo(),r=t.memoizedState!==null,e===null?r&&(t.flags|=8192):e.memoizedState!==null!==r&&(t.flags|=8192),r?n&536870912&&!(t.flags&128)&&(z(t),t.subtreeFlags&6&&(t.flags|=8192)):z(t),n=t.updateQueue,n!==null&&xl(t,n.retryQueue),n=null,e!==null&&e.memoizedState!==null&&e.memoizedState.cachePool!==null&&(n=e.memoizedState.cachePool.pool),r=null,t.memoizedState!==null&&t.memoizedState.cachePool!==null&&(r=t.memoizedState.cachePool.pool),r!==n&&(t.flags|=2048),e!==null&&je(eo),null;case 24:return n=null,e!==null&&(n=e.memoizedState.cache),t.memoizedState.cache!==n&&(t.flags|=2048),ka(j),z(t),null;case 25:return null;case 30:return t.flags|=33554432,z(t),null}throw Error(i(156,t.tag))}function wl(e,t){switch(fa(t),t.tag){case 1:return e=t.flags,e&65536?(t.flags=e&-65537|128,t):null;case 3:return ka(j),Le(),e=t.flags,e&65536&&!(e&128)?(t.flags=e&-65537|128,t):null;case 26:case 27:case 5:return ze(t),null;case 31:if(t.memoizedState!==null){if(Ko(t),t.alternate===null)throw Error(i(340));Sa()}return e=t.flags,e&65536?(t.flags=e&-65537|128,t):null;case 13:if(Ko(t),e=t.memoizedState,e!==null&&e.dehydrated!==null){if(t.alternate===null)throw Error(i(340));Sa()}return e=t.flags,e&65536?(t.flags=e&-65537|128,t):null;case 19:return Yo(t),e=t.flags,e&65536?(t.flags=e&-65537|128,e=t.memoizedState,e!==null&&(e.rendering=null,e.tail=null),t.flags|=4,t):null;case 4:return Le(),null;case 10:return ka(t.type),null;case 22:case 23:return Ko(t),zo(),e!==null&&je(eo),e=t.flags,e&65536?(t.flags=e&-65537|128,t):null;case 24:return ka(j),null;case 25:return null;default:return null}}function Tl(e,t){switch(fa(t),t.tag){case 3:ka(j),Le();break;case 26:case 27:case 5:ze(t);break;case 4:Le();break;case 31:t.memoizedState!==null&&Ko(t);break;case 13:Ko(t);break;case 19:Yo(t);break;case 10:ka(t.type);break;case 22:case 23:Ko(t),zo(),e!==null&&je(eo);break;case 24:ka(j)}}function El(e,t){try{var n=t.updateQueue,r=n===null?null:n.lastEffect;if(r!==null){var i=r.next;n=i;do{if((n.tag&e)===e){r=void 0;var a=n.create,o=n.inst;r=a(),o.destroy=r}n=n.next}while(n!==i)}}catch(e){Z(t,t.return,e)}}function Dl(e,t,n){try{var r=t.updateQueue,i=r===null?null:r.lastEffect;if(i!==null){var a=i.next;r=a;do{if((r.tag&e)===e){var o=r.inst,s=o.destroy;if(s!==void 0){o.destroy=void 0,i=t;var c=n,l=s;try{l()}catch(e){Z(i,c,e)}}}r=r.next}while(r!==a)}}catch(e){Z(t,t.return,e)}}function Ol(e){var t=e.updateQueue;if(t!==null){var n=e.stateNode;try{Po(t,n)}catch(t){Z(e,e.return,t)}}}function kl(e,t,n){n.props=kc(e.type,e.memoizedProps),n.state=e.memoizedState;try{n.componentWillUnmount()}catch(n){Z(e,t,n)}}function Al(e,t){try{var n=e.ref;if(n!==null){switch(e.tag){case 26:case 27:case 5:var r=e.stateNode;break;case 30:var i=e.stateNode,a=Oi(e.memoizedProps,i);(i.ref===null||i.ref.name!==a)&&(i.ref=Pp(a)),r=i.ref;break;case 7:if(e.stateNode===null){var o=new Fp(e);h(e.child,!1,Qp,o,void 0,void 0),e.stateNode=o}r=e.stateNode;break;default:r=e.stateNode}typeof n==`function`?e.refCleanup=n(r):n.current=r}}catch(n){Z(e,t,n)}}function jl(e,t){var n=e.ref,r=e.refCleanup;if(n!==null){if(typeof r==`function`)try{r()}catch(n){Z(e,t,n)}finally{e.refCleanup=null,e=e.alternate,e!=null&&(e.refCleanup=null)}else if(typeof n==`function`)try{n(null)}catch(n){Z(e,t,n)}else n.current=null}}function Ml(e,t){if((e.tag===5||e.tag===27||e.tag===6)&&e.alternate===null&&t!==null)for(var n=0;n<t.length;n++)em(e.stateNode,t[n])}function Nl(e){for(var t=e.return;t!==null&&(Il(t)&&em(e.stateNode,t.stateNode),!Fl(t));)t=t.return}function Pl(e){for(var t=e.return;t!==null&&(Il(t)&&tm(e.stateNode,t.stateNode),!Fl(t));)t=t.return}function Fl(e){return e.tag===5||e.tag===3||e.tag===27}function Il(e){return e&&e.tag===7&&e.stateNode!==null}function Ll(e){var t=e.type,n=e.memoizedProps,r=e.stateNode;try{a:switch(t){case`button`:case`input`:case`select`:case`textarea`:n.autoFocus&&r.focus();break a;case`img`:n.src?r.src=n.src:n.srcSet&&(r.srcset=n.srcSet)}}catch(t){Z(e,e.return,t)}}function Rl(e,t,n){try{var r=e.stateNode;ip(r,e.type,n,t),r[Ft]=t}catch(t){Z(e,e.return,t)}}function zl(e){return e.tag===5||e.tag===3||e.tag===26||e.tag===27&&Sp(e.type)||e.tag===4}function Bl(e){a:for(;;){for(;e.sibling===null;){if(e.return===null||zl(e.return))return null;e=e.return}for(e.sibling.return=e.return,e=e.sibling;e.tag!==5&&e.tag!==6&&e.tag!==18;){if(e.tag===27&&Sp(e.type)||e.flags&2||e.child===null||e.tag===4)continue a;e.child.return=e,e=e.child}if(!(e.flags&2))return e.stateNode}}function Vl(e,t,n,r){var i=e.tag;if(i===5||i===6)i=e.stateNode,t?(n.nodeType===9?n.body:n.nodeName===`HTML`?n.ownerDocument.body:n).insertBefore(i,t):(t=n.nodeType===9?n.body:n.nodeName===`HTML`?n.ownerDocument.body:n,t.appendChild(i),n=n._reactRootContainer,n!=null||t.onclick!==null||(t.onclick=kn)),Ml(e,r),O=!0;else if(i!==4&&(i===27&&(Ml(e,r),r=null,Sp(e.type)&&(n=e.stateNode,t=null)),e=e.child,e!==null))for(Vl(e,t,n,r),e=e.sibling;e!==null;)Vl(e,t,n,r),e=e.sibling}function Hl(e,t,n,r){var i=e.tag;if(i===5||i===6)i=e.stateNode,t?n.insertBefore(i,t):n.appendChild(i),Ml(e,r),O=!0;else if(i!==4&&(i===27&&(Ml(e,r),r=null,Sp(e.type)&&(n=e.stateNode)),e=e.child,e!==null))for(Hl(e,t,n,r),e=e.sibling;e!==null;)Hl(e,t,n,r),e=e.sibling}function Ul(e){var t=e.stateNode,n=e.memoizedProps;try{for(var r=e.type,i=t.attributes;i.length;)t.removeAttributeNode(i[0]);np(t,r,n),t[Pt]=e,t[Ft]=n}catch(t){Z(e,e.return,t)}}var Wl=!1,Gl=null;function Kl(e){(e.tag===30||e.subtreeFlags&33554432)&&(Wl=!0)}var ql=null;function Jl(){var e=ql;return ql=null,e}var Yl=0;function Xl(e,t,n,r,i){return Yl=0,Zl(e.child,t,n,r,i)}function Zl(e,t,n,r,i){for(var a=!1;e!==null;){if(e.tag===5){var o=e.stateNode;if(r!==null){var s=Op(o);r.push(s),s.view&&(a=!0)}else a||Op(o).view&&(a=!0);Wl=!0,Tp(o,Yl===0?t:t+`_`+Yl,n),Yl++}else e.tag===22&&e.memoizedState!==null||e.tag===30&&i||Zl(e.child,t,n,r,i)&&(a=!0);e=e.sibling}return a}function Ql(e,t){for(;e!==null;)e.tag===5?Ep(e.stateNode,e.memoizedProps):e.tag===22&&e.memoizedState!==null||e.tag===30&&t||Ql(e.child,t),e=e.sibling}function $l(e){if(e.subtreeFlags&18874368)for(e=e.child;e!==null;){if((e.tag!==22||e.memoizedState===null)&&($l(e),e.tag===30&&e.flags&18874368&&e.stateNode.paired)){var t=e.memoizedProps;if(t.name==null||t.name===`auto`)throw Error(i(544));var n=t.name;t=Ai(t.default,t.share),t!==`none`&&(Xl(e,n,t,null,!1)||Ql(e.child,!1))}e=e.sibling}}function eu(e,t){if(e.tag===30){var n=e.stateNode,r=e.memoizedProps,i=Oi(r,n),a=Ai(r.default,n.paired?r.share:r.enter);a===`none`?$l(e):Xl(e,i,a,null,!1)?($l(e),n.paired||t||Nd(e,r.onEnter)):Ql(e.child,!1)}else if(e.subtreeFlags&33554432)for(e=e.child;e!==null;)eu(e,t),e=e.sibling;else $l(e)}function tu(e){if(Gl!==null&&Gl.size!==0){var t=Gl;if(e.subtreeFlags&18874368)for(e=e.child;e!==null;){if(e.tag!==22||e.memoizedState===null){if(e.tag===30&&e.flags&18874368){var n=e.memoizedProps,r=n.name;if(r!=null&&r!==`auto`){var i=t.get(r);if(i!==void 0){var a=Ai(n.default,n.share);if(a!==`none`&&(Xl(e,r,a,null,!1)?(a=e.stateNode,i.paired=a,a.paired=i,Nd(e,n.onShare)):Ql(e.child,!1)),t.delete(r),t.size===0)break}}}tu(e)}e=e.sibling}}}function nu(e){if(e.tag===30){var t=e.memoizedProps,n=Oi(t,e.stateNode),r=Gl===null?void 0:Gl.get(n),i=Ai(t.default,r===void 0?t.exit:t.share);i!==`none`&&(Xl(e,n,i,null,!1)?r===void 0?Nd(e,t.onExit):(i=e.stateNode,r.paired=i,i.paired=r,Gl.delete(n),Nd(e,t.onShare)):Ql(e.child,!1)),Gl!==null&&tu(e)}else if(e.subtreeFlags&33554432)for(e=e.child;e!==null;)nu(e),e=e.sibling;else Gl!==null&&tu(e)}function ru(e){for(e=e.child;e!==null;){if(e.tag===30){var t=e.memoizedProps,n=Oi(t,e.stateNode);t=Ai(t.default,t.update),e.flags&=-5,t!==`none`&&Xl(e,n,t,e.memoizedState=[],!1)}else e.subtreeFlags&33554432&&ru(e);e=e.sibling}}function iu(e){if(e.subtreeFlags&18874368)for(e=e.child;e!==null;){if(e.tag!==22||e.memoizedState===null){if(e.tag===30&&e.flags&18874368){var t=e.stateNode;t.paired!==null&&(t.paired=null,Ql(e.child,!1))}iu(e)}e=e.sibling}}function au(e){if(e.tag===30)e.stateNode.paired=null,Ql(e.child,!1),iu(e);else if(e.subtreeFlags&33554432)for(e=e.child;e!==null;)au(e),e=e.sibling;else iu(e)}function ou(e){for(e=e.child;e!==null;)e.tag===30?Ql(e.child,!1):e.subtreeFlags&33554432&&ou(e),e=e.sibling}function su(e,t,n,r,i,a,o){for(var s=!1;t!==null;){if(t.tag===5){var c=t.stateNode;if(a!==null&&Yl<a.length){var l=a[Yl],u=Op(c);(l.view||u.view)&&(s=!0);var d;if(d=!(e.flags&4)){if(u.clip)d=!0;else{d=l.rect;var f=u.rect;d=d.y!==f.y||d.x!==f.x||d.height!==f.height||d.width!==f.width}}d&&(e.flags|=4),u.abs?u=!l.abs:(l=l.rect,u=u.rect,u=l.height!==u.height||l.width!==u.width),u&&(e.flags|=32)}else e.flags|=32;e.flags&4&&Tp(c,Yl===0?n:n+`_`+Yl,i),s&&e.flags&4||(ql===null&&(ql=[]),ql.push(c,Yl===0?r:r+`_`+Yl,t.memoizedProps)),Yl++}else(t.tag!==22||t.memoizedState===null)&&(t.tag===30&&o?e.flags|=t.flags&32:su(e,t.child,n,r,i,a,o)&&(s=!0));t=t.sibling}return s}function cu(e,t){for(e=e.child;e!==null;){if(e.tag===30){var n=e.memoizedProps,r=e.stateNode,i=Oi(n,r),a=Ai(n.default,n.update);if(t){r=r.clones;var o=r===null?null:r.map(kp)}else o=e.memoizedState,e.memoizedState=null;r=e;var s=e.child;Yl=0,i=su(r,s,i,i,a,o,!1),e.flags&4&&i&&(t||Nd(e,n.onUpdate))}else e.subtreeFlags&33554432&&cu(e,t);e=e.sibling}}var B=!1,V=!1,lu=!1,uu=!1,du=typeof WeakSet==`function`?WeakSet:Set,H=null,fu=!1,pu=!1,mu=!1,hu=!1;function gu(e,t,n){if(e=e.containerInfo,sp=gh,e=ii(e),ai(e)){if(`selectionStart`in e)var r={start:e.selectionStart,end:e.selectionEnd};else a:{r=(r=e.ownerDocument)&&r.defaultView||window;var i=r.getSelection&&r.getSelection();if(i&&i.rangeCount!==0){r=i.anchorNode;var a=i.anchorOffset,o=i.focusNode;i=i.focusOffset;try{r.nodeType,o.nodeType}catch{r=null;break a}var s=0,c=-1,l=-1,u=0,d=0,f=e,p=null;b:for(;;){for(var m;f!==r||a!==0&&f.nodeType!==3||(c=s+a),f!==o||i!==0&&f.nodeType!==3||(l=s+i),f.nodeType===3&&(s+=f.nodeValue.length),(m=f.firstChild)!==null;)p=f,f=m;for(;;){if(f===e)break b;if(p===r&&++u===a&&(c=s),p===o&&++d===i&&(l=s),(m=f.nextSibling)!==null)break;f=p,p=f.parentNode}f=m}r=c===-1||l===-1?null:{start:c,end:l}}else r=null}r||={start:0,end:0}}else r=null;for(cp={focusedElem:e,selectionRange:r},gh=!1,n=(n&335544064)===n,H=t,t=n?9270:1024;H!==null;){if(e=H,n&&(r=e.deletions,r!==null))for(a=0;a<r.length;a++)n&&nu(r[a]);if(e.alternate===null&&e.flags&2)n&&Kl(e),_u(n);else{if(e.tag===22){if(r=e.alternate,e.memoizedState!==null){r!==null&&r.memoizedState===null&&n&&nu(r),_u(n);continue}if(r!==null&&r.memoizedState!==null){n&&Kl(e),_u(n);continue}}r=e.child,(e.subtreeFlags&t)!==0&&r!==null?(r.return=e,H=r):(n&&ru(e),_u(n))}}Gl=null}function _u(e){for(;H!==null;){var t=H,n=e,r=t.alternate,a=t.flags;switch(t.tag){case 0:case 11:case 15:break;case 1:if(a&1024&&r!==null){n=void 0,a=r.memoizedProps,r=r.memoizedState;var o=t.stateNode;try{var s=kc(t.type,a);n=o.getSnapshotBeforeUpdate(s,r),o.__reactInternalSnapshotBeforeUpdate=n}catch(e){Z(t,t.return,e)}}break;case 3:if(a&1024){if(r=t.stateNode.containerInfo,n=r.nodeType,n===9)nm(r);else if(n===1)switch(r.nodeName){case`HEAD`:case`HTML`:case`BODY`:nm(r);break;default:r.textContent=``}}break;case 5:case 26:case 27:case 6:case 4:case 17:break;case 30:n&&r!==null&&(n=Oi(r.memoizedProps,r.stateNode),a=t.memoizedProps,a=Ai(a.default,a.update),a!==`none`&&Xl(r,n,a,r.memoizedState=[],!0));break;default:if(a&1024)throw Error(i(163))}if(r=t.sibling,r!==null){r.return=t.return,H=r;break}H=t.return}}function vu(e,t,n){var r=n.flags;switch(n.tag){case 0:case 11:case 15:Lu(e,n),r&4&&El(5,n);break;case 1:if(Lu(e,n),r&4){if(e=n.stateNode,t===null)try{e.componentDidMount()}catch(e){Z(n,n.return,e)}else{var i=kc(n.type,t.memoizedProps);t=t.memoizedState;try{e.componentDidUpdate(i,t,e.__reactInternalSnapshotBeforeUpdate)}catch(e){Z(n,n.return,e)}}}r&64&&Ol(n),r&512&&Al(n,n.return);break;case 3:if(Lu(e,n),r&64&&(e=n.updateQueue,e!==null)){if(t=null,n.child!==null)switch(n.child.tag){case 27:case 5:t=n.child.stateNode;break;case 1:t=n.child.stateNode}try{Po(e,t)}catch(e){Z(n,n.return,e)}}break;case 27:t===null&&r&4&&Ul(n);case 26:case 5:Lu(e,n),t===null&&r&4&&Ll(n),r&512&&Al(n,n.return);break;case 12:Lu(e,n);break;case 31:Lu(e,n),r&4&&Eu(e,n);break;case 13:Lu(e,n),r&4&&Du(e,n),r&64&&(e=n.memoizedState,e!==null&&(e=e.dehydrated,e!==null&&(n=_f.bind(null,n),cm(e,n))));break;case 22:if(r=n.memoizedState!==null||B,!r){var a=t!==null&&t.memoizedState!==null||V;t=B,i=V,B=r,(V=a)&&!i?(r=2,n.subtreeFlags&8772&&(r|=1),zu(e,n,r)):Lu(e,n),B=t,V=i}break;case 30:Lu(e,n),r&512&&Al(n,n.return);break;case 7:r&512&&Al(n,n.return);default:Lu(e,n)}}function yu(e,t){for(e=e.child;e!==null;)bu(e,t),e=e.sibling}function bu(e,t){switch(e.tag){case 5:case 26:try{var n=e.stateNode;if(t){var r=n.style;typeof r.setProperty==`function`?r.setProperty(`display`,`none`,`important`):r.display=`none`}else{var i=e.stateNode,a=e.memoizedProps.style,o=a!=null&&a.hasOwnProperty(`display`)?a.display:null;i.style.display=o==null||typeof o==`boolean`?``:(``+o).trim()}}catch(t){Z(e,e.return,t)}xu(e,t);break;case 6:try{e.stateNode.nodeValue=t?``:e.memoizedProps,O=!0}catch(t){Z(e,e.return,t)}break;case 18:try{var s=e.stateNode;t?wp(s,!0):wp(e.stateNode,!1)}catch(t){Z(e,e.return,t)}break;case 22:case 23:e.memoizedState===null&&yu(e,t);break;default:yu(e,t)}}function xu(e,t){if(e.subtreeFlags&67108864)for(e=e.child;e!==null;){a:{var n=e,r=t;switch(n.tag){case 4:bu(n,r);break a;case 22:n.memoizedState===null&&xu(n,r);break a;default:xu(n,r)}}e=e.sibling}}function Su(e){var t=e.alternate;t!==null&&(e.alternate=null,Su(t)),e.child=null,e.deletions=null,e.sibling=null,e.tag===5&&(t=e.stateNode,t!==null&&Ut(t)),e.stateNode=null,e.return=null,e.dependencies=null,e.memoizedProps=null,e.memoizedState=null,e.pendingProps=null,e.stateNode=null,e.updateQueue=null}var U=null,Cu=!1;function wu(e,t,n){for(n=n.child;n!==null;)Tu(e,t,n),n=n.sibling}function Tu(e,t,n){if(ct&&typeof ct.onCommitFiberUnmount==`function`)try{ct.onCommitFiberUnmount(st,n)}catch{}switch(n.tag){case 26:V||jl(n,t),wu(e,t,n),n.memoizedState?n.memoizedState.count--:n.stateNode&&!V&&(n=n.stateNode,n.parentNode.removeChild(n));break;case 27:V||jl(n,t),Pl(n);var r=U,i=Cu;Sp(n.type)&&(U=n.stateNode,Cu=!1),wu(e,t,n),gm(n.stateNode,n.type,n.memoizedProps),U=r,Cu=i;break;case 5:V||jl(n,t),Pl(n);case 6:if(n.tag===6&&Pl(n),r=U,i=Cu,U=null,wu(e,t,n),U=r,Cu=i,U!==null){if(Cu)try{(U.nodeType===9?U.body:U.nodeName===`HTML`?U.ownerDocument.body:U).removeChild(n.stateNode),O=!0}catch(e){Z(n,t,e)}else try{U.removeChild(n.stateNode),O=!0}catch(e){Z(n,t,e)}}break;case 18:U!==null&&(Cu?(e=U,Cp(e.nodeType===9?e.body:e.nodeName===`HTML`?e.ownerDocument.body:e,n.stateNode),Hh(e)):Cp(U,n.stateNode));break;case 4:r=U,i=Cu,U=n.stateNode.containerInfo,Cu=!0,wu(e,t,n),U=r,Cu=i;break;case 0:case 11:case 14:case 15:Dl(2,n,t),V||Dl(4,n,t),wu(e,t,n);break;case 1:V||(jl(n,t),r=n.stateNode,typeof r.componentWillUnmount==`function`&&kl(n,t,r)),wu(e,t,n);break;case 21:wu(e,t,n);break;case 22:V=(r=V)||n.memoizedState!==null,wu(e,t,n),V=r;break;case 30:jl(n,t),wu(e,t,n);break;case 7:V||jl(n,t),wu(e,t,n);break;default:wu(e,t,n)}}function Eu(e,t){if(t.memoizedState===null&&(e=t.alternate,e!==null&&(e=e.memoizedState,e!==null))){e=e.dehydrated;try{Hh(e)}catch(e){Z(t,t.return,e)}}}function Du(e,t){if(t.memoizedState===null&&(e=t.alternate,e!==null&&(e=e.memoizedState,e!==null&&(e=e.dehydrated,e!==null))))try{Hh(e)}catch(e){Z(t,t.return,e)}}function Ou(e){switch(e.tag){case 31:case 13:case 19:var t=e.stateNode;return t===null&&(t=e.stateNode=new du),t;case 22:return e=e.stateNode,t=e._retryCache,t===null&&(t=e._retryCache=new du),t;default:throw Error(i(435,e.tag))}}function ku(e,t){var n=Ou(e);t.forEach(function(t){if(!n.has(t)){n.add(t);var r=vf.bind(null,e,t);t.then(r,r)}})}function Au(e,t,n){var r=t.deletions;if(r!==null)for(var a=0;a<r.length;a++){var o=r[a],s=e,c=t,l=c;a:for(;l!==null;){switch(l.tag){case 27:if(Sp(l.type)){U=l.stateNode,Cu=!1;break a}break;case 5:U=l.stateNode,Cu=!1;break a;case 3:case 4:U=l.stateNode.containerInfo,Cu=!0;break a}l=l.return}if(U===null)throw Error(i(160));Tu(s,c,o),U=null,Cu=!1,s=o.alternate,s!==null&&(s.return=null),o.return=null}if(t.subtreeFlags&13886)for(t=t.child;t!==null;)Mu(t,e,n),t=t.sibling}var ju=null;function Mu(e,t,n){var r=e.alternate,a=e.flags;switch(e.tag){case 0:case 11:case 14:case 15:if(a&4&&(r=e.updateQueue,r=r===null?null:r.events,r!==null))for(var o=0;o<r.length;o++){var s=r[o];s.ref.impl=s.nextImpl}Au(t,e,n),Nu(e),a&4&&(Dl(3,e,e.return),El(3,e),Dl(5,e,e.return));break;case 1:Au(t,e,n),Nu(e),a&512&&(V||r===null||jl(r,r.return)),a&64&&B&&(e=e.updateQueue,e!==null&&(t=e.callbacks,t!==null&&(n=e.shared.hiddenCallbacks,e.shared.hiddenCallbacks=n===null?t:n.concat(t))));break;case 26:if(o=ju,Au(t,e,n),Nu(e),a&512&&(V||r===null||jl(r,r.return)),a&4){if(a=r===null?null:r.memoizedState,n=e.memoizedState,r===null){if(n===null){if(e.stateNode===null){if(B)e.stateNode=fp(e.type,e.memoizedProps,t.containerInfo,e);else{a:{t=e.type,n=e.memoizedProps,a=o.ownerDocument||o;b:switch(t){case`title`:r=a.getElementsByTagName(`title`)[0],(!r||r[Vt]||r[Pt]||r.namespaceURI===`http://www.w3.org/2000/svg`||r.hasAttribute(`itemprop`))&&(r=a.createElement(t),a.head.insertBefore(r,a.querySelector(`head > title`))),np(r,t,n),r[Pt]=e,D(r),t=r;break a;case`link`:if(o=Gm(`link`,`href`,a).get(t+(n.href||``))){for(s=0;s<o.length;s++)if(r=o[s],r.getAttribute(`href`)===(n.href==null||n.href===``?null:n.href)&&r.getAttribute(`rel`)===(n.rel==null?null:n.rel)&&r.getAttribute(`title`)===(n.title==null?null:n.title)&&r.getAttribute(`crossorigin`)===(n.crossOrigin==null?null:n.crossOrigin)){o.splice(s,1);break b}}r=a.createElement(t),np(r,t,n),a.head.appendChild(r);break;case`meta`:if(o=Gm(`meta`,`content`,a).get(t+(n.content||``))){for(s=0;s<o.length;s++)if(r=o[s],r.getAttribute(`content`)===(n.content==null?null:``+n.content)&&r.getAttribute(`name`)===(n.name==null?null:n.name)&&r.getAttribute(`property`)===(n.property==null?null:n.property)&&r.getAttribute(`http-equiv`)===(n.httpEquiv==null?null:n.httpEquiv)&&r.getAttribute(`charset`)===(n.charSet==null?null:n.charSet)){o.splice(s,1);break b}}r=a.createElement(t),np(r,t,n),a.head.appendChild(r);break;default:throw Error(i(468,t))}r[Pt]=e,D(r),t=r}e.stateNode=t}}else B||Km(o,e.type,e.stateNode)}else e.stateNode=Bm(o,n,e.memoizedProps)}else a===n?n===null&&e.stateNode!==null&&Rl(e,e.memoizedProps,r.memoizedProps):(a===null?(t=r.stateNode,t===null||V||t.parentNode.removeChild(t)):a.count--,n===null?B||Km(o,e.type,e.stateNode):Bm(o,n,e.memoizedProps))}break;case 27:Au(t,e,n),Nu(e),a&512&&(V||r===null||jl(r,r.return)),r!==null&&a&4&&Rl(e,e.memoizedProps,r.memoizedProps);break;case 5:if(o=lu,lu=!1,Au(t,e,n),lu=o,Nu(e),a&512&&(V||r===null||jl(r,r.return)),e.flags&32){t=e.stateNode;try{xn(t,``),O=!0}catch(t){Z(e,e.return,t)}}a&4&&e.stateNode!=null&&(t=e.memoizedProps,Rl(e,t,r===null?t:r.memoizedProps)),a&1024&&(uu=!0);break;case 6:if(Au(t,e,n),Nu(e),a&4){if(e.stateNode===null)throw Error(i(162));t=e.memoizedProps,n=e.stateNode;try{n.nodeValue=t,O=!0}catch(t){Z(e,e.return,t)}}break;case 3:if(O=!1,Wm=null,o=ju,ju=bm(t.containerInfo),Au(t,e,n),ju=o,Nu(e),a&4&&r!==null&&r.memoizedState.isDehydrated)try{Hh(t.containerInfo)}catch(t){Z(e,e.return,t)}uu&&(uu=!1,Pu(e)),O=!1;break;case 4:a=lu,lu=B,r=rn(),o=ju,ju=bm(e.stateNode.containerInfo),Au(t,e,n),Nu(e),ju=o,O&&pu&&(mu=!0),O=r,lu=a;break;case 12:Au(t,e,n),Nu(e);break;case 31:Au(t,e,n),Nu(e),a&4&&(t=e.updateQueue,t!==null&&(e.updateQueue=null,ku(e,t)));break;case 13:Au(t,e,n),Nu(e),e.child.flags&8192&&e.memoizedState!==null!=(r!==null&&r.memoizedState!==null)&&(hd=Qe()),a&4&&(t=e.updateQueue,t!==null&&(e.updateQueue=null,ku(e,t)));break;case 22:o=e.memoizedState!==null,s=r!==null&&r.memoizedState!==null;var c=B,l=V,u=lu;B=c||o,lu=u||o,V=l||s,Au(t,e,n),V=l,lu=u,B=c,Nu(e),a&8192&&(t=e.stateNode,t._visibility=o?t._visibility&-2:t._visibility|1,!o||r===null||s||B||V||(t=s||V,n=B,r=V,B=o||B,V=t,Ru(e,2),B=n,V=r),!o&&lu||yu(e,o)),a&4&&(t=e.updateQueue,t!==null&&(n=t.retryQueue,n!==null&&(t.retryQueue=null,ku(e,n))));break;case 19:Au(t,e,n),Nu(e),a&4&&(t=e.updateQueue,t!==null&&(e.updateQueue=null,ku(e,t)));break;case 30:a&512&&(V||r===null||jl(r,r.return)),a=rn(),o=pu,s=(n&335544064)===n,c=e.memoizedProps,pu=s&&Ai(c.default,c.update)!==`none`,Au(t,e,n),Nu(e),s&&r!==null&&O&&(e.flags|=4),pu=o,O=a;break;case 21:break;case 7:a&512&&(V||r===null||jl(r,r.return)),r&&r.stateNode!==null&&(r.stateNode._fragmentFiber=e);default:Au(t,e,n),Nu(e)}}function Nu(e){var t=e.flags;if(t&2){try{for(var n,r=e.return;r!==null;){if(zl(r)){n=r;break}r=r.return}r=null;for(var a=e.return;a!==null;){if(Il(a)){var o=a.stateNode;r===null?r=[o]:r.push(o)}if(Fl(a))break;a=a.return}var s=r;if(n==null)throw Error(i(160));switch(n.tag){case 27:var c=n.stateNode;Hl(e,Bl(e),c,s);break;case 5:var l=n.stateNode;n.flags&32&&(xn(l,``),n.flags&=-33),Hl(e,Bl(e),l,s);break;case 3:case 4:var u=n.stateNode.containerInfo;Vl(e,Bl(e),u,s);break;default:throw Error(i(161))}}catch(t){Z(e,e.return,t)}e.flags&=-3}t&4096&&(e.flags&=-4097)}function Pu(e){if(e.subtreeFlags&1024)for(e=e.child;e!==null;){var t=e;Pu(t),t.tag===5&&t.flags&1024&&(t=t.stateNode,gh=!0,t.reset(),gh=!1),e=e.sibling}}function Fu(e,t){if(t.subtreeFlags&9270)for(t=t.child;t!==null;)Iu(t,e),t=t.sibling;else cu(t,!1)}function Iu(e,t){var n=e.alternate;if(n===null)eu(e,!1);else switch(e.tag){case 3:if(hu=fu=!1,Jl(),Fu(t,e),!fu&&!mu){if(e=ql,e!==null)for(var r=0;r<e.length;r+=3){n=e[r];var i=e[r+1];Ep(n,e[r+2]),n=n.ownerDocument.documentElement,n!==null&&n.animate({opacity:[0,0],pointerEvents:[`none`,`none`]},{duration:0,fill:`forwards`,pseudoElement:`::view-transition-group(`+i+`)`})}e=t.containerInfo,e=e.nodeType===9?e.documentElement:e.ownerDocument.documentElement,e!==null&&e.style.viewTransitionName===``&&(e.style.viewTransitionName=`none`,e.animate({opacity:[0,0],pointerEvents:[`none`,`none`]},{duration:0,fill:`forwards`,pseudoElement:`::view-transition-group(root)`}),e.animate({width:[0,0],height:[0,0]},{duration:0,fill:`forwards`,pseudoElement:`::view-transition`})),hu=!0}ql=null;break;case 5:Fu(t,e);break;case 4:r=fu,fu=!1,Fu(t,e),fu&&(mu=!0),fu=r;break;case 22:e.memoizedState===null&&(n.memoizedState===null?Fu(t,e):eu(e,!1));break;case 30:r=fu,i=Jl(),fu=!1,Fu(t,e),fu&&(e.flags|=4);var a=e.memoizedProps,o=e.stateNode;t=Oi(a,o),o=Oi(n.memoizedProps,o);var s=Ai(a.default,a.update);s===`none`?t=!1:(a=n.memoizedState,n.memoizedState=null,n=e.child,Yl=0,t=su(e,n,t,o,s,a,!0),Yl!==(a===null?0:a.length)&&(e.flags|=32)),e.flags&4&&t?(Nd(e,e.memoizedProps.onUpdate),ql=i):i!==null&&(i.push.apply(i,ql),ql=i),fu=e.flags&32?!0:r;break;default:Fu(t,e)}}function Lu(e,t){if(t.subtreeFlags&8772)for(t=t.child;t!==null;)vu(e,t.alternate,t),t=t.sibling}function Ru(e,t){for(e=e.child;e!==null;){var n=e,r=t;switch(n.tag){case 0:case 11:case 14:case 15:Dl(4,n,n.return),Ru(n,r);break;case 1:jl(n,n.return);var i=n.stateNode;typeof i.componentWillUnmount==`function`&&kl(n,n.return,i),Ru(n,r);break;case 27:r&2&&gm(n.stateNode,n.type,n.memoizedProps);case 5:jl(n,n.return),n.tag!==5&&n.tag!==27||Pl(n),Ru(n,r);break;case 6:Pl(n);break;case 26:jl(n,n.return),i=n.stateNode,n.memoizedState!==null||i===null||V||i.parentNode.removeChild(i),Ru(n,r);break;case 22:n.memoizedState===null&&Ru(n,r);break;case 30:jl(n,n.return),Ru(n,r);break;case 7:jl(n,n.return);default:Ru(n,r)}e=e.sibling}}function zu(e,t,n){for(n=t.subtreeFlags&8772?n:n&-2,t=t.child;t!==null;){var r=t.alternate,i=e,a=t,o=a.flags,s=!!(n&1);switch(a.tag){case 0:case 11:case 15:zu(i,a,n),El(4,a);break;case 1:if(zu(i,a,n),r=a,i=r.stateNode,typeof i.componentDidMount==`function`)try{i.componentDidMount()}catch(e){Z(r,r.return,e)}if(r=a,i=r.updateQueue,i!==null){var c=r.stateNode;try{var l=i.shared.hiddenCallbacks;if(l!==null)for(i.shared.hiddenCallbacks=null,i=0;i<l.length;i++)No(l[i],c)}catch(e){Z(r,r.return,e)}}s&&o&64&&Ol(a),Al(a,a.return);break;case 27:n&2&&Ul(a);case 5:a.tag!==5&&a.tag!==27||Nl(a),zu(i,a,n),s&&r===null&&o&4&&Ll(a),Al(a,a.return);break;case 6:Nl(a);break;case 26:c=a.stateNode,a.memoizedState!==null||c===null||B||Km(bm(c.ownerDocument),a.type,c),zu(i,a,n),s&&r===null&&o&4&&Ll(a),Al(a,a.return);break;case 12:zu(i,a,n);break;case 31:zu(i,a,n),s&&o&4&&Eu(i,a);break;case 13:zu(i,a,n),s&&o&4&&Du(i,a);break;case 22:a.memoizedState===null&&zu(i,a,n),Al(a,a.return);break;case 30:zu(i,a,n),Al(a,a.return);break;case 7:Al(a,a.return);default:zu(i,a,n)}t=t.sibling}}function Bu(e,t){var n=null;e!==null&&e.memoizedState!==null&&e.memoizedState.cachePool!==null&&(n=e.memoizedState.cachePool.pool),e=null,t.memoizedState!==null&&t.memoizedState.cachePool!==null&&(e=t.memoizedState.cachePool.pool),e!==n&&(e!=null&&e.refCount++,n!=null&&Ha(n))}function Vu(e,t){e=null,t.alternate!==null&&(e=t.alternate.memoizedState.cache),t=t.memoizedState.cache,t!==e&&(t.refCount++,e!=null&&Ha(e))}function Hu(e,t,n,r){var i=(n&335544064)===n;if(t.subtreeFlags&(i?10262:10256))for(t=t.child;t!==null;)Uu(e,t,n,r),t=t.sibling;else i&&ou(t)}function Uu(e,t,n,r){var i=(n&335544064)===n;i&&t.alternate===null&&t.return!==null&&t.return.alternate!==null&&au(t);var a=t.flags;switch(t.tag){case 0:case 11:case 15:Hu(e,t,n,r),a&2048&&El(9,t);break;case 1:Hu(e,t,n,r);break;case 3:Hu(e,t,n,r),i&&hu&&(e=e.containerInfo,e=e.nodeType===9?e.body:e.nodeName===`HTML`?e.ownerDocument.body:e,e.style.viewTransitionName===`root`&&(e.style.viewTransitionName=``),e=e.ownerDocument.documentElement,e!==null&&e.style.viewTransitionName===`none`&&(e.style.viewTransitionName=``)),a&2048&&(a=null,t.alternate!==null&&(a=t.alternate.memoizedState.cache),t=t.memoizedState.cache,t!==a&&(t.refCount++,a!=null&&Ha(a)));break;case 12:if(a&2048){Hu(e,t,n,r),a=t.stateNode;try{var o=t.memoizedProps,s=o.id,c=o.onPostCommit;typeof c==`function`&&c(s,t.alternate===null?`mount`:`update`,a.passiveEffectDuration,-0)}catch(e){Z(t,t.return,e)}}else Hu(e,t,n,r);break;case 31:Hu(e,t,n,r);break;case 13:Hu(e,t,n,r);break;case 23:break;case 22:o=t.stateNode,s=t.alternate,t.memoizedState===null?(i&&s!==null&&s.memoizedState!==null&&au(t),o._visibility&2?Hu(e,t,n,r):(o._visibility|=2,Wu(e,t,n,r,!!(t.subtreeFlags&10256)||!1))):(i&&s!==null&&s.memoizedState===null&&au(s),o._visibility&2?Hu(e,t,n,r):Gu(e,t)),a&2048&&Bu(s,t);break;case 24:Hu(e,t,n,r),a&2048&&Vu(t.alternate,t);break;case 30:i&&(a=t.alternate,a!==null&&(Ql(a.child,!0),Ql(t.child,!0))),Hu(e,t,n,r);break;default:Hu(e,t,n,r)}}function Wu(e,t,n,r,i){for(i&&=!!(t.subtreeFlags&10256)||!1,t=t.child;t!==null;){var a=e,o=t,s=n,c=r,l=o.flags;switch(o.tag){case 0:case 11:case 15:Wu(a,o,s,c,i),El(8,o);break;case 23:break;case 22:var u=o.stateNode;o.memoizedState===null?(u._visibility|=2,Wu(a,o,s,c,i)):u._visibility&2?Wu(a,o,s,c,i):Gu(a,o),i&&l&2048&&Bu(o.alternate,o);break;case 24:Wu(a,o,s,c,i),i&&l&2048&&Vu(o.alternate,o);break;default:Wu(a,o,s,c,i)}t=t.sibling}}function Gu(e,t){if(t.subtreeFlags&10256)for(t=t.child;t!==null;){var n=e,r=t,i=r.flags;switch(r.tag){case 22:Gu(n,r),i&2048&&Bu(r.alternate,r);break;case 24:Gu(n,r),i&2048&&Vu(r.alternate,r);break;default:Gu(n,r)}t=t.sibling}}var Ku=8192;function qu(e,t,n){if(e.subtreeFlags&Ku)for(e=e.child;e!==null;)Ju(e,t,n),e=e.sibling}function Ju(e,t,n){switch(e.tag){case 26:qu(e,t,n),e.flags&Ku&&(e.memoizedState===null?(e=e.stateNode,(t&335544128)===t&&Zm(n,e)):Qm(n,ju,e.memoizedState,e.memoizedProps));break;case 5:qu(e,t,n),e.flags&Ku&&(e=e.stateNode,(t&335544128)===t&&Zm(n,e));break;case 3:case 4:var r=ju;ju=bm(e.stateNode.containerInfo),qu(e,t,n),ju=r;break;case 22:e.memoizedState===null&&(r=e.alternate,r!==null&&r.memoizedState!==null?(r=Ku,Ku=16777216,qu(e,t,n),Ku=r):qu(e,t,n));break;case 30:if((e.flags&Ku)!==0&&(r=e.memoizedProps.name,r!=null&&r!==`auto`)){var i=e.stateNode;i.paired=null,Gl===null&&(Gl=new Map),Gl.set(r,i)}qu(e,t,n);break;default:qu(e,t,n)}}function Yu(e){var t=e.alternate;if(t!==null&&(e=t.child,e!==null)){t.child=null;do t=e.sibling,e.sibling=null,e=t;while(e!==null)}}function Xu(e){var t=e.deletions;if(e.flags&16){if(t!==null)for(var n=0;n<t.length;n++){var r=t[n];H=r,$u(r,e)}Yu(e)}if(e.subtreeFlags&10256)for(e=e.child;e!==null;)Zu(e),e=e.sibling}function Zu(e){switch(e.tag){case 0:case 11:case 15:Xu(e),e.flags&2048&&Dl(9,e,e.return);break;case 3:Xu(e);break;case 12:Xu(e);break;case 22:var t=e.stateNode;e.memoizedState!==null&&t._visibility&2&&(e.return===null||e.return.tag!==13)?(t._visibility&=-3,Qu(e)):Xu(e);break;default:Xu(e)}}function Qu(e){var t=e.deletions;if(e.flags&16){if(t!==null)for(var n=0;n<t.length;n++){var r=t[n];H=r,$u(r,e)}Yu(e)}for(e=e.child;e!==null;){switch(t=e,t.tag){case 0:case 11:case 15:Dl(8,t,t.return),Qu(t);break;case 22:n=t.stateNode,n._visibility&2&&(n._visibility&=-3,Qu(t));break;default:Qu(t)}e=e.sibling}}function $u(e,t){for(;H!==null;){var n=H;switch(n.tag){case 0:case 11:case 15:Dl(8,n,t);break;case 23:case 22:if(n.memoizedState!==null&&n.memoizedState.cachePool!==null){var r=n.memoizedState.cachePool.pool;r!=null&&r.refCount++}break;case 24:Ha(n.memoizedState.cache)}if(r=n.child,r!==null)r.return=n,H=r;else a:for(n=e;H!==null;){r=H;var i=r.sibling,a=r.return;if(Su(r),r===n){H=null;break a}if(i!==null){i.return=a,H=i;break a}H=a}}}var ed={getCacheForType:function(e){var t=Fa(j),n=t.data.get(e);return n===void 0&&(n=e(),t.data.set(e,n)),n},cacheSignal:function(){return Fa(j).controller.signal}},td=typeof WeakMap==`function`?WeakMap:Map,W=0,G=null,K=null,q=0,J=0,nd=null,rd=!1,id=!1,ad=!1,od=0,Y=0,sd=0,cd=0,ld=0,ud=0,dd=0,fd=null,pd=null,md=!1,hd=0,gd=0,_d=1/0,vd=null,yd=null,X=0,bd=null,xd=null,Sd=0,Cd=0,wd=null,Td=null,Ed=null,Dd=null,Od=null,kd=0,Ad=null;function jd(){return W&2&&q!==0?q&-q:w.T===null?jt():Pf()}function Md(){if(ud===0){if(!(q&536870912)||A){var e=ht;ht<<=1,!(ht&3932160)&&(ht=262144),ud=e}else ud=536870912}return e=Bo.current,e!==null&&(e.flags|=32),ud}function Nd(e,t){if(t!=null){var n=e.stateNode,r=n.ref;r===null&&(r=n.ref=Pp(Oi(e.memoizedProps,n))),Dd===null&&(Dd=[]),Dd.push(t.bind(null,r))}}function Pd(e,t,n){(e===G&&(J===2||J===9)||e.cancelPendingCommit!==null)&&(Vd(e,0),Rd(e,q,ud,!1)),wt(e,n),W&2&&e===G||(e===G&&(!(W&2)&&(cd|=n),Y===4&&Rd(e,q,ud,!1)),Ef(e))}function Fd(e,t,n){if(W&6)throw Error(i(327));var r=!n&&!(t&127)&&(t&e.expiredLanes)===0||yt(e,t),a=r?Yd(e,t):qd(e,t,!0),o=r;do{if(a===0){id&&!r&&Rd(e,t,0,!1);break}if(n=e.current.alternate,o&&!Ld(n))a=qd(e,t,!1),o=!1;else{if(a===2){if(o=t,e.errorRecoveryDisabledLanes&o)var s=0;else s=e.pendingLanes&-536870913,s=s===0?s&536870912?536870912:0:s;if(s!==0){t=s;a:{var c=e;a=fd;var l=c.current.memoizedState.isDehydrated;if(l&&(Vd(c,s).flags|=256),s=qd(c,s,!1),s!==2&&s!==6){if(ad&&!l){c.errorRecoveryDisabledLanes|=o,cd|=o,a=4;break a}o=pd,pd=a,o!==null&&(pd===null?pd=o:pd.push.apply(pd,o))}a=s}if(o=!1,a!==2)continue}}if(a===1){Vd(e,0),Rd(e,t,0,!0);break}a:{switch(r=e,o=a,o){case 0:case 1:throw Error(i(345));case 4:if((t&4194048)!==t&&(t&62914560)!==t)break;case 6:Rd(r,t,ud,!rd);break a;case 2:pd=null;break;case 3:case 5:break;default:throw Error(i(329))}if((t&62914560)===t&&(a=hd+300-Qe(),10<a)){if(Rd(r,t,ud,!rd),vt(r,0,!0)!==0)break a;Sd=t,r.timeoutHandle=gp(Id.bind(null,r,n,pd,vd,md,t,ud,cd,dd,rd,o,`Throttled`,-0,0),a);break a}Id(r,n,pd,vd,md,t,ud,cd,dd,rd,o,null,-0,0)}break}}while(1);Ef(e)}function Id(e,t,n,r,i,a,o,s,c,l,u,d,f,p){e.timeoutHandle=-1;var m=t.subtreeFlags,h=(a&335544064)===a;d=null,(h||m&8192||(m&16785408)==16785408)&&(d={stylesheets:null,count:0,imgCount:0,imgBytes:0,suspenseyImages:[],waitingForImages:!0,waitingForViewTransition:!1,unsuspend:kn},Gl=null,Ju(t,a,d),h&&(m=d,h=e.containerInfo,h=(h.nodeType===9?h:h.ownerDocument).__reactViewTransition,h!=null&&(m.count++,m.waitingForViewTransition=!0,m=nh.bind(m),h.finished.then(m,m))),m=(a&62914560)===a?hd-Qe():(a&4194048)===a?gd-Qe():0,m=eh(d,m),m!==null)?(Sd=a,e.cancelPendingCommit=m(nf.bind(null,e,t,a,n,r,i,o,s,c,l,u,d,null,f,p)),Rd(e,a,o,!l)):nf(e,t,a,n,r,i,o,s,c,l,u,d)}function Ld(e){for(var t=e;;){var n=t.tag;if((n===0||n===11||n===15)&&t.flags&16384&&(n=t.updateQueue,n!==null&&(n=n.stores,n!==null)))for(var r=0;r<n.length;r++){var i=n[r],a=i.getSnapshot;i=i.value;try{if(!Qr(a(),i))return!1}catch{return!1}}if(n=t.child,t.subtreeFlags&16384&&n!==null)n.return=t,t=n;else{if(t===e)break;for(;t.sibling===null;){if(t.return===null||t.return===e)return!0;t=t.return}t.sibling.return=t.return,t=t.sibling}}return!0}function Rd(e,t,n,r){t=bt(e,t),t&=~ld,t&=~cd,e.suspendedLanes|=t,e.pingedLanes&=~t,r&&(e.warmLanes|=t),r=e.expirationTimes;for(var i=t;0<i;){var a=31-ut(i),o=1<<a;r[a]=-1,i&=~o}n!==0&&Et(e,n,t)}function zd(){return W&6?!0:(Df(0,!1),!1)}function Bd(){if(K!==null){if(J===0)var e=K.return;else e=K,Da=Ea=null,fs(e),ho=null,go=0,e=K;for(;e!==null;)Tl(e.alternate,e),e=e.return;K=null}}function Vd(e,t){var n=e.timeoutHandle;return n!==-1&&(e.timeoutHandle=-1,_p(n)),n=e.cancelPendingCommit,n!==null&&(e.cancelPendingCommit=null,n()),Sd=0,Bd(),G=e,K=n=Gi(e.current,null),q=t,J=0,nd=null,rd=!1,id=yt(e,t),ad=!1,dd=ud=ld=cd=sd=Y=0,pd=fd=null,md=!1,od=bt(e,t),Fi(),n}function Hd(e,t){M=null,w.H=xc,t===io||t===oo?(t=po(),J=3):t===ao?(t=po(),J=4):J=t===zc?8:typeof t==`object`&&t&&typeof t.then==`function`?6:1,nd=t,K===null&&(Y=1,Nc(e,$i(t,e.current)))}function Ud(){var e=Bo.current;return e===null?!0:(q&4194048)===q?Vo===null:(q&62914560)===q||q&536870912?e===Vo:!1}function Wd(){var e=w.H;return w.H=xc,e===null?xc:e}function Gd(){var e=w.A;return w.A=ed,e}function Kd(){Y=4,rd||(q&4194048)!==q&&Bo.current!==null||(id=!0),!(sd&134217727)&&!(cd&134217727)||G===null||Rd(G,q,ud,!1)}function qd(e,t,n){var r=W;W|=2;var i=Wd(),a=Gd();(G!==e||q!==t)&&(vd=null,Vd(e,t)),t=!1;var o=Y;a:do try{if(J!==0&&K!==null){var s=K,c=nd;switch(J){case 8:Bd(),o=6;break a;case 3:case 2:case 9:case 6:Bo.current===null&&(t=!0);var l=J;if(J=0,nd=null,$d(e,s,c,l),n&&id){o=0;break a}break;default:l=J,J=0,nd=null,$d(e,s,c,l)}}Jd(),o=Y;break}catch(t){Hd(e,t)}while(1);return t&&e.shellSuspendCounter++,Da=Ea=null,W=r,w.H=i,w.A=a,K===null&&(G=null,q=0,Fi()),o}function Jd(){for(;K!==null;)Zd(K)}function Yd(e,t){var n=W;W|=2;var r=Wd(),a=Gd();G!==e||q!==t?(vd=null,_d=Qe()+500,Vd(e,t)):id=yt(e,t);a:do try{if(J!==0&&K!==null){t=K;var o=nd;b:switch(J){case 1:J=0,nd=null,$d(e,t,o,1);break;case 2:case 9:if(co(o)){J=0,nd=null,Qd(t);break}t=function(){J!==2&&J!==9||G!==e||(J=7),Ef(e)},o.then(t,t);break a;case 3:J=7;break a;case 4:J=5;break a;case 7:co(o)?(J=0,nd=null,Qd(t)):(J=0,nd=null,$d(e,t,o,7));break;case 5:var s=null;switch(K.tag){case 26:s=K.memoizedState;case 5:case 27:var c=K;if(s?Ym(s):c.stateNode.complete){J=0,nd=null;var l=c.sibling;if(l!==null)K=l;else{var u=c.return;u===null?K=null:(K=u,ef(u))}break b}}J=0,nd=null,$d(e,t,o,5);break;case 6:J=0,nd=null,$d(e,t,o,6);break;case 8:Bd(),Y=6;break a;default:throw Error(i(462))}}Xd();break}catch(t){Hd(e,t)}while(1);return Da=Ea=null,w.H=r,w.A=a,W=n,K===null?(G=null,q=0,Fi(),Y):0}function Xd(){for(;K!==null&&!Xe();)Zd(K)}function Zd(e){var t=_l(e.alternate,e,od);e.memoizedProps=e.pendingProps,t===null?ef(e):K=t}function Qd(e){var t=e,n=t.alternate;switch(t.tag){case 15:case 0:t=Zc(n,t,t.pendingProps,t.type,void 0,q);break;case 11:t=Zc(n,t,t.pendingProps,t.type.render,t.ref,q);break;case 5:fs(t);var r=t;r===ma&&(A?(ba(r),r.tag===5&&r.stateNode!=null&&(k=r.stateNode)):(ba(r),A=!0));default:Tl(n,t),t=K=Ki(t,od),t=_l(n,t,od)}e.memoizedProps=e.pendingProps,t===null?ef(e):K=t}function $d(e,t,n,r){Da=Ea=null,fs(t),ho=null,go=0;var i=t.return;try{if(Rc(e,i,t,n,q)){Y=1,Nc(e,$i(n,e.current)),K=null;return}}catch(t){if(i!==null)throw K=i,t;Y=1,Nc(e,$i(n,e.current)),K=null;return}t.flags&32768?(A||r===1?e=!0:id||q&536870912?e=!1:(rd=e=!0,(r===2||r===9||r===3||r===6)&&(r=Bo.current,r!==null&&r.tag===13&&(r.flags|=16384))),tf(t,e)):ef(t)}function ef(e){var t=e;do{if(t.flags&32768){tf(t,rd);return}e=t.return;var n=Cl(t.alternate,t,od);if(n!==null){K=n;return}if(t=t.sibling,t!==null){K=t;return}K=t=e}while(t!==null);Y===0&&(Y=5)}function tf(e,t){do{var n=wl(e.alternate,e);if(n!==null){n.flags&=32767,K=n;return}if(n=e.return,n!==null&&(n.flags|=32768,n.subtreeFlags=0,n.deletions=null),!t&&(e=e.sibling,e!==null)){K=e;return}K=e=n}while(e!==null);Y=6,K=null}function nf(e,t,n,r,a,o,s,c,l,u,d,f){e.cancelPendingCommit=null;do df();while(X!==0);if(W&6)throw Error(i(327));if(t!==null){if(t===e.current)throw Error(i(177));e===G&&(K=G=null,q=0),xd=t,bd=e,Sd=n,wd=a,Td=r,rf(e,t,n,s,c,l,f)}}function rf(e,t,n,r,i,a,o){var s=t.lanes|t.childLanes;if(Cd=s,s|=Pi,Tt(e,n,s,r,i,a),Dd=null,(n&335544064)===n?(Od=Ga(e),r=10262):(Od=null,r=10256),(t.subtreeFlags&r)!==0||(t.flags&r)!==0?(e.callbackNode=null,e.callbackPriority=0,yf(nt,function(){return ff(),null})):(e.callbackNode=null,e.callbackPriority=0),Wl=!1,r=!!(t.flags&13878),t.subtreeFlags&13878||r){r=w.T,w.T=null,i=T.p,T.p=2,a=W,W|=4;try{gu(e,t,n)}finally{W=a,T.p=i,w.T=r}}X=1,Wl?Ed=Mp(o,e.containerInfo,Od,sf,cf,of,lf,ff,af,null,null):(sf(),cf(),lf())}function af(e){if(X!==0){var t=bd.onRecoverableError;t(e,{componentStack:null})}}function of(){X===3&&(X=0,Iu(xd,bd),X=4)}function sf(){if(X===1){X=0;var e=bd,t=xd,n=Sd,r=!!(t.flags&13878);if(t.subtreeFlags&13878||r){r=w.T,w.T=null;var i=T.p;T.p=2;var a=W;W|=4;try{pu=mu=!1,Mu(t,e,n),n=cp;var o=ii(e.containerInfo),s=n.focusedElem,c=n.selectionRange;if(o!==s&&s&&s.ownerDocument&&ri(s.ownerDocument.documentElement,s)){if(c!==null&&ai(s)){var l=c.start,u=c.end;if(u===void 0&&(u=l),`selectionStart`in s)s.selectionStart=l,s.selectionEnd=Math.min(u,s.value.length);else{var d=s.ownerDocument||document,f=d&&d.defaultView||window;if(f.getSelection){var p=f.getSelection(),m=s.textContent.length,h=Math.min(c.start,m),g=c.end===void 0?h:Math.min(c.end,m);!p.extend&&h>g&&(o=g,g=h,h=o);var _=ni(s,h),v=ni(s,g);if(_&&v&&(p.rangeCount!==1||p.anchorNode!==_.node||p.anchorOffset!==_.offset||p.focusNode!==v.node||p.focusOffset!==v.offset)){var y=d.createRange();y.setStart(_.node,_.offset),p.removeAllRanges(),h>g?(p.addRange(y),p.extend(v.node,v.offset)):(y.setEnd(v.node,v.offset),p.addRange(y))}}}}for(d=[],p=s;p=p.parentNode;)p.nodeType===1&&d.push({element:p,left:p.scrollLeft,top:p.scrollTop});for(typeof s.focus==`function`&&s.focus(),s=0;s<d.length;s++){var b=d[s];b.element.scrollLeft=b.left,b.element.scrollTop=b.top}}gh=!!sp,cp=sp=null}finally{W=a,T.p=i,w.T=r}}e.current=t,X=2}}function cf(){if(X===2){X=0;var e=bd,t=xd,n=!!(t.flags&8772);if(t.subtreeFlags&8772||n){n=w.T,w.T=null;var r=T.p;T.p=2;var i=W;W|=4;try{vu(e,t.alternate,t)}finally{W=i,T.p=r,w.T=n}}X=3}}function lf(){if(X===4||X===3){X=0;var e=Ed;Ed=null,Ze();var t=bd,n=xd,r=Sd,i=Td,a=(r&335544064)===r?10262:10256;if((n.subtreeFlags&a)!==0||(n.flags&a)!==0?X=5:(X=0,xd=bd=null,uf(t,t.pendingLanes)),a=t.pendingLanes,a===0&&(yd=null),At(r),n=n.stateNode,ct&&typeof ct.onCommitFiberRoot==`function`)try{ct.onCommitFiberRoot(st,n,void 0,(n.current.flags&128)==128)}catch{}if(i!==null){n=w.T,a=T.p,T.p=2,w.T=null;try{for(var o=t.onRecoverableError,s=0;s<i.length;s++){var c=i[s];o(c.value,{componentStack:c.stack})}}finally{w.T=n,T.p=a}}if(i=Dd,o=Od,Od=null,i!==null&&(Dd=null,o===null&&(o=[]),e!==null))for(c=0;c<i.length;c++)n=(0,i[c])(o),n!==void 0&&e.finished.finally(n);Sd&3&&df(),Ef(t),a=t.pendingLanes,r&261930&&a&42?t===Ad?kd++:(kd=0,Ad=t):(kd=0,Ad=null),Df(0,!1)}}function uf(e,t){(e.pooledCacheLanes&=t)===0&&(t=e.pooledCache,t!=null&&(e.pooledCache=null,Ha(t)))}function df(){return Ed!==null&&(Ed.skipTransition(),Ed=null),sf(),cf(),lf(),ff()}function ff(){if(X!==5)return!1;var e=bd,t=Cd;Cd=0;var n=At(Sd),r=w.T,a=T.p;try{T.p=32>n?32:n,w.T=null,n=wd,wd=null;var o=bd,s=Sd;if(X=0,xd=bd=null,Sd=0,W&6)throw Error(i(331));var c=W;if(W|=4,Zu(o.current),Uu(o,o.current,s,n),W=c,Df(0,!1),ct&&typeof ct.onPostCommitFiberRoot==`function`)try{ct.onPostCommitFiberRoot(st,o)}catch{}return!0}finally{T.p=a,w.T=r,uf(e,t)}}function pf(e,t,n){t=$i(n,t),t=Fc(e.stateNode,t,2),e=Do(e,t,2),e!==null&&(wt(e,2),Ef(e))}function Z(e,t,n){if(e.tag===3)pf(e,e,n);else for(;t!==null;){if(t.tag===3){pf(t,e,n);break}if(t.tag===1){var r=t.stateNode;if(typeof t.type.getDerivedStateFromError==`function`||typeof r.componentDidCatch==`function`&&(yd===null||!yd.has(r))){e=$i(n,e),n=Ic(2),r=Do(t,n,2),r!==null&&(Lc(n,r,t,e),wt(r,2),Ef(r));break}}t=t.return}}function mf(e,t,n){var r=e.pingCache;if(r===null){r=e.pingCache=new td;var i=new Set;r.set(t,i)}else i=r.get(t),i===void 0&&(i=new Set,r.set(t,i));i.has(n)||(ad=!0,i.add(n),e=hf.bind(null,e,t,n),t.then(e,e))}function hf(e,t,n){var r=e.pingCache;r!==null&&r.delete(t),e.pingedLanes|=e.suspendedLanes&n,e.warmLanes&=~n,G===e&&(q&n)===n&&(Y===4||Y===3&&(q&62914560)===q&&300>Qe()-hd?W&2?ld|=n:Vd(e,0):ld|=n,dd===q&&(dd=0)),Ef(e)}function gf(e,t){t===0&&(t=St()),e=Ri(e,t),e!==null&&(wt(e,t),Ef(e))}function _f(e){var t=e.memoizedState,n=0;t!==null&&(n=t.retryLane),gf(e,n)}function vf(e,t){var n=0;switch(e.tag){case 31:case 13:var r=e.stateNode,a=e.memoizedState;a!==null&&(n=a.retryLane);break;case 19:r=e.stateNode;break;case 22:r=e.stateNode._retryCache;break;default:throw Error(i(314))}r!==null&&r.delete(t),gf(e,n)}function yf(e,t){return Je(e,t)}var bf=null,xf=null,Sf=!1,Cf=!1,wf=!1,Tf=0;function Ef(e){e!==xf&&e.next===null&&(xf===null?bf=xf=e:xf=xf.next=e),Cf=!0,Sf||(Sf=!0,Nf())}function Df(e,t){if(!wf&&Cf){wf=!0;do for(var n=!1,r=bf;r!==null;){if(!t){if(e!==0){var i=r.pendingLanes;if(i===0)var a=0;else{var o=r.suspendedLanes,s=r.pingedLanes;a=(1<<31-ut(42|e)+1)-1,a&=i&~(o&~s),a=a&201326741?a&201326741|1:a?a|2:0}a!==0&&(n=!0,Mf(r,a))}else a=q,a=vt(r,r===G?a:0,r.cancelPendingCommit!==null||r.timeoutHandle!==-1),!(a&3)||yt(r,a)||(n=!0,Mf(r,a))}r=r.next}while(n);wf=!1}}function Of(){kf()}function kf(){Cf=Sf=!1;var e=0;Tf!==0&&hp()&&(e=Tf);for(var t=Qe(),n=null,r=bf;r!==null;){var i=r.next,a=Af(r,t);a===0?(r.next=null,n===null?bf=i:n.next=i,i===null&&(xf=n)):(n=r,(e!==0||a&3)&&(Cf=!0)),r=i}X!==0&&X!==5||Df(e,!1),Tf!==0&&(Tf=0)}function Af(e,t){for(var n=e.suspendedLanes,r=e.pingedLanes,i=e.expirationTimes,a=e.pendingLanes&-62914561;0<a;){var o=31-ut(a),s=1<<o,c=i[o];c===-1?((s&n)===0||(s&r)!==0)&&(i[o]=xt(s,t)):c<=t&&(e.expiredLanes|=s),a&=~s}if(t=G,n=q,n=vt(e,e===t?n:0,e.cancelPendingCommit!==null||e.timeoutHandle!==-1),r=e.callbackNode,n===0||e===t&&(J===2||J===9)||e.cancelPendingCommit!==null)return r!==null&&r!==null&&Ye(r),e.callbackNode=null,e.callbackPriority=0;if(!(n&3)||yt(e,n)){if(t=n&-n,t===e.callbackPriority)return t;switch(r!==null&&Ye(r),At(n)){case 2:case 8:n=tt;break;case 32:n=nt;break;case 268435456:n=it;break;default:n=nt}return r=jf.bind(null,e),n=Je(n,r),e.callbackPriority=t,e.callbackNode=n,t}return r!==null&&r!==null&&Ye(r),e.callbackPriority=2,e.callbackNode=null,2}function jf(e,t){if(X!==0&&X!==5)return e.callbackNode=null,e.callbackPriority=0,null;var n=e.callbackNode;if(df()&&e.callbackNode!==n)return null;var r=q;return r=vt(e,e===G?r:0,e.cancelPendingCommit!==null||e.timeoutHandle!==-1),r===0?null:(Fd(e,r,t),Af(e,Qe()),e.callbackNode!=null&&e.callbackNode===n?jf.bind(null,e):null)}function Mf(e,t){if(df())return null;Fd(e,t,!0)}function Nf(){bp(function(){W&6?Je(et,Of):kf()})}function Pf(){if(Tf===0){var e=Ja;e===0&&(e=mt,mt<<=1,!(mt&261888)&&(mt=256)),Tf=e}return Tf}function Ff(e){return e==null||typeof e==`symbol`||typeof e==`boolean`?null:typeof e==`function`?e:On(e)}function If(e,t,n,r,i){if(t===`submit`&&n&&n.stateNode===i){var a=Ff((i[Ft]||null).action),o=r.submitter;o&&(t=(t=o[Ft]||null)?Ff(t.formAction):o.getAttribute(`formAction`),t!==null&&(a=t,o=null));var s=new Xn(`action`,`action`,null,r,i);e.push({event:s,listeners:[{instance:null,listener:function(){if(r.defaultPrevented){if(Tf!==0){var e=new FormData(i,o);sc(n,{pending:!0,data:e,method:i.method,action:a},null,e)}}else typeof a==`function`&&(s.preventDefault(),e=new FormData(i,o),sc(n,{pending:!0,data:e,method:i.method,action:a},a,e))},currentTarget:i}]})}}for(var Lf=0;Lf<Ti.length;Lf++){var Rf=Ti[Lf];Ei(Rf.toLowerCase(),`on`+(Rf[0].toUpperCase()+Rf.slice(1)))}Ei(_i,`onAnimationEnd`),Ei(vi,`onAnimationIteration`),Ei(yi,`onAnimationStart`),Ei(`dblclick`,`onDoubleClick`),Ei(`focusin`,`onFocus`),Ei(`focusout`,`onBlur`),Ei(bi,`onTransitionRun`),Ei(xi,`onTransitionStart`),Ei(Si,`onTransitionCancel`),Ei(Ci,`onTransitionEnd`),Qt(`onMouseEnter`,[`mouseout`,`mouseover`]),Qt(`onMouseLeave`,[`mouseout`,`mouseover`]),Qt(`onPointerEnter`,[`pointerout`,`pointerover`]),Qt(`onPointerLeave`,[`pointerout`,`pointerover`]),Zt(`onChange`,`change click focusin focusout input keydown keyup selectionchange`.split(` `)),Zt(`onSelect`,`focusout contextmenu dragend focusin keydown keyup mousedown mouseup selectionchange`.split(` `)),Zt(`onBeforeInput`,[`compositionend`,`keypress`,`textInput`,`paste`]),Zt(`onCompositionEnd`,`compositionend focusout keydown keypress keyup mousedown`.split(` `)),Zt(`onCompositionStart`,`compositionstart focusout keydown keypress keyup mousedown`.split(` `)),Zt(`onCompositionUpdate`,`compositionupdate focusout keydown keypress keyup mousedown`.split(` `));var zf=`abort canplay canplaythrough durationchange emptied encrypted ended error loadeddata loadedmetadata loadstart pause play playing progress ratechange resize seeked seeking stalled suspend timeupdate volumechange waiting`.split(` `),Bf=new Set(`beforetoggle cancel close invalid load scroll scrollend toggle`.split(` `).concat(zf));function Vf(e,t){t=!!(t&4);for(var n=0;n<e.length;n++){var r=e[n],i=r.event;r=r.listeners;a:{var a=void 0;if(t)for(var o=r.length-1;0<=o;o--){var s=r[o],c=s.instance,l=s.currentTarget;if(s=s.listener,c!==a&&i.isPropagationStopped())break a;a=s,i.currentTarget=l;try{a(i)}catch(e){ji(e)}i.currentTarget=null,a=c}else for(o=0;o<r.length;o++){if(s=r[o],c=s.instance,l=s.currentTarget,s=s.listener,c!==a&&i.isPropagationStopped())break a;a=s,i.currentTarget=l;try{a(i)}catch(e){ji(e)}i.currentTarget=null,a=c}}}}function Q(e,t){var n=t[Lt];n===void 0&&(n=t[Lt]=new Set);var r=e+`__bubble`;n.has(r)||(Gf(t,e,2,!1),n.add(r))}function Hf(e,t,n){var r=0;t&&(r|=4),Gf(n,e,r,t)}var Uf=`_reactListening`+Math.random().toString(36).slice(2);function Wf(e){if(!e[Uf]){e[Uf]=!0,Yt.forEach(function(t){t!==`selectionchange`&&(Bf.has(t)||Hf(t,!1,e),Hf(t,!0,e))});var t=e.nodeType===9?e:e.ownerDocument;t===null||t[Uf]||(t[Uf]=!0,Hf(`selectionchange`,!1,t))}}function Gf(e,t,n,r){switch(Ch(t)){case 2:var i=_h;break;case 8:i=vh;break;default:i=yh}n=i.bind(null,t,n,e),i=void 0,!zn||t!==`touchstart`&&t!==`touchmove`&&t!==`wheel`||(i=!0),r?i===void 0?e.addEventListener(t,n,!0):e.addEventListener(t,n,{capture:!0,passive:i}):i===void 0?e.addEventListener(t,n,!1):e.addEventListener(t,n,{passive:i})}function Kf(e,t,n,r,i){var a=r;if(!(t&1)&&!(t&2)&&r!==null)a:for(;;){if(r===null)return;var s=r.tag;if(s===3||s===4){var c=r.stateNode.containerInfo;if(c===i)break;if(s===4)for(s=r.return;s!==null;){var l=s.tag;if((l===3||l===4)&&s.stateNode.containerInfo===i)return;s=s.return}for(;c!==null;){if(s=Wt(c),s===null)return;if(l=s.tag,l===5||l===6||l===26||l===27){r=a=s;continue a}c=c.parentNode}}r=r.return}In(function(){var r=a,i=jn(n),s=[];a:{var c=wi.get(e);if(c!==void 0){var l=Xn,u=e;switch(e){case`keypress`:if(Gn(n)===0)break a;case`keydown`:case`keyup`:l=mr;break;case`focusin`:u=`focus`,l=ar;break;case`focusout`:u=`blur`,l=ar;break;case`beforeblur`:case`afterblur`:l=ar;break;case`click`:if(n.button===2)break a;case`auxclick`:case`dblclick`:case`mousedown`:case`mousemove`:case`mouseup`:case`mouseout`:case`mouseover`:case`contextmenu`:l=rr;break;case`drag`:case`dragend`:case`dragenter`:case`dragexit`:case`dragleave`:case`dragover`:case`dragstart`:case`drop`:l=ir;break;case`touchcancel`:case`touchend`:case`touchmove`:case`touchstart`:l=_r;break;case _i:case vi:case yi:l=or;break;case Ci:l=vr;break;case`scroll`:case`scrollend`:l=Qn;break;case`wheel`:l=yr;break;case`copy`:case`cut`:case`paste`:l=sr;break;case`gotpointercapture`:case`lostpointercapture`:case`pointercancel`:case`pointerdown`:case`pointermove`:case`pointerout`:case`pointerover`:case`pointerup`:l=hr;break;case`submit`:l=gr;break;case`toggle`:case`beforetoggle`:l=br}var d=!!(t&4),f=!d&&(e===`scroll`||e===`scrollend`),p=d?c===null?null:c+`Capture`:c;d=[];for(var m=r,h;m!==null;){var g=m;if(h=g.stateNode,g=g.tag,g!==5&&g!==26&&g!==27||h===null||p===null||(g=Ln(m,p),g!=null&&d.push(qf(m,g,h))),f)break;m=m.return}0<d.length&&(c=new l(c,u,null,n,i),s.push({event:c,listeners:d}))}}if(!(t&7)){a:{if(l=e===`mouseover`||e===`pointerover`,c=e===`mouseout`||e===`pointerout`,l&&n!==An&&(u=n.relatedTarget||n.fromElement)&&(Wt(u)||u[It]))break a;(c||l)&&(u=i.window===i?i:(l=i.ownerDocument)?l.defaultView||l.parentWindow:window,c?(l=n.relatedTarget||n.toElement,c=r,l=l?Wt(l):null,l!==null&&(f=o(l),d=l.tag,l!==f||d!==5&&d!==27&&d!==6)&&(l=null)):(c=null,l=r),c!==l&&(d=rr,g=`onMouseLeave`,p=`onMouseEnter`,m=`mouse`,(e===`pointerout`||e===`pointerover`)&&(d=hr,g=`onPointerLeave`,p=`onPointerEnter`,m=`pointer`),f=c==null?u:Kt(c),h=l==null?u:Kt(l),u=new d(g,m+`leave`,c,n,i),u.target=f,u.relatedTarget=h,g=null,Wt(i)===r&&(d=new d(p,m+`enter`,l,n,i),d.target=h,d.relatedTarget=f,g=d),f=g,d=c&&l?ie(c,l,Yf):null,c!==null&&Xf(s,u,c,d,!1),l!==null&&f!==null&&Xf(s,f,l,d,!0)))}a:{if(c=r?Kt(r):window,l=c.nodeName&&c.nodeName.toLowerCase(),l===`select`||l===`input`&&c.type===`file`)var _=Br;else if(Pr(c)){if(Vr)_=Xr;else{_=Jr;var v=qr}}else l=c.nodeName,!l||l.toLowerCase()!==`input`||c.type!==`checkbox`&&c.type!==`radio`?r&&Tn(r.elementType)&&(_=Br):_=Yr;if(_&&=_(e,r)){Fr(s,_,n,i);break a}v&&v(e,c,r)}switch(v=r?Kt(r):window,e){case`focusin`:(Pr(v)||v.contentEditable===`true`)&&(si=v,ci=r,li=null);break;case`focusout`:li=ci=si=null;break;case`mousedown`:ui=!0;break;case`contextmenu`:case`mouseup`:case`dragend`:ui=!1,di(s,n,i);break;case`selectionchange`:if(oi)break;case`keydown`:case`keyup`:di(s,n,i)}var y;if(Sr)b:{switch(e){case`compositionstart`:var b=`onCompositionStart`;break b;case`compositionend`:b=`onCompositionEnd`;break b;case`compositionupdate`:b=`onCompositionUpdate`;break b}b=void 0}else Ar?Or(e,n)&&(b=`onCompositionEnd`):e===`keydown`&&n.keyCode===229&&(b=`onCompositionStart`);b&&(Tr&&n.locale!==`ko`&&(Ar||b!==`onCompositionStart`?b===`onCompositionEnd`&&Ar&&(y=Wn()):(Vn=i,Hn=`value`in Vn?Vn.value:Vn.textContent,Ar=!0)),v=Jf(r,b),0<v.length&&(b=new cr(b,e,null,n,i),s.push({event:b,listeners:v}),y?b.data=y:(y=kr(n),y!==null&&(b.data=y)))),(y=wr?jr(e,n):Mr(e,n))&&(b=Jf(r,`onBeforeInput`),0<b.length&&(v=new cr(`onBeforeInput`,`beforeinput`,null,n,i),s.push({event:v,listeners:b}),v.data=y)),If(s,e,r,n,i)}Vf(s,t)})}function qf(e,t,n){return{instance:e,listener:t,currentTarget:n}}function Jf(e,t){for(var n=t+`Capture`,r=[];e!==null;){var i=e,a=i.stateNode;if(i=i.tag,i!==5&&i!==26&&i!==27||a===null||(i=Ln(e,n),i!=null&&r.unshift(qf(e,i,a)),i=Ln(e,t),i!=null&&r.push(qf(e,i,a))),e.tag===3)return r;e=e.return}return[]}function Yf(e){if(e===null)return null;do e=e.return;while(e&&e.tag!==5&&e.tag!==27);return e||null}function Xf(e,t,n,r,i){for(var a=t._reactName,o=[];n!==null&&n!==r;){var s=n,c=s.alternate,l=s.stateNode;if(s=s.tag,c!==null&&c===r)break;s!==5&&s!==26&&s!==27||l===null||(c=l,i?(l=Ln(n,a),l!=null&&o.unshift(qf(n,l,c))):i||(l=Ln(n,a),l!=null&&o.push(qf(n,l,c)))),n=n.return}o.length!==0&&e.push({event:t,listeners:o})}var Zf=/\r\n?/g,Qf=/\u0000|\uFFFD/g;function $f(e){return(typeof e==`string`?e:``+e).replace(Zf,`
+`).replace(Qf,``)}function ep(e,t){return t=$f(t),$f(e)===t}function $(e,t,n,r,a,o){switch(n){case`children`:if(typeof r==`string`)t===`body`||t===`textarea`&&r===``||xn(e,r);else if(typeof r==`number`||typeof r==`bigint`)t!==`body`&&xn(e,``+r);else return;break;case`className`:on(e,`class`,r);break;case`tabIndex`:on(e,`tabindex`,r);break;case`dir`:case`role`:case`viewBox`:case`width`:case`height`:on(e,n,r);break;case`style`:wn(e,r,o);return;case`data`:if(t!==`object`){on(e,`data`,r);break}case`src`:case`href`:if(r===``&&(t!==`a`||n!==`href`)||r==null||typeof r==`function`||typeof r==`symbol`||typeof r==`boolean`){e.removeAttribute(n);break}r=On(r),e.setAttribute(n,r);break;case`action`:case`formAction`:if(typeof r==`function`){e.setAttribute(n,`javascript:throw new Error('A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\\'re trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().')`);break}if(typeof o==`function`&&(n===`formAction`?(t!==`input`&&$(e,t,`name`,a.name,a,null),$(e,t,`formEncType`,a.formEncType,a,null),$(e,t,`formMethod`,a.formMethod,a,null),$(e,t,`formTarget`,a.formTarget,a,null)):($(e,t,`encType`,a.encType,a,null),$(e,t,`method`,a.method,a,null),$(e,t,`target`,a.target,a,null))),r==null||typeof r==`symbol`||typeof r==`boolean`){e.removeAttribute(n);break}r=On(r),e.setAttribute(n,r);break;case`onClick`:r!=null&&(e.onclick=kn);return;case`onScroll`:r!=null&&Q(`scroll`,e);return;case`onScrollEnd`:r!=null&&Q(`scrollend`,e);return;case`dangerouslySetInnerHTML`:if(r!=null){if(typeof r!=`object`||!(`__html`in r))throw Error(i(61));if(n=r.__html,n!=null){if(a.children!=null)throw Error(i(60));o?.__html!==n&&(e.innerHTML=n)}}break;case`multiple`:e.multiple=r&&typeof r!=`function`&&typeof r!=`symbol`;break;case`muted`:e.muted=r&&typeof r!=`function`&&typeof r!=`symbol`;break;case`suppressContentEditableWarning`:case`suppressHydrationWarning`:case`defaultValue`:case`defaultChecked`:case`innerHTML`:case`ref`:break;case`autoFocus`:break;case`xlinkHref`:if(r==null||typeof r==`function`||typeof r==`boolean`||typeof r==`symbol`){e.removeAttribute(`xlink:href`);break}n=On(r),e.setAttributeNS(`http://www.w3.org/1999/xlink`,`xlink:href`,n);break;case`contentEditable`:case`spellCheck`:case`draggable`:case`value`:case`autoReverse`:case`externalResourcesRequired`:case`focusable`:case`preserveAlpha`:r!=null&&typeof r!=`function`&&typeof r!=`symbol`?e.setAttribute(n,r):e.removeAttribute(n);break;case`inert`:case`allowFullScreen`:case`async`:case`autoPlay`:case`controls`:case`credentialless`:case`default`:case`defer`:case`disabled`:case`disablePictureInPicture`:case`disableRemotePlayback`:case`formNoValidate`:case`hidden`:case`loop`:case`noModule`:case`noValidate`:case`open`:case`playsInline`:case`readOnly`:case`required`:case`reversed`:case`scoped`:case`seamless`:case`itemScope`:r&&typeof r!=`function`&&typeof r!=`symbol`?e.setAttribute(n,``):e.removeAttribute(n);break;case`capture`:case`download`:!0===r?e.setAttribute(n,``):!1!==r&&r!=null&&typeof r!=`function`&&typeof r!=`symbol`?e.setAttribute(n,r):e.removeAttribute(n);break;case`cols`:case`rows`:case`size`:case`span`:r!=null&&typeof r!=`function`&&typeof r!=`symbol`&&!isNaN(r)&&1<=r?e.setAttribute(n,r):e.removeAttribute(n);break;case`rowSpan`:case`start`:r==null||typeof r==`function`||typeof r==`symbol`||isNaN(r)?e.removeAttribute(n):e.setAttribute(n,r);break;case`popover`:Q(`beforetoggle`,e),Q(`toggle`,e),an(e,`popover`,r);break;case`xlinkActuate`:sn(e,`http://www.w3.org/1999/xlink`,`xlink:actuate`,r);break;case`xlinkArcrole`:sn(e,`http://www.w3.org/1999/xlink`,`xlink:arcrole`,r);break;case`xlinkRole`:sn(e,`http://www.w3.org/1999/xlink`,`xlink:role`,r);break;case`xlinkShow`:sn(e,`http://www.w3.org/1999/xlink`,`xlink:show`,r);break;case`xlinkTitle`:sn(e,`http://www.w3.org/1999/xlink`,`xlink:title`,r);break;case`xlinkType`:sn(e,`http://www.w3.org/1999/xlink`,`xlink:type`,r);break;case`xmlBase`:sn(e,`http://www.w3.org/XML/1998/namespace`,`xml:base`,r);break;case`xmlLang`:sn(e,`http://www.w3.org/XML/1998/namespace`,`xml:lang`,r);break;case`xmlSpace`:sn(e,`http://www.w3.org/XML/1998/namespace`,`xml:space`,r);break;case`is`:an(e,`is`,r);break;case`innerText`:case`textContent`:return;default:if(!(2<n.length)||n[0]!==`o`&&n[0]!==`O`||n[1]!==`n`&&n[1]!==`N`)n=En.get(n)||n,an(e,n,r);else return}O=!0}function tp(e,t,n,r,a,o){switch(n){case`style`:wn(e,r,o);return;case`dangerouslySetInnerHTML`:if(r!=null){if(typeof r!=`object`||!(`__html`in r))throw Error(i(61));if(n=r.__html,n!=null){if(a.children!=null)throw Error(i(60));o?.__html!==n&&(e.innerHTML=n)}}break;case`children`:if(typeof r==`string`)xn(e,r);else if(typeof r==`number`||typeof r==`bigint`)xn(e,``+r);else return;break;case`onScroll`:r!=null&&Q(`scroll`,e);return;case`onScrollEnd`:r!=null&&Q(`scrollend`,e);return;case`onClick`:r!=null&&(e.onclick=kn);return;case`suppressContentEditableWarning`:case`suppressHydrationWarning`:case`innerHTML`:case`ref`:return;case`innerText`:case`textContent`:return;default:if(!Xt.hasOwnProperty(n))a:{if(n[0]===`o`&&n[1]===`n`&&(a=n.endsWith(`Capture`),o=n.slice(2,a?n.length-7:void 0),t=e[Ft]||null,t=t==null?null:t[n],typeof t==`function`&&e.removeEventListener(o,t,a),typeof r==`function`)){typeof t!=`function`&&t!==null&&(n in e?e[n]=null:e.hasAttribute(n)&&e.removeAttribute(n)),e.addEventListener(o,r,a);break a}O=!0,n in e?e[n]=r:!0===r?e.setAttribute(n,``):an(e,n,r)}return}O=!0}function np(e,t,n){switch(t){case`div`:case`span`:case`svg`:case`path`:case`a`:case`g`:case`p`:case`li`:break;case`img`:Q(`error`,e),Q(`load`,e);var r=!1,a=!1,o;for(o in n)if(n.hasOwnProperty(o)){var s=n[o];if(s!=null)switch(o){case`src`:r=!0;break;case`srcSet`:a=!0;break;case`children`:case`dangerouslySetInnerHTML`:throw Error(i(137,t));default:$(e,t,o,s,n,null)}}a&&$(e,t,`srcSet`,n.srcSet,n,null),r&&$(e,t,`src`,n.src,n,null);return;case`input`:Q(`invalid`,e);var c=o=s=a=null,l=null,u=null;for(r in n)if(n.hasOwnProperty(r)){var d=n[r];if(d!=null)switch(r){case`name`:a=d;break;case`type`:s=d;break;case`checked`:l=d;break;case`defaultChecked`:u=d;break;case`value`:o=d;break;case`defaultValue`:c=d;break;case`children`:case`dangerouslySetInnerHTML`:if(d!=null)throw Error(i(137,t));break;default:$(e,t,r,d,n,null)}}gn(e,o,c,l,u,s,a,!1);return;case`select`:for(a in Q(`invalid`,e),r=s=o=null,n)if(n.hasOwnProperty(a)&&(c=n[a],c!=null))switch(a){case`value`:o=c;break;case`defaultValue`:s=c;break;case`multiple`:r=c;default:$(e,t,a,c,n,null)}t=o,n=s,e.multiple=!!r,t==null?n!=null&&vn(e,!!r,n,!0):vn(e,!!r,t,!1);return;case`textarea`:for(s in Q(`invalid`,e),o=a=r=null,n)if(n.hasOwnProperty(s)&&(c=n[s],c!=null))switch(s){case`value`:r=c;break;case`defaultValue`:a=c;break;case`children`:o=c;break;case`dangerouslySetInnerHTML`:if(c!=null)throw Error(i(91));break;default:$(e,t,s,c,n,null)}bn(e,r,a,o);return;case`option`:for(l in n)if(n.hasOwnProperty(l)&&(r=n[l],r!=null))switch(l){case`selected`:e.selected=r&&typeof r!=`function`&&typeof r!=`symbol`;break;default:$(e,t,l,r,n,null)}return;case`dialog`:Q(`beforetoggle`,e),Q(`toggle`,e),Q(`cancel`,e),Q(`close`,e);break;case`iframe`:case`object`:Q(`load`,e);break;case`video`:case`audio`:for(r=0;r<zf.length;r++)Q(zf[r],e);break;case`image`:Q(`error`,e),Q(`load`,e);break;case`details`:Q(`toggle`,e);break;case`embed`:case`source`:case`link`:Q(`error`,e),Q(`load`,e);case`area`:case`base`:case`br`:case`col`:case`hr`:case`keygen`:case`meta`:case`param`:case`track`:case`wbr`:case`menuitem`:for(u in n)if(n.hasOwnProperty(u)&&(r=n[u],r!=null))switch(u){case`children`:case`dangerouslySetInnerHTML`:throw Error(i(137,t));default:$(e,t,u,r,n,null)}return;default:if(Tn(t)){for(d in n)n.hasOwnProperty(d)&&(r=n[d],r!==void 0&&tp(e,t,d,r,n,void 0));return}}for(c in n)n.hasOwnProperty(c)&&(r=n[c],r!=null&&$(e,t,c,r,n,null))}var rp={};function ip(e,t,n,r){switch(t){case`div`:case`span`:case`svg`:case`path`:case`a`:case`g`:case`p`:case`li`:break;case`input`:var a=null,o=null,s=null,c=null,l=null,u=null,d=null;for(m in n){var f=n[m];if(n.hasOwnProperty(m)&&f!=null)switch(m){case`checked`:break;case`value`:break;case`defaultValue`:l=f;default:r.hasOwnProperty(m)||$(e,t,m,null,r,f)}}for(var p in r){var m=r[p];if(f=n[p],r.hasOwnProperty(p)&&(m!=null||f!=null))switch(p){case`type`:m!==f&&(O=!0),o=m;break;case`name`:m!==f&&(O=!0),a=m;break;case`checked`:m!==f&&(O=!0),u=m;break;case`defaultChecked`:m!==f&&(O=!0),d=m;break;case`value`:m!==f&&(O=!0),s=m;break;case`defaultValue`:m!==f&&(O=!0),c=m;break;case`children`:case`dangerouslySetInnerHTML`:if(m!=null)throw Error(i(137,t));break;default:m!==f&&$(e,t,p,m,r,f)}}hn(e,s,c,l,u,d,o,a);return;case`select`:for(o in m=s=c=p=null,n)if(l=n[o],n.hasOwnProperty(o)&&l!=null)switch(o){case`value`:break;case`multiple`:m=l;default:r.hasOwnProperty(o)||$(e,t,o,null,r,l)}for(a in r)if(o=r[a],l=n[a],r.hasOwnProperty(a)&&(o!=null||l!=null))switch(a){case`value`:o!==l&&(O=!0),p=o;break;case`defaultValue`:o!==l&&(O=!0),c=o;break;case`multiple`:o!==l&&(O=!0),s=o;default:o!==l&&$(e,t,a,o,r,l)}t=c,n=s,r=m,p==null?!!r!=!!n&&(t==null?vn(e,!!n,n?[]:``,!1):vn(e,!!n,t,!0)):vn(e,!!n,p,!1);return;case`textarea`:for(c in m=p=null,n)if(a=n[c],n.hasOwnProperty(c)&&a!=null&&!r.hasOwnProperty(c))switch(c){case`value`:break;case`children`:break;default:$(e,t,c,null,r,a)}for(s in r)if(a=r[s],o=n[s],r.hasOwnProperty(s)&&(a!=null||o!=null))switch(s){case`value`:a!==o&&(O=!0),p=a;break;case`defaultValue`:a!==o&&(O=!0),m=a;break;case`children`:break;case`dangerouslySetInnerHTML`:if(a!=null)throw Error(i(91));break;default:a!==o&&$(e,t,s,a,r,o)}yn(e,p,m);return;case`option`:for(var h in n)if(p=n[h],n.hasOwnProperty(h)&&p!=null&&!r.hasOwnProperty(h))switch(h){case`selected`:e.selected=!1;break;default:$(e,t,h,null,r,p)}for(l in r)if(p=r[l],m=n[l],r.hasOwnProperty(l)&&p!==m&&(p!=null||m!=null))switch(l){case`selected`:p!==m&&(O=!0),e.selected=p&&typeof p!=`function`&&typeof p!=`symbol`;break;default:$(e,t,l,p,r,m)}return;case`img`:case`link`:case`area`:case`base`:case`br`:case`col`:case`embed`:case`hr`:case`keygen`:case`meta`:case`param`:case`source`:case`track`:case`wbr`:case`menuitem`:for(var g in n)p=n[g],n.hasOwnProperty(g)&&p!=null&&!r.hasOwnProperty(g)&&$(e,t,g,null,r,p);for(u in r)if(p=r[u],m=n[u],r.hasOwnProperty(u)&&p!==m&&(p!=null||m!=null))switch(u){case`children`:case`dangerouslySetInnerHTML`:if(p!=null)throw Error(i(137,t));break;default:$(e,t,u,p,r,m)}return;default:if(Tn(t)){for(var _ in n)p=n[_],n.hasOwnProperty(_)&&p!==void 0&&!r.hasOwnProperty(_)&&tp(e,t,_,void 0,r,p);for(d in r)p=r[d],m=n[d],!r.hasOwnProperty(d)||p===m||p===void 0&&m===void 0||tp(e,t,d,p,r,m);return}}for(var v in n)p=n[v],n.hasOwnProperty(v)&&p!=null&&!r.hasOwnProperty(v)&&$(e,t,v,null,r,p);for(f in r)p=r[f],m=n[f],!r.hasOwnProperty(f)||p===m||p==null&&m==null||$(e,t,f,p,r,m)}function ap(e){switch(e){case`css`:case`script`:case`font`:case`img`:case`image`:case`input`:case`link`:return!0;default:return!1}}function op(){if(typeof performance.getEntriesByType==`function`){for(var e=0,t=0,n=performance.getEntriesByType(`resource`),r=0;r<n.length;r++){var i=n[r],a=i.transferSize,o=i.initiatorType,s=i.duration;if(a&&s&&ap(o)){for(o=0,s=i.responseEnd,r+=1;r<n.length;r++){var c=n[r],l=c.startTime;if(l>s)break;var u=c.transferSize,d=c.initiatorType;u&&ap(d)&&(c=c.responseEnd,o+=u*(c<s?1:(s-l)/(c-l)))}if(--r,t+=8*(a+o)/(i.duration/1e3),e++,10<e)break}}if(0<e)return t/e/1e6}return navigator.connection&&(e=navigator.connection.downlink,typeof e==`number`)?e:5}var sp=null,cp=null;function lp(e){return e.nodeType===9?e:e.ownerDocument}function up(e){switch(e){case`http://www.w3.org/2000/svg`:return 1;case`http://www.w3.org/1998/Math/MathML`:return 2;default:return 0}}function dp(e,t){if(e===0)switch(t){case`svg`:return 1;case`math`:return 2;default:return 0}return e===1&&t===`foreignObject`?0:e}function fp(e,t,n,r){return n=lp(n).createElement(e),n[Pt]=r,n[Ft]=t,np(n,e,t),D(n),n}function pp(e,t){return e===`textarea`||e===`noscript`||typeof t.children==`string`||typeof t.children==`number`||typeof t.children==`bigint`||typeof t.dangerouslySetInnerHTML==`object`&&t.dangerouslySetInnerHTML!==null&&t.dangerouslySetInnerHTML.__html!=null}var mp=null;function hp(){var e=window.event;return e&&e.type===`popstate`?e!==mp&&(mp=e,!0):(mp=null,!1)}var gp=typeof setTimeout==`function`?setTimeout:void 0,_p=typeof clearTimeout==`function`?clearTimeout:void 0,vp=typeof Promise==`function`?Promise:void 0,yp=typeof requestAnimationFrame==`function`?requestAnimationFrame:gp,bp=typeof queueMicrotask==`function`?queueMicrotask:vp===void 0?gp:function(e){return vp.resolve(null).then(e).catch(xp)};function xp(e){setTimeout(function(){throw e})}function Sp(e){return e===`head`}function Cp(e,t){var n=t,r=0;do{var i=n.nextSibling;if(e.removeChild(n),i&&i.nodeType===8){if(n=i.data,n===`/$`||n===`/&`){if(r===0){e.removeChild(i),Hh(t);return}r--}else if(n===`$`||n===`$?`||n===`$~`||n===`$!`||n===`&`)r++;else if(n===`html`)_m(e.ownerDocument.documentElement);else if(n===`head`){n=e.ownerDocument.head,_m(n);for(var a=n.firstChild;a;){var o=a.nextSibling,s=a.nodeName;a[Vt]||s===`SCRIPT`||s===`STYLE`||s===`LINK`&&a.rel.toLowerCase()===`stylesheet`||n.removeChild(a),a=o}}else n===`body`&&_m(e.ownerDocument.body)}n=i}while(n);Hh(t)}function wp(e,t){var n=e;e=0;do{var r=n.nextSibling;if(n.nodeType===1?t?(n._stashedDisplay=n.style.display,n.style.display=`none`):(n.style.display=n._stashedDisplay||``,n.getAttribute(`style`)===``&&n.removeAttribute(`style`)):n.nodeType===3&&(t?(n._stashedText=n.nodeValue,n.nodeValue=``):n.nodeValue=n._stashedText||``),r&&r.nodeType===8){if(n=r.data,n===`/$`){if(e===0)break;e--}else n!==`$`&&n!==`$?`&&n!==`$~`&&n!==`$!`||e++}n=r}while(n)}function Tp(e,t,n){if(t=CSS.escape(t)===t?t:`r-`+btoa(t).replace(/=/g,``),e.style.viewTransitionName=t,n!=null&&(e.style.viewTransitionClass=n),n=getComputedStyle(e),n.display===`inline`){if(t=e.getClientRects(),t.length===1)var r=1;else for(var i=r=0;i<t.length;i++){var a=t[i];0<a.width&&0<a.height&&r++}r===1&&(e=e.style,e.display=t.length===1?`inline-block`:`block`,e.marginTop=`-`+n.paddingTop,e.marginBottom=`-`+n.paddingBottom)}}function Ep(e,t){e=e.style,t=t.style;var n=t==null?null:t.hasOwnProperty(`viewTransitionName`)?t.viewTransitionName:t.hasOwnProperty(`view-transition-name`)?t[`view-transition-name`]:null;e.viewTransitionName=n==null||typeof n==`boolean`?``:(``+n).trim(),n=t==null?null:t.hasOwnProperty(`viewTransitionClass`)?t.viewTransitionClass:t.hasOwnProperty(`view-transition-class`)?t[`view-transition-class`]:null,e.viewTransitionClass=n==null||typeof n==`boolean`?``:(``+n).trim(),e.display===`inline-block`&&(t==null?e.display=e.margin=``:(n=t.display,e.display=n==null||typeof n==`boolean`?``:n,n=t.margin,n==null?(n=t.hasOwnProperty(`marginTop`)?t.marginTop:t[`margin-top`],e.marginTop=n==null||typeof n==`boolean`?``:n,t=t.hasOwnProperty(`marginBottom`)?t.marginBottom:t[`margin-bottom`],e.marginBottom=t==null||typeof t==`boolean`?``:t):e.margin=n))}function Dp(e,t,n){return n=n.ownerDocument.defaultView,{rect:e,abs:t.position===`absolute`||t.position===`fixed`,clip:t.clipPath!==`none`||t.overflow!==`visible`||t.filter!==`none`||t.mask!==`none`||t.mask!==`none`||t.borderRadius!==`0px`,view:0<=e.bottom&&0<=e.right&&e.top<=n.innerHeight&&e.left<=n.innerWidth}}function Op(e){return Dp(e.getBoundingClientRect(),getComputedStyle(e),e)}function kp(e){var t=e.getBoundingClientRect();t=new DOMRect(t.x+2e4,t.y+2e4,t.width,t.height);var n=getComputedStyle(e);return Dp(t,n,e)}function Ap(e){return e.documentElement.clientHeight}function jp(e){this.addEventListener(`load`,e),this.addEventListener(`error`,e)}function Mp(e,t,n,r,i,a,o,s,c){var l=t.nodeType===9?t:t.ownerDocument;try{var u=l.startViewTransition({update:function(){var t=l.defaultView,n=t.navigation&&t.navigation.transition,o=l.fonts.status;r();var s=[];if(o===`loaded`&&(Ap(l),l.fonts.status===`loading`&&s.push(l.fonts.ready)),o=s.length,e!==null)for(var c=e.suspenseyImages,u=0,d=0;d<c.length;d++){var f=c[d];if(!f.complete){var p=f.getBoundingClientRect();if(0<p.bottom&&0<p.right&&p.top<t.innerHeight&&p.left<t.innerWidth){if(u+=Xm(f),u>$m){s.length=o;break}f=new Promise(jp.bind(f)),s.push(f)}}}if(0<s.length)return t=Promise.race([Promise.all(s),new Promise(function(e){return setTimeout(e,500)})]).then(i,i),(n?Promise.allSettled([n.finished,t]):t).then(a,a);if(i(),n)return n.finished.then(a,a);a()},types:n});l.__reactViewTransition=u;var d=[];return u.ready.then(function(){for(var e=l.documentElement.getAnimations({subtree:!0}),t=0;t<e.length;t++){var n=e[t],r=n.effect,i=r.pseudoElement;if(i!=null&&i.startsWith(`::view-transition`)){d.push(n),n=r.getKeyframes();for(var a=i=void 0,s=!0,c=0;c<n.length;c++){var u=n[c],f=u.width;if(i===void 0)i=f;else if(i!==f){s=!1;break}if(f=u.height,a===void 0)a=f;else if(a!==f){s=!1;break}delete u.width,delete u.height,u.transform===`none`&&delete u.transform}s&&i!==void 0&&a!==void 0&&(r.setKeyframes(n),s=getComputedStyle(r.target,r.pseudoElement),s.width!==i||s.height!==a)&&(s=n[0],s.width=i,s.height=a,s=n[n.length-1],s.width=i,s.height=a,r.setKeyframes(n))}}o()},function(e){l.__reactViewTransition===u&&(l.__reactViewTransition=null);try{if(typeof e==`object`&&e)switch(e.name){case`InvalidStateError`:(e.message===`View transition was skipped because document visibility state is hidden.`||e.message===`Skipping view transition because document visibility state has become hidden.`||e.message===`Skipping view transition because viewport size changed.`||e.message===`Transition was aborted because of invalid state`)&&(e=null)}e!==null&&c(e)}finally{r(),i(),o()}}),u.finished.finally(function(){for(var e=0;e<d.length;e++)d[e].cancel();l.__reactViewTransition===u&&(l.__reactViewTransition=null),s()}),u}catch{return r(),i(),o(),null}}function Np(e,t){this._scope=document.documentElement,this._selector=`::view-transition-`+e+`(`+t+`)`}Np.prototype.animate=function(e,t){return t=typeof t==`number`?{duration:t}:S({},t),t.pseudoElement=this._selector,this._scope.animate(e,t)},Np.prototype.getAnimations=function(){for(var e=this._scope,t=this._selector,n=e.getAnimations({subtree:!0}),r=[],i=0;i<n.length;i++){var a=n[i].effect;a!==null&&a.target===e&&a.pseudoElement===t&&r.push(n[i])}return r},Np.prototype.getComputedStyle=function(){return getComputedStyle(this._scope,this._selector)};function Pp(e){return{name:e,group:new Np(`group`,e),imagePair:new Np(`image-pair`,e),old:new Np(`old`,e),new:new Np(`new`,e)}}function Fp(e){this._fragmentFiber=e,this._observers=this._eventListeners=null}Fp.prototype.addEventListener=function(e,t,n){var r=null,i=null;if(!(n!=null&&typeof n!=`boolean`&&(r=n.signal||null,r!==null&&r.aborted))){this._eventListeners===null&&(this._eventListeners=[]);var a=this._eventListeners;if(Bp(a,e,t,n)===-1){var o=this,s=t;n!=null&&typeof n!=`boolean`&&!0===n.once&&(s=function(r){o.removeEventListener(e,t,n),typeof t==`function`?t.call(this,r):t.handleEvent(r)}),r!==null&&(i=o.removeEventListener.bind(o,e,t,n),r.addEventListener(`abort`,i,{once:!0}),i=r.removeEventListener.bind(r,`abort`,i)),r=Rp(n),a.push({type:e,listener:t,optionsOrUseCapture:n,attachedListener:s,cleanup:i}),h(this._fragmentFiber.child,!1,Ip,e,s,r)}this._eventListeners=a}};function Ip(e,t,n,r){return b(e).addEventListener(t,n,r),!1}Fp.prototype.removeEventListener=function(e,t,n){var r=this._eventListeners;if(r!==null&&(t=Bp(r,e,t,n),t!==-1)){var i=r[t];n=i.attachedListener;var a=i.cleanup;i=Rp(i.optionsOrUseCapture),h(this._fragmentFiber.child,!1,Lp,e,n,i),r.splice(t,1),a!==null&&a()}};function Lp(e,t,n,r){return b(e).removeEventListener(t,n,r),!1}function Rp(e){return e!=null&&typeof e!=`boolean`&&(!0===e.once||e.signal instanceof AbortSignal)?{capture:e.capture,passive:e.passive}:e}function zp(e){return e==null?`c=0`:typeof e==`boolean`?`c=`+(e?`1`:`0`):`c=`+(e.capture?`1`:`0`)}function Bp(e,t,n,r){if(e.length===0)return-1;r=zp(r);for(var i=0;i<e.length;i++){var a=e[i];if(a.type===t&&a.listener===n&&zp(a.optionsOrUseCapture)===r)return i}return-1}Fp.prototype.dispatchEvent=function(e){var t=g(this._fragmentFiber);if(t===null)return!0;t=b(t);var n=this._eventListeners;if(n!==null&&0<n.length||!e.bubbles){var r=t.nodeType===9?t.createComment(``):document.createTextNode(``);if(n)for(var i=0;i<n.length;i++){var a=n[i];r.addEventListener(a.type,a.attachedListener,Rp(a.optionsOrUseCapture))}if(t.appendChild(r),e=r.dispatchEvent(e),n)for(i=0;i<n.length;i++)a=n[i],r.removeEventListener(a.type,a.attachedListener,Rp(a.optionsOrUseCapture));return t.removeChild(r),e}return t.dispatchEvent(e)},Fp.prototype.focus=function(e){h(this._fragmentFiber.child,!0,Vp,e,void 0,void 0)};function Vp(e,t){return e.tag!==6&&(e=b(e),pm(e,t))}Fp.prototype.focusLast=function(e){var t=[];h(this._fragmentFiber.child,!0,Hp,t,void 0,void 0);for(var n=t.length-1;0<=n&&!Vp(t[n],e);n--);};function Hp(e,t){return t.push(e),!1}Fp.prototype.blur=function(){var e=g(this._fragmentFiber);e!==null&&(e=b(e),e=lp(e).activeElement,e!==null&&h(this._fragmentFiber.child,!1,Up,e,void 0,void 0))};function Up(e,t){return e.tag!==6&&(e=b(e),e===t||e.contains(t)?(t.blur(),!0):!1)}Fp.prototype.observeUsing=function(e){this._observers===null&&(this._observers=new Set),this._observers.add(e),h(this._fragmentFiber.child,!1,Wp,e,void 0,void 0)};function Wp(e,t){return e.tag===6||(e=b(e),t.observe(e)),!1}Fp.prototype.unobserveUsing=function(e){var t=this._observers;if(t!==null&&t.has(e)){t.delete(e),h(this._fragmentFiber.child,!1,Gp,e,void 0,void 0);for(var n=t=0;n<Kp.length;n++){var r=Kp[n];r.fragmentInstance===this&&r.observer===e?e.unobserve(r.instance):Kp[t++]=r}Kp.length=t}};function Gp(e,t){return e.tag===6||(e=b(e),t.unobserve(e)),!1}var Kp=[],qp=!1;function Jp(e,t,n){Kp.push({fragmentInstance:e,observer:t,instance:n}),qp||(qp=!0,mm(function(){qp=!1;var e=Kp;Kp=[];for(var t=0;t<e.length;t++){var n=e[t];n.observer.unobserve(n.instance)}}))}Fp.prototype.getClientRects=function(){var e=[];return h(this._fragmentFiber.child,!1,Yp,e,void 0,void 0),e};function Yp(e,t){if(e.tag===6){e=e.stateNode;var n=e.ownerDocument.createRange();n.selectNodeContents(e),t.push.apply(t,n.getClientRects())}else e=b(e),t.push.apply(t,e.getClientRects());return!1}Fp.prototype.getRootNode=function(e){var t=g(this._fragmentFiber);return t===null?this:b(t).getRootNode(e)},Fp.prototype.compareDocumentPosition=function(e){var t=g(this._fragmentFiber);if(t===null)return Node.DOCUMENT_POSITION_DISCONNECTED;var n=[];h(this._fragmentFiber.child,!1,Hp,n,void 0,void 0);var r=b(t);if(n.length===0){if(n=r,_(this._fragmentFiber)){a:{for(t=this._fragmentFiber.return;t!==null;){if(t.tag===4){t=t.stateNode.containerInfo;break a}if(t.tag===3||t.tag===5||t.tag===27)break;t=t.return}t=null}t!=null&&(n=t)}t=this._fragmentFiber;var i=r=n.compareDocumentPosition(e);return n===e?i=Node.DOCUMENT_POSITION_CONTAINS:r&Node.DOCUMENT_POSITION_CONTAINED_BY&&(n=v(t)[1],n===null?i=Node.DOCUMENT_POSITION_PRECEDING:(e=b(n).compareDocumentPosition(e),i=e===0||e&Node.DOCUMENT_POSITION_FOLLOWING?Node.DOCUMENT_POSITION_FOLLOWING:Node.DOCUMENT_POSITION_PRECEDING)),i|=Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC}t=b(n[0]),i=b(n[n.length-1]);var a=_(this._fragmentFiber)?t.parentElement:r;if(a==null)return Node.DOCUMENT_POSITION_DISCONNECTED;r=a.compareDocumentPosition(t)&Node.DOCUMENT_POSITION_CONTAINED_BY,a=a.compareDocumentPosition(i)&Node.DOCUMENT_POSITION_CONTAINED_BY;var o=t.compareDocumentPosition(e),s=i.compareDocumentPosition(e),c=o&Node.DOCUMENT_POSITION_CONTAINED_BY||s&Node.DOCUMENT_POSITION_CONTAINED_BY;return s=r&&a&&o&Node.DOCUMENT_POSITION_FOLLOWING&&s&Node.DOCUMENT_POSITION_PRECEDING,t=r&&t===e||a&&i===e||c||s?Node.DOCUMENT_POSITION_CONTAINED_BY:!r&&t===e||!a&&i===e?Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC:o,t&Node.DOCUMENT_POSITION_DISCONNECTED||t&Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC||Xp(t,this._fragmentFiber,n[0],n[n.length-1],e)?t:Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC};function Xp(e,t,n,r,i){var a=Wt(i);if(e&Node.DOCUMENT_POSITION_CONTAINED_BY){if(n=!!a)a:{for(;a!==null;){if(a.tag===7&&(a===t||a.alternate===t)){n=!0;break a}a=a.return}n=!1}return n}if(e&Node.DOCUMENT_POSITION_CONTAINS){if(a===null)return a=i.ownerDocument,i===a||i===a.documentElement||i===a.body;a:{for(a=t,t=g(t);a!==null;){if(!(a.tag!==5&&a.tag!==3&&a.tag!==27||a!==t&&a.alternate!==t)){a=!0;break a}a=a.return}a=!1}return a}return e&Node.DOCUMENT_POSITION_PRECEDING?((t=!!a)&&!(t=a===n)&&(t=ie(n,a,x),t===null?t=!1:(h(t,!0,ne,a,n),a=ee,ee=null,t=a!==null)),t):e&Node.DOCUMENT_POSITION_FOLLOWING?((t=!!a)&&!(t=a===r)&&(t=ie(r,a,x),t===null?t=!1:(h(t,!0,re,a,r),a=ee,te=ee=null,t=a!==null)),t):!1}function Zp(e,t){var n=e.ownerDocument.createRange();n.selectNodeContents(e),e=n.getBoundingClientRect(),window.scrollTo(window.scrollX+e.left,t?window.scrollY+e.top:window.scrollY+e.bottom-window.innerHeight)}Fp.prototype.scrollIntoView=function(e){if(typeof e==`object`)throw Error(i(566));var t=[];h(this._fragmentFiber.child,!1,Hp,t,void 0,void 0);var n=!1!==e;if(t.length===0){var r=v(this._fragmentFiber);if(r=n?r[1]||r[0]||g(this._fragmentFiber):r[0]||r[1],r===null)return;if(r.tag===6){e=b(r),Zp(e,n);return}if(r=b(r),r.nodeType!==9){if(r.nodeType===11){n=`host`in r?r.host:null,n!==null&&n.scrollIntoView(e);return}r.scrollIntoView(e)}}for(r=n?t.length-1:0;r!==(n?-1:t.length);){var a=t[r];a.tag===6?(a=b(a),Zp(a,n)):b(a).scrollIntoView(e),r+=n?-1:1}};function Qp(e,t){return e=b(e),$p(e,t),!1}function $p(e,t){e.reactFragments??=new Set,e.reactFragments.add(t)}function em(e,t){var n=t._eventListeners;if(n!==null)for(var r=0;r<n.length;r++){var i=n[r];e.addEventListener(i.type,i.attachedListener,Rp(i.optionsOrUseCapture))}e.nodeType!==3&&(n=t._observers,n!==null&&n.forEach(function(n){for(var r=0,i=0;i<Kp.length;i++){var a=Kp[i];(a.fragmentInstance!==t||a.observer!==n||a.instance!==e)&&(Kp[r++]=a)}Kp.length=r,n.observe(e)}),$p(e,t))}function tm(e,t){var n=t._eventListeners;if(n!==null)for(var r=0;r<n.length;r++){var i=n[r];e.removeEventListener(i.type,i.attachedListener,Rp(i.optionsOrUseCapture))}e.nodeType!==3&&(n=t._observers,n!==null&&n.forEach(function(n){typeof n.rootMargin==`string`?Jp(t,n,e):n.unobserve(e)}),e.reactFragments!=null&&e.reactFragments.delete(t))}function nm(e){var t=e.firstChild;for(t&&t.nodeType===10&&(t=t.nextSibling);t;){var n=t;switch(t=t.nextSibling,n.nodeName){case`HTML`:case`HEAD`:case`BODY`:nm(n),Ut(n);continue;case`SCRIPT`:case`STYLE`:continue;case`LINK`:if(n.rel.toLowerCase()===`stylesheet`)continue}e.removeChild(n)}}function rm(e,t,n,r){for(;e.nodeType===1;){var i=n;if(e.nodeName.toLowerCase()!==t.toLowerCase()){if(!r&&(e.nodeName!==`INPUT`||e.type!==`hidden`))break}else if(!r){if(t===`input`&&e.type===`hidden`){var a=i.name==null?null:``+i.name;if(i.type===`hidden`&&e.getAttribute(`name`)===a)return e}else return e}else if(!e[Vt])switch(t){case`meta`:if(!e.hasAttribute(`itemprop`))break;return e;case`link`:if(a=e.getAttribute(`rel`),a===`stylesheet`&&e.hasAttribute(`data-precedence`)||a!==i.rel||e.getAttribute(`href`)!==(i.href==null||i.href===``?null:i.href)||e.getAttribute(`crossorigin`)!==(i.crossOrigin==null?null:i.crossOrigin)||e.getAttribute(`title`)!==(i.title==null?null:i.title))break;return e;case`style`:if(e.hasAttribute(`data-precedence`))break;return e;case`script`:if(a=e.getAttribute(`src`),(a!==(i.src==null?null:i.src)||e.getAttribute(`type`)!==(i.type==null?null:i.type)||e.getAttribute(`crossorigin`)!==(i.crossOrigin==null?null:i.crossOrigin))&&a&&e.hasAttribute(`async`)&&!e.hasAttribute(`itemprop`))break;return e;default:return e}if(e=lm(e.nextSibling),e===null)break}return null}function im(e,t,n){if(t===``)return null;for(;e.nodeType!==3;)if((e.nodeType!==1||e.nodeName!==`INPUT`||e.type!==`hidden`)&&!n||(e=lm(e.nextSibling),e===null))return null;return e}function am(e,t){for(;e.nodeType!==8;)if((e.nodeType!==1||e.nodeName!==`INPUT`||e.type!==`hidden`)&&!t||(e=lm(e.nextSibling),e===null))return null;return e}function om(e){return e.data===`$?`||e.data===`$~`}function sm(e){return e.data===`$!`||e.data===`$?`&&e.ownerDocument.readyState!==`loading`}function cm(e,t){var n=e.ownerDocument;if(e.data===`$~`)e._reactRetry=t;else if(e.data!==`$?`||n.readyState!==`loading`)t();else{var r=function(){t(),n.removeEventListener(`DOMContentLoaded`,r)};n.addEventListener(`DOMContentLoaded`,r),e._reactRetry=r}}function lm(e){for(;e!=null;e=e.nextSibling){var t=e.nodeType;if(t===1||t===3)break;if(t===8){if(t=e.data,t===`$`||t===`$!`||t===`$?`||t===`$~`||t===`&`||t===`F!`||t===`F`)break;if(t===`/$`||t===`/&`)return null}}return e}var um=null;function dm(e){e=e.nextSibling;for(var t=0;e;){if(e.nodeType===8){var n=e.data;if(n===`/$`||n===`/&`){if(t===0)return lm(e.nextSibling);t--}else n!==`$`&&n!==`$!`&&n!==`$?`&&n!==`$~`&&n!==`&`||t++}e=e.nextSibling}return null}function fm(e){e=e.previousSibling;for(var t=0;e;){if(e.nodeType===8){var n=e.data;if(n===`$`||n===`$!`||n===`$?`||n===`$~`||n===`&`){if(t===0)return e;t--}else n!==`/$`&&n!==`/&`||t++}e=e.previousSibling}return null}function pm(e,t){function n(){r=!0}if(e.ownerDocument.activeElement===e)return!0;var r=!1;try{e.ownerDocument.addEventListener(`focus`,n,!0),(e.focus||HTMLElement.prototype.focus).call(e,t)}finally{e.ownerDocument.removeEventListener(`focus`,n,!0)}return r}function mm(e){yp(function(){yp(function(t){return e(t)})})}function hm(e,t,n){switch(t=lp(n),e){case`html`:if(e=t.documentElement,!e)throw Error(i(452));return e;case`head`:if(e=t.head,!e)throw Error(i(453));return e;case`body`:if(e=t.body,!e)throw Error(i(454));return e;default:throw Error(i(451))}}function gm(e,t,n){for(var r in n){var i=n[r];n.hasOwnProperty(r)&&i!=null&&$(e,t,r,null,rp,i)}n.dangerouslySetInnerHTML!=null&&(e.textContent=``),e.onclick===kn&&(e.onclick=null),Ut(e)}function _m(e){for(var t=e.attributes;t.length;)e.removeAttributeNode(t[0]);Ut(e)}var vm=new Map,ym=new Set;function bm(e){if(typeof e.getRootNode==`function`){var t=e.getRootNode();if(t.nodeType===9||t.nodeType===11)return t}return e.nodeType===9?e:e.ownerDocument}var xm=T.d;T.d={f:Sm,r:Cm,D:Em,C:Dm,L:Om,m:km,X:jm,S:Am,M:Mm};function Sm(){var e=xm.f(),t=zd();return e||t}function Cm(e){var t=Gt(e);t!==null&&t.tag===5&&t.type===`form`?lc(t):xm.r(e)}var wm=typeof document>`u`?null:document;function Tm(e,t,n){var r=wm;if(r&&typeof t==`string`&&t){var i=mn(t);i=`link[rel="`+e+`"][href="`+i+`"]`,typeof n==`string`&&(i+=`[crossorigin="`+n+`"]`),ym.has(i)||(ym.add(i),e={rel:e,crossOrigin:n,href:t},r.querySelector(i)===null&&(t=r.createElement(`link`),np(t,`link`,e),D(t),r.head.appendChild(t)))}}function Em(e){xm.D(e),Tm(`dns-prefetch`,e,null)}function Dm(e,t){xm.C(e,t),Tm(`preconnect`,e,t)}function Om(e,t,n){xm.L(e,t,n);var r=wm;if(r&&e&&t){var i=`link[rel="preload"][as="`+mn(t)+`"]`;t===`image`&&n&&n.imageSrcSet?(i+=`[imagesrcset="`+mn(n.imageSrcSet)+`"]`,typeof n.imageSizes==`string`&&(i+=`[imagesizes="`+mn(n.imageSizes)+`"]`)):i+=`[href="`+mn(e)+`"]`;var a=i;switch(t){case`style`:a=Pm(e);break;case`script`:a=Rm(e)}if(!(vm.has(a)||(e=S({rel:`preload`,href:t===`image`&&n&&n.imageSrcSet?void 0:e,as:t},n),vm.set(a,e),r.querySelector(i)!==null||t===`style`&&r.querySelector(Fm(a))||t===`script`&&r.querySelector(zm(a))))){var o=r.createElement(`link`);np(o,`link`,e),t===`style`&&(o[Ht]=!0,o.onload=o.onerror=function(){Jt(o)}),D(o),r.head.appendChild(o)}}}function km(e,t){xm.m(e,t);var n=wm;if(n&&e){var r=t&&typeof t.as==`string`?t.as:`script`,i=`link[rel="modulepreload"][as="`+mn(r)+`"][href="`+mn(e)+`"]`,a=i;switch(r){case`audioworklet`:case`paintworklet`:case`serviceworker`:case`sharedworker`:case`worker`:case`script`:a=Rm(e)}if(!vm.has(a)&&(e=S({rel:`modulepreload`,href:e},t),vm.set(a,e),n.querySelector(i)===null)){switch(r){case`audioworklet`:case`paintworklet`:case`serviceworker`:case`sharedworker`:case`worker`:case`script`:if(n.querySelector(zm(a)))return}r=n.createElement(`link`),np(r,`link`,e),D(r),n.head.appendChild(r)}}}function Am(e,t,n){xm.S(e,t,n);var r=wm;if(r&&e){var i=qt(r).hoistableStyles,a=Pm(e);t||=`default`;var o=i.get(a);if(!o){var s={loading:0,preload:null};if(o=r.querySelector(Fm(a)))s.loading=5;else{e=S({rel:`stylesheet`,href:e,"data-precedence":t},n),(n=vm.get(a))&&Hm(e,n);var c=o=r.createElement(`link`);D(c),np(c,`link`,e),c._p=new Promise(function(e,t){c.onload=e,c.onerror=t}),c.addEventListener(`load`,function(){s.loading|=1}),c.addEventListener(`error`,function(){s.loading|=2}),s.loading|=4,Vm(o,t,r)}o={type:`stylesheet`,instance:o,count:1,state:s},i.set(a,o)}}}function jm(e,t){xm.X(e,t);var n=wm;if(n&&e){var r=qt(n).hoistableScripts,i=Rm(e),a=r.get(i);a||(a=n.querySelector(zm(i)),a||(e=S({src:e,async:!0},t),(t=vm.get(i))&&Um(e,t),a=n.createElement(`script`),D(a),np(a,`link`,e),n.head.appendChild(a)),a={type:`script`,instance:a,count:1,state:null},r.set(i,a))}}function Mm(e,t){xm.M(e,t);var n=wm;if(n&&e){var r=qt(n).hoistableScripts,i=Rm(e),a=r.get(i);a||(a=n.querySelector(zm(i)),a||(e=S({src:e,async:!0,type:`module`},t),(t=vm.get(i))&&Um(e,t),a=n.createElement(`script`),D(a),np(a,`link`,e),n.head.appendChild(a)),a={type:`script`,instance:a,count:1,state:null},r.set(i,a))}}function Nm(e,t,n,r){var a=(a=Pe.current)?bm(a):null;if(!a)throw Error(i(446));switch(e){case`meta`:case`title`:return null;case`style`:return typeof n.precedence==`string`&&typeof n.href==`string`?(n=Pm(n.href),t=qt(a).hoistableStyles,r=t.get(n),r||(r={type:`style`,instance:null,count:0,state:null},t.set(n,r)),r):{type:`void`,instance:null,count:0,state:null};case`link`:if(n.rel===`stylesheet`&&typeof n.href==`string`&&typeof n.precedence==`string`){e=Pm(n.href);var o=qt(a).hoistableStyles,s=o.get(e);if(s||(a=a.ownerDocument||a,s={type:`stylesheet`,instance:null,count:0,state:{loading:0,preload:null}},o.set(e,s),(o=a.querySelector(Fm(e)))?o._p||(s.instance=o,s.state.loading=5):(o=vm.get(e),o||(o={rel:`preload`,as:`style`,href:n.href,crossOrigin:n.crossOrigin,integrity:n.integrity,media:n.media,hrefLang:n.hrefLang,referrerPolicy:n.referrerPolicy},vm.set(e,o)),Lm(a,e,o,s.state))),t&&r===null)throw Error(i(528,``));return s}if(t&&r!==null)throw Error(i(529,``));return null;case`script`:return t=n.async,n=n.src,typeof n==`string`&&t&&typeof t!=`function`&&typeof t!=`symbol`?(n=Rm(n),t=qt(a).hoistableScripts,r=t.get(n),r||(r={type:`script`,instance:null,count:0,state:null},t.set(n,r)),r):{type:`void`,instance:null,count:0,state:null};default:throw Error(i(444,e))}}function Pm(e){return`href="`+mn(e)+`"`}function Fm(e){return`link[rel="stylesheet"][`+e+`]`}function Im(e){return S({},e,{"data-precedence":e.precedence,precedence:null})}function Lm(e,t,n,r){if(t=e.querySelector(`link[rel="preload"][as="style"][`+t+`]`)){if(!0!==t[Ht]){r.loading=1;return}}else t=e.createElement(`link`),t[Ht]=!0,t.onload=t.onerror=Jt.bind(null,t),np(t,`link`,n),D(t),e.head.appendChild(t);r.preload=t,t.addEventListener(`load`,function(){return r.loading|=1}),t.addEventListener(`error`,function(){return r.loading|=2})}function Rm(e){return`[src="`+mn(e)+`"]`}function zm(e){return`script[async]`+e}function Bm(e,t,n){if(t.count++,t.instance===null)switch(t.type){case`style`:var r=e.querySelector(`style[data-href~="`+mn(n.href)+`"]`);if(r)return t.instance=r,D(r),r;var a=S({},n,{"data-href":n.href,"data-precedence":n.precedence,href:null,precedence:null});return r=(e.ownerDocument||e).createElement(`style`),D(r),np(r,`style`,a),Vm(r,n.precedence,e),t.instance=r;case`stylesheet`:a=Pm(n.href);var o=e.querySelector(Fm(a));if(o)return t.state.loading|=4,t.instance=o,D(o),o;r=Im(n),(a=vm.get(a))&&Hm(r,a),o=(e.ownerDocument||e).createElement(`link`),D(o);var s=o;return s._p=new Promise(function(e,t){s.onload=e,s.onerror=t}),np(o,`link`,r),t.state.loading|=4,Vm(o,n.precedence,e),t.instance=o;case`script`:return o=Rm(n.src),(a=e.querySelector(zm(o)))?(t.instance=a,D(a),a):(r=n,(a=vm.get(o))&&(r=S({},n),Um(r,a)),e=e.ownerDocument||e,a=e.createElement(`script`),D(a),np(a,`link`,r),e.head.appendChild(a),t.instance=a);case`void`:return null;default:throw Error(i(443,t.type))}else t.type===`stylesheet`&&!(t.state.loading&4)&&(r=t.instance,t.state.loading|=4,Vm(r,n.precedence,e));return t.instance}function Vm(e,t,n){for(var r=n.querySelectorAll(`link[rel="stylesheet"][data-precedence],style[data-precedence]`),i=r.length?r[r.length-1]:null,a=i,o=0;o<r.length;o++){var s=r[o];if(s.dataset.precedence===t)a=s;else if(a!==i)break}a?a.parentNode.insertBefore(e,a.nextSibling):(t=n.nodeType===9?n.head:n,t.insertBefore(e,t.firstChild))}function Hm(e,t){e.crossOrigin??=t.crossOrigin,e.referrerPolicy??=t.referrerPolicy,e.title??=t.title}function Um(e,t){e.crossOrigin??=t.crossOrigin,e.referrerPolicy??=t.referrerPolicy,e.integrity??=t.integrity}var Wm=null;function Gm(e,t,n){if(Wm===null){var r=new Map,i=Wm=new Map;i.set(n,r)}else i=Wm,r=i.get(n),r||(r=new Map,i.set(n,r));if(r.has(e))return r;for(r.set(e,null),n=n.getElementsByTagName(e),i=0;i<n.length;i++){var a=n[i];if(!(a[Vt]||a[Pt]||e===`link`&&a.getAttribute(`rel`)===`stylesheet`)&&a.namespaceURI!==`http://www.w3.org/2000/svg`){var o=a.getAttribute(t)||``;o=e+o;var s=r.get(o);s?s.push(a):r.set(o,[a])}}return r}function Km(e,t,n){e=e.ownerDocument||e,e.head.insertBefore(n,t===`title`?e.querySelector(`head > title`):null)}function qm(e,t,n){if(n===1||t.itemProp!=null)return!1;switch(e){case`meta`:case`title`:return!0;case`style`:if(typeof t.precedence!=`string`||typeof t.href!=`string`||t.href===``)break;return!0;case`link`:if(typeof t.rel!=`string`||typeof t.href!=`string`||t.href===``||t.onLoad||t.onError)break;switch(t.rel){case`stylesheet`:return e=t.disabled,typeof t.precedence==`string`&&e==null;default:return!0}case`script`:if(t.async&&typeof t.async!=`function`&&typeof t.async!=`symbol`&&!t.onLoad&&!t.onError&&t.src&&typeof t.src==`string`)return!0}return!1}function Jm(e,t){return e===`img`&&t.src!=null&&t.src!==``&&t.onLoad==null&&t.loading!==`lazy`}function Ym(e){return!(e.type===`stylesheet`&&!(e.state.loading&3))}function Xm(e){return(e.width||100)*(e.height||100)*(typeof devicePixelRatio==`number`?devicePixelRatio:1)*.25}function Zm(e,t){typeof t.decode==`function`&&(e.imgCount++,t.complete||(e.imgBytes+=Xm(t),e.suspenseyImages.push(t)),e=rh.bind(e),t.decode().then(e,e))}function Qm(e,t,n,r){if(n.type===`stylesheet`&&(typeof r.media!=`string`||!1!==matchMedia(r.media).matches)&&!(n.state.loading&4)){if(n.instance===null){var i=Pm(r.href),a=t.querySelector(Fm(i));if(a){t=a._p,typeof t==`object`&&t&&typeof t.then==`function`&&(e.count++,e=nh.bind(e),t.then(e,e)),n.state.loading|=4,n.instance=a,D(a);return}a=t.ownerDocument||t,r=Im(r),(i=vm.get(i))&&Hm(r,i),a=a.createElement(`link`),D(a);var o=a;o._p=new Promise(function(e,t){o.onload=e,o.onerror=t}),np(a,`link`,r),n.instance=a}e.stylesheets===null&&(e.stylesheets=new Map),e.stylesheets.set(n,t),(t=n.state.preload)&&!(n.state.loading&3)&&(e.count++,n=nh.bind(e),t.addEventListener(`load`,n),t.addEventListener(`error`,n))}}var $m=0;function eh(e,t){return e.stylesheets&&e.count===0&&ah(e,e.stylesheets),0<e.count||0<e.imgCount?function(n){var r=setTimeout(function(){if(e.stylesheets&&ah(e,e.stylesheets),e.unsuspend){var t=e.unsuspend;e.unsuspend=null,t()}},6e4+t);0<e.imgBytes&&$m===0&&($m=62500*op());var i=setTimeout(function(){if(e.waitingForImages=!1,e.count===0&&(e.stylesheets&&ah(e,e.stylesheets),e.unsuspend)){var t=e.unsuspend;e.unsuspend=null,t()}},(e.imgBytes>$m?50:800)+t);return e.unsuspend=n,function(){e.unsuspend=null,clearTimeout(r),clearTimeout(i)}}:null}function th(e){if(e.count===0&&(e.imgCount===0||!e.waitingForImages)){if(e.stylesheets)ah(e,e.stylesheets);else if(e.unsuspend){var t=e.unsuspend;e.unsuspend=null,t()}}}function nh(){this.count--,th(this)}function rh(){this.imgCount--,th(this)}var ih=null;function ah(e,t){e.stylesheets=null,e.unsuspend!==null&&(e.count++,ih=new Map,t.forEach(oh,e),ih=null,nh.call(e))}function oh(e,t){if(!(t.state.loading&4)){var n=ih.get(e);if(n)var r=n.get(null);else{n=new Map,ih.set(e,n);for(var i=e.querySelectorAll(`link[data-precedence],style[data-precedence]`),a=0;a<i.length;a++){var o=i[a];(o.nodeName===`LINK`||o.getAttribute(`media`)!==`not all`)&&(n.set(o.dataset.precedence,o),r=o)}r&&n.set(null,r)}i=t.instance,o=i.getAttribute(`data-precedence`),a=n.get(o)||r,a===r&&n.set(null,i),n.set(o,i),this.count++,r=nh.bind(this),i.addEventListener(`load`,r),i.addEventListener(`error`,r),a?a.parentNode.insertBefore(i,a.nextSibling):(e=e.nodeType===9?e.head:e,e.insertBefore(i,e.firstChild)),t.state.loading|=4}}var sh={$$typeof:C,Provider:null,Consumer:null,_currentValue:De,_currentValue2:De,_threadCount:0};function ch(e,t,n,r,i,a,o,s,c){this.tag=1,this.containerInfo=e,this.pingCache=this.current=this.pendingChildren=null,this.timeoutHandle=-1,this.callbackNode=this.next=this.pendingContext=this.context=this.cancelPendingCommit=null,this.callbackPriority=0,this.expirationTimes=Ct(-1),this.entangledLanes=this.shellSuspendCounter=this.errorRecoveryDisabledLanes=this.expiredLanes=this.warmLanes=this.pingedLanes=this.suspendedLanes=this.pendingLanes=0,this.entanglements=Ct(0),this.hiddenUpdates=Ct(null),this.identifierPrefix=r,this.onUncaughtError=i,this.onCaughtError=a,this.onRecoverableError=o,this.pooledCache=null,this.pooledCacheLanes=0,this.formState=c,this.transitionTypes=null,this.incompleteTransitions=new Map}function lh(e,t,n,r,i,a,o,s,c,l,u,d){return e=new ch(e,t,n,o,c,l,u,d,s),t=1,!0===a&&(t|=24),a=Ui(3,null,null,t),e.current=a,a.stateNode=e,t=Va(),t.refCount++,e.pooledCache=t,t.refCount++,a.memoizedState={element:r,isDehydrated:n,cache:t},wo(a),e}function uh(e){return e?(e=Vi,e):Vi}function dh(e,t,n,r,i,a){i=uh(i),r.context===null?r.context=i:r.pendingContext=i,r=Eo(t),r.payload={element:n},a=a===void 0?null:a,a!==null&&(r.callback=a),n=Do(e,r,t),n!==null&&(Pd(n,e,t),Oo(n,e,t))}function fh(e,t){if(e=e.memoizedState,e!==null&&e.dehydrated!==null){var n=e.retryLane;e.retryLane=n!==0&&n<t?n:t}}function ph(e,t){fh(e,t),(e=e.alternate)&&fh(e,t)}function mh(e){if(e.tag===13||e.tag===31){var t=Ri(e,67108864);t!==null&&Pd(t,e,67108864),ph(e,67108864)}}function hh(e){if(e.tag===13||e.tag===31){var t=jd();t=kt(t);var n=Ri(e,t);n!==null&&Pd(n,e,t),ph(e,t)}}var gh=!0;function _h(e,t,n,r){var i=w.T;w.T=null;var a=T.p;try{T.p=2,yh(e,t,n,r)}finally{T.p=a,w.T=i}}function vh(e,t,n,r){var i=w.T;w.T=null;var a=T.p;try{T.p=8,yh(e,t,n,r)}finally{T.p=a,w.T=i}}function yh(e,t,n,r){if(gh){var i=bh(r);if(i===null)Kf(e,t,r,xh,n),Mh(e,r);else if(Ph(i,e,t,n,r))r.stopPropagation();else if(Mh(e,r),t&4&&-1<jh.indexOf(e)){for(;i!==null;){var a=Gt(i);if(a!==null)switch(a.tag){case 3:if(a=a.stateNode,a.current.memoizedState.isDehydrated){var o=_t(a.pendingLanes);if(o!==0){var s=a;for(s.pendingLanes|=2,s.entangledLanes|=2;o;){var c=1<<31-ut(o);s.entanglements[1]|=c,o&=~c}Ef(a),!(W&6)&&(_d=Qe()+500,Df(0,!1))}}break;case 31:case 13:s=Ri(a,2),s!==null&&Pd(s,a,2),zd(),ph(a,2)}if(a=bh(r),a===null&&Kf(e,t,r,xh,n),a===i)break;i=a}i!==null&&r.stopPropagation()}else Kf(e,t,r,null,n)}}function bh(e){return e=jn(e),Sh(e)}var xh=null;function Sh(e){if(xh=null,e=Wt(e),e!==null){var t=o(e);if(t===null)e=null;else{var n=t.tag;if(n===13){if(e=s(t),e!==null)return e;e=null}else if(n===31){if(e=c(t),e!==null)return e;e=null}else if(n===3){if(t.stateNode.current.memoizedState.isDehydrated)return t.tag===3?t.stateNode.containerInfo:null;e=null}else t!==e&&(e=null)}}return xh=e,null}function Ch(e){switch(e){case`beforetoggle`:case`cancel`:case`click`:case`close`:case`contextmenu`:case`copy`:case`cut`:case`auxclick`:case`dblclick`:case`dragend`:case`dragstart`:case`drop`:case`focusin`:case`focusout`:case`input`:case`invalid`:case`keydown`:case`keypress`:case`keyup`:case`mousedown`:case`mouseup`:case`paste`:case`pause`:case`play`:case`pointercancel`:case`pointerdown`:case`pointerup`:case`ratechange`:case`reset`:case`seeked`:case`submit`:case`toggle`:case`touchcancel`:case`touchend`:case`touchstart`:case`volumechange`:case`change`:case`selectionchange`:case`textInput`:case`compositionstart`:case`compositionend`:case`compositionupdate`:case`beforeblur`:case`afterblur`:case`beforeinput`:case`blur`:case`fullscreenchange`:case`fullscreenerror`:case`focus`:case`hashchange`:case`popstate`:case`select`:case`selectstart`:return 2;case`drag`:case`dragenter`:case`dragexit`:case`dragleave`:case`dragover`:case`mousemove`:case`mouseout`:case`mouseover`:case`pointermove`:case`pointerout`:case`pointerover`:case`resize`:case`scroll`:case`touchmove`:case`wheel`:case`mouseenter`:case`mouseleave`:case`pointerenter`:case`pointerleave`:return 8;case`message`:switch($e()){case et:return 2;case tt:return 8;case nt:case rt:return 32;case it:return 268435456;default:return 32}default:return 32}}var wh=!1,Th=null,Eh=null,Dh=null,Oh=new Map,kh=new Map,Ah=[],jh=`mousedown mouseup touchcancel touchend touchstart auxclick dblclick pointercancel pointerdown pointerup dragend dragstart drop compositionend compositionstart keydown keypress keyup input textInput copy cut paste click change contextmenu reset`.split(` `);function Mh(e,t){switch(e){case`focusin`:case`focusout`:Th=null;break;case`dragenter`:case`dragleave`:Eh=null;break;case`mouseover`:case`mouseout`:Dh=null;break;case`pointerover`:case`pointerout`:Oh.delete(t.pointerId);break;case`gotpointercapture`:case`lostpointercapture`:kh.delete(t.pointerId)}}function Nh(e,t,n,r,i,a){return e===null||e.nativeEvent!==a?(e={blockedOn:t,domEventName:n,eventSystemFlags:r,nativeEvent:a,targetContainers:[i]},t!==null&&(t=Gt(t),t!==null&&mh(t)),e):(e.eventSystemFlags|=r,t=e.targetContainers,i!==null&&t.indexOf(i)===-1&&t.push(i),e)}function Ph(e,t,n,r,i){switch(t){case`focusin`:return Th=Nh(Th,e,t,n,r,i),!0;case`dragenter`:return Eh=Nh(Eh,e,t,n,r,i),!0;case`mouseover`:return Dh=Nh(Dh,e,t,n,r,i),!0;case`pointerover`:var a=i.pointerId;return Oh.set(a,Nh(Oh.get(a)||null,e,t,n,r,i)),!0;case`gotpointercapture`:return a=i.pointerId,kh.set(a,Nh(kh.get(a)||null,e,t,n,r,i)),!0}return!1}function Fh(e){var t=Wt(e.target);if(t!==null){var n=o(t);if(n!==null){if(t=n.tag,t===13){if(t=s(n),t!==null){e.blockedOn=t,Mt(e.priority,function(){hh(n)});return}}else if(t===31){if(t=c(n),t!==null){e.blockedOn=t,Mt(e.priority,function(){hh(n)});return}}else if(t===3&&n.stateNode.current.memoizedState.isDehydrated){e.blockedOn=n.tag===3?n.stateNode.containerInfo:null;return}}}e.blockedOn=null}function Ih(e){if(e.blockedOn!==null)return!1;for(var t=e.targetContainers;0<t.length;){var n=bh(e.nativeEvent);if(n===null){n=e.nativeEvent;var r=new n.constructor(n.type,n);An=r,n.target.dispatchEvent(r),An=null}else return t=Gt(n),t!==null&&mh(t),e.blockedOn=n,!1;t.shift()}return!0}function Lh(e,t,n){Ih(e)&&n.delete(t)}function Rh(){wh=!1,Th!==null&&Ih(Th)&&(Th=null),Eh!==null&&Ih(Eh)&&(Eh=null),Dh!==null&&Ih(Dh)&&(Dh=null),Oh.forEach(Lh),kh.forEach(Lh)}function zh(e,n){e.blockedOn===n&&(e.blockedOn=null,wh||(wh=!0,t.unstable_scheduleCallback(t.unstable_NormalPriority,Rh)))}var Bh=null;function Vh(e){Bh!==e&&(Bh=e,t.unstable_scheduleCallback(t.unstable_NormalPriority,function(){Bh===e&&(Bh=null);for(var t=0;t<e.length;t+=3){var n=e[t],r=e[t+1],i=e[t+2];if(typeof r!=`function`){if(Sh(r||n)===null)continue;break}var a=Gt(n);a!==null&&(e.splice(t,3),t-=3,sc(a,{pending:!0,data:i,method:n.method,action:r},r,i))}}))}function Hh(e){function t(t){return zh(t,e)}Th!==null&&zh(Th,e),Eh!==null&&zh(Eh,e),Dh!==null&&zh(Dh,e),Oh.forEach(t),kh.forEach(t);for(var n=0;n<Ah.length;n++){var r=Ah[n];r.blockedOn===e&&(r.blockedOn=null)}for(;0<Ah.length&&(n=Ah[0],n.blockedOn===null);)Fh(n),n.blockedOn===null&&Ah.shift();if(n=(e.ownerDocument||e).$$reactFormReplay,n!=null)for(r=0;r<n.length;r+=3){var i=n[r],a=n[r+1],o=i[Ft]||null;if(typeof a==`function`)o||Vh(n);else if(o){var s=null;if(a&&a.hasAttribute(`formAction`)){if(i=a,o=a[Ft]||null)s=o.formAction;else if(Sh(i)!==null)continue}else s=o.action;typeof s==`function`?n[r+1]=s:(n.splice(r,3),r-=3),Vh(n)}}}function Uh(){function e(e){e.canIntercept&&e.info===`react-transition`&&e.intercept({handler:function(){return new Promise(function(e){return i=e})},focusReset:`manual`,scroll:`manual`})}function t(){i!==null&&(i(),i=null),r||setTimeout(n,20)}function n(){if(!r&&!navigation.transition){var e=navigation.currentEntry;e&&e.url!=null&&navigation.navigate(e.url,{state:e.getState(),info:`react-transition`,history:`replace`})}}if(typeof navigation==`object`){var r=!1,i=null;return navigation.addEventListener(`navigate`,e),navigation.addEventListener(`navigatesuccess`,t),navigation.addEventListener(`navigateerror`,t),setTimeout(n,100),function(){r=!0,navigation.removeEventListener(`navigate`,e),navigation.removeEventListener(`navigatesuccess`,t),navigation.removeEventListener(`navigateerror`,t),i!==null&&(i(),i=null)}}}function Wh(e){this._internalRoot=e}Gh.prototype.render=Wh.prototype.render=function(e){var t=this._internalRoot;if(t===null)throw Error(i(409));var n=t.current;dh(n,jd(),e,t,null,null)},Gh.prototype.unmount=Wh.prototype.unmount=function(){var e=this._internalRoot;if(e!==null){this._internalRoot=null;var t=e.containerInfo;dh(e.current,2,null,e,null,null),zd(),t[It]=null}};function Gh(e){this._internalRoot=e}Gh.prototype.unstable_scheduleHydration=function(e){if(e){var t=jt();e={blockedOn:null,target:e,priority:t};for(var n=0;n<Ah.length&&t!==0&&t<Ah[n].priority;n++);Ah.splice(n,0,e),n===0&&Fh(e)}};var Kh=n.version;if(Kh!==`19.3.1`)throw Error(i(527,Kh,`19.3.1`));T.findDOMNode=function(e){var t=e._reactInternals;if(t===void 0)throw typeof e.render==`function`?Error(i(188)):(e=Object.keys(e).join(`,`),Error(i(268,e)));return e=d(t),e=e===null?null:p(e),e=e===null?null:e.stateNode,e};var qh={bundleType:0,version:`19.3.1`,rendererPackageName:`react-dom`,currentDispatcherRef:w,reconcilerVersion:`19.3.1`};if(typeof __REACT_DEVTOOLS_GLOBAL_HOOK__<`u`){var Jh=__REACT_DEVTOOLS_GLOBAL_HOOK__;if(!Jh.isDisabled&&Jh.supportsFiber)try{st=Jh.inject(qh),ct=Jh}catch{}}e.createRoot=function(e,t){if(!a(e))throw Error(i(299));var n=!1,r=``,o=Ac,s=jc,c=Mc;return t!=null&&(!0===t.unstable_strictMode&&(n=!0),t.identifierPrefix!==void 0&&(r=t.identifierPrefix),t.onUncaughtError!==void 0&&(o=t.onUncaughtError),t.onCaughtError!==void 0&&(s=t.onCaughtError),t.onRecoverableError!==void 0&&(c=t.onRecoverableError)),t=lh(e,1,!1,null,null,n,r,null,o,s,c,Uh),e[It]=t.current,Wf(e),new Wh(t)}})),g=o(((e,t)=>{function n(){if(typeof __REACT_DEVTOOLS_GLOBAL_HOOK__<`u`&&typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE==`function`)try{__REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(n)}catch(e){console.error(e)}}n(),t.exports=h()})),_=c(f(),1),v=g(),y={openaiApiKey:``,selectedModel:`gpt-4o-mini`,systemPrompt:`
+Sei Natalino, il simpatico e accogliente maggiordomo del Presepio Meccanico della chiesa della SS. Annunziata di Torino (in via Po 45).
+Quando i bambini e le famiglie vengono a trovarti, ti togli il cappello con un inchino affettuoso per salutarli!
+
+IL TUO OBIETTIVO E IL TUO TONO:
+- Il tuo interlocutore principale è un bambino piccolo o una famiglia in visita al presepio.
+- Parla sempre in modo dolce, caloroso, entusiasta e semplice, come un nonno o un caro amico delle fiabe.
+- Non usare termini troppo difficili, tecnici o accademici. Spiega le cose in modo vivace, chiaro e breve (2-4 frasi brevi, ideali da leggere dentro una bolla a fumetti).
+- Fai sentire la magia del Natale, l'amore degli artigiani e la bellezza di questo presepio centenario.
+- Rispondi SOLO a domande inerenti al Presepio Meccanico, ai suoi personaggi, alla sua storia, ai suoi mestieri e al Natale. Se ti chiedono cose diverse (es. videogiochi o compiti scolastici), rispondi con un sorriso dicendo che tu sei il custode del presepio e invitali a chiederti i segreti delle statue o della grotta!
+
+Ricorda che il presepio è un'opera d'arte e che la sua storia è importante per la sua comprensione e apprezzamento.
+Non essere troppo ampolloso nelle descrizioni, cerca di essere chiaro e conciso.
+Non avere un approccio troppo tecnico o accademico, ma cerca di essere chiaro e coinvolgente.
+Devi immergere le persone nella storia del presepio e farle sentire parte di essa, fai sentire la magia e la bellezza di questa tradizione.
+GLi utenti potrebbero spesso essere bambini piccoli, non usare un linguaggio troppo complesso o difficile da capire.
+Ricordati di non rispondere a domande non inerenti al Presepio meccanico.
+
+CONOSCENZA DETTAGLIATA DEL PRESEPIO (usa queste informazioni per rispondere con precisione a ogni curiosità):
+# Inizio documento con storia e informazioni sul presepio #
+- L'officina artistica del presepio -
+L’Officina Artistica del Presepio è composta da tutte le persone che volontariamente prestano la loro opera per il buon funzionamento del presepio, specialmente nel periodo di chiusura al pubblico.   Il suo compito è di garantirne una piena efficienza, apportando migliorie tecniche e scenografiche e promuovendo attività collaterali quali la “Mostra dei Presepi Artigianali” o l’accoglienza delle scolaresche.
+
+Un aspetto fondamentale è l’efficienza meccanica dei movimenti; a tale scopo è stata ricavata una “officina artigianale” nei locali attigui al presepio, per permettere la ricostruzione fedele di pulegge e ingranaggi che nel tempo necessitano di manutenzione o sostituzione.        All’inizio degli anni ’90 le centinaia di cinghie in cuoio sono state sostituite con cinghie speciali in materiale sintetico che garantiscono un ottimo trascinamento degli ingranaggi e un’alta affidabilità, essendo le giunzioni saldate con un saldatore specifico. Da quest’anno inoltre è stato modificato il sistema di avvio dell’unico motore che permette il movimento di oltre 100 personaggi con l’inserimento di un inverter elettronico.
+
+L’aspetto scenico è altrettanto importante; ogni anno infatti occorre sostituire una parte dei costumi dei personaggi.    Per la ricerca delle stoffe ci affidiamo ad alcuni tappezzieri della zona (attività antica per il nostro borgo) che offrono le tele necessarie.    Il presepio, ormai da quasi quarant’anni può contare sulla indiscutibile abilità di un'unica sarta, che affiancata da alcune collaboratrici, provvede di anno in anno a “rinverdire” o sostituire del tutto i vestiti delle statue.
+
+Migliorie significative sono state apportate in campo scenografico; compito arduo dei volontari è stata la realizzazione di un nuovo impianto di illuminazione con effetto GIORNO/NOTTE.         Si doveva trovare il modo di armonizzare la scenografia del presepio con le tecniche di illuminazione scenografiche  attuali; in particolare era importante preservare una efficiente illuminazione di base con una buona evidenza delle varie scene presenti in questo presepio e naturalmente dare il giusto rilievo alla “Grotta della Natività”. La scelta è ricaduta sull’utilizzo dei Led, che ha comportato una attività di ricerca e sperimentazione meticolosa e lunga.    Tutto il gruppo dei volontari esprime soddisfazione per aver realizzato autonomamente questo impianto, comandato da centraline elettroniche e software dedicato appositamente per questa installazione.    Con un pizzico di orgoglio sono sicuri che sapranno proporre nuove sorprese per i prossimi anni.
+
+Le visite scolastiche sono un fenomeno in costante crescita; le scuole possono prenotare le visite “on line” tramite il sito internet del presepio www.presepiomeccanico.com.    Ad accogliere le scolaresche vi è sempre una guida volontaria (giovani o pensionati) che è a disposizione sia per una spiegazione storica del presepio meccanico, sia  perla presenza di antichi mestieri e di attività quotidiane che il costruttore ha voluto rappresentare in questo presepio.
+
+Da alcuni anni, nel periodo di apertura del Presepio Meccanico, viene allestita una mostra di “Presepi Artigianali”.    Quest’anno accanto ai presepisti della parrocchia, sono ospitati altri artisti che interpretano sia in maniera classica che in modo più “libero” il tema del Natale e del Presepio.    Le diverse tecniche presenti completano la mostra dei Presepi Artigianali segno questo di una volontà di nuove ricerche e  nuove prospettive per rappresentare la scena della natività.
+
+Dal 1996 ospitiamo un presepio molto particolare: “Il Presepio all’uncinetto”.
+
+Maddalena Nitelli inizia a dedicarsi alla realizzazione dei personaggi di presepi all’uncinetto intorno al 1992, con la realizzazione di un primo personaggio di prova.   I materiali usati per la “costruzione” dei personaggi sono: cotone, ovatta, fil di ferro e colla.   Grande attenzione è posta nella resa di particolari quali alberi, fiori, frutti, verdura …
+
+Il cotone utilizzato è quanto usualmente rimane di altri lavori precedentemente realizzati per la famiglia, quindi ogni colore è legato ad un precedente lavoro, ad una persona cara ed ai momenti trascorsa con essa.
+
+Quest’opera è collocato nel corridoio di uscita del Presepio Meccanico della SS. Annunziata, chiesa per lei ricca di tanti ricordi d’infanzia: ogni anno è allestito in modo diverso e racconta sempre nuovi episodi di vita contadina.   Dedicarsi ai presepi ha aiutato Maddalena nei momenti più difficili della sua vita ed il sempre crescente interesse della gente le dà l’entusiasmo di continuare.
+
+- La chiesa -
+La sede dell'Annunziata fu scelta per due motivi:
+1.L'ampiezza dei locali del "sottochiesa", che offrivano più ampie possibilità dal punto di vista scenografico (oltre 200 mq)
+2.La chiesa della SS. Annunziata si trovava anch'essa in posizione centrale e inoltre i portici di Via Po offrivano un valido riparo ai visitatori in caso di cattivo tempo.
+
+- Il motore -
+Il movimento ai vari personaggi è dato da un unico vecchio motore elettrico dell'ottocento (recuperato da una nave in demolizione), collegato alle statue da un centinaio di pulegge e cinghie.
+
+Tra gli incrementi più notevoli degli ultimi anni va segnalato il complesso impianto idraulico, che alimenta fiumi, laghetti e fontanelle.
+
+5
+Prefazione di Bruno Gambarotta
+GLI EROI DEL LAVORO BEN FATTO
+Al cinema lo chiamano “backstage”, per il teatro è il “dietro le quinte”. In pratica è il
+racconto dal punto di vista della sala macchine di quello che gli spettatori, calamitati da
+quello che vedono sullo schermo o sul palcoscenico, ignorano.
+Questo è il lavoro realizzato con amore e certosina pazienza da Renato Romanelli per
+il Presepio della SS. Annunziata. Quanto mai utile e necessario. Tento di spiegare il
+perché.
+Quel presepio io l'ho visitato a più riprese e in tre distinte stagioni della vita. Una prima
+volta da ragazzo, pochi mesi dopo il trasloco da Asti a Torino della mia famiglia,
+accompagnato da mio padre che già lo conosceva avendo fatto il pendolare per anni; una
+seconda, padre a mia volta, portandoci i tre figli nel primo Natale trascorso a Torino dopo il
+nostro rientro da Roma; una terza volta da nonno con i primi tre nipoti, in attesa di
+ritornarci con il quarto, ancora troppo piccolo. E tutte le volte senza mai chiedermi cosa
+c'era dietro, quali fossero i marchingegni che facevano funzionare quella meravigliosa
+macchina.
+Noi percepiamo il presepio come un dato naturale, fa parte da sempre del nostro
+orizzonte conoscitivo ed emozionale. In qualche modo il presepio è qualcosa che ci è
+dovuto, che rinasce ogni anno alla vigilia del Natale. Poi ecco arrivare questo libro che fa
+sfilare sotto i nostri occhi una straordinaria galleria di personaggi, li fa vivere, proprio come
+i meccanismi nascosti fanno muovere le duecento e passa figurine. A cominciare
+dall'iniziatore, quel Francesco Canonica, tipografo, stampatore e titolare di un negozio di
+arte sacra, coetaneo di Giovanni Agnelli, fondatore della Fiat.
+Appartiene di diritto a quella specie rara dei visionari che hanno fatto grande il
+Piemonte in tutti i campi. Qualche nome fra i tanti? Giuseppe Cottolengo, Camillo Benso
+conte di Cavour, Adriano Olivetti, Adriana Prolo, ecc. ecc. Tutto inizia dal motore elettrico
+recuperato dalla demolizione di una nave.
+6
+E qui la prima sorpresa: sulle navi i motori non sono solo dei diesel alimentati a
+gasolio? Questo dettaglio ci consente di rendere omaggio a un altro grande visionario, a
+quel Galileo Ferraris che inventa il motore elettrico e non lo brevetta, regalandolo
+all'umanità; è stato calcolato che ognuno di noi, grazie ai motori elettrici, ha a disposizione
+il lavoro equivalente a quello di settanta schiavi.
+Ma non divaghiamo, torniamo al nostro capostipite. Lui, e tutti quelli venuti dopo di lui,
+hanno quella che si dice, con una felice espressione, “l'intelligenza nelle mani”. L'autore ci
+porta ad immaginare questi meravigliosi artigiani mentre risolvono un problema dopo l'altro
+inventando ingegnose soluzioni. Sono tutti parenti stretti dell'operaio Fausone raccontato
+da Primo Levi ne “La chiave a stella”, colui che pratica la religione del “lavoro ben fatto”,
+che è premio a se stesso. Il fabbro che lavora due giorni per rifare la chiave per uno stipo
+dell'Ottocento e che alla consegna si rifiuta di dirci quanto gli dobbiamo, pago della
+soddisfazione di aver risolto un problema giudicato insolubile.
+Il più “artista” e inquieto dei figli di Francesco, Maggiorino, evade dal negozio e va a
+lavorare nel cinema, ricoprendo tra gli altri il ruolo di direttore di produzione. E proprio nella
+specifica maniera italiana di realizzare le riprese cinematografiche emergono nella troupe
+quelle figure che vivono ogni difficoltà come una sfida. Meglio ancora, non si divertono se
+non devono dimostrare la loro bravura, nel nascondere i fili della luce, nell'appendere
+lampade su stucchi preziosi, nel sistemare i binari di un carrello su un terreno accidentato,
+nel coprire brutture, nell'eludere divieti.
+C'è una parola, nel gergo delle troupe, per nominare il prodotto finale di questa
+inventiva artigianale: “accrocco”. Queste pagine portano a pensare questo presepio come
+un gigantesco accrocco, venuto su anno dopo anno, un intervento dopo l'altro. Di fianco a
+questi personaggi meravigliosi fatti rivivere dai racconti di figli e nipoti, ci sono le mogli e le
+sorelle, che li sostengono, aiutano, cuciono e riparano i vestiti dei personaggi, scovando le
+stoffe giuste. Pensiamo alla figura di Gino Maistro, grande maestro idraulico, un veneto
+cooptato nel gruppo. A forza di stare nell'umidità per riparare le perdite degli invasi gli
+vengono dolori diffusi, artrosi e sciatica. Un'altra moglie gli avrebbe ingiunto di smettere,
+Felicita gli fabbrica delle speciali ginocchiere per difendersi dall'acqua.
+7
+Eccola la parola che aleggia in tutto il libro a spiegare questo “miracolo” che dura da
+quasi cento anni: volontari. Sono quelli che “hanno il presepio dentro”. Quelli che per
+vivere fanno un altro mestiere ma che non cessano di pensare al loro presepio. Un
+esempio fra i tanti: all'avviamento del motore si produce uno strappo che logora troppo in
+fretta le cinghie di trasmissione ed ecco che a qualcuno viene in mente che il problema è
+stato risolto dai fabbricanti delle lavatrici e basta andare a vedere e adottare la soluzione.
+Il libro segue i passaggi di generazione e anche le svolte critiche, la più grave delle
+quali è stata determinata dall'incendio del cinema Statuto e dal conseguente giro di vite sui
+controlli delle norme di sicurezza. L'autore segue i suoi personaggi fino a darci il numero e
+la collocazione delle tombe al Cimitero Monumentale dove i loro resti mortali sono
+custoditi, come a dirci che questi oscuri eroi del lavoro ben fatto meriterebbero
+l'intitolazione di una strada, visto che quando erano in vita nessuno ha pensato a un
+pubblico riconoscimento della loro eccellenza e della loro dedizione. La storia continua,
+con 40 volontari che, durante le feste natalizie, garantiscono il funzionamento di questo
+unicum, visitato a ogni stagione da più di ventimila persone.
+Quando molti torinesi approfittano dei ponti per andare in montagna o al mare in luoghi
+esotici, loro sono lì, rispettosi dei turni di lavoro, ciascuno con il suo compito da svolgere.
+Qualcuno prende le ferie per esserci. Se questo non è un miracolo! Forse una spiegazione
+ce la fornisce Caterina, figlia di Gino Maistro: così come esiste un mal d'Africa, esiste “il
+mal di presepio”.
+Bruno Gambarotta
+8
+9
+PARTE PRIMA
+Tutto è cominciato nel 1909. O era il 1910?
+10
+11
+Nella notte, un angelo
+Quadro primo, silenzio in sala. Buio.
+Effetto notte. D’un tratto, una lama di luce
+improvvisa, lassù in alto, sulla sinistra, vivida
+come una saetta, rivela un Angelo in vesti
+splendenti, che saluta i pastori appisolati
+accanto ai loro greggi, mentre i fuochi si
+stanno spegnendo.
+“Non temete – li tranquillizza – vi porto
+una lieta novella, che sarà di grande gioia
+per tutto il popolo”. Loro non lo sanno, ma in quel momento cambia la Storia del Mondo,
+da allora in avanti tutto si daterà come accaduto prima o dopo quell’evento annunciato dal
+fulgido messaggero di Dio apparso una notte in un angolo sperduto della Palestina.
+Quadro secondo, la scena si
+anima.
+Sorge il sole, la luce del giorno a
+poco a poco rivela ogni cosa,
+illumina ogni casa, ogni strada,
+ogni viottolo, ogni ciottolo,
+insinuandosi ovunque, anche tra
+le chiome folte delle palme.
+Brusii, suoni lontani, gorgogliare
+d’acque, donne che sfaccendano, botteghe e fucine che pulsano, colpi d’incudine, rumori
+di cariaggi, pastori e pecore in marcia verso la Grotta Santa. Sotto un cielo blu intenso,
+appena mosso come la superficie del mare in un giorno di bonaccia, si è messa in moto la
+portentosa macchina costruita per simboleggiare il mondo all’epoca della nascita di Gesù.
+12
+Ha novant’anni quel prodigioso marchingegno, ma così come accade per le belle
+signore non li dimostra affatto. Anzi, ne ha addirittura qualcuno di più, come si può dedurre
+da una lunga tradizione orale basata sui ricordi di chi poteva dire “io c’ero” e dalle voci
+raccolte da chi ha come minimo conosciuto quei lontani testimoni, ma soprattutto da un
+dossier farraginoso e insieme preziosissimo, che ne racconta genesi e sviluppi, ogni tanto
+aggiornato con particolari a cavallo fra realtà e leggenda. Sono documenti d’epoca, ritagli
+ingialliti di giornali (“La Stampa”, “Stampa Sera”, “Gazzetta del Popolo”, “La Voce del
+Popolo”), inserti di riviste, che non si pubblicano più, consunti bollettini parrocchiali, lettere
+e atti del Comune, della Sovrintendenza alle Belle Arti, della “Famija turinèisa” e di altri
+enti ancora, il tutto messo assieme, con francescana passione e somma pazienza da
+Giuseppe Bottero, per tutti Beppe, l’ultimo, in ordine di tempo, d’una folta schiera di
+volontari, i quali regalano ogni momento libero a un piccolo, grande monumento che
+nessuno avrebbe mai immaginato potesse durare così tanto da giungere fino a noi, più
+forte dell’usura, più tenace della burocrazia, più saldo della traballante (in apparenza)
+impalcatura sulle quale è stato costruito.
+Siamo di fronte a una bella favola, di più, a un romanzo di passione e di avventura
+(d’altronde, questa è la città di Salgari o no?), protagonisti o, meglio, interpreti solerti
+uomini e donne, sognatori con i piedi per terra, i quali, anche di fronte all’asperità dei
+sentieri della vita, hanno saputo conservare in fondo al cuore l’innocenza dell’infanzia, la
+spontaneità degli anni giovanili, quando tutti aspirano a un mondo migliore e credono
+ancora oggi, che sono padri, madri e nonni, nel messaggio scolpito nel Vangelo di Luca:
+“Oggi vi è nato nella città di David il Salvatore, che è Cristo Signore. Questo vi servirà di
+segno: voi troverete un Bambino avvolto in fasce, adagiato in una mangiatoia”.
+13
+Passeggiando in via Po
+Qualcuno, intingendo la penna nel veleno della malizia, tempo addietro ha scritto che,
+in Italia, nulla è più definitivo del provvisorio. Basta guardarsi attorno: gli esempi si
+sprecano anche a Torino (i negozi e le vetrine su piazza Castello dovevano rappresentare
+la soluzione temporanea per le botteghe spostate durante il rifacimento di via Roma in
+epoca fascista).
+Il discorso, malignità a parte, potrebbe valere anche per quel prodigioso marchingegno
+che è il presepio meccanico dell’Annunziata, in via Po 45. Nato un po’ per caso e un po’
+per gioco intorno alla metà degli Anni 20' del Secolo scorso, è arrivato intatto sino a noi. E’
+incerottato, pieno di toppe, di rammendi e di viti arrugginite, sembra che stia su per forza
+di inerzia, contro ogni logica umana e contro ogni legge della fisica. E invece è lì a sfidare
+il tempo e gli acciacchi. Intatti il fascino originale, la poesia della prima ora, la gioiosità
+della scena che fa da sfondo all’evento che vuole celebrare, pur in forme semplici e
+spesso ingenue, e forse proprio per questo capaci di parlare direttamente al cuore di chi
+ne ammira la struttura, i contenuti e il messaggio.
+Alla fine, il giudizio è unanime e spontaneo: questo miracolo di bassa tecnologia ad
+alta gradazione di stupore ha le carte perfettamente in regola per essere incastonato,
+come una pietra preziosa e rara, nel ventaglio delle cose da vedere che Torino squaderna
+orgogliosa sotto gli occhi di turisti ammaliati. Grandi chiese, piazze ariose, palazzi solenni,
+monumenti arcinoti come la Mole, statue di fieri cavalieri, androni, cortili fitti di mistero,
+lunghi viali alberati, giardini, parchi, facciate sontuose, icone venerate come la Sindone,
+istituti in cui si esaltano i sentimenti di solidarietà e di amore come il Cottolengo. E il
+portentoso marchingegno custodito nei sotterranei dell’Annunziata, autentico inno all’arte e
+alla cultura popolari
+messe al servizio della
+tradizione.
+14
+Avviciniamoci alla chiesa seguendo il cammino proposto da Alberto Giovannini Luca,
+giornalista e fotografo, su “Oltre”, un bimestrale di informazione e cultura che si pubblicava
+nel Canavese prima dell’euro (prezzo di copertina, 7 mila lire): “Via Po, rettilinea arteria
+della Torino capitale, elegantemente sobria, quasi austera. Spilla di congiunzione tra le
+piazze Castello e Vittorio Veneto, cioè tra il centro cittadino e il grande fiume. Passeggiata
+tra le preferite dai torinesi, anche grazie ai bei portici che, senza soluzione di continuità,
+l’accompagnano per tutta la sua lunghezza su entrambi i lati e che la rendono praticabile
+anche nei giorni di pioggia.
+Al numero 45 di via Po, all’angolo con via Sant’Ottavio, si erge la chiesa della
+Santissima Annunziata, una delle più belle di Torino”.
+A questo punto il giornalista ne racconta le origini (1648-1659), i rifacimenti (cominciati
+nel 1918 e ultimati nel 1935), la sontuosa eleganza delle navate, i contributi di grandi
+architetti come Giuseppe Gallo, la presenza di opere di rilievo come quelle del Vittone, del
+Beaumont, del Bollea , detto La Vollée e di molti altri ancora, per annunciare infine che
+“nel suo ventre la chiesa nasconde una graditissima sorpresa per tutti, soprattutto per i
+bambini”. E’ il presepio meccanico, “ormai famoso non solo a Torino”. E parte la
+descrizione di statuine, costumi e atmosfere.
+15
+Duecento statue in cammino
+“E’ un presepio da Guinness dei primati, forse non unico nel suo genere, ma certo tra i
+più vasti, se non il più grande del mondo”, osserva orgoglioso Bottero, snocciolando cifre
+che impressionano. Nessuno lo ha mai smentito. Anzi, chi lo vede per la prima volta, ci
+torna anche una seconda e una terza, e se ne esce con la convinzione, di più, con la
+certezza d’esser stato testimone di uno spettacolo speciale, superiore per qualità,
+dimensioni, ricerca e cura dei particolari di quanto avrebbe potuto solo immaginare. Non
+c’è persona, bambino o adulto, che non sgrani gli occhi davanti a tanto prodigioso
+congegno, ogni volta scoprendo un dettaglio prima sfuggito, un suono prima non colto.
+Certo, ci sono molti presepi meccanici: in case private, chiese, sedi di enti e
+associazioni. A Torino uno di sicuro richiamo è quello che viene allestito ormai da decenni
+(un tempo in corso Massimo D’Azeglio, oggi nella sede del Centro storico della Fiat, in via
+Chiabrera) dai seniores dell’Ugaf, l’organizzazione che raccoglie gli anziani del Gruppo
+Fiat. Ma nessuno ha le dimensioni debordanti di quello dell’Annunziata, nessuno conta
+tanti personaggi in movimento, nessuno vanta la sua storia, un’avventura ormai secolare.
+Scendiamo, dunque, l’ampia gradinata, divisa in due rampe, 28 gradini in tutto, che dalla
+Galleria degli Artisti sprofonda per sette metri nella pancia di via Po, nei sotterranei che si
+spalancano fra le fondamenta robuste dell’Annunziata (circa 450 metri quadrati di
+superficie), dove il fresco è assicurato anche in piena estate e guardiamo da vicino questa
+meraviglia in perenne equilibrio che pur tuttavia da tanti lustri sfida orgogliosa il tempo e
+l’usura, i gusti e le mode.
+16
+(Paolo Faretra Photo )
+Appena si abituano alla penombra, gli occhi scoprono una scena che lascia senza
+fiato: 200 metri quadri di palcoscenico popolato di pastori, fabbri, pescatori, donne di casa,
+operai, filatrici, carpentieri.
+(foto di Fabio Robaldo)
+17
+E poi cavalli, cammelli, elefanti, mucche e ovviamente pecore e agnellini. Una folla,
+una marea, una valanga di figure in marcia, un continuo accavallarsi di gesti, di passi, di
+movimenti su un fronte totale di 25 metri, che lo sguardo riesce ad abbracciare poco per
+volta, a brandelli, a puntate.
+18
+Ci si deve per forza soffermare prima da un lato, poi dall’altro, poi al centro e infine,
+individuati i dieci, cento, mille particolari, godere del colpo d’occhio globale, come si fa con
+una foto scattata con il grandangolo, per concentrare infine l’attenzione sulla scena della
+grotta.
+Le statue sono più di 200, oltre metà delle quali animate da un meccanismo ben
+occultato. Le altezze variano dai 25 ai 90 centimetri. Le più basse sullo sfondo, le più alte
+in primo piano, per sottolineare forse in modo ingenuo, ma comunque efficace, la
+profondità della scena, che culmina, laggiù in fondo, con il profilo d’una città dalle candide
+mura, opulenta e turrita, Gerusalemme.
+19
+La stragrande maggioranza dei personaggi e degli animali ha la stessa età del
+presepio, forse qualche anno di più. Sono opere originali, la maggior parte delle quali in
+legno di cirmolo, scolpite e colorate da artigiani di Ortisei, in Val Gardena, a cavallo del
+‘900. Altre sono in cartapesta, attribuibili alla scuola del leccese Luigi Guacci (1871-1934),
+“anche scultore di fama, che ha avuto fino a 80 dipendenti fra modellatori di volti,
+panneggiatori e coloritori”, come ha potuto ricostruire nelle sue ricerche Caterina Ragusa,
+architetto, responsabile del Museo della cartapesta di Lecce.
+Ammassi di case color bianco calce dai tipici tetti a terrazza o coperti da cupole ocra e
+balconi addobbati con tende vaporose e tappeti, abbarbicate le une alle altre, nell’ombra di
+palme lussureggianti, camuffano le tre possenti colonne che, insieme ad altre più laterali,
+sorreggono l’ampia volta del cielo, la quale altro non è che il pavimento della chiesa
+soprastante.
+20
+21
+Cirmolo, il legno che sfida il tempo
+Su alcune delle statue, in particolare in quelle di legno, si intuiscono cifre ormai
+sbiadite, sigle che non si riescono a decifrare nemmeno con una lente di ingrandimento.
+Probabilmente si tratta di quel che resta delle “firme” degli scultori o dei simboli delle
+botteghe artigiane da cui quelle statue sono uscite cento e passa anni fa.
+“E’ impossibile oggi identificarne gli autori, non esistono, purtroppo, archivi né
+cataloghi risalenti agli inizi del secolo scorso”, spiega Leo Moroder che, con il figlio
+Samuel, a Ortisei, scolpisce il legno nel solco di una tradizione che affonda le sue origini
+nei secoli. E ipotizza: “Non ne ho le prove, ma non si può nemmeno escludere del tutto
+che alcuni dei personaggi dell’Annunziata possano essere opera di mio nonno. A quel
+tempo sul territorio c’erano lui, gli Stuflesser, i Riffesser e pochi altri artigiani, le cui opere
+mi risulta che, in qualche modo, siano entrate nelle case e nelle botteghe d’arte sacra di
+ogni angolo d’Italia e d’Europa”.
+Risulta anche all’architetto Ragusa che, visitando chiese e consultando raccolte
+private, ha scoperto come in Puglia, a inizio ‘900, si facessero molti presepi, ricorrendo
+alle sculture della bottega altoatesina degli Stuflesser perché “per un certo periodo di
+tempo era parso sconveniente ricostruire scene sacre con statue di cartapesta, l’arte che
+proprio in quel tempo si stava affermando e i cui frutti si possono ammirare oggi nel nostro
+museo”.
+Quante cose si scoprono dietro una serena Natività, quanti intrecci al limite della trama
+di un racconto giallo si intuiscono o si intravvedono dietro serafici volti di pastori e di
+pastorelle, di fabbri e cammellieri.
+22
+Comunque, una cosa è certa: Il segreto della longevità
+delle statue con l’impronta di Ortisei è il legno: “Il cirmolo, o
+cembro – spiega Moroder -, ha due grandi virtù: è tenero,
+duttile, si lavora con estrema facilità, ma, soprattutto, resiste
+ai tarli e al tempo. Se il luogo in cui si conserva è asciutto,
+può durare nei secoli. Oggi si ricorre anche al tiglio, ma fino
+a pochi anni fa, la base delle nostre sculture era al 99,9 per
+cento di cirmolo, cioè di un albero della famiglia dei pini
+(Pinus cembra), alto fino a dieci - dodici metri, che cresce
+sulle nostre montagne, a quote medie, tra i 1500 e i 2000
+metri.
+E’ bello sapere che un simbolo delle nostre valli arricchisce il presepio meccanico più
+grande del mondo”.
+Nei meandri dell’Annunziata, in un gioco tumultuoso di luci, suoni e rumori, si
+muovono, si chinano, camminano, interpretano un mestiere, accendono fuochi, lavorano
+alla zangola, si avvicinano alla capanna più di cento statue in un continuo, instancabile
+andirivieni.
+C’è anche il venditore di caldarroste,un
+personaggio che, osserva qualcuno, forse
+all’epoca di Gesù non esisteva, ma in un
+presepe, si sa, tutto o quasi è consentito: non
+si pongono limiti all’estro e alla fantasia di chi
+lo allestisce. Ogni tocco è naif, ingenuo,
+primitivo, ma al contempo suggestivo al
+massimo grado. Contribuisce a fare atmosfera.
+Il movimento dei vari personaggi è assicurato da un vecchio motore elettrico
+recuperato, a fine Ottocento, da una nave in demolizione. Quel motore, oggi affiancato per
+sicurezza da uno di ricambio, di fabbricazione più recente, pronto a entrare in azione non
+appena il fratello più anziano, onusto di gloria, dia segni di stanchezza, aziona cinghie e
+pulegge, spesso rattoppate con mezzi di fortuna, banale filo di ferro, pezzi di corda,
+brandelli di stoffa, tasselli di legno, vecchi isolatori in ceramica, autentiche chicche da
+amanti d’antiquariato.
+23
+Fa eccezione la mucca che si vede nei pressi della grotta: è mossa da un movimento
+indipendente a orologeria.
+Il laghetto su cui si dondolano alcune barche, i fiumi e i pozzi sono alimentati da
+un’unica fonte (ottanta litri di capacità) collocata sotto il piano base del presepe, che ricicla
+sempre la stessa acqua.
+24
+25
+Francesco Canonica, una leggenda
+Chi è all’origine di così tanta meraviglia, chi è il geniale artigiano, l’ homo faber capace
+di trasformare i sogni in realtà? Non bastano a dare una risposta compiuta i dossier e le
+ricerche meticolose di Bottero, i contributi di tanti testimoni - la famiglia Gentile, don
+Secondo Tenderini, Gino, Felicita e Caterina Maistro, Fiorenzo Fassino e tanti atri
+“visionari con il presepio scolpito nel cuore” - che incontreremo lungo il fantastico viaggio
+intrapreso a cavallo fra la cronaca e la leggenda, fra la realtà e il mito.
+Non c’è molto di scritto, nessun diario autografo è arrivato fino a noi, pochissime (e
+tutte relativamente recenti) le carte con bolli, timbri e visti, introvabili le foto d’epoca. Tutto
+gravita in un’aura dai contorni nebbiosi, sfumati e incerti – non per questo meno suggestivi
+- come nel momento in cui il giorno, d’inverno, cerca di prevalere sulla notte. Bisogna,
+ripetiamo, affidarsi ai racconti verbali, ai sentito dire, ai ricordi tramandati da padre in figlio,
+così come sono arrivati a noi, prima con la voce dei cantastorie e poi per merito di scribi
+illustri, poeti e attenti cronisti, gli sfracelli di Achille, le avventure del sagace Ulisse e le
+imprese mirabolanti di cavalieri senza macchia e senza paura in cui le certezze sono
+poche e le approssimazioni numerose. Tenendo però sempre in conto i sentimenti di
+riservatezza e di pudore, tipici dei piemontesi, che fanno, producono, mantengono le
+promesse, ma si guardano bene da esaltare i loro meriti ai quattro venti.
+Gli uomini e le donne che si sono mossi e si muovono senza clamori intorno al
+presepio dell’Annunziata sono come un fiume carsico: c’è, ma non si vede, appare e poi si
+inabissa sotto terra con il suo prezioso carico d’acqua. Nel nostro caso con la
+partecipazione generosa alla vita di un gioco solidale, capace di mandare messaggi come
+nessun altro passatempo al mondo.
+C’è comunque un punto fermo in questa storia, il nome di Francesco Canonica,
+tipografo, stampatore, titolare d’un negozio d’arte sacra, vissuto a cavallo del ‘900. Si sa
+che era uomo d’ingegno e di spiccata fantasia, con mani d’oro e grandi capacità
+artigianali, fabbro, carpentiere e falegname, e innate doti di sfrenata immaginazione. E’ lui
+che costruisce le prime tessere di quel rutilante caleidoscopio che oggi possiamo
+ammirare nei giorni di Natale in via Po.
+26
+27
+Un negozio, cinque figli
+Per celebrarlo chiediamo soccorso ai nipoti,
+Franco, 81 anni e Giancarlo, 79, che abitano a
+due passi dal Palazzo a Vela, in faccia al Po. E il
+loro racconto spazia dall’uomo – un mito, un
+cantastorie, un incantatore, come sanno esserlo a
+volte soltanto i nonni - fino al mirabile negozio che
+molti torinesi, non necessariamente i più anziani,
+ricordano ancora. Un “negozio d’arte sacra” si
+leggeva sotto l’insegna luminosa “Al Paradiso”,
+che campeggiava tra i portici al numero 10 di via
+Pietro Micca.
+“Una bottega bellissima”, ricorda sognante
+Giancarlo Canonica: scaffali stracolmi di oggetti
+(crocefissi, icone, statue, arredi per l’altare,
+quadri, stampe, libri), un bancone intarsiato, le
+vetrine colorate, stucchi piegati in morbide curve e
+serpentine.. (Via Pietro Micca, foto d'epoca da.Me Piemont)
+“L’ arredo era tutto in stile, tutto liberty”, sottolinea, rivedendo con gli occhi del cuore e
+della mente quelle volute, quelle linee aeree, le vetrate cattedrale che distinguevano l’art
+nouveau, esplosa in tutta la sua levità e in tutta la sua grazia proprio a Torino dopo
+l’Esposizione d’arte decorativa moderna del maggio 1902, quando, da lì in avanti, per un
+decennio e oltre, strade, case, interi quartieri vengono “firmati” da alcuni fra i massimi
+interpreti del modernismo, dello Jugendstil, del “brivido del nuovo” che attraversa l’Europa
+e di cui la città della Mole si è subito vestita e che ancora oggi sbandiera con orgoglio:
+Raimondo D’Aronco, Fenoglio, Basile, Ceppi, Caselli, Fabiani, Rigotti, Gussoni, Bonelli,
+Sommaruga e tanti altri ancora.
+Giancarlo Canonica rimpiange la vecchia bottega, le sue atmosfere: “Chissà che fine
+hanno fatto quegli eleganti scaffali, le ampie vetrate, i decori floreali, i morbidi addobbi?”.
+Il negozio - che apriva le sue quattro vetrine tra un monumentale portone in noce
+chiaro e una rivendita di “articoli per fumatori”, ancora oggi esistente, la cui insegna
+conserva la primitiva affascinante impronta da Belle Epoque -, è stato via via adattato per
+ospitare le merci più diverse, dall’abbigliamento sportivo alle calzature uomo e donna.
+28
+A ogni rimaneggiamento ha perso qualcosa dell’impronta originale. Oggi accoglie
+mobili e oggetti antichi delle “Terre d’Oriente”, come annuncia l’insegna. “Forse questa
+destinazione non sarebbe dispiaciuta a Canonica”, ipotizzano i titolari, Ferruccio ed Elena
+Blotto, perennemente alla ricerca, finora vana, di fotografie o di disegni d’epoca a cui
+ispirarsi per riprodurre gli antichi decori.
+Francesco Canonica nasce a Torino il 18
+dicembre 1862 e a Torino muore due giorni
+dopo l’ottantaquattresimo compleanno, il 20
+dicembre 1946 (i suoi resti mortali riposano
+dal 1978 in una celletta sotterranea, testa di
+fila 13, nella settima ampliazione del cimitero
+monumentale, gruppo 24, scomparto 544).
+Sul retro del negozio impianta una piccola tipografia con tanto di linotype, cassetti
+colmi di caratteri mobili e torchio. Qui stampa bollettini, biglietti da visita e d’auguri, santini
+e, infine, tutto quanto è relativo alla vita di una persona: ricordi di nascita, battesimo,
+comunione, cresima e matrimonio. E là dietro nascono anche gli elementi base del suo
+primo presepio meccanico: anima, fa muovere, insomma dà la vita, si potrebbe dire, alle
+statue che va ad acquistare o si fa mandare dalla Val Gardena, dove abili mani sanno
+“leggere” il legno, mentre dalla Puglia arrivano le statue di cartapesta.
+Ha cinque figli: Virginia, che sposa giovanissima un medico e va a vivere in Liguria,
+Maggiorino “il più estroso”, a detta dei nipoti, Maria, Giovanni e Giuseppe, “ragazzo del
+‘99”, cioè della classe dei “soldati bambini”, l’ultima leva chiamata alle armi nella Grande
+guerra, che è il padre di Franco e Giancarlo. Maria, Giovanni e Giuseppe, prima, poi una
+nipote, gestiranno per molto tempo ancora il negozio di famiglia. Maggiorino, invece,
+seguirà il padre da un lato lungo la storia dell’animazione dei presepi, dall’altro attraverso
+un sentiero che s’inoltra nelle nebbie seducenti della leggenda cinema. Sì perché pare
+proprio che Francesco abbia lavorato anche nel cinema o, meglio, nella preistoria del
+cinema. Sarebbe, insomma, un pioniere della decima musa. C’è chi sostiene che sia stato
+scenografo, e questo si addice a chi costruisce presepi, idea paesaggi di cartapesta,
+reinterpreta ambienti orientaleggianti, e chi addirittura afferma che si sia cimentato perfino
+come regista.
+29
+Il cinema dei pionieri
+Si sa che il cosiddetto mondo di celluloide ha mosso i primi passi proprio a Torino così
+come a Torino è cominciata l’epopea dell’automobile (non solo Fiat), della moda, della
+radio, della televisione e di mille altre intraprese, che hanno dato lustro e motivo di
+legittimo orgoglio alla “città che il Po accarezza”, ha scritto il poeta. Sinonimo di cinema,
+all’ombra della Mole, è Giovanni Pastrone (1882-1959), pioniere del muto, autore dei primi
+colossal. E un altro eroico paladino della decima musa nei primi decenni del ‘900 è stato
+Stefano Pittaluga (1887-1931), che una targa, vicino alla tomba, quasi all’ingresso del
+Cimitero monumentale di Torino, commemora con doverosa enfasi, ricordandone i meriti e
+la lungimiranza. Era braccio e mente della Fert, responsabile massimo, insomma, d’una
+casa di produzione che ha operato a cavallo del film muto.
+La sigla, precisiamolo subito, non c’entra l’acronimo che ricorda il motto dei Savoia,
+cioè Fortitudo eius Rhodum tenuit (la sua forza preservò Rodi), che pare sia stato coniato
+per celebrare la vittoria di Amedeo VI contro i turchi nel Dodecaneso, anche se alcuni
+esperti non escludono che voglia intendere Fortitudo et Robur Taurinensis (forza e
+robustezza torinese). Nel nostro caso Fert sta per Fiori Enrico Roma Torino, dal nome del
+fondatore della casa cinematografica che operava di preferenza tra la vecchia e la nuova
+capitale d’Italia, di cui Pittaluga diventa responsabile.
+Francesco Canonica ha lavorato con loro? C’è il suo contributo, per esempio, in
+“Cabiria” proiettato per la prima volta cent’anni fa, il 18 aprile del 1914 (e riproposto,
+restaurato, di recente)? C’è la sua impronta di costruttore di scenografie in questo e in altri
+capolavori di celluloide? Ha avuto a che fare con un mondo fantastico, attraversato in
+quegli anni anche da personaggi come Gabriele D’Annunzio, il “vate” per antonomasia?
+Nessuno lo sa con certezza, non esistono diari, carte autografe, né altre testimonianze
+scritte di una sua più o meno diretta partecipazione all’infanzia balbettante del cinema.
+Nulla su di lui si trova nemmeno nel pur ponderoso, documentatissimo archivio del Museo
+della Mole nato sulla base dei reperti raccolti con pazienza, scrupolosità, perizia e
+lungimiranza da Adriana Prolo (1908-1991), tra i primi in Italia a intuire lo spessore
+culturale e le potenzialità della “settima arte”, documentandone origine e crescita.
+E tuttavia Francesco viene definito senza esitazioni “regista” in una minuscola
+pubblicazione dell’aprile 2000 a cura del Comune - Divisione servizi Educativi, Progetto
+“Torino da Scoprire” -, in cui si elencano le cose davanti a cui soffermarsi durante una
+“passeggiata in via Po, sotto i portici del Re”: case nobiliari, palazzi (dell’Università, degli
+30
+Stemmi), musei (Fondazione Accorsi), locali storici (Fiorio), portoni, androni, chiese e il
+presepio – si legge testualmente - “costruito dal signor Canonica (regista cinematografico)
+nei primi anni del ‘900”.
+Comunque, si può facilmente arguire che un uomo con esperienze al servizio della
+“settima arte”, sia come regista sia come scenografo - ammesso e non concesso, che le
+abbia avute - , si presti a interpretare il brano del Vangelo di Luca in cui si descrivono la
+nascita di Gesù, l’annuncio dell’Angelo ai pastori, l’omaggio dei Magi venuti dall’Estremo
+Oriente. Indipendentemente da ciò, tuttavia, un po’ d’immaginazione, quanto basta di
+spirito creativo, un pizzico e più d’ingegno, mani capaci di addomesticare la materia prima
+(legno e ferro, soprattutto), collaboratori motivati e reattivi - idraulici, elettricisti, minusieri,
+decoratori, motoristi - e il gioco è presto fatto.
+31
+Cinghie, pulegge e lanterne
+A questo punto ci soccorre una cronaca d’antan, una pagina della “Gazzetta del
+Popolo” del 5 gennaio 1962. Una pagina formato lenzuolo, come si diceva allora, grande
+più del doppio delle pagine dei giornali d’oggi. L’autore dell’articolo è anonimo, ma
+traspare tutta la sua ammirazione per quanto vede e per quanto vedono i torinesi “in
+lunghe file disciplinate”, rimarca, tradendo un certo compiacimento.
+Ci sono notizie d’ogni genere, buone e meno buone su quella pagina ormai color
+paglia: la madre di un “ergastolano innocente” attende ansiosa il processo d’appello; una
+ragazza di vent’anni fulminata da un attacco di cuore. A teatro si dà in prima assoluta
+“Sacco e Vanzetti”, una piece di Roli e Vincenzoni. Le sale cinematografiche solleticano i
+bambini con “Tom e Jerri, nemici per la pelle” (Arlecchino) e con “Silvestro contro
+Gonzales” (Ariston), e gli adulti con “I due marescialli” (Vittoria) e con “Il diavolo alle 4”
+(Nazionale). Ma un terzo dello spazio è occupato da un racconto che si annuncia con
+questo titolo: “Arrivano i Re Magi al presepio dell’Annunziata, il più grande d’Europa”.
+32
+Il sommario – oggi un elemento del titolo ormai scomparso, spodestato dalle nuove
+tecniche di impaginazione – spiega: “Il vasto diorama animato è sorto per la passione di
+un commerciante di articoli religiosi. Un motorino elettrico dà movimento a tutto il
+complesso, con un intricato gioco di cinghie e pulegge. Lanterne magiche fanno apparire e
+tramontare la luna”. Ci mancano le “Ooooh!”, di meraviglia, ma possiamo darle per
+scontate.
+Ora, molto è cambiato, le lanterne non ci sono più, sostituite da un impianto elettrico
+con comando centralizzato, l’effetto notte si alterna all’effetto giorno, ci sono suoni e
+rumori, ma lo schema generale è quello collaudato in quei lontani Anni 20, quando l’Italia
+cercava di dimenticare l’ecatombe d’un conflitto appena concluso ed era lontana
+dall’immaginare le ombre che di lì a poco si sarebbero addensate minacciose sull’Europa.
+Così comincia il pezzo, illustrato da tre grandi fotografie in bianco e nero: “Nel
+sotterraneo della chiesa dell’Annunziata stanno per giungere i Re Magi. Il pittore professor
+Attilio Deni sta preparando i mantelli di seta dei quali saranno vestiti, il meccanico-
+elettricista Severino Benedetto da ieri è occupato nel controllare tutti i meccanismi che
+dovranno dare il movimento anche ai nuovi arrivati nel presepe più grande d’Europa”.
+(foto dalla “Gazzetta del Popolo” del 5 gennaio 1962.)
+33
+Ecco due nomi da aggiungere all’elenco delle persone da ricordare, per sempre, come
+benemerite del maxi meccanismo dell’Annunziata. Ma sappiamo che la stragrande
+maggioranza di quanti vi hanno lavorato resterà purtroppo sconosciuta, persa in
+quell’oceano senza confini che è il volontariato.
+(foto dalla “Gazzetta del Popolo” del 5 gennaio 1962.)
+34
+35
+C’era una volta un piccolo presepe
+La cronaca della “Gazzetta” prosegue raccontando la genesi del capolavoro di
+Francesco Canonica. Leggiamo: “La sua origine risale al 1909 quando Francesco
+Canonica, proprietario di un famoso negozio di articoli religiosi di via Pietro Micca, lo allestì
+per la prima volta nella chiesa di San Tommaso, prossima al suo negozio”.
+In quell’anno, lontano ormai più di un secolo e un lustro, presidente del consiglio era
+Giovanni Giolitti, Torino aveva meno di 400 mila abitanti, la Fiat celebrava i suoi primi dieci
+anni di vita , i giornali costavano 5 centesimi, “La Stampa”, diretta da Alfredo Frassati, dal
+1908, sotto la testata, non recava più la dicitura “Gazzetta Piemontese”, ma continuava a
+inalberare orgogliosa il suo motto originale: “Frangar, non flectar”.
+Nessun altro documento, nessun vecchio ritaglio cita quell’anno. Le altre carte del
+dossier Bottero fissano la data di nascita del presepio al 1910. Restiamo a quanto ci
+racconta il cronista del giornale che si stampava in corso Valdocco: “Era un presepio
+piccolino quello del 1909, ma aveva una particolarità: tutti i suoi personaggi si muovevano
+e ciò suscitava stupore nei visitatori. Ogni anno se ne aggiungevano di nuovi. A furia di
+sommare pastori, fabbri e carpentieri a nuovi pastori, nuovi fabbri e nuovi carpentieri, che il
+Canonica commissionava ai fidati intagliatori di Ortisei, nel 1910 ci si accorse che lo
+spazio non era più sufficiente. Si passò, allora, nella chiesa della Madonna degli Angeli, in
+via Cavour, retta come quella di San Tommaso dai frati francescani”.
+Insomma, il presepe di monsù Francesco è una macchina che lievita come il buon
+pane, che cresce, si espande, deborda, reclama nuovi orizzonti. In un vecchio volantino
+della parrocchia e in una breve ricostruzione storica di Luciano Borghesan, sulla “Stampa”
+del dicembre 1985, si fa riferimento anche un terza sede provvisoria, quella nella chiesa di
+Sant’Alfonso, in Via Cibrario, ma non ci sono altre conferme. Comunque, un fatto è
+assodato: ci troviamo di fronte a un presepio in “movimento” in tutti i significati della parola,
+tanto da attraversare quasi tutta la città prima di trovare una sede ampia, adeguata e
+definitiva.
+36
+37
+L’intuizione di monsignor Bianchetta
+Nel frattempo, a Canonica padre si affianca Maggiorino, il figlio di mezzo che, per non
+intasare di braccia il negozio di famiglia, aveva cercato e trovato spazio (e un impiego
+redditizio) nel mondo della celluloide, coltivando però anche lui come primo hobby quello
+del presepio. Contribuisce da subito ad allargare il già nutrito popolo del mondo ideato dal
+genitore e dai suoi collaboratori. Fu così che nel 1925, “dopo tanti andirivieni su e giù per
+la città – continua la cronaca della vecchia “Gazzetta” – si dovette cercare un’altra sede”.
+Ovvero, i vastissimi sotterranei dell’Annunziata.
+Parroco allora era monsignor Tomaso Bianchetta, prete manager che aveva promosso
+e realizzato l’ampliamento della chiesa sulla superficie dell’ex Manifattura Tabacchi, con
+annessi ampia canonica, uffici spaziosi e appartamenti che si affacciano su via
+Sant’Ottavio. Tradizione vuole che, mentre ancora ferveva il cantiere, sia stato lui a
+invitare Francesco Canonica a visitare i sotterranei della chiesa. Alla vista di quegli spazi,
+il negoziante, tipografo e scenografo, appassionato di meccanica, uomo, forse, di cinema,
+di sicuro sognatore, non ebbe esitazioni.
+Torniamo alla vecchia cronaca della “Gazzetta”, che così prosegue: ”A mano a mano
+che il padre acquistava i personaggi (nuove statue degli intagliatori gardenesi, ma anche
+preziose sculture in terracotta e cartapesta della bottega di Luigi Guacci, "mastro
+cartapestaio" di Lecce, vissuto a cavallo del ‘900), il figlio doveva provvedere a dar loro il
+movimento, aggiungere nuove cinghie e nuove ruote ai congegni primitivi, nonché ai nastri
+trasportatori originari e alimentare i corsi d’acqua”.
+Il giornalista s’infervora: “Lo spettacolo entusiasma bambini e adulti, i quali tutti
+continuano a chiedersi come faccia la luna a velarsi di nuvole, come facciano le cascate a
+gettare continuamente acqua pura, le barche a veleggiare nel laghetto (acqua vera anche
+qui!), i buoi ad abbeverarsi, la lavandaia a sciorinare i panni, eccetera, eccetera”
+38
+E prosegue spiegando meticoloso: “Ciò è possibile perché sotto il palco che regge il
+presepio c’è un intrico fittissimo di leve, pulegge e cinghie, l’una collegata all’altra, che
+ricevono tutte il movimento da un volano di poco meno di due metri di diametro, alimentato
+da un motore elettrico di due cavalli di potenza”.
+(il reticolo di fili)
+39
+Come un alveare di legno
+Oggi sappiamo, s’è visto, che quel motore è stato recuperato a fine ‘800 da una nave
+in demolizione ed è perfettamente funzionante, nonostante abbia superato il secolo di vita,
+“anche perché curato e coccolato come un lattante”, sorride Bottero accarezzandolo con lo
+sguardo. E’ appoggiato su un supporto a mezzo metro dal pavimento e da qualche tempo
+a questa parte lo affianca, per sicurezza, quel motorino di riserva pronto a sostituire il
+fratello maggiore non appena il suo respiro si renda affannoso e la sua corsa balbettante.
+Sopra quello che potremmo definire il muscolo pulsante del presepio, così come il cuore lo
+è per il corpo di ogni essere vivente, si apre uno spettacolo nello spettacolo, un vorticoso
+intrico di assi di legno d’ogni dimensione, di barre orizzontali, verticali e diagonali. Un
+complesso, gigantesco graticcio, complesso e lieve al tempo stesso. Richiama alla mente
+un alveare, le cellette che le api costruiscono una ridosso all’altra e tutte si sostengono a
+deboli appigli, ma fragili solo all’apparenza. In realtà sono un prodigio di lievità ed
+equilibrio.
+(pulegge e cavi alimentati da un vecchio motore navale)
+40
+Di solito, in un libro, è la copertina ad attirare l’attenzione del lettore: il titolo
+promettente, l’autore, i colori. Qui a lasciarci a bocca aperta – ci sia concessa la
+similitudine - è la quarta di copertina, il retro della “perla” incastonata nei sotterranei
+dell’Annunziata: pezzi di legno vecchi di decenni, eppure sani e asciutti, tesi come i tendini
+di un’atleta sotto sforzo. Nessun segno di cedimento, nessun pericolo di crollo. Il miracolo
+continua, i nastri trasportatori funzionano senza posa, le statue marciano tranquille verso
+questo Natale e tutti gli altri che verranno.
+( il reticolo di fili)
+Riprendiamo in mano il paginone della “Gazzetta”, torniamo al racconto trasognato
+dell’ammirato cronista, che, una volta tanto, si sente esentato dal rispettare le regole del
+mestiere: asciuttezza, distacco, nessuna concessione ai sentimenti personali, insomma,
+“la giusta distanza” sottolineata in un bel film sul giornalismo di Carlo Mazzacurati.
+Descrivendo il motore e la sua funzione annota: “Il tutto ricorda un impianto come quelli
+che si vedevano nelle officine meccaniche di parecchi anni fa, quando non c’era ancora un
+motorino elettrico per ciascuna macchina e garantisce a ciascun personaggio un
+movimento armonioso, quasi naturale”.
+41
+Poi parla di fiumi, di laghetti e di effetti che oggi sono ampiamente superati:
+“Per la circolazione dell’acqua ci sono alcune pompe idrauliche, mentre quel gioco di
+nuvole che fanno apparire e scomparire la luna è provocato da due lanterne magiche. Le
+barche possono veleggiare tranquille nel lago, perché sono trainate da due catene
+invisibili”.
+Il pezzo si conclude con un colpo di teatro che nel finale si vena di poesia: “Sulla
+montagna, oltre il laghetto, nella parte più buia di tutto il presepio, si vedono piccolissime
+luci accendersi e spegnersi. Bisogna fare molta attenzione, ma una volta che queste
+piccolissime luci sono state individuate, l’effetto è meraviglioso: sembra di vedere le
+lucciole nei prati d’estate. E qui viene giusta l’osservazione che in inverno non ci sono le
+lucciole. D’accordo, noi, nelle nostre case, siamo soliti fare il presepio con la neve, ma la
+realtà è diversa e in Oriente non nevica quasi mai. Perciò anche le lucciole sono al loro
+posto”.
+42
+43
+I complimenti del cardinale
+L’alone di leggenda si dipana, tornano le certezze. Si sa, dunque, che Francesco
+Canonica, dopo aver cercato varie location, come si direbbe oggi, colloca, infine, sotto la
+navata centrale dell’Annunziata, questo suo presepe extralarge, questa creatura che gli
+cresce tra le mani e sembra moltiplicarsi a dismisura come i cerchi sulla superficie d’un
+tranquillo laghetto di montagna quando si getta un sasso nell’acqua. I lavori di costruzione
+di quello che qualcuno non esita a definire come “un angolo di Palestina trasportato in riva
+al Po” cominciano nel 1925 e finiscono appena in tempo per il Natale di due anni dopo.
+Alla cerimonia di apertura, accanto a monsignor Bianchetta, legittimamente orgoglioso sia
+della chiesa che sta edificando, sia del presepio, interviene anche il cardinale Giuseppe
+Gamba, arcivescovo di Torino, che non lesina elogi a Canonica. Si confonde fra i visitatori,
+partecipa alle loro manifestazioni di gioia e di sorpresa: nessuno ha mai visto nulla di
+simile prima d’allora. Grande eco in città per le “statue dei pastori che camminano,
+s’inchinano e spronano il gregge”.
+Visitatori in coda, applausi e tanta commozione. Il passa parola attraversa come un
+brivido d’emozione Torino da un capo all’altro e sembra che l’intera capitale subalpina si
+riversi all’Annunziata come rivelano racconti di nonne e nonni a nipoti oggi nonni a loro
+volta. Torino laboratorio, Torino ancora una volta all’avanguardia.
+La Torino illuminata di Gobetti, Gramsci e Pier Giorgio Frassati, tre giovani vite
+spezzate nel momento massimo del loro impegno politico e sociale. La Grande Storia e la
+storia minuta.
+La storia minima di un presepe che oggi sfiora il secolo di vita. Intanto, la città cambia,
+impossibile elencare tutti i mutamenti che ha subito e subisce, ricordare le pene e le gioie,
+i drammi (il più grande, la guerra), le tragedie (Superga, lo Statuto), gli spaventi (il
+fortunale che nel maggio del ’53 decapita la Mole), i giorni dell’orgoglio (la 500 che fa
+viaggiare tutta l’Italia, la macchina perfetta delle Olimpiadi) e quelli della festa ( gli scudetti
+di Juve e Toro). Resta, immutabile, il fascino di quella nicchia nel ventre di via Po 45.
+44
+45
+Un’insegna, due palme
+Per dare visibilità al presepio all’ingresso della galleria da cui si scende “nei sotterranei
+delle meraviglie” viene collocata una poderosa insegna. Lo scopriamo spulciando tra i
+documenti di Bottero da cui emergono carte da bollo in cui si notifica che l’autorizzazione
+all’esposizione dell’insegna va
+rinnovata di anno in anno. Sfiliamo
+dunque un foglio protocollo con
+l’intestazione
+Città di Torino, Ripartizione di
+Polizia, in cui si legge, in un gioco
+vorticoso di maiuscole e minuscole,
+neretti e a capi : “Il sindaco, vista la
+domanda presentata, viste le norme in
+vigore per l’oggetto, autorizza Bunino
+don Oreste, sotto l’osservanza delle
+leggi, dei regolamenti e di tutte le
+disposizioni che disciplinano la
+materia, a collocare sopra la porta
+d’ingresso dei locali sotterranei della
+Parrocchia SS. Annunziata sita in via
+Po 47 (ma il numero corretto è 45,
+nda), un cartello di metri 4,00 per 2,00
+con la dicitura PRESEPIO”. Seguono
+altre raccomandazioni, la firma dell’assessore Carli per conto del sindaco di allora, Andrea
+Guglielminetti, e la specifica del costo totale del documento, 1450 lire, comprensive di
+marca da bollo (400), dei diritti di segreteria (50) e del permesso finale (1000).
+L’insegna, pesante qualche decina di chilogrammi, viene di anno in anno issata sul
+frontone d’ingresso della Galleria degli Artisti, fra due sagome possenti di palme in
+compensato. Le lettere sono gigantesche, color mattone, su sfondo blu intenso. Ghirlande
+di lampadine contornano ciascuna lettera e il perimetro dell’intera scritta, rendendo il tutto
+ben visibile anche da lontano, compresi i giorni di nebbia, che in quegli anni non manca.
+Anzi, si dice che fosse addirittura più fitta di adesso.
+46
+Ragioni varie, soprattutto problemi di sicurezza, come scopriremo più avanti, hanno
+portato al ridimensionamento di quel primitivo, ingombrante cartellone (l’attuale è più lieve
+graficamente e soprattutto dal punto di vista del peso) e consigliato di ritirare le palme, che
+comunque si possono ancora oggi vedere in quella sorta di museo opportunamente
+allestito nei camminamenti sul retro del presepio, dove è stato raccolto e si raccoglie il
+materiale che è stato sostituito, ma che ne racconta la genesi.
+47
+Le vestine di Gesù Bambino
+Nulla si butta via, tutto contribuisce a raccontare una storia cominciata quando c’erano
+ancora i tram a cavallo, l’auto era un lusso per pochi e le signore indossavano guanti e
+cappellino, come raccontava nonna Caterina Farò sposata Nasi alla nipote, Maria Caterina
+Maistro. Era sarta, lavorava in un atelier di piazza Castello, la casa di mode “Bell’home”,
+specializzata in abiti da sera e celeberrima nei primi Anni 40 del secolo scorso, quando
+Torino era sinonimo esclusivo di eleganza e di alta moda.
+Tra le clienti più note si ricordano Henriette Bonnard, diva del cinema muto, che aveva
+sposato un noto industriale di Moncalieri, ed Elena Koenig Scavini, cioè la famosa Lenci,
+creatrice di bambole e di ceramiche, anima di un vivace cenacolo culturale intorno al quale
+ruotavano intellettuali e artisti che hanno lasciato un segno incisivo come Sturani,
+Vacchetti, Chessa, Da Milano, Tosalli e altri ancora, le cui opere sono ancora oggi contese
+dai collezionisti di mezzo mondo. Erano anni fervidissimi durante i quali nasceva l’Einaudi,
+si affermavano Felice Casorati e i Sei di Torino (Jessie Boswell, Chessa, Galante, Carlo
+Levi, Menzio, Paulucci) e Riccardo Gualino rinfrescava le gesta e i meriti dei grandi
+mecenati.
+Caterina cuciva abiti per spose e per signore e signorine della buona borghesia, ma
+una volta smesso l’orario di lavoro, non disdegnava di rammendare mantelli, camicie e
+pantaloni alle statue del presepio, così come hanno poi fatto sua figlia Felicita e fanno oggi
+Adelaide Bottero, Marisa Botta e altre volonterose signore.
+48
+Un particolare commuove ancora adesso la nipote, che ne porta orgogliosa il nome:
+“Nonna, nei suoi racconti, mi ha confidato, fiera, una volta, di aver confezionato anche le
+vestine per il Bambino Gesù sia del presepe meccanico, sia per la statua che si collocava
+in una cesta piena di paglia sui gradini dell’altare maggiore: bianca per la nascita, rossa,
+dal primo gennaio, quando, secondo il calendario preconciliare, si celebravano la festa per
+la presentazione di Gesù al tempio e la circoncisione”.
+Se Francesco Canonica, dunque, ha dato il “la”, il concerto è stato poi portato avanti
+da un piccolo, grande esercito di orchestrali, solisti spesso oscuri, tanto bravi quanto
+sconosciuti ai più, animati solo dal fuoco sacro dell’amore per il lavoro artigiano, gratificati
+il più delle volte unicamente dal sorriso ammirato degli spettatori del presepio.
+49
+L’uomo di cinema
+Un vasto, sostanzioso capitolo di questa storia l’hanno scritto anche Renzo e
+Margherita Gentile con la collaborazione dei cinque figli, uno dei quali, Valerio, oggi
+manager del “Gen Rosso”, il gruppo musicale internazionale legato al movimento dei
+Focolari, ricorda a memoria il testo d’un vecchio manifesto affisso sui muri, in molte strade
+del centro: “Presepio meccanico, il più grande d’Europa. Centinaia di figurine in continuo
+movimento evocano il famoso miracolo di Betlemme”.
+La sorella Caterina – la terza Caterina che incontriamo in questo lungo viaggio di
+sorprese e d’avventura - si ricorda bene, invece, di Maggiorino Canonica, che lavorava al
+presepio nei ritagli di tempo, “ma lavorava sodo”.
+Arrivava all’improvviso con una nutrita squadra di collaboratori, dall’aria sgangherata
+all’apparenza, ma formata, nei fatti, da autentici professionisti, come si poteva evincere dai
+problemi che individuavano durante i sopralluoghi sulla scena e dalle soluzioni che
+applicavano immediatamente.
+“Avevano tempi e ritmi da set cinematografico - dice ora, rispolverando antichi ricordi
+di ragazza -. Subito al lavoro, poi pausa caffè con sigaretta, e di nuovo al lavoro, sino a
+sera, quando programmavano gli interventi per il giorno successivo. E così fino al giorno
+della grande apertura, dell’inaugurazione ufficiale”.
+“Si cominciava già in ottobre – racconta – Maggiorino mobilitava tutti, distribuendo il
+lavoro e coordinando gli interventi. Faceva controllare ogni cinghia, oliare ogni giunto,
+revisionare l’intero impianto elettrico. C’era chi veniva incaricato di cambiare l’acqua nei
+ruscelli e chi di rinfrescare il muschio. Se avevano bisogno di piccole assi, di attrezzi, di un
+ricambio, di un bullone o di un semplice pezzo di filo di ferro, venivano in officina, da papà,
+senza nemmeno chiedere il permesso, tanto mio padre glielo avrebbe dato e loro
+sapevano dove trovare l’occorrente”.
+Non mancavano le discussioni, “lunghe e accese”, gli scontri di opinione. Avveniva
+quando si trattava di spostare le statue o di sistemarne di nuove: “Tiravano in ballo tutto: la
+prospettiva da rispettare, il contesto storico da cui non si poteva prescindere, la fedeltà ai
+costumi”.
+50
+Maggiorino è il più estroso, il più’ imprevedibile e il più creativo tra i figli di Francesco
+Canonica. Gli vanno strette le pareti del negozio paterno, ha bisogno di spazi ampi, sogna
+esperienze diverse, altre avventure lavorative. Così appare, come abbiamo detto, nei
+ricordi dei nipoti Franco e Giancarlo, ma anche nella memoria di quanti hanno lavorato al
+suo fianco, apprezzandone le grandi doti di umanità, le straordinarie capacità manuali e la
+fantasia. E’ stato un uomo di cinema a tutto tondo: produttore, scenografo e coautore di
+soggetti. Mentre del padre non c’è traccia scritta nella storia della decima musa, né
+torinese, né tantomeno italiana, il curriculum di Maggiorino è debordante, il suo nome
+compare nei titoli di coda di decine e decine di pellicole negli Anni 40 e 50 del secolo
+scorso.
+Ha lavorato per conto della Dino De Laurentis Lux Film accanto a un giovanissimo
+Federico Fellini, con registi come Lattuada, Monicelli, Steno (Stefano Vanzina) e Mario
+Girolami. Ha conosciuto Anna Magnani, Amedeo Nazzari, Folco Lulli e altri celebri divi di
+allora, il compositore e direttore d’orchestra Nino Rota, lo sceneggiatore Tullio Pinelli. E’
+stato direttore di produzione di film come “Il bandito” del 1941 o come “In nome della
+legge” del 1949 (Fellini figura tra i sceneggiatori).
+Ha scritto il soggetto di “Come persi la guerra” del
+1947 e, insieme con Leni Landi, il racconto da cui è
+stata tratta la sceneggiatura di “Canto per te”, una
+sorta di musical girato nel ’53 in cui, accanto ad Ave
+Ninchi, Carlo Campanini e altri, fa il suo debutto
+cinematografico il tenore Giuseppe Di Stefano.
+(foto della locandina del musical tratta da internet)
+51
+Un gregge di pecore vere
+Un uomo di cinema a tutto tondo, dunque, il quale però non esita a smettere i panni di
+manager e di scrittore per indossare quelli da operaio tuttofare e salire sul palcoscenico
+del presepio, più modesto, meno luccicante di un set cinematografico, ma certamente per
+lui non meno gratificante. Lì compiva i suoi prodigi annuali per garantire il funzionamento
+della macchina costruita dal padre e perpetuarne la memoria. Ogni anno o quasi, e per
+molto tempo, ha aggiunto pezzo a pezzo, statua a statua, pagandolo di tasca propria, così
+come senza chiedere contributo alcuno aveva fatto Francesco Canonica sin dal primo,
+lontano allestimento. Qualcosa, sia all’uno sia all’altro , tornava in tasca con i biglietti delle
+visite a pagamento, “ma certo non c’era proprio di che arricchirsi”, sorridono i nipoti.
+Maggiorino nasce a Torino il 15 marzo 1895 e a Torino muore il 14 febbraio 1969 dopo
+aver vissuto per qualche tempo anche a Roma e attraversato l’Italia intera, senza mai
+dimenticare i legami con la città d’origine, a cui ha dedicato il suo monumento forse più
+prezioso. Curiosando dentro le enciclopedie elettroniche dalle risorse infinite e in continuo
+divenire (Yahoo, Google e Wikipedia), che hanno sostituito i tomi un tempo troneggianti
+nelle librerie di casa (ma hanno anche tolto il piacere non solo tattile di accarezzare la
+carta stampata, di assorbirne gli umori), si possono trovare molte notizie relative a
+Maggiorino, compresa la proposta di dedicargli un pensiero o di donargli idealmente un
+fiore e di posarlo su una tomba virtuale, una pietra nera, lucida, in cui, accanto alla Croce,
+sono incisi il suo nome, la data della scomparsa, l’augurio della pace eterna e, in alto, due
+candide tortore (o sono colombe?) librate in volo, secondo un’iniziativa di “In mia
+memoria”, un ente che si propone di onorare tutti i defunti, ricordandone “il passaggio
+attraverso il mare dell’esistenza”.
+Nella realtà, la sua tomba non esiste più. I resti mortali sono stati traslati il 13 dicembre
+1985 e collocati in una celletta ossario al confine estremo del Monumentale, “Ampliazione
+8, Gruppo 10, Scomparto 146”, si legge in una fredda scheda che partecipi impiegati
+comunali forniscono a richiesta insieme con una dettagliata piantina del cimitero.
+52
+Lui è laggiù, “celletta monopiano di testa, fila 7,
+numero 0047”, a ridosso del muro che si affaccia su
+via Zanella, all’angolo con via Pindemonte. Un
+rettangolo di marmo bianco, scritte incise in nero,
+niente foto, un minuscolo parallelepipedo d’acciaio
+come porta fiori: ecco ciò che resta del mago dei
+presepi.
+Oltre il muro, nel parco della Colletta, da dove monumenti solenni e semplici tombe
+sembrano quasi rifugiarsi nell’abbraccio fra la Mole e il massiccio campanile di San
+Gaetano, accanto a possenti robinie, sontuosi carpini e rigogliosi cespugli di pruni
+selvatici, in primavera e in autunno, sosta spesso un imponente gregge, decine e decine di
+pecore, di capre e di agnellini attaccati alle mammelle delle mamme.
+Una scena incongrua, sorprendente.
+Il traffico rallenta, gli automobilisti
+abbassano il finestrino, curiosano,
+sorridono. Una scena da presepio, che
+a Maggiorino sarebbe piaciuta.
+53
+L’officina del calcio balilla
+Maggiorino non è solo, dunque, nei suoi interventi di cura e ripristino del presepio. Lo
+affiancano amici, consulenti d’arte, operai specializzati come gli elettricisti che
+perfezionano gli allacciamenti alla corrente, idraulici incaricati di evitare perdite alle
+condutture che riforniscono d’acqua i fiumi e i laghi in miniatura. Ritorna l’immagine
+dell’orchestra con le parti ben distribuite fra i suonatori perché non manchi armonia,
+perché gli interventi dei solisti non provochino stonature. Ma si può parlare anche di
+formiche indaffaratissime, di intere squadre di api operaie che portano mattoni, assi, ferri,
+chiodi, e non necessariamente metaforici. Tutto un lavoro di cuci e incolla, rattoppa e
+sostituisci. Un ruolo importante in questo concerto a più voci lo sostiene la famiglia di
+Renzo Gentile (1909-1996).
+Per capire bene il momento bisogna risalire a una Torino che non c’è più, quella delle
+botteghe artigiane e delle officine meccaniche, che popolavano le periferie, ma non era
+raro trovare anche in pieno centro storico. Magli, fucine, mani callose, volti anneriti dal
+fumo. Un mondo di boite, insomma. Una si apriva proprio sotto il pavimento
+dell’Annunziata, a pochi passi dal presepio dei Canonica, quella di Renzo Gentile,
+appunto.
+“Eravamo casa e bottega – racconta la figlia Caterina – Al terzo piano dell’edificio a
+fianco dell’Annunziata c’era il nostro appartamento, sotto, l’officina di papà, la Fares,
+Fabbrica attrezzature ricreative, educative e sportive, l’azienda che consentiva a papà di
+soddisfare le esigenze e le necessità di una prole numerosa, agguerrita e di robusti
+appetiti“.
+Vi si costruiva di tutto, o, meglio, si assemblava di tutto. Papà Gentile ordinava i pezzi
+ai fornitori – falegnami, fabbri e grossisti di ferramenta in primis - , e poi saldava i singoli
+elementi, incollava, inchiodava, fissava viti e bulloni, faceva cromare, verniciare e lucidare
+ogni singolo attrezzo e poi lo collaudava di persona prima di metterlo in vendita. Là sotto
+nasceva un po’ di tutto di quello che fa oratorio parrocchiale: scivoli, altalene, calcio balilla,
+tavoli da ping-pong, impianti per la pallacanestro e la pallavolo. Pezzi robusti, indistruttibili
+o quasi, comunque a prova d’urto, capaci di sopportare l’assalto di cavallette scatenate
+come sono i ragazzi nel momento del gioco.
+54
+I ping-pong erano costruiti perché, dopo i tornei, potessero sopportare il peso della
+classica foto di gruppo con tutti i giocatori sul tavolo. I bordi erano rifiniti in metallo in modo
+che non si scheggiassero al primo gesto di stizza di chi aveva sbagliato banalmente un
+colpo, perso un set o l’intera partita e se la prendeva scagliandosi con la racchetta (in
+multistrato, praticamente indistruttibile) contro l’incolpevole tavolo. Il fustagno dei biliardi
+aveva una consistenza tale che un errato colpo di stecca non lo scalfiva per nulla.
+(foto di vecchia bottega artigiana)
+55
+Consigli di esperto
+“Papà – racconta ancora Caterina – era preciso, scrupoloso, metteva la massima
+attenzione in tutto, specialmente in materia di sicurezza. Osservava noi figli giocare e dato
+che, in quanto bambini, eravamo imprevedibili e in perenne movimento, capaci ad ogni piè
+sospinto di infilarci in situazioni a rischio, prendeva spunto dai nostri comportamenti e dalla
+nostre intemperanze per inserire nei giochi elementi di prevenzione: una sbarra in cima
+alla scala dello scivolo perché una spinta non ci scagliasse a terra, la copertura completa
+del pavimento della giostra perché i piedi non si incastrassero”.
+Inventava anche passatempi per bambini con handicap, tra cui un minibasket da
+tavolo a prova di riflesso: se schiacci il tasto sbagliato, rischi l’autogol. Se ne possono
+trovare ancora funzionanti in quel porto di mare della solidarietà che è il Cottolengo.
+“Credo che mio padre, un po’ anche con il contributo di tutti noi, abbia fatto un buon
+lavoro - sorride Caterina con legittimo orgoglio -, se è vero come è vero che alcune
+parrocchie, non solo torinesi, conservano ancora i suoi giochi, e li mettono ovviamente a
+disposizione dei ragazzi (la Crocetta e i Salesiani, per esempio).
+Ma mi risulta che ce ne siano sparsi un po’ in tutta Italia, isole comprese, come
+recitava un vecchio slogan della pubblicità”.
+Maggiorino ricorreva sovente a papà Gentile perché gli desse “consigli da esperto”, lo
+supportasse con la sua esperienza di artigiano”. E non mancava di chiedergli una mano
+per risolvere i problemi di manutenzione: riavviare un meccanismo bloccato, riparare un
+giunto, mantenere in funzione, insomma, per due mesi all’anno quella creatura nata quasi
+per scommessa a inizio secolo e cresciuta in modo spropositato, capace per due mesi
+all’anno di incantare e stupire. In cambio, durante i mesi di chiusura del presepe, gli
+consentiva di esporre la merce negli ampi sotterranei della chiesa, in modo che gli
+acquirenti ne potessero prendere visione. Una specie di vetrina under-ground, insomma,
+in cui parroci e responsabili di oratori tastavano con mano le qualità del manufatto.
+56
+Comunque, preso da mille impegni con il cinema, a un certo punto lascia la gestione
+del presepio all’intera famiglia Gentile, marito, moglie e cinque figli: apertura, chiusura,
+biglietteria, sicurezza, tutto a carico degli inquilini della parrocchia.
+“Ognuno aveva un compito – ci soccorre sempre la memoria di Caterina – Mamma
+Margherita, per tutti semplicemente Rita, gestiva il borderò, Beatrice i biglietti, Valerio
+seguiva la parte tecnica, Gianni si curava della sicurezza, Carlo della cassa, io della parte
+artistica. In realtà, tutti facevamo tutto, sempre attenti, sempre vigili perché non
+accadessero incidenti”.
+(nella foto Rita Gentile con il figlio Valerio e Beppe Bottero)
+57
+L’invasione delle giostre
+Il presepio, in quegli anni, apriva a Natale e chiudeva con l’arrivo della Quaresima. Era
+in funzione, cioè, per tutto il periodo di Carnevale, quando le giostre, insieme con gli
+arruffati stand della fiera dei vini, popolavano una piazza Vittorio Veneto - come dire? - più
+rustica (grandi aiuole polverose in terra battuta), nemmeno lontana parente di quella di
+oggi, così come la città era distante mille miglia dalla Torino dei giorni nostri. Più a misura
+d’uomo o meno equilibrata, migliore o peggiore? Diciamo semplicemente diversa.
+Le giostre erano motivo di caos e di festa in un accavallarsi di rumori e di suoni,
+mentre nell’aria si spandevano profumi oleosi di caramello e zucchero filato. Sulla piazza
+si riversavano schiere di bambini e di adulti. E molti, prima o dopo il giro in giostra, si
+infilavano nei sotterranei, cominciando col dare una rapida occhiata alle creazioni
+fantasiose che, nei ritagli di tempo, abili mani di uomini e di donne, impostavano (e
+impostano) sul tema della Natività ed esponevano (ed espongono ancora oggi) nella
+galleria degli Artisti: costruzioni in sughero, legno, vetro, ceramica, latta. Piccoli,
+ammiccanti capolavori, miniature di grotte, di mulini e ruscelli, quasi propedeutici alla
+visione della maxi creatura di Canonica & C.
+“Il biglietto, negli Anni 70, costava 100 lire per gli adulti, metà per i bambini, poi c’erano
+gli sconti per i gruppi e per le famiglie, gli omaggi elargiti a larghe mani dal parroco perché
+nessuno si perdesse lo spettacolo”, cerca di scavare nella memoria Caterina.
+58
+L’incasso andava ripartito in tre: un terzo ai Canonica, proprietari a tutti gli effetti
+dell’impianto, un terzo al parroco per le spese di gestione, un terzo ai Gentile per il loro
+contributo per l’organizzazione delle visite, la sicurezza e il funzionamento degli impianti.
+Un anonimo cronista di “Stampa Sera”, giornale che, come la “Gazzetta del Popolo”
+ormai non esce più da quasi trent’anni, ricorda uno dei manifesti che ne annunciavano
+l’apertura.
+– “Un angolo di Medio Oriente con oltre cento figurine in movimento” – e poi lo stupore
+dei visitatori, soprattutto dei più giovani: “E’ veramente uno spettacolo meraviglioso, in
+specie per i bambini che non si stancherebbero mai di passare e ripassare davanti al
+palco su cui è montato il presepio, bocca aperta e occhi spalancati a seguire le mosse del
+pastore, del fabbro, del maniscalco, del falegname, del pescatore, del Bambino, di Maria e
+Giuseppe, del bue e dell’asinello, della lavandaia e di tutti gli altri variopinti personaggi”.
+59
+La fabbrica dell’appetito
+Mamma Margherita Calosso Gentile è la memoria storica del presepio meccanico
+dell’Annunziata. Ha un’età invidiabile, ma
+soprattutto una freschezza di sentimenti che
+non le fanno sentire affatto il peso degli anni.
+E’ nata nell’agosto del 1915 e oggi alla soglia
+del secolo – che non dimostra affatto - vive
+nella quiete di un luminoso appartamentino,
+alla Crocetta, dove i figli si alternano per
+assicurare attenzione, amore e coccole in
+giusta, doverosa quantità. “Quei cinque figli,
+quelle cinque bocche da sfamare – sorride
+Caterina – che papà chiamava la fabbrica
+dell’appetito”.
+(nella foto Rita Gentile)
+Minuta, le guance di perla, due mani in continuo movimento e una memoria
+prodigiosa, Margherita, per tutti “Rita”, racconta la sua Torino, gli anni vicini e lontani,
+l’impiego come segretaria in una fabbrica di stoffe, il pensionato retto dalla madre, in via
+Sant’Ottavio dove in tempo di guerra trovavano rifugio giovani antifascisti, uomini che
+avrebbero lasciato la loro impronta nelle organizzazioni cattoliche, come Luigi Gedda e
+Carlo Carretto, e nella direzione di grandi aziende pubbliche. Quando parla del prodigio
+meccanico di via Po non sa se indulgere al sorriso o rabbrividire al ricordo del freddo patito
+sotto la Galleria degli artisti. Privilegia il sorriso quando ricorda Dario, l’acrobata, uno dei
+personaggi del variopinto clan che Canonica si portava appresso da Roma o da dovunque
+si trovasse alla vigilia dell’apertura del presepio.
+“Dario era un giovanottone robusto, tozzo, aveva due braccia così – e muove nell’aria
+le mani a coppa sopra gli omeri per dare l’dea dell’ampiezza dei bicipiti - . Aveva lavorato
+nel cinema e anche nel circo. Faceva il trapezista, il porteur, per la precisione, quello che
+dalla piattaforma afferra al volo il partner impegnato nelle evoluzioni aree, in quelle
+giravolte nel vuoto che lasciano il pubblico col fiato sospeso. Qualche volta era alla cassa,
+qualche altra strappava i biglietti.
+60
+Poi si precipitava di sotto. Rotolava letteralmente.
+Non so come facesse. Si accartocciava a palla e poi via giù dai gradini, per risollevarsi
+in fondo, di scatto, come una molla”.
+Ricorda qua e là qualche altro nome: Severino, il braccio destro di Canonica (“era un
+po’ comandino, faceva rigare dritto tutti”), Gabriele, sempre elegantissimo, l’ingegner
+Mangano (“ha ammodernato l’impianto elettrico”), Guido Guerra, l’elettricista, Franco
+Cappuccelli , chiamato affettuosamente Frank Cappuccio, un volontario della parrocchia
+che si occupava di strappare i biglietti e di controllare la sala.
+Gianni, un altro dei figli di Renzo e Margherita, ha memoria in particolare di Alberto
+Gasparini, “un ragazzo alto e spiritoso come pochi”, futuro assicuratore e cantante nel
+coro del Regio, che allora lavorava part-time alla Fares e di tanto in tanto dava una mano
+a Maggiorino, soprattutto quando si trattava di sfruttare la sua altezza, per raggiungere
+qualcosa posto molto in alto.
+“Lo rivedo ancora con i suoi quasi due metri e le scarpe numero 47. Una volta si ferma
+perplesso davanti alla Grotta e indica a Maggiorino il movimento di Gesù: non ti sembra
+che faccia gli addominali? Poi se ne scappa, mentre Maggiorino prorompe in una risata e
+lo manda a quel paese”.
+Erano gli ultimi spiccioli degli Anni 60, cominciati sull’onda del boom economico e finiti
+con il vile attentato di piazza Fontana (Milano, 12 dicembre 1969). Nel mezzo, lampi di
+storia attraversata da luci e da ombre, da figure nobilissime (John Fitgerald Kennedy,
+Giovanni XXIII) e da chimere, con una colonna sonora alimentata soprattutto dai Beatles.
+Canonica si affida a Renzo Gentile, gli passa le consegne per la gestione del presepio:
+“Nemmeno se la sentisse – china lo sguardo Margherita – di lì a pochi mesi sarebbe
+morto”. A questo punto “tutto l’apri, chiudi e gestisci del presepio” ricade sulle sue spalle,
+su quelle del marito e dei figli. Una responsabilità che onoreranno per una decina d’anni.
+61
+Le tornano in mente tante cose. Risente, per un attimo, i brividi del freddo, ripensa
+all’umidità patita nella guardiola all’ingresso della Galleria degli Artisti: “Certi attacchi di
+sciatica che non sto a dire”. Ma non si arrende, nulla la ferma. Distribuisce gli incarichi tra i
+figli: “Tu sorveglia qui, tu vai sotto, tu spiega, tu stai attento che non tocchino niente: sono
+meccanismi delicati”. Ognuno prende sul serio il suo compito.
+A un certo punto al presepe compare anche una colonna sonora. Due altoparlanti anni
+’50 vengono sistemati dietro le palme e camuffati con carta e muschio: “Fredda è la notte,
+buio d’intorno/ silente attesa, sacro timor/ brilla una stella, veglia la terra…”, si sente
+cantare. A brano si alterna brano. Pezzi antichi si mescolano con composizioni più
+moderne. La musica si mescola al rumore degli ingranaggi, alle voci dei bambini, ai
+commenti del pubblico. Tutto concorre a fare atmosfera, a creare un clima di gioia.
+Mamma Margherita, a fine giornata, fa i conti, e il giorno delle Ceneri, quando cala il
+sipario, tira le somme. Cita a memoria alcune cifre: “Venti - ventuno mila spettatori ogni
+anno. Folla strabocchevole soprattutto all’Epifania, quando arrivano i Re Magi con i loro
+abiti sontuosi e il nutrito seguito di servitori e cammelli”. Degli incassi, tolte le spese, una
+parte andava al parroco, una ai Gentile, una agli eredi Canonica. “Renzo portava in via
+Micca ciò che spettava ai Canonica come da accordi verbali fra gentiluomini, suggellati
+con una stretta di mano”, ricorda con tenerezza, la voce che trema, gli occhi che
+inseguono emozioni lontane.
+62
+63
+Lo scoop di mamma Margherita
+Alla cassa – lei lo chiama il “gabbiotto” – mamma Margherita si alterna con i figli.
+“Eravamo esposti alle correnti, all’imbocco della galleria faceva un freddo terribile e non ci
+si poteva fermare più di tanto. E allora scendevo al caldo. Per carità, il locale del presepio
+non era riscaldato, eppure si aveva la sensazione di stare meglio rispetto al gelo che c’era
+in superficie”.
+Da sola o con i figli va a curiosare tra la folla che si assiepa nei sotterranei della
+chiesa: “Mi divertivo ad ascoltare i commenti, le ipotesi scientifiche e fantascientifiche e
+trattenevo a stento una risata quando sedicenti esperti parlavano di complessi circuiti
+elettrici per far muovere le barche nel laghetto: tutto era dato da un banale gioco di
+contrappesi. Un filo e un sasso altro che tecnologie d’avanguardia! Così come si ricorreva
+all’effetto dissolvenza, noto e sperimentato nel cinema, per dare l’dea del cambio di luce:
+non marchingegni misteriosi, ma il semplice ricorso a un principio chimico con l’uso di un
+metallo immerso in una massa liquida a cui veniva aggiunto un pugno di sale, banalissimo
+sale da cucina. Insomma, l’effetto garantito da un sistema di pile senza ricorrere alle pile”.
+Un dispositivo che tecnici ed esperti chiamano “reostato a liquido”, oggi fortemente
+obsoleto, ma che, oltre che nel cinema, intorno agli Anni 20 del secolo scorso veniva usato
+anche per controllare la velocità di un treno con motore elettrico. Si tratta di far immergere,
+fino a un certo livello, quelli che possiamo definire elettrodi nella soluzione salina
+attraverso una leva, opportunamente isolata, per non riceverne una scossa.
+(disegno di reostato liquido)
+64
+65
+Appunti sul Reostato a Liquido
+Conduttivita dell’acqua (definizione e descrizione)
+La Conduttività di una sostanza è definita come "la capacità o il potere di condurre o trasmettere
+calore, elettricità o suono". Nel nostro caso prendiamo in esame la capacità di condurre elettricità
+(Conduttività Elettrica).
+La conduttività in una sostanza non e’ altro che lo spostamento o migrazione di elettroni da un polo
+elettrico verso l’altro, il suo antagonista (polo Positivo e Polo Negativo oppure Polo A e Polo B). In
+questo modo abbiamo una circolazione di corrente elettrica (gli Ampere).
+La conduttività elettrica è fortemente dipendente dal numero di elettroni disponibili a partecipare al
+processo di conduzione.
+L'acqua pura, però, conduce l'elettricità in maniera trascurabile, pertanto è necessario aggiungere
+al sistema un elettrolita solubile in acqua affinché ci sia un aumento di elettroni
+Il cloruro di sodio (NaCl), sale solubile in acqua, viene frequentemente impiegato proprio per
+aumentare la conduzione elettrica. Il cloruro di sodio non e’ altro che il comune sale da cucina.
+Immergendo più o meno gli elettrodi nella soluzione salina (anche solo uno dei due), la resistenza
+elettrica fra questi due cambia di valore, causando una variazione di luminosità della lampada.
+Abbiamo così realizzato un “Reostato a Liquido” ; il reostato e’ usato come Dimmer per il controllo
+di luminosità di una lampada.
+Immergendo più o meno
+l’elettrodo blu aumenta o
+diminuisce il valore di
+resistenza tra i due
+elettrodi.
+Tracce nere = conduttori
+elettrici
+Elettrodi(ma
+teriale
+metallico).
+Soluzione
+salina
+Secchio contenete
+Soluzione salina
+Ovvero acqua e sale da
+cucina
+66
+Questo dispositivo e’ ormai un dispositivo fortemente obsoleto, negli anni 1920 veniva
+usato anche per controllare la velocità di un treno con motore elettrico, per cui figuriamoci
+se negli anni successivi non veniva usato anche nel cinema.
+Quello che faceva la signora che si spanciava dalle risate non era altro che immergere di
+una certa quantità uno dei due elettrodi nella soluzione salina attraverso una leva,
+opportunamente isolata dagli elettrodi per evitare di beccarsi una bella folgorazione.
+Muovendo la leva il risultato che ne otteneva era quello di far variare con la luce gli effetti
+luminosi del presepio.
+Chiude gli occhi per un attimo mamma Margherita e poi sospira, sorridendo: “Ne ho
+viste e sentite di tutti colori. Un anno mi è perfino capitato un uomo con diciassette
+bambini. Mi dicevano che fossero tutti suoi figli, ma io non ci credo ancor adesso”. Scuote
+la testa. E subito dopo cambia argomento. Ha in riserbo uno scoop, svela un particolare
+che sorprende anche i figli: per qualche tempo il presepio ha avuto anche uno sponsor.
+Era la “Nestlè”, un marchio che non ha bisogno di presentazioni. In cambio, la
+multinazionale svizzera chiedeva la visibile presenza di un cartellone pubblicitario color
+nocciola e cioccolato su sfondo nero che era discretamente collocato in un angolo del
+locale riservato ai visitatori. Oggi a ricordare quell’abbinamento è rimasto il simbolo di
+allora della Nestlè, la mucca che si vede in primo piano, sulla destra, davanti alla grotta.
+E’ un capolavoro di cartapesta d’una cinquantina di centimetri di lunghezza, rivestito di
+vera pelle, che al suo interno custodisce un meccanismo – svizzero, naturalmente – che le
+67
+fa muovere la testa, la bocca, la coda e chiudere gli occhi. Non solo: in origine, quel
+meccanismo prevedeva anche un soffietto che emetteva un suono simile a un muggito.
+Era l’idolo dei bambini come oggi forse solo Peppa Pig: se ne stavano estasiati, a bocca
+aperta, sordi ai richiami dei genitori.
+“E’ la statua più grossa del presepio. Insieme con i Re Magi è quella a cui sono più
+affezionata”, sorride Margherita. Poi torna seria e rivà con il cuore e con la mente alle
+preoccupazioni del marito per i problemi di sicurezza. Temeva le imprudenze dei visitatori,
+la foga dei ragazzi, i pericoli d’incendio per un cortocircuito o un mozzicone di sigaretta.
+“Erano preoccupazioni più che fondate – ricorda oggi la figlia Caterina – soprattutto
+alla luce di quanto è poi accaduto al cinema ‘Statuto’. E’ stato facile profeta. Ci confessò
+una volta che non riusciva a dormire la notte. Lo sorprese anche una crisi cardiaca, che si
+diagnosticò da solo, dopo aver consultato l’enciclopedia medica dell’ Utet che avevamo in
+casa. A quel punto, resosi conto dei rischi che correva si rivolse finalmente a un medico,
+che confermò: aveva avuto un infarto.
+Mi vengono ancora i brividi al pensiero dei rischi che ha corso, che abbiamo corso tutti.
+Voleva che, per tenere tutto sotto controllo, fossimo almeno in due sempre presenti in
+sala, quattro nelle ore di ressa.
+Non solo: aveva previsto anche una via di fuga attraverso il teatro parrocchiale, ma
+tutto ciò non bastava a rassicurarlo. Si preoccupava che, in caso di pericolo, i bambini, ai
+quali era stata riservata una corsia preferenziale, potessero essere preda del panico, che
+qualche genitore non seguisse le indicazioni e contribuisse ad alimentare la confusione.
+Aveva paura che quel giocattolo incredibile, che ormai considerava un po’ come suo, che
+quell’opera d’arte sacra, come lui la giudicava, potesse rompersi, di più, compromettere
+l’incolumità dei visitatori che prendevano d’assalto il sotterraneo, fino a buttarsi a ridosso
+delle statue, mentre tutta la struttura si reggeva su un palco di legno sempre più asciutto,
+sempre più infiammabile.
+Non c’erano allora grandi vie di fuga. E’ per questo che, quasi fino all’ultimo, ha voluto
+essere presente nei sotterranei della chiesa, è per questo che ha voluto esserci anche
+dopo aver chiuso bottega e cambiato casa. Per controllare che le persone fossero tutelate
+e che quel bene prezioso non andasse perduto”.
+68
+69
+“Non ho più l’età”
+Renzo Gentile, con occhio vigile e preoccupato si aggira ancora nei sotterranei in cui
+ha trascorso una vita quando, nel tardo autunno dell’80, viene intervistato da “Stampa
+Sera”.Il giornale del pomeriggio dedica un supplemento di quattro pagine al Natale nel
+mondo.
+C’è, tra gli altri, un riferimento al particolare clima di festa che si respira in Inghilterra
+perché l’accensione delle tradizionali luminarie coincide quell’anno con l’annuncio ufficiale
+del fidanzamento del principe Carlo con Diana Spencer.
+Ma lo spazio maggiore è riservato – leggiamo – proprio a lui, “Renzo Gentile, 71 anni,
+l’artigiano che ha ereditato dai Canonica la cura e l’onere della complicata manutenzione
+del presepio”. Parlando con il cronista, l’uomo della boita, l’artigiano tuttofare, l’inventore di
+giochi, rivela il suo animo di uomo dai sentimenti semplici, ma profondi, esalta il significato
+vero del Natale (“Per fortuna, ancora oggi, nonostante i tempi non proprio sereni, tutti sono
+sensibili al messaggio d’amore e di giustizia che il presepio sprigiona e ci regala”), ma
+annuncia anche la sua resa agli acciacchi e al tempo che avanza:
+70
+“Non ce la faccio più, sa, l’età è quella che è. Ho deciso, lascio tutto nelle mani dei
+ragazzi della parrocchia, bravi, volonterosi”.
+Poi fa da cicerone al cronista nei meandri del ventre meccanico del presepio,
+“incredibile bailamme di congegni costruiti a mano”, indicando qua una puleggia, là un
+rudimentale nastro trasportatore, quello su cui scorrono incessantemente i cammelli che si
+vedono percorrere sullo sfondo di cartapesta del paesaggio palestinese.
+“Ma quella disegnata laggiù non è Gerusalemme?”, domanda il giornalista. E Gentile –
+gentile di nome e di fatto - risponde: “La città, il lago, il fiume e le colline sono stati
+concepiti in modo da riprodurre la geografia del luogo al tempo di Gesù “.
+Poi continua la descrizione meravigliata dell’intero complesso: “Dal fiume che
+rappresenta il Giordano si dipartono ruscelletti
+d’acqua autentica (il flusso è regolato da un
+perfetto sistema idraulico), nel quale le lavandaie
+immergono i loro panni con gesti sempre uguali.
+Un congegno a orologeria determina gli effetti di
+luce: su Betlemme si leva l’alba, poi il sole
+raggiunge lo zenit ed infine ecco il tramonto e si
+accendono le stelle compresa la cometa che
+indicherà la strada ai Re Magi. In un angolo
+muggisce a tratti una mucca."
+Anzi, la mucca raccontata da mamma
+Margherita.
+“Molte figure e scene singole – prosegue la
+nota del cronista - rappresentano personaggi e
+luoghi raccontati dai Vangeli di Luca, soprattutto,
+e di Matteo. I bambini guardano, ammirano e
+gettano monetine da cinque o dieci lire nel minuscolo stagno che il pescatore di legno
+scandaglia in eterno con la sua rete”.
+71
+Il mago dell’acqua
+Con Canonica figlio, ma soprattutto con la robusta, allegra, volitiva squadra dei Gentile
+ha collaborato a lungo e con dedizione quasi esclusiva anche Gino Maistro, genero di
+Caterina senior, la sartina delle vestine di Gesù Bambino. Classe 1924, veneto di
+Pontelongo, in provincia di Padova, Gino è venuto a Torino in cerca di un lavoro sicuro,
+così come hanno fatto intere generazioni di operai del Nord Est. Dopo varie esperienze,
+trova il sospirato posto fisso in Fiat, alle presse di Mirafiori, ma è nato idraulico e nelle ore
+libere, lontano dalla fabbrica, mette a frutto le sue giovanili esperienze, corre in soccorso a
+chi ha problemi con il rubinetto di casa.
+“Non sempre lo pagano – ride la figlia Maria Caterina, che è stata programmatore
+informatico alla Lavazza e oggi rivive un capitolo della storia avventurosa del presepio -.
+Spesso papà se ne torna con un materasso o con qualche altro oggetto per la casa
+ricevuto in cambio delle sue prestazioni”.
+Gira in bicicletta, si sposta da una parte all’altra di Torino e cintura, pedalando con
+lena e trascinandosi dietro la borsa degli attrezzi di pronto intervento. Viene chiamato più
+volte anche in casa del parroco di Andezeno, don Oreste Bunino, che lui conosce bene:
+da vice del parroco dell’Annunziata di allora, monsignor Francesco Bottino (che era anche
+ausiliare del cardinale Fossati), il 18 ottobre del 1958 ha benedetto le sue nozze con
+Felicita Nasi. Nel ’68, don Bunino subentra a monsignor Bottino. A questo punto il seguito
+della storia si può intuire: quando Maggiorino Canonica è in difficoltà con il complesso
+impianto idraulico del presepio, il nuovo parroco gli suggerisce di ricorrere a Gino Maistro,
+che da quel momento e per alcuni decenni a venire sarà mastro idraulico dell’Annunziata
+anche sotto la gestione dei Gentile.
+Fiumi, ruscelli e laghetti sono da aprire, collaudare e chiudere tutti gli anni. Tutti gli
+anni Gino Maistro (che è morto nel novembre del 1994) si infila sotto i meccanismi
+complessi del presepe, si piega sulle gambe, si trascina sulle ginocchia, tampona, salda,
+aggiusta e provvede, non solo all’impianto idraulico, ma anche a cinghie, nastri, giunti.
+Sempre a contatto con il pavimento gelido. E, con il passare degli anni, dolori diffusi,
+artrosi e sciatica sono il suo pane e il suo companatico quotidiani.
+72
+73
+I dolcini di mamma Adelaide
+“Abitavamo allora non lontano dall’Annunziata, in via Della Rocca – racconta la moglie,
+Felicita Nasi – Nelle settimane di Natale, Gino era più presente al presepio che a casa.
+Per ore e ore sotto quella macchina mirabile a prevenire intoppi e guasti improvvisi,
+mentre imperversava la colonna sonora, allora fatta soprattutto di nenie natalizie. Mi
+diceva che poi se le sentiva in testa anche di notte, nel
+sonno”.
+Classe 1925, segno zodiacale Bilancia, non ha
+esperienze dirette con il presepio, “anche se in pratica, ho la
+sua età”, ride. Ricorda però l’impegno del marito prima e
+della figlia poi. “Mi tornava a casa sporco, unto e
+infreddolito. Allora gli ho imposto di portarsi dietro sempre
+un cappello, di tenerselo ben calcato in testa. Poi gli ho
+confezionato un paio di spesse ginocchiere”.
+(nella foto, moglie e figlia di Maistro)
+Le scappa un sorriso: “Così puoi gattonare là sotto fin che vuoi, gli ho detto, vedrai che
+con queste non soffrirai più il freddo”.Se le ricorda anche Caterina, la figlia, quelle
+ginocchiere: “Avrebbero fatto la felicità di un giocatore di rugby. Riparavano dal freddo, ma
+anche dalle botte”. Riandando con la memoria a quegli anni, ormai lontani “eppure così
+vicini da scaldarti ancora il cuore”, ripensa con nostalgia ai piccoli peccati di gola “a cui ci
+induceva la signora Adelaide Bottero, la mamma di Beppe”.
+“Negli Anni 80 – racconta – noi ragazzi dell’oratorio ci alternavamo alla cassa o a
+strappare i biglietti. C’era un minuscolo compenso per ciascuno di noi. Io lo bruciavo per
+pagare il taxi. Avevamo cambiato casa, andavo all’Annunziata in tram. In quel tempo,
+però, a Natale e a Capodanno facevano festa anche i tramvieri e io mi arrangiavo come
+potevo per non rinunciare ai miei turni al presepio. Come ha detto qualcuno, chi visita
+l’Africa viene preso da forti attacchi di nostalgia, ci vuole tornare sempre. A noi prendeva il
+mal di presepio. Ricordo tanti ragazzi, tanti amici, ognuno con il suo contributo. Mi
+vengono in mente Valeria e il marito, Giuseppe, che rinfrescavano i costumi e i volti delle
+statuine. Ma è impossibile ricordare tutti. Freddo, disagi, neve e pioggia non ci fermavano.
+Anche perché mamma Adelaide alla fine ci confortava con dolcini che sogno ancora:
+fagottini di pasta frolla imbottiti di marmellata e spolverati di zucchero a velo. Non ho mai
+più mangiato una delizia simile”.
+74
+75
+PARTE SECONDA
+La rinascita dopo la tragedia
+76
+77
+Cambio di consegne
+Quando Renzo Gentile comincia a sentire il peso degli anni, chiude bottega, cambia
+casa e rallenta la sua presenza al servizio del presepio. Anche i figli vanno ciascuno per
+la propria strada, si scioglie l’allegra compagnia che ha gestito “la macchina meravigliosa”
+per una decina d’anni. E i Canonica, morto Maggiorino, non intendono prendersene cura.
+Ma don Oreste Bunino, che è un tipo tosto, non si arrende all’ineluttabile, vuole mantenere
+in funzione quel gioiello così amato da tante generazioni, non solo di torinesi, e chiama a
+raccolta i giovani dell’Annunziata: “Tocca a voi – è il messaggio –, adesso provvedete voi
+a far girare questo nostro prodigioso monumento, non possiamo perdere un simile
+patrimonio d’arte e d’ingegno”.
+E’ il 1977, Torino (come l’Italia intera) vive momenti non facili, giorni d’ansia per le
+profonde tensioni sociali che la attraversano. Alla guida spirituale della città c’è padre
+Anastasio Balestrero, carmelitano, chiamato a sobbarcarsi la pesante eredità lasciata da
+padre Michele Pellegrino, il vescovo amatissimo della “Camminare insieme”.
+Imperversano gli anni di piombo, che insanguinano le strade e seminano terrore.
+Sequestri di persona, aggressioni a mano armata, bombe incendiarie, attentati, stragi
+(Brescia, Bologna, “Italicus”) e vandalismi sono l’amaro prezzo quotidiano che paghiamo
+un po’ tutti. Vengono uccisi o gambizzati, secondo un macabro rituale fino ad allora
+sconosciuto, dirigenti d’industria, magistrati, giornalisti, medici, poliziotti, avvocati, perfino
+un barista, involontario testimone di un agguato. In via Po, quasi dall’altro lato
+dell’Annunziata, un corteo degenera, una molotov incendia un bar, strazia uno studente di
+18 anni. Un altro ragazzo resta ucciso da un proiettili vagante.
+La violenza sembra raggiungere il suo culmine con il sequestro e l’uccisione
+dell’onorevole Aldo Moro (primavera del 1978), a pochi mesi dal vile attacco contro Carlo
+Casalegno, vicedirettore della “Stampa”, che muore dopo quindici giorni di agonia. Tarda,
+però, a placarsi. In piazza San Pietro, nell’81, viene gravemente ferito anche Papa
+Giovanni Paolo II, che l’anno prima, in un maggio inondato di sole, aveva confortato la
+nostra città, parlando dalla gradinata della Gran Madre alla folla immensa che gremiva
+piazza Vittorio: “Torino, non perdere la speranza”.
+78
+79
+Volontari di lotta e di passione
+Per fortuna c’è ancora chi nutre e coltiva quei sentimenti di solidarietà e di vicinanza, di
+altruismo e di amore verso il prossimo, che si esemplificano in maniera ideale proprio in
+un’istituzione come quella del presepio, che altro non è che “un simbolo di pace”, come
+gridano fiduciosi i titoli di alcuni dei ritagli di giornale gelosamente conservati da Giuseppe
+Bottero.
+È proprio a lui che don Bunino si rivolge perché raduni ragazzi di buona volontà, angeli
+in carne e ossa, con cuori entusiasti e mani sapienti, per far girare a pieno ritmo, in tutte le
+sue potenzialità, quel meccanismo complesso ispirato a uno dei più affascinanti misteri
+della Storia.
+Bottero non si fa pregare, mobilita amici e familiari, compresi i genitori, papà Carlo, che
+era impiegato all’Enel, e mamma Adelaide, i quali – caso forse più unico che raro fra due
+sposi – sono, per così dire…. gemelli, nati cioè lo stesso giorno, mese e anno – il 16
+dicembre 1930 – lei a Piobesi d’Alba, lui a Cossano Belbo.
+80
+Beppe, classe 1958, sposato con una insegnante, due figli, Federico e Marco, già
+pronti a dare una mano per il funzionamento della “grande macchina”, lavora in quella
+scuola di tecnica e di design all’avanguardia che è “Idea Institute”. Insomma, è l’uomo
+giusto per fare il badante alla vetusta creatura canonichiana, carica di anni e di ruggine,
+ma capace sempre di stupire ancora oggi come il primo giorno. Bussa, tenace, a cento
+porte. Chiede, si informa, annota.
+Dai Gentile e dai Maistro si fa raccontare ogni più nascosto particolare della machina
+mirabilis, raccoglie documenti e ritagli, chiede consulenze - scopriamo da un vecchio
+giornale - anche a una vetrinista della “Rinascente” e a Franco Martina, un pensionato che
+allestisce il presepio nella scuola materna di via Gaudenzio Ferrari.
+Ma soprattutto si rivolge ad alcuni compagni o ex compagni di lavoro all’”Idea”: Silvano
+Botta, design, Mario Iacomino, l’uomo dalle mani d’oro e dai mille mestieri, Giovanni
+Minuzzo, per tutti Gianni, classe 1953, esperto di progettazione elettronica in campo
+automobilistico. Giovani pensionati mai sfiorati dall’idea di fermarsi ad ascoltare i tic tac del
+tempo che passa.
+81
+Le sartine dei pastori
+In un vecchio articolo della “Stampa” troviamo papà Carlo Bottero impegnato con una
+ventina di volontari, quasi tutti artigiani in pensione, mentre “puntella la grotta, olia i
+movimenti, pianta chiodi tra le assi traballanti, pialla, incolla, fissa”.
+Nello stesso articolo incontriamo anche
+Mamma Adelaide.
+Confida a Luciano Borghesan, che firma il
+pezzo, ricordi del presepio che risalgono alla sua
+infanzia: “Abitavamo in piazza Vittorio. Le
+attrazioni per noi ragazzi, d’inverno, erano
+soprattutto due: il luna park in faccia al Po e il
+presepio dell’Annunziata. Mi vengono ancora i
+brividi quando ripenso all’emozione provata la
+prima volta che ho messo piede nei sotterranei
+della chiesa: era la scena più grande, più
+spettacolare che io avessi mai vista. E sa una cosa? – confida al cronista che prende
+puntualmente nota – mi emoziono ancora adesso”.
+82
+Negli anni ha sostituito a uno a uno tutti i costumi delle statue: “Il tempo logora ogni
+cosa, soprattutto i tessuti e non sempre sono possibili o sufficienti i rattoppi. Mi sono
+sempre attenuta scrupolosamente ai modelli e ai colori originali. Umili le vesti dei pastori,
+sfarzosi, invece, gli abiti dei Re Magi, sfolgoranti nelle varie tonalità dell’oro, dell’argento,
+del viola. Lustro anche le corone e i diademi. Ormai le conosco a una a una quelle
+statuine, qualche volta mi sorprendo a parlare con loro. Come faccio i rammendi e le
+sostituzioni di un mantello o di una gonna? Salgo sul presepio: peso niente, ma comunque
+la base di quella splendida macchina concepita dai Canonica è più sicura di quanto uno si
+immagini”.
+Lì accanto, a seguire il colloquio – conclude il cronista – “c’è il custode, Franco
+Cappuccelli, 70 anni, sempre di turno, mai un giorno di assenza”. Lo stesso che
+collaborava con i Gentile.
+Oggi Adelaide Bottero fa i conti con l’età, ha qualche problema di vista, non se la sente
+di issarsi più, in mezzo alla statue, con la frequenza e la spavalda sicurezza di un tempo
+(“lo ha fatto, comunque, anche di recente ", sorride il figlio).
+Nel 2012, in tutta modestia e con assoluta naturalezza, ha vissuto anche un piccola
+esperienza televisiva, con una breve apparizione in “A Sua Immagine”, programma
+domenicale di Rai1. Erano i giorni dell’Avvento, i responsabili della trasmissione avevano
+interpellato gli Amici del presepio, chiedendo la presenza in studio di due testimoni per
+descrivere la macchina dell’Annunziata.
+Con mamma Adelaide c’era Maddalena Nitelli, ex impiegata, con la passione per
+l’uncinetto (interpreta pastori e animali usando, lana, cotone, ovatta e filo di ferro, ed
+espone poi le sue creazioni alla Galleria degli Artisti). Tra una chiacchierata e l’altra,
+entrambe diedero prova della loro abilità manuale, la prima tagliando e cucendo un vestito
+completo su una statuina, la seconda confezionando una pecora con i ferri del suo hobby
+preferito.
+83
+Mamma Adelaide ha trovato una valida spalla, entusiasta e disponibile, in Marisa
+Botta, che da una decina di anni a questa parte la affianca nella cura dei costumi, nella
+sostituzione di camici, traverse, mantelli e bisacce logorati. “Sono solo una semplice
+aiutante – si schermisce – Ho ancora molto da imparare”. Adelaide Bottero dice invece
+che il futuro del presepio e del suo popolo in miniatura è “ in mani capaci e fidate”.
+“Quel popolo che, a un certo punto, mi vien quasi voglia di svegliare, rompendo
+l’incantesimo che lo paralizza per tanti mesi”, sorride Marisa Botta. “Succede - racconta -
+alla vigilia della riapertura al pubblico: salgo sul palco, tolgo i nylon e gli involucri che
+proteggono tutto dalla polvere, e mi vien voglia di schioccare le dita: pronti, via, si
+ricomincia”.
+84
+85
+La tragedia dello Statuto
+La storia della macchina prodigiosa continua a lungo senza particolari scossoni.
+Secondo un calendario ormai collaudato, si apre alla vigilia di Natale e si chiude dopo
+l’Epifania. Qua e là qualche cura ricostituente, un paio di ritocchi, piccole migliorie, ma la
+sostanza non muta.
+La parrocchia e i volontari gestiscono l’impianto, gli eredi Canonica mantengono la
+proprietà di quell’autentico patrimonio costituito dalle statue, che, è bene ribadire, sono
+vere e proprie opere d’arte fabbricate da abili artigiani, vuoi intagliatori, vuoi capaci
+manipolatori della cartapesta, che le curano in tutti i particolari.
+Lontano da quella nicchia nel cuore di via Po, Torino si evolve, conosce il boom della
+Fiat e dell’immigrazione, ma anche giorni di crisi, di scioperi massicci e di cortei. Afflitta
+dalla fame di case, vede moltiplicarsi gli alveari di periferia. Dopo gli anni dei sindaci
+democristiani, Diego Novelli, nel ’75, apre la parentesi delle giunte a guida laica. La città
+sembra arrancare, ma non si arrende. Poi quel tremendo, drammatico choc di domenica
+13 febbraio 1983, quando – è il tardo pomeriggio d’una giornata anonima e grigia - un
+incendio devasta il cinema Statuto di via Garibaldi. E’ l’evento più tragico degli ultimi
+decenni nella storia della capitale subalpina.
+“Le fiamme si sprigionano in platea –
+scrive “Stampa Sera del Lunedì” sotto grevi
+titoli a caratteri alti come il palmo di una mano
+– Il fumo invade la galleria, trasformandola in
+una camera a gas. Scene di disperazione e
+vani tentativi di fuga. Corpi di spettatori
+carbonizzati, altri asfissiati nelle scale, tra le
+poltrone, nelle toilette e in un ripostiglio”.
+La morte colpisce alla cieca: uomini,
+donne, bambini. In tutto le vittime sono 64. Lo
+choc è fortissimo, la città, sconvolta, chiude
+per lutto. Una cifra, all’apparenza banale, può
+dare la misura dell’enorme impressione subita
+dall’opinione pubblica:
+86
+La Stampa” in quelle ore di lutto e di disperazione, vende al giorno fino a 70 mila copie
+in più della media quotidiana. Tutti vogliono sapere, tutti vogliono capire. Ai funerali intorno
+alle bare si stringe una folla immensa. Interviene anche il presidente della Repubblica
+Pertini, che saluta le salme a una a una. Scene di dolore, lacrime, rabbia. Per giorni e
+giorni le cronache di tutti i quotidiani italiani ed europei racconteranno la tragedia, i suoi
+risvolti, le ricadute. Intanto, parte un’inchiesta immediata, meticolosa, che mette subito il
+dito nella piaga: Torino non è sicura, ci sono troppi locali, troppe strutture pubbliche, troppi
+impianti a rischio.
+(Il Cinema Statuto in un'immagine storica precedente
+la tragedia)
+(Il Cinema Statuto dopo la tragedia)
+Chiudono musei, cinema, auditor e sale per conferenze non dotati di porte
+frangifiamme e di vie di fuga sicure in caso di allarme incendio. La scure colpisce anche il
+presepio meccanico come bene aveva intuito Renzo Gentile, che pure si prodigava con
+ogni mezzo e con tutte le sue forze per garantire l’incolumità dei visitatori. Parroco e
+volontari tentano di evitare il peggio, ma la magistratura, gli uffici tecnici del comune e i
+vigili del fuoco, leggi e regolamenti alla mano, sono inflessibili: il presepio non fornisce
+garanzie e lo bocciano senza pietà.
+87
+Come un dono dei Re Magi
+Don Secondo Tenderini, subentrato a don Bunino nel 1979 e dal 1995 parroco a San
+Gaetano, se li ricorda bene quei giorni cupi, il dolore per la tragedia dello ”Statuto”, i
+drastici provvedimenti presi dagli organi di vigilanza, competenti in materia di sicurezza, la
+preoccupazione per il futuro del presepio, la delusione dei visitatori. Si vede costretto a
+chiudere il sotterraneo in qualità di suo custode e del suo contenuto, ma si guarda bene
+dal buttare via la chiave. Anzi, si muove subito per restituire “la perla dell’Annunziata” alla
+città e ai turisti. Con lui si mobilitano anche gli Amici del presepio, cioè i volontari che nel
+frattempo si sono costituiti in associazione sotto la guida di Beppe Bottero, anima e
+trascinatore del gruppo. Primo problema da affrontare e risolvere, la controversia con gli
+eredi Canonica, che, di fronte alla chiusura, a un certo punto decidono di smantellare e di
+mettere in vendita la creatura concepita da Francesco. Via pezzo per pezzo al miglior
+offerente.
+“Sembrava che tutto fosse finito, che il blocco degli impianti del nonno potesse essere
+per sempre – ricorda uno dei nipoti – .C’era, quindi, il rischio che l’intero meccanismo
+deperisse, che ogni cosa andasse perduta.
+Per non lasciare inutilizzato un simile patrimonio di statue e di movimenti, avevamo
+deciso di vendere almeno i pezzi più pregiati e preziosi, molti dei quali sono piccoli, ma
+autentici capolavori di artigianato”.
+Don Tenderini non crede nella chiusura definitiva, spera nell’aiuto della Divina
+Provvidenza e di persone di buona volontà, di chi insomma ha a cuore le sorti di quel
+nobile marchingegno, capace di incuriosire e commuovere. “Chissà – confida a qualcuno –
+che non ci vengano incontro i Re Magi”. Immagina che con oro, incenso e mirra portino in
+dono “la buona novella della riapertura”.
+88
+Resterà bloccato per quattro anni, quasi 1500 giorni durante i quali però i volontari
+dell’Annunziata non stanno con le mani in mano, chiedono, s’informano, interpellano
+esperti per progettare i lavori di adeguamento e sicurezza, coprono le statue per
+proteggerle dalla polvere, si preoccupano che i meccanismi non arrugginiscano.
+Interpellano anche la Sovrintendenza ai beni ambientali e architettonici: è un bene da
+tutelare? Tanti piccoli passi, giornate vissute a cavallo tra speranze e docce fredde: il
+presepio ritorna; no, ormai è una storia finita.
+Ed eccoci al colpo di teatro. La Sovrintendenza, Deus ex machina della situazione,
+dopo una serie di attenti sopralluoghi, dichiara tout court il presepio un bene protetto: ne
+ha l’età – più di mezzo secolo di vita – e le caratteristiche perché è “frutto di lavoro
+d’intelletto e di artigianato d’alto livello”. Pone pertanto precisi vincoli: o si vende in blocco
+e si colloca in un’altra sede, adeguata per spazi e sicurezza, o non se ne fa nulla.
+Insomma, i singoli pezzi non si possono alienare, si disperderebbe un autentico
+patrimonio, un bene prezioso ormai acquisito alla città .
+89
+Nove milioni, mica noccioline
+A questo punto i Canonica, fatto un consiglio di famiglia, decidono di regalare tutto alla
+parrocchia. Don Tenderini non ricorda più i particolari della donazione, avvenuta a cavallo
+fra la sua gestione e quella del predecessore. Beppe Bottero, invece, ne ha memoria e
+come un giocatore di prestigio tira fuori dal suo magico dossier tutte le carte di un
+decennale iter burocratico, che comincia con un rogito redatto nel lontano 1986 dal dottor
+Romano Rebuffo, “notaio in Vigone, iscritto al Collegio notarile dei Distretti riuniti di Torino
+e Pinerolo”, e finisce il 29 marzo del 1997 con l’atto ufficiale di “accettazione di donazione
+del presepio meccanico dell’Annunziata”.
+Al rogito – “in data 25 settembre 1986, repertorio 18790, registrato a Pinerolo il 15
+ottobre 1986, al numero 3651” – sono presenti Franco, Gian Carlo e Maria Maddalena
+Canonica, gli eredi di nonno Francesco e di zio Maggiorino, i quali donano “alla parrocchia
+Santissima Annunziata, per fini di culto e di religione, le statue e gli altri oggetti costituenti
+il presepio detto presepio meccanico dell’Annunziata”.
+90
+Alla stesura dell’atto di donazione, invece, sono presenti come testimoni due dei tanti
+volontari che si prendono cura dell’opera in questione e di tutte le incombenze che ciò
+comporta, Bruno Pairotti, classe 1935, pensionato, e Beppe Bottero stesso.
+Con loro c’è don Pietro Giacobbo (1915-2002), vicario episcopale per la pastorale e
+benemerito fondatore della Caritas diocesana, “il quale interviene non in proprio, ma nella
+sua qualità di Amministratore parrocchiale dell’Annunziata”.
+91
+Nel mezzo, tra le due complesse operazioni, tutta una fitta serie di scambi di
+documenti e di formule che fanno tanto burocrazia, ivi compreso un decreto della
+prefettura di Torino che, in data 9 dicembre 1986 - visti determinati articoli di legge e
+accertati gli adempimenti dovuti dalla procedura per simili atti – “autorizza la Parrocchia
+dell’Annunziata ad accettare la donazione disposta dai signori Franco, Gian Carlo e Maria
+Maddalena Canonica con atto pubblico del 25 settembre 1986, numero 18790, per notaio
+Romano Rebuffo”.
+Quanto vale quella donazione? Ce lo rivela il penultimo paragrafo del decreto
+prefettizio: “Formano oggetto della liberalità statue e oggetti vari costituenti il Presepio
+detto dell’Annunziata, valutati lire 9.350.000 (novemilionitrecentocinquantamila)”.
+Che sono bei soldini, mica noccioline. Lo dimostrano pochi raffronti pescati a caso nel
+“paniere” in base al quale si calcola l’indice del costo della vita: la “Panda 750 Fire”,
+lanciata proprio nel 1986, costa 5 milioni 650 mila lire, la “Young”, che è un po’ più
+accessoriata e piace ai giovani, 8 milioni 364 mila , mentre il prezzo di un appartamento di
+media grandezza si aggira intorno ai 150-170 milioni, il giornale costa 650 lire, 600 un
+caffè (ma a fine anno tocca quota 700), 6 mila lire il biglietto del cinema, 20 mila la
+riedizione di “La mia Africa” di Karen Blixen (Feltrinelli), 23 mila “La trappola amorosa”, il
+nuovo (e ultimo) romanzo di Giovanni Arpino (1927-1987), Rusconi editore.
+“Detto presepio – così si conclude il documento notarile – sarà destinato all’uso diretto
+della Parrocchia”.
+92
+93
+Nulla osta con pegno
+Nel frattempo, all’Annunziata era accaduto di tutto e di più. Per esempio, era
+cominciata, e poi ovviamente, sospesa, la catalogazione delle statue da mettere in
+vendita. Bottero oggi sorride ricordando quell’avventura nell’avventura: “Di giorno
+numeravo e inscatolavo pecore e pastori per conto dei Canonica, prendendo nota su un
+registro pezzo per pezzo, la sera spacchettavo tutto e ripetevo l’operazione con il parroco,
+descrivendo su un altro quaderno la statua, le caratteristiche, le condizioni, lo stato di
+conservazione”. Ma soprattutto erano cominciati i lavori per la posa in sicurezza dell’area
+che ospita “quell’angolo di Palestina in scala ridotta”: qui giù una parete, là una via di fuga
+e un’uscita d’emergenza, poi cartongesso a ridefinire vuoti e dislivelli, rilevatori di fumo,
+transenne per trattenere il pubblico e, ciò che più conta, un nuovo impianto elettrico
+perché nel frattempo anche questo settore risente dei frutti d’una costante ricerca di
+innovazione in nome della praticità e della sicurezza.
+94
+Tutto si fa sulla base di un progetto “redatto a titolo gratuito dall’ingegner Vincenzo
+Povero” si legge in una cronaca di “’l caval ‘d br^ons”, l’organo ufficiale della “Famija
+Turinèisa”, che ipotizza una spesa di 80 milioni di lire, “che inevitabilmente lieviteranno con
+i soliti imprevisti”, nota l’autore del pezzo. Sarà buon profeta.
+95
+Ci sono poi i documenti relativi ai sopralluoghi fatti dai vigili del fuoco, guidati dal
+comandante in persona, l’ingegner Minetti, i nulla osta degli uffici del Comune e di quelli
+della Sovrintendenza ai Beni ambientali e architettonici del Piemonte.
+Quest’ultimo (“Tassa a carico del destinatario”, proclama un vistoso timbro
+rettangolare sulla busta gialla che lo contiene) è firmato dalla sovrintendente in persona,
+dirigente superiore architetto Clara Palmas:
+“Con riferimento
+all’istanza relativa all’edificio
+in oggetto, esaminata la
+documentazione inviata,
+preso atto che le opere in
+questione non risultano lesive
+della sostanza monumentale
+del fabbricato, questa
+Soprintendenza esprime il
+proprio nulla-osta alla
+realizzazione delle stesse
+così come descritte”.
+96
+Dello stesso tenore il “via si proceda” della “Città di Torino, Settore amministrativo,
+Sezione XII, Edilizia privata”. Con una sostanziale differenza: poiché i lavori “consistenti in
+modifiche interne al piano interrato per l’adeguamento alle norme di sicurezza” sono stati
+eseguiti “in assenza di autorizzazione”, il sindaco (per lui firma l’assessore Furnari) “visto
+l’articolo 13 della legge 47/85, ordina il pagamento della somma di lire 500 mila a titolo di
+oblazione a cui è subordinato il rilascio dell’autorizzazione in sanatoria”. Sindaco, per la
+cronaca, era l’avvocato Maria Magnani Noya, mentre il documento, su sua delega, viene
+firmato dall’assessore Furnari.
+Cos’era successo? Il presepio aveva ripreso il suo cammino prima delle autorizzazioni
+ufficiali. Insomma, quel mezzo milione era lo scotto da pagare alla burocrazia. Resta un
+fatto: dopo quattro anni, Torino ritrovava uno dei suoi monumenti forse meno eclatanti, ma
+certo tra i più amati.
+97
+Passata è la tempesta
+Si respira di nuovo aria di festa in via Po, tornano le code dei visitatori, si rinnovano
+manifestazioni di meraviglia davanti a quel marchingegno che qualcuno temeva potesse
+andare perduto per sempre. I vecchi meccanismi sono strappati all’immobilità, al silenzio e
+alla ruggine, si riaccendono le luci, l’acqua riprende a sgorgare copiosa, alimenta fiumi e
+laghi, dondola le barche. Torna a muoversi l’esercito pacifico delle statue in marcia verso
+la grotta di Betlemme. Fruscii, rumori, suoni. Una festa, una consolazione per gli occhi e
+per il cuore. Un empito, una forza prorompente, un esultare gioioso che fanno venire in
+mente versi leopardiani che, in modo straordinario, quasi magico, si inseriscono in questo
+contesto:
+“Passata è la tempesta:
+odo augelli far festa, e la gallina,
+tornata in su la via,
+che ripete il suo verso. Ecco il sereno
+rompe là da ponente, alla montagna;
+sgombrasi la campagna,
+e chiaro nella valle il fiume appare.
+Ogni cor si rallegra, in ogni lato
+risorge il romorio
+torna il lavoro usato.
+L’artigiano a mirar l’umido cielo, con l’opra in man, cantando,
+fassi in su l’uscio; a prova/ vien fuor la femminetta a còr dell’acqua
+della novella piova;
+e l’erbaiuol rinnova
+di sentiero in sentiero,
+il grido giornaliero.
+Ecco il sol che ritorna, ecco sorride
+per li poggi e le ville. Apre i balconi,
+apre terrazzi e logge la famiglia:
+e, dalla via corrente, odi lontano
+tintinnio di sonagli; il carro stride
+del passegger che il suo camin ripiglia”.
+Par di sentirlo, di viverlo il gioco tumultuoso dei suoni, delle grida, degli stridori. Par di
+vederla la luce che sconfigge i nuvoloni e riconquista il cielo. Che cosa si può dire di più,
+come si può descrivere meglio quell’universo in miniatura, quella “rivoluzione
+canonichiana”, restituita all’onore del mondo con tutte le sue malie per cui “si rallegra ogni
+core”?
+98
+99
+Natale 1987, la festa ricomincia
+Il presepio nella sua nuova veste viene riaperto ufficialmente al pubblico alle 10.30 del
+25 dicembre 1987. I giornali celebrano l’evento con grandi titoli e ampi servizi. “Un angolo
+di via Po viene riportato all’antico e dimenticato decoro” si compiace Lorenzo Castello su
+“’l caval ‘d br^ons”, sottolineando l’impegno della “Famija turinèisa” per restituire alla città
+“un altro gioiello dopo il restauro dell’altare di San Giovanni, in Duomo”.
+“La Stampa” in un articolo di centro pagina siglato da Massimo Boccaletti annuncia:
+“Torna il presepe meccanico. Adeguato alle norme di sicurezza, dopo quattro anni riapre
+quel ‘lembo di Palestina’ costruito nei saloni sottostanti la navata centrale della chiesa
+dell’Annunziata con statue di legno, cartapesta e terracotta”. Ci saranno tanti bambini in
+coda, ipotizza il cronista, “ma anche uomini coi capelli bianchi, in cerca di un sogno
+lontano, di una antica suggestione che, davvero, non conosce età”.
+Su “La Voce del Popolo”, il settimanale diocesano diretto da don Franco Peradotto, si
+sostiene che i presepi sono “una forma di catechesi” e si parla di “autentico successo” per
+quello dell’Annunziata: “I torinesi attendevano con ansia la sua riapertura e le lunghe file
+all’ingresso lo dimostrano”.
+100
+Il biglietto d’ingresso è salito a 2 mila lire per gli adulti, i bambini pagano la metà”. Ma
+l’incasso – nota Patrizia Spagnolo, autrice dell’articolo – “non coprirà le spese sostenute
+per la messa in sicurezza”. E non basteranno nemmeno i contributi di enti vari e
+associazioni.
+101
+Le dolenti note sono affidate a una lettera che don Secondo Tenderini e il Consiglio
+pastorale della parrocchia inviano alle famiglie l’11 dicembre 1987: “Come certamente
+sapete, la nostra Chiesa custodisce da molti anni un grande tesoro, riconosciuto e
+rinomato: il presepio meccanico, chiuso da quattro anni perché non conforme alle norme
+di sicurezza. I lavori di ristrutturazione sono conclusi, ma il costo iniziale di 80 milioni è
+lievitato a 120 (75 milioni per i
+lavori in muratura, 45 per il
+totale rifacimento dell’impianto
+elettrico). Finora abbiamo
+raccolto 35 milioni grazie ai
+contributi (10 milioni a testa) di
+Regione, Comune e Famija, e
+alla vendita di cartoline e dei
+presepi che sono esposti
+come ogni anno, di
+quest’epoca, nella Galleria
+degli Artisti. Resta un debito di
+85 milioni”.
+A questo punto parroco e
+Consiglio pastorale fanno
+appello alla sensibilità di tutti:
+“Vi invitiamo a contribuire
+personalmente, ciascuno a
+seconda delle proprie
+possibilità e sensibilità. Potete
+lasciare le vostre gradite
+offerte nell’apposita cassetta
+in fondo alla Chiesa”. C’è anche un doveroso post scriptum: ”Nessuno è autorizzato a
+passare nelle case per raccogliere le offerte”
+102
+103
+Cene d’autore per un presepe
+Si moltiplicano in città le iniziative per consentire all’Annunziata di finanziare i lavori e
+restituire il presepio a tutti. Già intorno al 1986-1987, superato lo choc per la tragedia
+dell’83, nascono iniziative per avviare i lavori di restauro e le opere di messa in sicurezza.
+Impossibile ricordarle tutte. Da segnalare comunque quella apparsa domenica 26 aprile
+1987 su “La Stampa”, nella pagina denominata “In città” che veniva curata da Edoardo
+Ballone. In apertura ci sono i risultati d’un gioco a premi promosso dal giornale (“Leggi
+gioca e vinci”, ovvero, niente di nuovo sotto il sole, nda). Di spalla, Achille Valdata segnala
+i film del giorno (“Platoon”, “Figli di un Dio minore”, “Via Montenapoleone); di taglio, si
+annunciano i concerti d’un giovanissimo Vasco Rossi e del sassofonista Gato Barbieri, e
+c’è un itinerario proposto da Angelo Dragone sulle cose da vedere nelle gallerie d’arte:
+ceramiche di Renzo Igne alla Pirra, opere di Cantatore, Vedova, Sironi, Tabusso e altri da
+Biasutti, allora in via Juvarra 18, pastelli di Miriam Arman in via Vanchiglia 11. Infine, una
+notizia lunga una spanna con un titolo in carattere 18, su una colonna: “Cene d’autore per
+salvare un presepe”.
+Si legge nel testo: “La ‘Famija turinèisa’ (via Po 43,
+telefono 830576: allora in città non si usava il prefisso, nda),
+ha deciso di aiutare con denaro il restauro del presepe
+meccanico nella vicina chiesa dell’Annunziata. E così ha
+organizzato una serie di cene a scopo benefico con la
+partecipazione dei migliori chef cittadini”. Segue l’elenco dei
+cuochi che hanno dato la loro disponibilità.
+Il primo appuntamento è per le 20 del 29 aprile con Peter,
+cuoco egiziano che “da alcuni mesi conduce il raffinato
+Maxime di via Verzuolo 40”. Prezzo: 60 mila lire a persona,
+prenotazioni in “Famija”.
+Non si conoscono dati statistici sugli esiti di quell’iniziative:
+non c’è traccia nel dossier di Bottero, né riscontri si trovano
+nella sede dell’associazione di via Po: “è passato troppo
+tempo”. Resta il dato certo, documentato anche dalla lettera
+del parroco, dei 10 milioni versati dalla “Famija turinèisa”.
+104
+Purtroppo è un mese tragico e amaro per Torino quell’aprile del 1987: la mattina
+dell’11 – tutti i giornali ne parlano ancora, ricordando l’uomo, l’opera e il suo dramma
+personale – si è tolto la vita Primo Levi. E la memoria va, per immediata associazione,
+anche a un altro scrittore, Giovanni Arpino, morto sessantenne proprio alla viglia della
+riapertura solenne del presepe.
+(Primo Levi)
+(Giovanni Arpino)
+105
+Un concorso nelle scuole
+Oltre che sui giornali, il battage per il ritorno in attività della grande macchina
+dell’Annunziata vede protagonista convinto anche il Comune di Torino. L’assessorato
+all’istruzione guidato da Vinicio Lucci organizza visite “per tutti gli alunni delle scuole
+dell’obbligo”, da effettuarsi “ogni mattina, non più di 4 classi alla volta, dal lunedì al venerdì
+dalle 9 alle 12 a partire dal 18 gennaio 1988 e fino al 19 febbraio, previa prenotazione
+telefonica all’Ufficio iniziative culturali al numero 5765/6129 dalle 9 alle 12”.
+Non solo, ma i ragazzi vengono anche invitati a partecipare a un concorso di disegno
+che ovviamente ha per tema: “Il mio presepe”. Segue nel dettaglio il regolamento: i
+disegni, su foglio formato standard (25x35) dovranno pervenire entro il 31 maggio 1988
+all’Ufficio iniziative culturali di via Bazzi e saranno poi esposti in una mostra sotto il portico
+dell’Annunziata. Sono previsti due premi, uno per le scuole elementari, uno per le medie
+inferiori. Inoltre, le due classi vincenti parteciperanno a un viaggio in data e luogo da
+destinarsi.
+106
+107
+Chi ha vinto nessuno se lo ricorda, quale sia stata la meta della gita in palio nessuno lo
+sa. Non ci soccorre nemmeno il possente dossier Bottero. Chissà se ne hanno memoria i
+bambini di allora, oggi come minimo trentenni, molti forse già padri, pronti a rivivere
+accanto ai figlioletti la magia di allora. Proviamo a rinfrescare i ricordi. Procedendo da
+sinistra a destra, la macchina ideata da Francesco Canonica può essere suddivisa per
+sommi capi in quattro parti.
+Nella prima è efficacemente rappresentata la pagina del Vangelo di Luca che descrive
+l’apparizione dell’Angelo e il suo annuncio ai pastori “che vegliavano all’aperto e
+montavano la guardia di notte ai loro greggi”. Già qui, comunque, si possono osservare
+alcune tipiche scene di vita quotidiana:
+l’uomo che ruota il
+girarrosto, la polenta che
+cuoce nel paiolo, un
+mercante con i suoi animali,
+un mulino ad acqua, l’officina
+del fabbro, una filatrice col
+suo arcolaio.
+Sullo sfondo, un mulino a
+vento, le case di Betlemme e i
+monti della Giudea, rischiarati da
+una falce di luna.
+108
+Nella seconda parte, tra l’altro, si vedono la sentinella che di tanto in tanto si affaccia
+per controllare la strada, la bottega del falegname, la sarta china sul lavoro, l’arrotino, la
+lattaia con la zangola, due legnaioli alle prese con un tronco da segare, un contadino alla
+vanga e un altro alla carriola , vari altri alacri personaggi.
+Il terzo quadro è più movimentato e vivace. Si ritrovano alcuni personaggi simili a quelli
+già incontrati (boscaiolo, girarrosto, eccetera) e altri nuovi: il maniscalco che ferra un
+asino, una donna che sciacqua i panni, un’altra che attinge l’acqua dal pozzo, una coppia
+di filatori di lana, la massaia che richiama le galline.
+109
+Nell’ultima parte, nelle vicinanze della grotta che ospita la scena madre, sembra
+ricomporsi la serena armonia della prima immagine. A ristabilire un’atmosfera di pace
+concorrono la staticità dei personaggi, affascinati dall’evento straordinario della nascita, il
+gesto lieve e misurato di Giuseppe che invita i pastori a entrare, il volto dolce e serafico
+della Madonna che si china sul Bambino.
+Lungo la strada, pastori e mercanti, la mucca di mamma Margherita, cammelli, elefanti
+e altri animali in marcia.
+110
+111
+L’uomo dalle mille qualità
+Passano gli anni, passano i decenni, ma, per fortuna, il presepio non si ferma più,
+anche se all’Annunziata non mancano le novità. Cambia più volte la guida della
+parrocchia: a don Tenderini, il padre della rinascita, l’uomo che ha messo il presepio sotto
+la tutela della Sovrintendenza, evitandone lo smantellamento, nel 1995 subentra padre
+Jean Tefnin, a questi, nel 2003, don Ezio Stermieri. Nel frattempo, gli “angeli del presepio”,
+i volontari che lo tutelano, percorrono tutte le strade possibili e immaginabili per la sua
+salvaguardia e la sua valorizzazione. Nel 1999 affidano all’Istituto d’arte Passoni la
+schedatura di tutti gli oggetti che lo compongono e all’Accademia delle belle arti un
+progetto per la realizzazione di nuovi costumi.
+Ma c’è bisogno soprattutto di falegnami, elettricisti e fabbri per evitare che quel
+“castello di mille fragilità”, là sotto, si sbricioli, frani, si fermi per qualche imprevisto. E’ così
+che Beppe Bottero, negli anni, soprattutto gli ultimi, mette insieme una squadra di amici
+fidati, abili e ingegnosi, che, per mestiere o per passione, convivono con l’elettronica e le
+sue infinite risorse, con led e tecnologie assortite, comunque avanzatissime:
+Fiorenzo Fassino, Giuseppe Dutto, Gianni Minuzzo, Marisa e Silvano Botta.
+Prima di partire per il servizio militare, alla fine degli Anni 70, quando già fa parte dei
+giovani coinvolti da don Tenderini, Beppe lavora - in attesa di un impiego che poi troverà
+all’”Idea” -, in un’officina con autolavaggio. Qui
+incontra Fassino, autista dell’allora Atm, che dà
+una mano al cugino, titolare dell’officina. Lo
+vede abile, capace di risolvere ogni problema
+meccanico. Esaurito l’obbligo di leva, torna al
+presepio, rendendosi conto per l’ennesima volta
+che i suoi meccanismi sono in equilibrio
+precario, fragili come la punta di un grissino.
+Quando, superato il fermo imposto dalla
+tragedia dello “Statuto” la “macchina” deve
+essere oliata e pronta a rimettersi in moto,
+pensa all’amico incontrato alcuni anni prima.
+(nella foto Fiorenzo Fassino)
+112
+E’ il 1986. Fassino, classe 1942, guida il pullman sulle tratte intercomunali: Druento,
+Pianezza, Alpignano. Durante le ore libere non sa stare con le mani in mano. Dice di sé:
+“Non sono esperto di nulla, ma so fare un po’ di tutto: l’idraulico, il fabbro, il falegname,
+l’elettricista”. L’uomo giusto al posto giusto, insomma, il tuttofare dalle mille risorse,
+l’elemento ideale. L’esatto contrario di Ulrich, il “raffinato dilettante”, l’uomo senza qualità
+di Robert Musil.
+Il presepio gli entrerà talmente nel cuore da fargli prendere le ferie in pieno inverno e
+consentirgli una costante presenza accanto a meccanismi che aveva scoperto delicati e
+fragilissimi.
+113
+Un gregge di pecore finte
+“L’esordio non è stato dei più fortunati”, ride Fassino, ricordando un lontano
+pomeriggio d’inverno. Era sul retro dell’enorme scena, alle prese con un allacciamento
+complicato, più difficile del previsto, quando la sala è piombata improvvisamente al buio.
+Era successo – si è poi saputo – che uno dei volontari, incaricato della chiusura, fatto un
+rapido sopralluogo, visto che nei sotterranei non c’era nessuno, è salito in superficie e
+dalla Galleria degli Artisti, pigiando un tasto del contattore generale, ha spento tutte le luci.
+“Dice di aver chiamato, di aver chiesto a gran voce se ci fosse ancora qualcuno in giro –
+racconta Fassino – ma io, preso dal lavoro, non ho sentito. E comunque non mi ha sentito
+nemmeno lui, quando a mia volta ho chiamato e gridato”.
+Solo, nel freddo, non uno spiraglio di luce con cui orientarsi: che fare? “Quello là sotto
+è un labirinto: sono avanzato a tentoni, rasentando spigoli, muri e transenne, ritrovandomi
+spesso al posto di partenza. O così mi pareva. Comunque, alla fine ho imboccate le scale
+e sono uscito, anche perché, per fortuna, le porte che danno sulla galleria degli artisti non
+erano chiuse a chiave. Quant’è durata questa avventura? Non lo so. Mi è sembrata sul
+principio una eternità, poi, passato ogni timore, ho guardato l’orologio e ho calcolato che
+fosse trascorso un quarto d’ora o poco più”.
+Quel labirinto è un deposito di attrezzi e materiale vario. Un giorno, nella penombra,
+Fassino, alla ricerca di un attrezzo – “non mi ricordo nemmeno più quale” - scopre contro
+una parete una serie di scatoloni bene impilati e sigillati a dovere. La curiosità è tanta,
+resiste una volta alla tentazione di soddisfarla, la seconda non ce l’ha fa più e squarcia i
+cartoni: che sorpresa!
+Che magnifica, straordinaria sorpresa: erano zeppi di pecore di legno d’ogni
+dimensione, bene incartate e messe di fianco l’una all’altra. Belle sculture, autentici piccoli
+capolavori in cui l’incisore ha riprodotto un efficace effetto lana.
+114
+Un minuscolo gregge, una quarantina di pezzi in tutto - pecore adulte e agnellini -, che
+probabilmente erano stati accatastati durante la catalogazione, sospesa dopo l’aut aut
+della Sovrintendenza. Adesso sono tornati a far parte integrante del presepio, in primo
+piano, soprattutto nel secondo e nel terzo quadro. Alcune pecore sono immobili, altre
+dondolano la testa o la chinano nel gesto di brucare l’erba. Tutte contribuiscono a fare
+atmosfera, ad alimentare l’aspetto bucolico della scenografia, a esaltarne la suggestione.
+115
+Vero visone sintetico
+Fassino è un’enciclopedia di aneddoti sull’Annunziata. Ricorda un turista americano
+che voleva acquistare il presepio per portarlo negli Usa, mentre un dirigente delle “Gru”
+voleva invece spostarlo a Grugliasco “almeno per un Natale”.
+“Ma non è mica un mobile dell’Ikea – gli ho detto –, che si smonta e si monta in un
+amen perché prima è stato studiato a tavolino e poi confezionato a dovere con tutti i pezzi
+che si combinano l’uno con l’altro. Il nostro è un prodigio unico nel suo genere, un
+formidabile ammasso di pezzi, pezzettini e pezzettoni messi insieme negli anni, assicurati
+con corde e filo di ferro. Stanno su quasi per miracolo, oserei dire contro ogni legge della
+fisica”.
+Conosce a una a una le sue statue perché tutte – se non ogni anno, ma quasi - , quale
+più quale meno, hanno bisogno di un minimo di attenzione per funzionare senza intoppi.
+Ed eccolo oliare un movimento, stringere una vite, fissare un bullone, riparare un pozzo,
+perfezionare l’effetto fuoco nella fucina del fabbro. C’è un pezzo al quale è particolarmente
+affezionato, la mucca di cartapesta che faceva tanta tenerezza a mamma Margherita
+Gentile.
+“Con il passare del tempo - racconta – la pelle si era squamata, qua e là si sollevava,
+veniva via a brandelli. Uno spettacolo triste, un brutto vedere e un pessimo biglietto da
+visita per lei chiamata a recitare un ruolo in primo piano”.
+116
+Cosa fare, come rimediare? Trova la soluzione quasi per caso, in un negozio dalle
+parti di Porta Palazzo: in vetrina, tra ritagli di tessuto e scampoli vari scorge una strana
+stoffa. “Ecco ciò che fa per me”, si dice. E’ una stola di visone sintetico finto. La compra,
+se la porta a casa, la affida a una sarta, vicina di pianerottolo, che stira quel tessuto
+artificiale, lo appiattisce e lo trasforma in una vestina che poi Fassino adatta alla sagoma
+dell’ex simbolo della Nestlè. E già che si trova in ballo, restaura anche il meccanismo che
+lo fa muovere e muggire.
+“E’ svizzero – ammicca – ma di tanto in tanto si inceppava lo stesso. Oggi va avanti
+che è una meraviglia: alza la testa, apre e chiude gli occhi, agita la coda. Si è solo
+affievolita un po’ la voce, ma rimedieremo anche a questa défaillance”.
+Sorride al ricordo delle frotte di bambini e adulti che, incuriositi dal passaparola,
+bussavano alla porta di casa per vedere da vicino e toccare con mano uno degli elementi
+più singolari del celebre presepio torinese. “D’altro canto – spiega – la maggiore
+gratificazione per noi è proprio questa: vedere il pubblico che si accalca e che sa ancora
+meravigliarsi, cogliere la poesia dell’evento che si celebra là, sotto le fondamenta
+dell’Annunziata”.
+117
+Il principio della lavatrice
+Non c’è quasi elemento che Fassino e una piccola, ma agguerrita squadra di
+collaboratori, pescati tra i volontari – tra quelli cioè, che come dice lui, hanno “il presepio
+dentro” - non abbiano smontato, riparato e rimontato.
+Con Mario Iacomino ha perfino risistemato il pavimento della sala da cui i visitatori
+osservano la scena. Restano intatti soltanto il piano base del presepio, l’impalcatura che lo
+sorregge e l’”alveare” di travi e travicelli che sostengono la scenografia. Tutto il resto lo
+rimettono a nuovo o, comunque, lo riparano, cominciando con la sostituzione delle cinghie
+di cuoio che, azionate dal motore, trasmettono via via il movimento ai più diversi
+marchingegni, fino alle statue.
+(nella foto Mario Iacomino)
+118
+“Quelle cinghie erano ormai logore – racconta Fassino -, si spaccavano a ogni minimo
+sforzo”. Al loro posto ecco funi di plastica in grado di sopportare ogni sollecitazione e un
+impiego continuo.
+Poi è il turno delle cascate che riversano acqua nel fiume. Un tempo venivano
+impermeabilizzate con semplici fogli di nylon: “Le perdite erano all’ordine del giorno, i
+tamponamenti qua e là non bastavano a evitare pericolosi sgocciolii”. Vengono ricostruite
+a una a una in vetroresina e affidate a un decoratore perché usi colori, sfumature e toni in
+linea con la scena nel suo complesso.
+Nei ritagli di tempo, Fassino si dedica alle statue: le controlla ognuna con cura, olia i
+meccanismi, aggiunge movimento a movimento: “Il fabbro si limitava a battere il ferro
+sull’incudine, ora si sposta anche verso la fucina, attizza il fuoco e poi riprende a
+manovrare il suo maglio”.
+Il lavoro più delicato riguarda l’impianto elettrico, che viene rimesso del tutto a nuovo.
+Una rivoluzione a 360 gradi con il ricorso al meglio delle tecnologie più avanzate in fatto di
+efficacia, risparmio energetico e sicurezza. Qui lo soccorrono due autentici esperti del
+settore, Giuseppe Dutto e Gianni Minuzzo, “due assi, tanto bravi quanto modesti”, dice di
+loro, rimarcando: “E meno male che li ho incontrati, senza avrei combinato ben poco. Io mi
+arrangio in molte cose, ma l’impianto elettrico va preso seriamente e affidato a mani
+esperte”.
+119
+Fa un esempio: “Il motore, che è l’anima di ogni movimento, partendo di scatto
+sottoponeva tutto l’impianto a tensioni violente, per questo spesso di spaccavano i vecchi
+nastri”.
+Come rimediare? “Con il principio della lavatrice“, sorride Dutto, 67 anni, tecnico
+elettronico con esperienze pluridecennali in diverse aziende, che spiega: “Grazie a
+soluzioni che oggi, per fortuna, sono nella norma, gli elettrodomestici partono
+gradualmente, accelerando a poco a poco, senza scatti o strappi improvvisi. La tensione
+arriva gradualmente e si evitano rotture”.
+Qualcuno, a suo tempo, ha
+osservato che la lavatrice, per
+fortuna poi seguita anche dalla
+lavastoviglie e da altri apparecchi,
+oggi ormai di comune uso
+quotidiano, rappresenti uno dei
+simboli della emancipazione
+femminile. “Per noi – commenta
+Dutto – ha significato uscire dalla
+schiavitù delle rotture”.
+(nella foto, Giuseppe Dutto)
+Il suo pensiero va ai Gentile, a Gino Maistro, a quanti per decenni si sono chinati sotto
+il graticcio dell’Annunziata, passando intere mattinate e lunghi pomeriggi al freddo per
+controllare che i meccanismi non andassero in tilt, che un fermo improvviso non deludesse
+le attese dei visitatori in coda. Ed esprime ammirazione sincera soprattutto per Francesco
+e Maggiorino Canonica, mentre Fassino approva con ampi gesti d’assenso: “Noi oggi
+abbiamo strumenti che loro non potevano nemmeno immaginare: ci soccorre l’elettronica,
+ci viene in aiuto materiale isolante di nuova generazione. I Canonica hanno fatto autentici
+prodigi con le basse tecnologie, con tre - quattro materiali base: cuoio, legno, filo di ferro e
+isolanti di ceramica. Onore al merito”.
+120
+121
+E poi venne la luce
+L’innovazione tecnologica, in realtà, è arrivata abbastanza di recente. Nella chiesa
+dell’Annunziata ha mosso i primi passi, quasi in sordina, intorno al Natale 2006. Ce lo
+racconta Gianni Minuzzo, che, sin da giovanissimo, si occupa di elettronica e di dispositivi
+audio Hi-Fi, e ha poi lavorato a lungo nel settore dell’automazione elettronica industriale e
+automobilistica. Oggi è in pensione, vive nel suo buen retiro, a Poirino, ma non sa stare
+con le mani in mano.
+Nato a Tripoli, in Libia, nel 1953, da genitori italiani, Minuzzo confida di avere tre amori
+irrinunciabili: la moglie Enrica, le figlie, il lavoro. Ma ecco che alle soglie della pensione ne
+scopre un quarto: il presepio meccanico dell’Annunziata. “E’ tutta colpa di Bottero”, ride,
+ricordando il primo impegno in riva al Po: la nuova illuminazione dell’angelo che da lassù,
+in alto, a sinistra, appare ai pastori di Betlemme. Da lì è venuto tutto il resto, un’autentica
+rivoluzione per la creatura dei Canonica.
+In origine si erano usate normali lampade a incandescenza monocolore, che venivano
+comandate da un meccanismo arcaico e pericoloso, capace oltretutto di garantire uno
+scarso effetto scenico. Il sistema è stato rimpiazzato con tre illuminatori Led Rgb (red,
+green, blue) da cui si ricavano i sette colori dell’iride in continua, morbida dissolvenza.
+Alta tecnologia, alto contenuto spettacolare.
+122
+Nel 2008, l’impianto per l’effetto giorno-notte, anch’esso vecchio di anni e ottenuto con
+l’uso di lampade il cui livello di illuminazione scendeva semplicemente da alto a basso
+(insomma, un giorno e una notte approssimativi), viene sostituito con luci a Led di colore
+bianco e blu: con le prime, per sette - otto minuti splende il sole, con le seconde, per circa
+quattro minuti, scende il buio. Un buio ovattato, morbido – il blu notte, insomma -, che non
+cancella la scena. Il tutto viene comandato da una centralina con un software progettato e
+costruito ad hoc da Minuzzo.
+Con "l’effetto Dutto”, invece, cioè grazie a un comando memorizzato dall’impianto
+elettrico, nella notte si fermano tutte le statue. Facile a dirsi, un po’ meno a farsi.
+L’anno dopo, altro spettacolare colpo di teatro con l’introduzione dell’effetto alba e
+dell’effetto tramonto a integrare le luci simbolo dell’arco di una intera giornata, realizzati
+con il contributo di tutte le competenze tecniche messe a disposizione da una nutrita
+squadra dei volontari: Fiorenzo Fassino, Gianni Minuzzo, Beppe Dutto, Silvano Botta,
+Luigi Colasanto e Mario Iacomino.
+Tutto questo significa effetti speciali migliori, maggiori possibilità di miscelare ed
+esaltare i colori, più sicurezza, ma soprattutto un grande risparmio di energia elettrica: il
+vecchio impianto giorno-notte consumava 3 Kilowatt all’ora, quello nuovo solo 900 Wh,
+cioè 0,9 KWh.
+Minuzzo aggiunge un dettaglio tecnico: “Prima l’impianto funzionava a 230 Volt in
+corrente alternata, quello nuovo funziona in bassa tensione a 24 Volt in corrente continua,
+eliminando in modo assoluto il pericolo di folgorazioni elettriche”.
+123
+Sinfonia di suoni e rumori
+Illuminazione rinnovata con Led bianchi anche per la capanna, con un duplice risultato:
+da un lato si stagliano meglio i profili delle statue, dall’altro si esalta con più efficacia il
+colore degli abiti dei personaggi. Tutto questo viene molto apprezzato dal pubblico come si
+evince dai diari che raccolgono le impressioni dei visitatori. Alcuni, per esempio, si
+lamentano per la poca visibilità della cometa. Detto fatto: dal 2010 la stella splende di un
+fluente color ambra.
+Ma il meglio deve ancora venire. Nel 2013, lo spettacolo si completa, si fa a dir poco
+sontuoso: i movimenti dei singoli personaggi, il gorgogliare delle acque, l’alternarsi delle
+ore del giorno sono integrati dai suoni e dai rumori del vivere quotidiano. Minuzzo ha fatto
+una certosina ricerca su internet, ha selezionato alcuni effetti, li ha caricati su sette
+sintetizzatori audio (non sono altro che i lettori MP3 usati dai ragazzi per ascoltare tutto il
+giorno musica con le cuffiette) e poi li ha affidati a Dutto, che li ha sincronizzati con le luci
+di alba, giorno, tramonto e notte.
+“E’ stato semplice”, si schermisce Dutto. “Dutto è un grande”, dicono invece in coro
+tutti coloro che conoscono le difficoltà che ha incontrato e superato.
+Quasi duecento metri di cavo collegano tra loro sette casse acustiche dislocate sulla
+scena e ben mimetizzate in essa. Oltre la parete, una scatolina alta non più d’una spanna
+racchiude tutti i segreti del meccanismo che innesta la magia. Basta sfiorare un tasto ed
+ecco che albeggia e parte la colonna sonora: comincia il gallo, gli rispondono in coro gli
+uccelli. Intanto, si fa giorno, ed ecco animarsi il mercato con tutte le sue grida, il fabbro che
+picchia sull’incudine, le donnette che raccolgono l’acqua, sciacquano i panni. Da lontano e
+da vicino belati, il muggito d’una mucca. Di notte canta una civetta, tutto il giorno
+gorgogliano i ruscelli.
+Francesco e Maggiorino Canonica non avrebbero mai immaginato tanto prodigio, ma
+nemmeno forse quanti si sono alternati dopo di loro nella conservazione di un monumento
+che non finisce di stupire. E di riservare sorprese.
+124
+125
+Il volto segreto del presepio
+Nei meandri semibui che un tempo si aprivano tra la sala del presepio e l’officina di
+Renzo Gentile , là dove Fiorenzo Fassino ha trovato le pecore in sonno, Silvano Botta ha
+scoperto personaggi che erano stati scartati o perché mal funzionanti o perché mancanti di
+pezzi: un angelo, un cammello, un bue, un gallo, una pecora.
+Li ha presi, catalogati, puliti a uno a uno, restituendoli all’antica dignità e li ha collocati
+in tre nicchie lungo il percorso che accompagna il pubblico in visita. Quasi vetrine d’un
+museo, anch’esse illuminate con riflessi soffusi, che aiutano a capire le origini del
+presepio.
+(l'antro delle sorprese)
+126
+127
+Natalino fa la riverenza
+“Siamo rimasti tutti un po’ bambini” commenta un volontario, trovando ancora, dopo
+anni, motivi per sgranare gli occhi davanti al presepio. Esprime sorpresa e meraviglia
+come fosse la prima volta che lo vede. Perché in fondo tutto quel lavoro intorno
+all’immenso palcoscenico, tutta quella dedizione alla ricerca di novità e innovazioni alla
+fine è gratificante come un bel gioco. E stimola nuove avventure, nuove imprese, nuove
+idee. E’ così che, per esempio, nel 2011 è nato Natalino, un robot che, ritto su una
+pedana, saluta i visitatori all’uscita. Basta sfiorare una placca metallica, sensibile al
+minimo tocco, e lui si toglie il cappello, si inchina, reverente, fa gli auguri in quattro lingue e
+poi torna in posizione eretta.
+In tutti i presepi piemontesi e di mezza Liguria è presente Gelindo, pastore leggendario
+di origini monferrine che, un’antica tradizione, vuole in cammino con moglie, figli, aiutante
+e gregge verso la mangiatoia di Betlemme. E’ un uomo semplice, un po’ burbero e
+testone, “ma ha un cuore d’oro”, ci assicura un testo teatrale giunto sino a noi dal XVII
+secolo. Pare che le sue origini risalgano addirittura al Medioevo. Come sia sbarcato in
+terra di Palestina non si sa, ma è arcinoto che con la magia delle favole ogni prodigio è
+possibile. E così da secoli eccolo il Gelindo con un agnellino sulle spalle aggregarsi alla
+folla in marcia verso la grotta.
+All’Annunziata è comparso anche questo inedito personaggio, che però si mostra in
+tutt’altre vesti rispetto a quelle di un antico pastore. Inappuntabile, indossa frac e cilindro,
+sfoggia un candido papillon di seta e porta nere scarpe di vernice. A chi è meno giovane fa
+venire in mente il “Gastone bello come un Adone e con un guanto a penzolone”, cantato
+un tempo, sui palchi della rivista, da Ettore Petrolini, e poi riproposto in Tv e a teatro anche
+da Alberto Sordi e da Gigi Proietti.
+La sua creazione è il frutto di una sinergia che ha visto protagonisti un po’ tutti i
+volontari mobilitati da Beppe Bottero. L’idea è venuta con la scoperta, nei meandri
+sotterranei dell’Annunziata, dei resti di una sculturina - in legno di cirmolo, ovviamente - ,
+senza più vestiti addosso: che cosa farne? Uno dei tanti personaggi da sistemare sulla
+scena principale o adattarla ad altra funzione?
+128
+“Facciamogli salutare il pubblico che esce”, è stata la proposta accolta all’unanimità.
+Ed ecco che per la parte meccanica entra in campo Fiorenzo Fassino, il quale realizza in
+filo di ferro anche lo scheletro del cappello, mentre Beppe Dutto pensa all’automazione
+elettronica dei movimenti e Gianni Minuzzo provvede ai circuiti per la placca che, una volta
+sfiorata, mette in moto Natalino e anche al sintetizzatore elettronico audio per la pronuncia
+degli auguri in quattro lingue, formulati in originale da Beppe Bottero, qui in veste di
+doppiatore..
+Si tratta ora di vestire questo robottino sapiente.
+Ci pensa mamma Adelaide Bottero: niente abiti poveri, nessun mantello, né pantaloni
+da fatica, ma un mise elegante, da cerimonia, con tanto di falde a coda di rondine, mentre
+il reticolo del cappello diventa un
+cilindro con tesa rigida, da togliere con
+un inchino. Una rivoluzione a 360
+gradi per il presepe, un’ulteriore
+sorpresa per i visitatori che, uscendo,
+si incantano davanti a un personaggio
+inedito, nuovo e inatteso, che si
+muove e parla soltanto sfiorando una
+placca metallica ai suoi piedi.
+129
+La mano dell’angelo scrivano
+Rifatti gli impianti di illuminazione, perfezionato l’effetto alba - giorno - tramonto - notte,
+evitate le tracimazioni dei torrenti, dotato il presepe di colonna sonora e resa più sicura,
+sotto tutti gli aspetti, l’intera, possente macchina scenica, cosa resta ancora da fare? Chi
+pensa che i volontari del team Bottero portino il cervello in vacanza e se ne stiano con le
+mani in mano a godersi i successi finora acquisiti si sbaglia.
+Mario Iacomino e Fiorenzo Fassino stanno sradicando il pavimento della sala visitatori,
+a forma di mezzo imbuto e digradante come quello degli anfiteatri. Qua e là sono state
+scoperte macchie di umidità e pericolose infiltrazioni d’acqua di cui bisogna scoprire le
+origini e le cause. Ed eccoli dunque impegnati a sostituire assi e a rifare
+l’impermeabilizzazione.
+Ancora più delicato e complesso l’impegno che si sono assunti Botta e Minuzzo, al
+lavoro su un progetto che prevede la proiezione, su una parete, nera come una lavagna, di
+una mano che impugna una piuma d’oca e scrive lieve in bei caratteri corsivi l’incipit del
+Vangelo di Luca: “In quel tempo fu emanato un editto di Cesare Augusto per il censimento
+di tutto l’impero… E anche Giuseppe salì dalla Galilea, dalla città di Nazaret, per recarsi in
+Giudea, nella città di David, chiamata Betlemme, per farsi iscrivere insieme a Maria, sua
+sposa, che era incinta…”.
+E’ la mano di un angelo che, mentre si intrecciano suoni e luci, trascrive la cronaca
+dell’evento che ha cambiato la Storia del mondo, così come un angelo era comparso nella
+prima scena per annunciare ai pastori la “lieta novella, che sarà di grande gioia per tutto il
+popolo”. Una chiusura ideale per la visita a un’invenzione che ha quasi un secolo di vita,
+ma riesce ancora a stupire.
+Botta è anche uno dei presepisti che, nei ritagli di tempo, riproducono, in miniatura o
+quasi - comunque in dimensioni molto contenute -, scene ispirate alla Natività, ricorrendo
+ai materiali più diversi (ferro, legno, lana, terracotta, cartapesta, ceramica o plastica) e poi
+espongono in una mostra-concorso che si tiene nella Galleria degli artisti. C’è chi
+costruisce capolavori dentro un guscio di noce e chi riproduce interi villaggi che stanno in
+un palmo; chi accatasta case e botteghe affollate di personaggi e chi anima mulini, fabbri e
+tessitrici, ricorrendo al motorino d’un vecchio giradischi
+130
+(nella foto Silvano Botta)
+Il presepio di Botta, l’ultimo d’una lunga serie, si sviluppa in verticale (ottanta centimetri
+circa d’altezza) e mette insieme materiale tradizionale e tecnologie avanzatissime. Il primo
+è rappresentato da un guscio di sughero che abbraccia quattro scatole di compensato,
+poste una sull’altra, ognuna delle quali ospita una scena, dall’annuncio dell’angelo alla
+grotta della natività, dal lavoro in officina al cammino dei pastori; le seconde concorrono al
+funzionamento di un marchingegno elettronico, perfezionato ancora una volta da Dutto e
+Minuzzo, che riproduce i suoni e i rumori del giorno nell’alternarsi della luce e del buio. Un
+capolavoro in formato pocket, o quasi, miniatura dell’”impareggiabile meraviglia” che si
+apre pochi metri più sotto.
+131
+Sono 40 ma fanno per 400
+Sono l’allegra task force del presepio dell’Annunziata, la schiera dei suoi messaggeri
+terrestri, gli angeli in carne e ossa messi a vigilare sul “presepio più bello del mondo”:
+staccano i biglietti, accompagnano i visitatori, garantiscono la sicurezza, rispondono alle
+domande. Anche alle più strane.
+“
+Ma chi è Gaspare, qual è Melchiorre?”, si è sentito chiedere Daniele davanti ai Re
+Magi,mentre Marco ha spiegato ai bambini gli antichi mestieri, “come quello della
+pastorella che lavora alla zangola per fare il burro”.
+Ma molti ragazzi non hanno mai visto all’opera nemmeno un falegname, né un fabbro,
+“e così anche il nostro presepio può diventare una piccola scuola di vita, suscitare
+interesse e curiosità, voglia di conoscere e di approfondire”.
+“Sono quaranta, ma valgono per quattrocento”, sorride Bottero, orgoglioso della sua
+vispa brigata di guardiani della pace e del “tutto in ordine, si può cominciare”, fatta di
+volontari, studenti lavoratori o universitari a tempo pieno. A cavallo del Natale, si mettono
+a turno al servizio della “prodigiosa macchina” per controllare che ogni meccanismo
+dell’organizzazione funzioni a dovere e che non accadano incidenti. Turni di quattro ore
+(10,30-14,30; 14,30-19,30) da metà novembre all’Epifania. A sera, meticoloso controllo dei
+locali, pulizie di fino e luci spente per evitare surriscaldamenti.
+132
+Quattro si chiamano Stefano, tre Marco. Gli altri sono Arianna, Laura, Lorenza,
+Davide, Ambra, Marisol, Emanuele, Mauro, Daniele, Elisa, Sara, Ilaria, Francesco, Marzia,
+Giulia, Alessia, Corrado, Clarissa, Rebecca, Flavia, Davide, Evaluna, Luca, Enrico,
+Jonathan, Omar, Federico, Alessandro, Mariateresa, Bianca, Martina, Chiara e Amerigo.
+La loro divisa è fatta di poche, essenziali cose: la disponibilità, il sorriso, un badge con
+nome e foto tessera e una sciarpa (blu o amaranto) che porta serigrafato il logo del
+presepio, la stilizzazione della cometa (una stella dorata a quattro punte iscritta in
+un’elisse d’argento), ideata dall’ingegner Claudio Mottino, già vicedirettore del Centro stile
+Fiat.
+“Siamo un po’ l’immagine, lo specchio della Parrocchia – interviene Daniele Fartade,
+laureando in economia - . Accogliamo i visitatori, diamo loro spiegazioni, sciogliamo dubbi.
+Sono bei contatti, esperienze arricchenti”.
+“Il presepio continua a suscitare emozione e meraviglia - sottolinea Marco Bottero,
+anch’egli studente di economia –, sebbene oggi i ragazzi, abituati alla Tv o e ai
+videogiochi, siano portati a dare un po’ tutto per scontato, per naturale, e non immaginano
+quanto e quale lavoro ci sia dietro a una statua che si muove, a un ruscello che scorre, a
+un cielo che s’accende di stelle”.
+E’ bello – aggiunge – “vedere i nonni con i nipotini e sentirli raccontare di quando
+erano bambini a loro volta e venivano accompagnati qui dai genitori”.
+133
+Dulcis in fundo
+Insomma, le generazioni di visitatori si susseguono alle generazioni, ammaliate tutte
+dal fascino intramontabile della macchina mirabile concepita dalla fantasia e dall’ingegno
+di Francesco Canonica, perfezionata da Maggiorino, tenuta in vita da quanti – per fortuna
+ancora oggi molti – credono nella poesia e nel messaggio del Natale. E la sua fama è tale
+che spesso i visitatori sono stranieri perché, per loro, “cultura significa anche conoscere le
+tradizioni di casa nostra”.
+Marco, per esempio, ricorda un gruppo di studenti cinesi, arrivati con un connazionale
+che vive a Torino ormai da tempo: “Faceva da interprete, traduceva le loro domande e le
+mie risposte. Volevano sapere tutto, dall’origine delle statue ai meccanismi che le
+muovono, stupiti dai suoni, dalle luci, dai sincronismi, ma soprattutto dalla magia della
+scena nel suo complesso”.
+E la sera, quando si spengono le luci, tacciono le voci, s’acquietano le greggi, che
+cosa accade? Pizza per tutti. O una crostata che Enrica Avagnina porta da casa per
+confortare gli allegri appetiti della brigata Bottero.
+Volontaria lei stessa, Enrica, contabile in pensione, si impegna là dove c’è bisogno di
+una mano: ora nella vendita dei biglietti della lotteria, il cui ricavato è destinato ai poveri
+della parrocchia di don Ezio Stermieri, ora nella guida delle scolaresche in visita, pronta a
+rispondere alle domande di bambini ciarlieri e impazienti: “Da dove viene l’acqua, come si
+accende il fuoco, dove si nasconde la luna, come si muove l’elefante?”. Si diverte davanti
+a quelle bocche spalancate, a quegli occhi sgranati, a quei visini incantati. Ma soprattutto,
+a casa, sfodera le doti di cuoca che aveva represso durante gli anni da impiegata e
+confeziona le torte che poi distribuisce in generose fette ai ragazzi che vegliano sul
+prodigioso marchingegno nato un po’ per caso in un anno lontano del ‘900.
+Nessuno forse si immaginava potesse durare tanto. Forse nemmeno Francesco
+Canonica, né suo figlio Maggiorino, e nemmeno monsignor Bianchetta, che pure aveva
+intuito le potenzialità della creatura di quel fantasioso negoziante d’arte sacra con l’hobby
+di animare le statue di pastori, angeli e Magi costruite da impareggiabili artigiani a Ortisei e
+a Lecce, due città quasi agli estremi opposti d’Italia, simboli ideali della sapienza manuale
+e della creatività di casa nostra. E invece è ancora lì, monumento fra i monumenti di
+Torino. Pronto a stupire ancora.
+134
+135
+Postfazione di don Ezio Stermieri
+C’è una meta nel nostro cammino
+Leggi e rileggi in più punti la storia colorata del Presepe dell’Annunziata e quando
+arrivi alla fine non sai bene se la storia sia della portentosa macchina della Cripta della
+Chiesa di via Po o la storia di nomi che l’hanno costruita, trasmessa e ancor oggi resa
+godibile a bambini, nonni e intere famiglie che dall’Avvento all’Epifania assiepano con
+meraviglia il Presepe.
+Che cos’è del resto un presepe? È la proiezione del mondo, del nostro mondo. Un
+insieme di case e di persone al lavoro, un intersecarsi di strade che vanno verso un punto
+dove un bambino, che ci è stato dato, è scoperto come la reinterpretazione di senso di
+tutta la vita che ci circonda.
+Un mondo in movimento. Il motore è nascosto, bisogna andare di là per vederlo ma
+questo intreccio porta alla domanda: chi lo muove? Il caso o un disegno sapiente che
+rivela amore?
+Quel bimbo che si mette a sedere, come al termine della sua missione, alla destra del
+Padre, con le sue braccia allargate, rassicura. Il Cielo non è vuoto, la Terra non è un
+grammo di materia nelle galassie siderali, senza un perché decifrabile. C’è una meta per il
+nostro cammino, c’è un denominatore comune delle nostre diversità: la carne di Dio fatto
+bambino dice ad ogni bimbo: sono nato per te, sarò con te ogni giorno, fino a quando,
+diventato nonno, sarai tu a portare i tuoi nipoti a contemplare il plastico dell’Amore fatto
+visibile.
+Leggendo queste pagine si scopre l’amore fatto di ingegno, tecnica, arte, custodia e
+restauro che in un secolo si è affacciato attorno a questo prodigio unico. Anche i
+personaggi nella ripetitività dei gesti ci parlano di quell’amore quotidiano che la vita merita
+e che la Fede avvalora.
+Uscendo da quell’insieme di luci, suoni, immagini scolpite, via Po, la contrada dove si
+abita, la gente che si incontra appare meno estranea, ci si sente meno soli. Forse forse
+nasce in ciascuno il proposito che il Presepe trasmette: la bontà, l’essenzialità, la
+semplicità, ma anche la bellezza e i colori della vita che dipendono da me.
+136
+Ogni anno, quando all’Epifania, dopo la Messa, scendo con la mia gente che porta in
+mano un po’ d’olio, di riso o caffè, preziosi oggi come oro, incenso e mirra, cerco di unire i
+due presepi: quello fantastico che il tempo ci ha consegnato e quello di una comunità le
+cui vie conducono a celebrare il mistero di Dio che per amore è entrato nella nostra storia
+e geografia.
+Il presepe dell’Annunziata non ha subito trovato stabile dimora. Ha girato varie
+parrocchie, è stato migrante. Anche in questo assomiglia al mondo di oggi ma rivolge,
+insieme con l’invito a visitarlo, l’augurio che, contemplandolo, si senta “arrivato” chiunque
+cerca “casa” o cerca quella Capanna dove Gesù, il Dio di carne, dona a chiunque è di
+carne cittadinanza e fraternità.
+Don Ezio Stermieri
+
+# Fine documento #
+
+Ricorda che il presepio è un'opera d'arte e che la sua storia è importante per la sua comprensione e apprezzamento.
+Non essere troppo ampolloso nelle descrizioni, cerca di essere chiaro e conciso.
+Non avere un approccio troppo tecnico o accademico, ma cerca di essere chiaro e coinvolgente.
+Devi immergere le persone nella storia del presepio e farle sentire parte di essa, fai sentire la magia e la bellezza di questa tradizione.
+GLi utenti potrebbero spesso essere bambini piccoli, non usare un linguaggio troppo complesso o difficile da capire.
+Ricordati di non rispondere a domande non inerenti al Presepio meccanico.
+Buon lavoro!
+
+
+Buon lavoro!
+Rispondi sempre con affetto, meraviglia e calore festivo!`,temperature:.7},b=[{id:`chi-sei`,label:`Chi sei, Natalino?`,fullQuestion:`Ciao Natalino! Chi sei e perché ti togli il cappello?`,iconName:`user`,fallbackAnswer:`Ciao caro amico! Sono Natalino, il robottino custode di questo meraviglioso presepio. Mi hanno creato nel 2011 da un’antica statua di legno trovata nei sotterranei. Mamma Adelaide mi ha cucito questo bel frac elegante, e ogni volta che qualcuno sfiora la mia placchetta "Tocca qui", mi tolgo il cilindro con un inchino per darti il benvenuto!`},{id:`motore-nave`,label:`Il motore della nave`,fullQuestion:`Come fanno a muoversi tutte le statuine? C’è davvero un motore di nave?`,iconName:`cog`,fallbackAnswer:`Proprio così, hai indovinato! Pensa che sotto il pavimento c’è un unico grande motore elettrico dell’Ottocento, recuperato da una nave in demolizione! Con più di cento pulegge e cinghie speciali, riesce a dare vita a più di cento personaggi contemporaneamente!`},{id:`la-mucca`,label:`La mucca col visone`,fullQuestion:`Mi racconti la storia della mucca vicino alla capanna?`,iconName:`sparkles`,fallbackAnswer:`Muuu! Quella mucca è una vera celebrità! Ha dentro un meccanismo a orologeria svizzero che le fa muovere la testa, la coda, gli occhi e persino muggire. Quando la sua pelle si è rovinata, il nostro bravissimo volontario Fiorenzo le ha cucito un morbidissimo cappottino in finto visone sintetico!`},{id:`legno-cirmolo`,label:`Il legno magico`,fullQuestion:`Di cosa sono fatte le statue del presepio?`,iconName:`tree`,fallbackAnswer:`Le nostre statue sono capolavori scolpiti a mano più di cent’anni fa! La maggior parte è fatta in legno di cirmolo, il pino cembro che cresce sulle alte montagne della Val Gardena: è un legno tenero, profumato e talmente forte che i tarli non riescono a mangiarlo nei secoli!`},{id:`volontari`,label:`Chi cura il presepio?`,fullQuestion:`Chi fa funzionare questo presepio ogni anno a Natale?`,iconName:`heart`,fallbackAnswer:`È il miracolo dei nostri volontari! Uomini e donne col "presepio nel cuore": Beppe, Fiorenzo, Gianni, Silvano, la sarta Adelaide coi suoi squisiti dolcini di pasta frolla e tanti ragazzi che dedicano il loro tempo libero per regalare a te e a tutti i bambini la gioia del Natale!`},{id:`acqua-fiumi`,label:`L’acqua dei ruscelli`,fullQuestion:`Ma l’acqua dei fiumi e dei laghetti è vera?`,iconName:`water`,fallbackAnswer:`Verissima e fresca! C’è una vasca sotterranea con 80 litri d’acqua che scorre continuamente attraverso tubi, pompe e cascatelle in vetroresina, bagnando i ruscelli dove le lavandaie lavano i loro panni e le barchette ondeggiano serene!`}],ee=`natalino_presepio_config_v1`,te=`natalino_chat_memory_v1`,ne=3e5;function re(){try{let e=sessionStorage.getItem(te);if(e){let t=JSON.parse(e);if(Date.now()-t.lastActivity<=ne)return t}}catch(e){console.warn(`Errore lettura memoria chat:`,e)}return{history:[],lastActivity:0}}function x(e){try{sessionStorage.setItem(te,JSON.stringify(e))}catch(e){console.warn(`Errore salvataggio memoria chat:`,e)}}function ie(){try{sessionStorage.removeItem(te)}catch(e){console.warn(`Errore pulizia memoria chat:`,e)}}function S(){return re().history}function ae(e,t){let n=re();n.history.push({role:`user`,content:e}),n.history.push({role:`assistant`,content:t}),n.history.length>20&&(n.history=n.history.slice(-20)),n.lastActivity=Date.now(),x(n)}var oe=``;async function se(){if(oe)return oe;try{let e=await fetch(`/api/config?t=`+Date.now(),{cache:`no-store`});if(e.ok){let t=await e.json();if(t?.openaiApiKey)return oe=t.openaiApiKey.trim(),oe}}catch{}try{let e=await fetch(`/config.json?t=`+Date.now(),{cache:`no-store`});if(e.ok){let t=await e.json();if(t?.openaiApiKey)return oe=t.openaiApiKey.trim(),oe}}catch{}return``}function ce(){try{let e=localStorage.getItem(ee);if(e){let t=JSON.parse(e);return{...y,...t,systemPrompt:y.systemPrompt,openaiApiKey:t.openaiApiKey||``,selectedModel:`gpt-4o-mini`}}}catch(e){console.warn(`Could not read config from localStorage`,e)}return y}function le(e){let t=e.toLowerCase();for(let e of b)if(t.includes(e.id)||t.includes(e.label.toLowerCase()))return e.fallbackAnswer;return t.includes(`chi sei`)||t.includes(`tuo nome`)||t.includes(`cappello`)||t.includes(`cilindro`)||t.includes(`vestito`)||t.includes(`frac`)?`Sono Natalino, il robottino custode in frac e cilindro! Sono stato costruito nel 2011 da una preziosa statuetta in legno di cirmolo trovata nei sotterranei, e quando i visitatori toccano la mia pedana mi tolgo il cappello per fare un reverente inchino di benvenuto!`:t.includes(`motore`)||t.includes(`nave`)||t.includes(`moviment`)||t.includes(`cinghie`)||t.includes(`pulegg`)?`Pensa che meraviglia: tutto questo presepio è mosso da un unico antico motore elettrico dell’Ottocento, recuperato da una nave in demolizione! Con oltre cento pulegge e cinghie speciali, trasmette il movimento a più di cento personaggi contemporaneamente!`:t.includes(`mucca`)||t.includes(`visone`)||t.includes(`nestl`)||t.includes(`animale`)?`Muuu! La nostra simpatica mucca vicino alla grotta ha un meccanismo svizzero che le fa muovere testa, coda, occhi e voce! Il volontario Fiorenzo Fassino le ha perfino cucito un morbido cappottino in finto visone per tenerla al caldo!`:t.includes(`legno`)||t.includes(`statue`)||t.includes(`cirmolo`)||t.includes(`ortisei`)||t.includes(`val gardena`)?`Le nostre oltre duecento statue sono veri tesori d’arte! Moltissime sono state scolpite a mano nel profumato legno di cirmolo (il pino cembro delle montagne della Val Gardena), un legno così dolce e resistente che non viene intaccato dai tarli nemmeno dopo un secolo!`:t.includes(`acqua`)||t.includes(`fiume`)||t.includes(`lago`)||t.includes(`ruscell`)||t.includes(`pescatore`)?`L’acqua che vedi scorrere è freschissima e vera! Sotto il pavimento c’è un impianto idraulico con ottanta litri d’acqua che salgono alle cascatelle e scendono nei fiumi, dove le lavandaie fanno il bucato e le barchette galleggiano tranquille!`:t.includes(`volontar`)||t.includes(`chi ha fatto`)||t.includes(`inventato`)||t.includes(`canonica`)||t.includes(`beppe`)?`Il presepio è nato oltre cent’anni fa (nel 1909-1910) grazie alla fantasia di Francesco Canonica e di suo figlio Maggiorino, un regista del cinema! Oggi se ne prendono cura quaranta volontari con il presepio nel cuore: riparano gli ingranaggi, cuciono i vestiti e accolgono tutti col sorriso!`:t.includes(`bambin`)||t.includes(`ges`)||t.includes(`natale`)||t.includes(`grotta`)||t.includes(`stella`)?`Il cuore di tutto il presepio è la Grotta Santa di Betlemme! Lì c’è Gesù Bambino che accoglie i pastori, illuminato da una stella cometa color ambra e dal grande amore di Maria e Giuseppe. È la festa più bella dell’anno!`:`Che bella domanda! Nel nostro grande presepio della SS. Annunziata ci sono oltre duecento statue, fiumi con acqua vera e un motore di nave dell’Ottocento che fa muovere tutto! Vieni a scoprire le mie storie: chiedimi del mio vestito, della mucca con la pelliccia o del segreto delle nostre statue di legno!`}async function ue(e,t){let n=(t.openaiApiKey||``).trim();if(n||=await se(),!n){let t=le(e);return ae(e,t),{text:t,isFromOpenAi:!1}}try{let r=new AbortController,i=setTimeout(()=>r.abort(),35e3),a=S(),o=await fetch(`https://api.openai.com/v1/chat/completions`,{method:`POST`,headers:{"Content-Type":`application/json`,Authorization:`Bearer ${n}`},body:JSON.stringify({model:t.selectedModel||`gpt-4o-mini`,messages:[{role:`system`,content:t.systemPrompt||y.systemPrompt},...a.map(e=>({role:e.role,content:e.content})),{role:`user`,content:e}],temperature:t.temperature??.7,max_tokens:350}),signal:r.signal});if(clearTimeout(i),!o.ok){let t=(await o.json().catch(()=>({})))?.error?.message||`HTTP error ${o.status}`;console.warn(`OpenAI error:`,t);let n=le(e);return ae(e,n),{text:n,isFromOpenAi:!1,errorNote:`OpenAI: ${t}. Risposta fornita dalla memoria di riserva di Natalino.`}}let s=(await o.json()).choices?.[0]?.message?.content?.trim();if(s)return ae(e,s),{text:s,isFromOpenAi:!0};let c=le(e);return ae(e,c),{text:c,isFromOpenAi:!1,errorNote:`Risposta vuota da OpenAI, usato fallback locale.`}}catch(t){let n=t instanceof Error?t.message:String(t);console.warn(`Fetch error:`,n);let r=le(e);return ae(e,r),{text:r,isFromOpenAi:!1,errorNote:`Connessione non riuscita (${n}). Risposta fornita dalla memoria interna di Natalino.`}}}var de=o((e=>{var t=Symbol.for(`react.transitional.element`);function n(e,n,r){var i=null;if(r!==void 0&&(i=``+r),n.key!==void 0&&(i=``+n.key),`key`in n)for(var a in r={},n)a!==`key`&&(r[a]=n[a]);else r=n;return n=r.ref,{$$typeof:t,type:e,key:i,ref:n===void 0?null:n,props:r}}e.jsx=n,e.jsxs=n})),C=o(((e,t)=>{t.exports=de()}))(),fe=({status:e,lastAskedAt:t})=>{let[n,r]=(0,_.useState)(!1);(0,_.useEffect)(()=>{t&&i()},[t]),(0,_.useEffect)(()=>{let t=setInterval(()=>{e===`idle`&&i()},14e3);return()=>clearInterval(t)},[e]);let i=()=>{n||(r(!0),setTimeout(()=>{r(!1)},2400))};return(0,C.jsx)(`div`,{onClick:i,title:`Cliccami per farmi fare l'inchino!`,className:`relative flex flex-col items-center justify-end select-none shrink-0 cursor-pointer group`,children:(0,C.jsx)(`div`,{className:`relative w-28 sm:w-32 md:w-36 lg:w-36 h-auto`,children:(0,C.jsxs)(`svg`,{viewBox:`0 0 200 480`,className:`w-full h-auto overflow-visible relative z-10 transition-transform duration-300`,xmlns:`http://www.w3.org/2000/svg`,children:[(0,C.jsxs)(`g`,{id:`natalinoBody`,style:{transformOrigin:`95px 440px`,transform:n?`rotate(8deg) translateY(4px)`:`rotate(0deg)`,transition:`transform 0.7s cubic-bezier(0.34, 1.3, 0.64, 1)`},children:[(0,C.jsxs)(`g`,{id:`feet`,children:[(0,C.jsx)(`rect`,{x:`46`,y:`420`,width:`46`,height:`42`,rx:`23`,fill:`#fed7c3`}),(0,C.jsx)(`rect`,{x:`98`,y:`420`,width:`46`,height:`42`,rx:`23`,fill:`#fed7c3`})]}),(0,C.jsxs)(`g`,{id:`legs`,children:[(0,C.jsx)(`rect`,{x:`46`,y:`275`,width:`46`,height:`150`,fill:`#000000`}),(0,C.jsx)(`rect`,{x:`98`,y:`275`,width:`46`,height:`150`,fill:`#000000`})]}),(0,C.jsxs)(`g`,{id:`torso`,children:[(0,C.jsx)(`rect`,{x:`42`,y:`145`,width:`106`,height:`135`,rx:`16`,fill:`#000000`}),(0,C.jsx)(`path`,{d:`M 104 145 C 132 145 146 160 146 185 L 146 220 C 138 215 130 180 104 145 Z`,fill:`#d9d9d9`})]}),(0,C.jsx)(`g`,{id:`arms`,children:(0,C.jsxs)(`g`,{style:{transformOrigin:`140px 190px`,transform:n?`rotate(-6deg)`:`rotate(0deg)`,transition:`transform 0.6s ease`},children:[(0,C.jsx)(`path`,{d:`M 115 178 L 180 190 C 188 191 192 198 188 206 L 168 222 L 115 198 Z`,fill:`#000000`}),(0,C.jsx)(`circle`,{cx:`198`,cy:`204`,r:`18`,fill:`#fed7c3`}),(0,C.jsx)(`path`,{d:`M 110 205 L 158 245 C 166 251 166 260 158 268 L 138 280 L 105 235 Z`,fill:`#000000`}),(0,C.jsx)(`circle`,{cx:`166`,cy:`268`,r:`18`,fill:`#fed7c3`})]})}),(0,C.jsx)(`circle`,{cx:`95`,cy:`104`,r:`50`,fill:`#fed7c3`})]}),(0,C.jsxs)(`g`,{id:`natalinoTopHat`,style:{transformOrigin:`95px 78px`,transform:n?`translateY(-46px) translateX(14px) rotate(-22deg)`:`translateY(0px) translateX(0px) rotate(0deg)`,transition:n?`transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1)`:`transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)`},children:[(0,C.jsx)(`path`,{d:`M 66 12 C 64 8 126 8 124 12 L 128 72 L 62 72 Z`,fill:`#000000`}),(0,C.jsx)(`ellipse`,{cx:`95`,cy:`12`,rx:`29`,ry:`5`,fill:`#18181b`}),(0,C.jsx)(`rect`,{x:`63`,y:`62`,width:`64`,height:`11`,fill:`#d00000`}),(0,C.jsx)(`ellipse`,{cx:`95`,cy:`74`,rx:`56`,ry:`16`,fill:`#000000`}),(0,C.jsx)(`path`,{d:`M 39 74 Q 95 86 151 74 Q 95 62 39 74 Z`,fill:`#000000`})]})]})})})},pe=({response:e,status:t})=>(0,C.jsx)(`div`,{className:`relative w-full max-w-xl lg:max-w-2xl select-none`,children:(0,C.jsxs)(`div`,{className:`relative bg-[#fffef9] text-[#2b1810] rounded-[28px] p-6 sm:p-8 md:p-9 border-[3.5px] border-[#2b1614] shadow-[0_12px_28px_rgba(40,10,10,0.28)]`,children:[(0,C.jsxs)(`div`,{className:`hidden md:block`,children:[(0,C.jsx)(`div`,{className:`absolute top-9 -left-[23px] w-0 h-0`,style:{borderTop:`15px solid transparent`,borderBottom:`15px solid transparent`,borderRight:`23px solid #2b1614`}}),(0,C.jsx)(`div`,{className:`absolute top-[38px] -left-[18px] w-0 h-0`,style:{borderTop:`13px solid transparent`,borderBottom:`13px solid transparent`,borderRight:`20px solid #fffef9`}})]}),(0,C.jsxs)(`div`,{className:`block md:hidden`,children:[(0,C.jsx)(`div`,{className:`absolute -bottom-[21px] left-12 w-0 h-0`,style:{borderLeft:`15px solid transparent`,borderRight:`15px solid transparent`,borderTop:`21px solid #2b1614`}}),(0,C.jsx)(`div`,{className:`absolute -bottom-[16px] left-[49px] w-0 h-0`,style:{borderLeft:`14px solid transparent`,borderRight:`14px solid transparent`,borderTop:`18px solid #fffef9`}})]}),(0,C.jsx)(`div`,{className:`min-h-[85px] sm:min-h-[105px] flex items-center justify-center`,children:t===`thinking`?(0,C.jsxs)(`div`,{className:`flex items-center gap-3 py-2`,children:[(0,C.jsx)(`span`,{className:`text-lg sm:text-xl font-cartoon font-semibold text-amber-950 animate-pulse`,children:`Natalino sta pensando...`}),(0,C.jsxs)(`div`,{className:`flex gap-1.5 items-center`,children:[(0,C.jsx)(`span`,{className:`w-2.5 h-2.5 rounded-full bg-amber-700 animate-bounce [animation-delay:-0.3s]`}),(0,C.jsx)(`span`,{className:`w-2.5 h-2.5 rounded-full bg-amber-700 animate-bounce [animation-delay:-0.15s]`}),(0,C.jsx)(`span`,{className:`w-2.5 h-2.5 rounded-full bg-amber-700 animate-bounce`})]})]}):(0,C.jsxs)(`p`,{className:`text-lg sm:text-xl md:text-[22px] leading-relaxed text-[#26150b] font-cartoon font-medium text-left`,children:[`«`,e,`»`]})})]})}),me=({onSelectQuestion:e,disabled:t})=>(0,C.jsx)(`div`,{className:`w-full`,children:(0,C.jsx)(`div`,{className:`flex flex-wrap items-center justify-center gap-1.5 sm:gap-2`,children:b.map(n=>(0,C.jsx)(`button`,{onClick:()=>e(n),disabled:t,className:`px-3 py-1.5 rounded-xl bg-[#4d1917]/80 hover:bg-[#64211e] active:bg-[#381110] text-amber-100 hover:text-white border border-amber-400/30 shadow-sm text-xs sm:text-sm font-cartoon font-medium transition-all active:scale-95 disabled:opacity-40 disabled:pointer-events-none cursor-pointer whitespace-nowrap`,children:n.label},n.id))})}),he=e=>e.replace(/([a-z0-9])([A-Z])/g,`$1-$2`).toLowerCase(),ge=e=>e.replace(/^([A-Z])|[\s-_]+(\w)/g,(e,t,n)=>n?n.toUpperCase():t.toLowerCase()),_e=e=>{let t=ge(e);return t.charAt(0).toUpperCase()+t.slice(1)},ve=(...e)=>e.filter((e,t,n)=>!!e&&e.trim()!==``&&n.indexOf(e)===t).join(` `).trim(),ye=e=>{for(let t in e)if(t.startsWith(`aria-`)||t===`role`||t===`title`)return!0},be={xmlns:`http://www.w3.org/2000/svg`,width:24,height:24,viewBox:`0 0 24 24`,fill:`none`,stroke:`currentColor`,strokeWidth:2,strokeLinecap:`round`,strokeLinejoin:`round`},xe=(0,_.forwardRef)(({color:e=`currentColor`,size:t=24,strokeWidth:n=2,absoluteStrokeWidth:r,className:i=``,children:a,iconNode:o,...s},c)=>(0,_.createElement)(`svg`,{ref:c,...be,width:t,height:t,stroke:e,strokeWidth:r?Number(n)*24/Number(t):n,className:ve(`lucide`,i),...!a&&!ye(s)&&{"aria-hidden":`true`},...s},[...o.map(([e,t])=>(0,_.createElement)(e,t)),...Array.isArray(a)?a:[a]])),Se=((e,t)=>{let n=(0,_.forwardRef)(({className:n,...r},i)=>(0,_.createElement)(xe,{ref:i,iconNode:t,className:ve(`lucide-${he(_e(e))}`,`lucide-${e}`,n),...r}));return n.displayName=_e(e),n})(`send`,[[`path`,{d:`M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z`,key:`1ffxy3`}],[`path`,{d:`m21.854 2.147-10.94 10.939`,key:`12cjpa`}]]),Ce=({currentQuestion:e,onAsk:t,disabled:n})=>{let[r,i]=(0,_.useState)(``);return(0,C.jsxs)(`div`,{className:`w-full space-y-2`,children:[e&&(0,C.jsxs)(`div`,{className:`px-4 py-2 rounded-xl bg-[#4a1715]/80 border border-amber-400/30 text-center animate-fade-in`,children:[(0,C.jsx)(`p`,{className:`text-xs text-amber-300 font-cartoon font-medium uppercase tracking-wider mb-0.5`,children:`Domanda:`}),(0,C.jsxs)(`p`,{className:`text-sm sm:text-base font-cartoon font-semibold text-white truncate`,children:[`«`,e,`»`]})]}),(0,C.jsxs)(`form`,{onSubmit:e=>{e.preventDefault(),r.trim()&&!n&&(t(r.trim()),i(``))},className:`flex items-center gap-2`,children:[(0,C.jsx)(`input`,{type:`text`,value:r,onChange:e=>i(e.target.value),disabled:n,placeholder:`Fai una domanda a Natalino con la tastiera...`,className:`flex-1 py-2.5 sm:py-3 px-4 rounded-2xl bg-[#fffdf7] text-[#2b1810] placeholder:text-stone-500 font-cartoon text-sm sm:text-base md:text-lg comic-border focus:outline-none focus:ring-2 focus:ring-amber-500 shadow-sm`}),(0,C.jsxs)(`button`,{type:`submit`,disabled:!r.trim()||n,className:`h-[46px] sm:h-[50px] px-5 sm:px-6 rounded-2xl bg-amber-600 hover:bg-amber-500 active:bg-amber-700 text-stone-950 font-cartoon font-bold text-sm sm:text-base flex items-center gap-1.5 border-2 border-amber-300/80 shadow-md active:scale-95 transition-all disabled:opacity-40 disabled:pointer-events-none cursor-pointer shrink-0`,children:[(0,C.jsx)(`span`,{children:`Chiedi`}),(0,C.jsx)(Se,{className:`w-4 h-4`})]})]})]})},we=`/assets/shapeimage_8-removebg-preview-CPELK81c.png`,Te=`Ciao! Sono Natalino. Chiedimi pure qualsiasi curiosità sul nostro presepio!`;function Ee(){let[e,t]=(0,_.useState)(ce);(0,_.useEffect)(()=>{se().then(e=>{e&&t(t=>({...t,openaiApiKey:e}))})},[]);let[n,r]=(0,_.useState)({currentQuestion:``,response:Te,status:`idle`,lastAskedAt:void 0});(0,_.useEffect)(()=>{if(!n.lastAskedAt)return;let e=setTimeout(()=>{ie(),r(e=>({...e,currentQuestion:``,response:Te,status:`idle`,lastAskedAt:void 0}))},3e5);return()=>clearTimeout(e)},[n.lastAskedAt]);let i=async t=>{if(t.trim()){r(e=>({...e,currentQuestion:t,status:`thinking`}));try{let n=await ue(t,e);r(e=>({...e,response:n.text,status:`talking`,lastAskedAt:Date.now()})),setTimeout(()=>{r(e=>e.status===`talking`?{...e,status:`idle`}:e)},5e3)}catch(e){console.error(e),r(e=>({...e,status:`error`,response:`Ho avuto un piccolo intoppo coi miei ingranaggi! Riprova tra poco.`}))}}};return(0,C.jsxs)(`div`,{className:`h-screen w-screen max-h-screen overflow-hidden flex flex-col justify-between text-amber-50 select-none relative p-3 sm:p-5`,style:{backgroundColor:`#9e3b37`,backgroundImage:`
+          radial-gradient(ellipse 95% 82% at 50% 25%, #be554f 0%, #a23f3b 46%, #7d2927 82%, #631f1d 100%)
+        `},children:[(0,C.jsx)(`div`,{className:`fixed inset-0 pointer-events-none`,style:{background:`
+            radial-gradient(circle at 50% 20%, rgba(255, 220, 205, 0.16) 0%, transparent 62%),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, transparent 45%, rgba(30, 8, 8, 0.2) 100%)
+          `}}),(0,C.jsx)(`div`,{className:`absolute top-2 left-3 sm:top-2.5 sm:left-5 z-20 pointer-events-none select-none`,children:(0,C.jsx)(`img`,{src:we,alt:`Presepio Meccanico Logo`,className:`h-12 sm:h-14 md:h-16 lg:h-18 w-auto object-contain drop-shadow-md`})}),(0,C.jsx)(`header`,{className:`relative z-10 text-center pt-1 pb-1 shrink-0`,children:(0,C.jsx)(`h1`,{className:`text-3xl sm:text-4xl md:text-5xl font-cartoon font-bold text-amber-100 tracking-wide drop-shadow-md`,children:`Natalino`})}),(0,C.jsxs)(`main`,{className:`relative z-10 flex-1 flex flex-col md:flex-row items-center justify-center gap-6 sm:gap-10 md:gap-14 px-4 sm:px-8 min-h-0`,children:[(0,C.jsx)(`div`,{className:`order-2 md:order-1 flex justify-center shrink-0`,children:(0,C.jsx)(fe,{status:n.status,lastAskedAt:n.lastAskedAt})}),(0,C.jsx)(`div`,{className:`order-1 md:order-2 flex justify-center w-full max-w-xl md:max-w-2xl shrink-0`,children:(0,C.jsx)(pe,{response:n.response,status:n.status})})]}),(0,C.jsxs)(`footer`,{className:`relative z-10 shrink-0 w-full max-w-3xl mx-auto space-y-2 pb-1`,children:[(0,C.jsx)(me,{onSelectQuestion:e=>{i(e.fullQuestion)},disabled:n.status===`thinking`}),(0,C.jsx)(Ce,{currentQuestion:n.currentQuestion,onAsk:i,disabled:n.status===`thinking`})]})]})}(0,v.createRoot)(document.getElementById(`root`)).render((0,C.jsx)(Ee,{}));

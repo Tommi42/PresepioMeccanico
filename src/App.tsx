@@ -5,6 +5,7 @@ import { NatalinoAvatar } from './components/NatalinoAvatar';
 import { ComicSpeechBubble } from './components/ComicSpeechBubble';
 import { QuickQuestionsBar } from './components/QuickQuestionsBar';
 import { QuestionInputBar } from './components/QuestionInputBar';
+import logoImg from './assets/shapeimage_8-removebg-preview.png';
 
 const INITIAL_GREETING =
   'Ciao! Sono Natalino. Chiedimi pure qualsiasi curiosità sul nostro presepio!';
@@ -103,6 +104,15 @@ export default function App() {
           `,
         }}
       />
+
+      {/* Top Left Logo (Stella Cometa Presepio Meccanico) */}
+      <div className="absolute top-2 left-3 sm:top-2.5 sm:left-5 z-20 pointer-events-none select-none">
+        <img
+          src={logoImg}
+          alt="Presepio Meccanico Logo"
+          className="h-12 sm:h-14 md:h-16 lg:h-18 w-auto object-contain drop-shadow-md"
+        />
+      </div>
 
       {/* Top minimal title: ONLY "Natalino", centered and clean */}
       <header className="relative z-10 text-center pt-1 pb-1 shrink-0">
