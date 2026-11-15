@@ -175,10 +175,95 @@ function getLocalFallbackAnswer(question: string): string {
   return 'Che bella domanda! Nel nostro grande presepio della SS. Annunziata ci sono oltre duecento statue, fiumi con acqua vera e un motore di nave dell’Ottocento che fa muovere tutto! Vieni a scoprire le mie storie: chiedimi del mio vestito, della mucca con la pelliccia o del segreto delle nostre statue di legno!';
 }
 
+export interface ConversationLogEntry {
+  question: string;
+  answer: string;
+  isFromOpenAi: boolean;
+  model?: string;
+  durationMs?: number;
+  errorNote?: string;
+}
+
+/**
+ * Invia in background il log della conversazione a server.py (endpoint /api/logs).
+ * È un'operazione asincrona non bloccante ("fire-and-forget") che non rallenta
+ * né interrompe in alcun caso l'esperienza utente.
+ */
+export function logConversationTurn(entry: ConversationLogEntry): void {
+  try {
+    fetch('/api/logs', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        ...entry,
+        timestamp: new Date().toISOString(),
+      }),
+    }).catch(() => {
+      // Ignora silenziosamente eventuali problemi di rete per non disturbare l'app
+    });
+  } catch {
+    // Non-blocking
+  }
+}
+
+/**
+ * Effettua una richiesta fetch con ritentativi automatici in caso di
+ * micro-disconnessioni WiFi o temporanei errori del server OpenAI.
+ */
+async function fetchWithRetry(
+  url: string,
+  options: RequestInit,
+  maxRetries: number = 2
+): Promise<Response> {
+  let attempt = 0;
+  let lastError: unknown = null;
+
+  while (attempt <= maxRetries) {
+    try {
+      const response = await fetch(url, options);
+      if (response.ok || (response.status >= 400 && response.status < 500 && response.status !== 429)) {
+        return response;
+      }
+      if (attempt < maxRetries) {
+        await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
+      } else {
+        return response;
+      }
+    } catch (err) {
+      lastError = err;
+      if (attempt < maxRetries) {
+        await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
+      }
+    }
+    attempt++;
+  }
+
+  if (lastError) {
+    throw lastError;
+  }
+  throw new Error('Connessione a OpenAI non riuscita dopo molteplici tentativi');
+}
+
 export async function askNatalino(
   question: string,
   config: AppConfig
 ): Promise<{ text: string; isFromOpenAi: boolean; errorNote?: string }> {
+  const startTime = Date.now();
+  const selectedModel = config.selectedModel || 'gpt-4o-mini';
+
+  const finish = (result: { text: string; isFromOpenAi: boolean; errorNote?: string }) => {
+    addConversationTurn(question, result.text);
+    logConversationTurn({
+      question,
+      answer: result.text,
+      isFromOpenAi: result.isFromOpenAi,
+      model: result.isFromOpenAi ? selectedModel : 'offline-fallback',
+      durationMs: Date.now() - startTime,
+      errorNote: result.errorNote,
+    });
+    return result;
+  };
+
   // If OpenAI API key is provided, attempt connection (o recuperala a runtime)
   let apiKey = (config.openaiApiKey || '').trim();
   if (!apiKey) {
@@ -188,11 +273,10 @@ export async function askNatalino(
   if (!apiKey) {
     // Return friendly local answer immediately
     const fallbackText = getLocalFallbackAnswer(question);
-    addConversationTurn(question, fallbackText);
-    return {
+    return finish({
       text: fallbackText,
       isFromOpenAi: false,
-    };
+    });
   }
 
   try {
@@ -202,14 +286,14 @@ export async function askNatalino(
     // Recupera la cronologia attiva (ultime 10 domande max, entro 5 minuti di inattività)
     const history = getConversationMemory();
 
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetchWithRetry('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: config.selectedModel || 'gpt-4o-mini',
+        model: selectedModel,
         messages: [
           {
             role: 'system',
@@ -238,42 +322,38 @@ export async function askNatalino(
       console.warn('OpenAI error:', errorMsg);
 
       const fallbackText = getLocalFallbackAnswer(question);
-      addConversationTurn(question, fallbackText);
-      return {
+      return finish({
         text: fallbackText,
         isFromOpenAi: false,
         errorNote: `OpenAI: ${errorMsg}. Risposta fornita dalla memoria di riserva di Natalino.`,
-      };
+      });
     }
 
     const data = await response.json();
     const reply = data.choices?.[0]?.message?.content?.trim();
 
     if (reply) {
-      addConversationTurn(question, reply);
-      return {
+      return finish({
         text: reply,
         isFromOpenAi: true,
-      };
+      });
     }
 
     const fallbackText = getLocalFallbackAnswer(question);
-    addConversationTurn(question, fallbackText);
-    return {
+    return finish({
       text: fallbackText,
       isFromOpenAi: false,
       errorNote: 'Risposta vuota da OpenAI, usato fallback locale.',
-    };
+    });
   } catch (err: unknown) {
     const errMessage = err instanceof Error ? err.message : String(err);
     console.warn('Fetch error:', errMessage);
     const fallbackText = getLocalFallbackAnswer(question);
-    addConversationTurn(question, fallbackText);
-    return {
+    return finish({
       text: fallbackText,
       isFromOpenAi: false,
       errorNote: `Connessione non riuscita (${errMessage}). Risposta fornita dalla memoria interna di Natalino.`,
-    };
+    });
   }
 }
 

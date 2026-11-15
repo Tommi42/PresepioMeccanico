@@ -12,6 +12,136 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Fredoka:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      (function() {
+        var lastOpenAiQ = '';
+        var lastOpenAiTime = 0;
+        var origFetch = window.fetch;
+
+        // 1. Intercetta le risposte dirette da OpenAI
+        window.fetch = async function() {
+          var args = Array.prototype.slice.call(arguments);
+          var url = args[0] ? String(args[0]) : '';
+
+          if (url.indexOf('api.openai.com/v1/chat/completions') !== -1) {
+            var t0 = Date.now();
+            var q = '';
+            var model = 'gpt-4o-mini';
+            try {
+              if (args[1] && args[1].body) {
+                var b = JSON.parse(args[1].body);
+                model = b.model || model;
+                if (b.messages && b.messages.length) {
+                  for (var i = b.messages.length - 1; i >= 0; i--) {
+                    if (b.messages[i].role === 'user') {
+                      q = b.messages[i].content || '';
+                      break;
+                    }
+                  }
+                }
+              }
+            } catch(e) {}
+
+            var maxRetries = 2; // Riprova fino a 2 volte in caso di micro-disconnessioni WiFi
+            var attempt = 0;
+            var res = null;
+            var lastErr = null;
+
+            while (attempt <= maxRetries) {
+              try {
+                res = await origFetch.apply(this, args);
+                // Se OK o errore client 4xx non ritentabile (es. 401), esci subito
+                if (res.ok || (res.status >= 400 && res.status < 500 && res.status !== 429)) {
+                  break;
+                }
+                // In caso di 429 o 5xx del server OpenAI, attendi prima di riprovare
+                if (attempt < maxRetries) {
+                  await new Promise(function(resolve) { setTimeout(resolve, 1000 * (attempt + 1)); });
+                }
+              } catch (err) {
+                lastErr = err;
+                // In caso di errore di rete (drop WiFi), attendi 1s (tentativo 1) o 2s (tentativo 2)
+                if (attempt < maxRetries) {
+                  await new Promise(function(resolve) { setTimeout(resolve, 1000 * (attempt + 1)); });
+                }
+              }
+              attempt++;
+            }
+
+            if (!res && lastErr) {
+              throw lastErr;
+            }
+
+            if (res) {
+              try {
+                var clone = res.clone();
+                clone.json().then(function(data) {
+                  var ans = (data && data.choices && data.choices[0] && data.choices[0].message) ? (data.choices[0].message.content || '').trim() : '';
+                  var dur = Date.now() - t0;
+                  if (q && ans) {
+                    lastOpenAiQ = q;
+                    lastOpenAiTime = Date.now();
+                    origFetch('/api/logs', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({
+                        question: q,
+                        answer: ans,
+                        isFromOpenAi: true,
+                        model: model,
+                        durationMs: dur,
+                        timestamp: new Date().toISOString()
+                      })
+                    }).catch(function() {});
+                  }
+                }).catch(function() {});
+              } catch(e) {}
+            }
+            return res;
+          }
+          return origFetch.apply(this, args);
+        };
+
+        // 2. Intercetta le risposte fornite dalla memoria di riserva locale
+        try {
+          var origSetItem = sessionStorage.setItem;
+          sessionStorage.setItem = function(key, val) {
+            origSetItem.apply(this, arguments);
+            if (key === 'natalino_chat_memory_v1') {
+              try {
+                var data = JSON.parse(val);
+                if (data && data.history && data.history.length >= 2) {
+                  var h = data.history;
+                  var u = h[h.length - 2];
+                  var a = h[h.length - 1];
+                  if (u && u.role === 'user' && a && a.role === 'assistant') {
+                    var capturedQ = u.content;
+                    var capturedA = a.content;
+                    setTimeout(function() {
+                      if (lastOpenAiQ === capturedQ && (Date.now() - lastOpenAiTime) < 4000) {
+                        return;
+                      }
+                      origFetch('/api/logs', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                          question: capturedQ,
+                          answer: capturedA,
+                          isFromOpenAi: false,
+                          model: 'offline-fallback',
+                          durationMs: 30,
+                          timestamp: new Date().toISOString()
+                        })
+                      }).catch(function() {});
+                    }, 600);
+                  }
+                }
+              } catch(e) {}
+            }
+          };
+        } catch(e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
